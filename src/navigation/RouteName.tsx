@@ -1,0 +1,21 @@
+const RouteName = {
+    LOGIN: 'Login',
+    SIGNUP: 'Sign Up',
+    FORGOT_PASS: 'Forgot Password',
+    OTP_VERIFY: 'OtpVerify',
+    HOME: 'Home',
+    VIEW_ALL: 'View All',
+    MY_BOOKING: 'My Booking',
+    MESSAGE: 'Message',
+    PROFILE:'Profile',
+    PASS_UPDATE:'Password Update',
+    PRIVACY_POLICY:'Privacy Policy',
+    PROFILE_SETUP:'Profile Setup',
+    CHANGE_PASSWORD:'Change Password',
+    MY_CALENDER:'My Calander',
+    PAYMENT_HISTORY:'PaymentHistory',
+    RATING_REVIEW:'RatingRiview',
+    NOTIFICATION_ALERT:'NotificationAndAlert',
+    LANG_CURRENCY:'LanguageAndCurrency',
+};
+export default RouteName;

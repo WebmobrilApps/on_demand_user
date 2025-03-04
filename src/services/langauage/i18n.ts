@@ -1,0 +1,24 @@
+import i18next from "i18next";
+import { initReactI18next } from "react-i18next";
+import { spanish } from "./spanish";
+import { english } from "./english";
+
+// Define the type for translation resources
+const resources = {
+  en: { translation: english },
+  sp: { translation: spanish },
+};
+
+// Initialize i18next with TypeScript support
+i18next
+  .use(initReactI18next)
+  .init({
+    lng: "en", // Get device language or default to English
+    fallbackLng: "en", // Default language if translation is missing
+    resources, // Language resources
+    interpolation: {
+      escapeValue: false, // React already escapes text
+    },
+  });
+
+export default i18next;
