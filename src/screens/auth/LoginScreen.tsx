@@ -126,6 +126,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
             navigation.navigate(RouteName.HOME);
           }, 200);
         }
+        resetForm()
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
         CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });

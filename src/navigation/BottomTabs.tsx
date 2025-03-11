@@ -3,11 +3,12 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import {HomeScreen, MessageScreen, MyBookingScreen, ProfileScreen} from '../screens/tab';
+import { MessageScreen, MyBookingScreen, ProfileScreen} from '../screens/tab';
 import imagePaths from '../assets/images';
 import {Colors, Fonts, SCREEN_WIDTH, SF, SH, widthPercent} from '../utils';
 import RouteName from './RouteName';
 import AllUsersList from '../screens/AllUsersList';
+import { HomeScreen } from '../screens';
 
 const BOTTOM_ROUTE = [
   {

@@ -82,24 +82,23 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
 
   const validationSchema = Yup.object().shape({
     fname: Yup.string()
-      .min(3, t('validation.fullnameMinLength'))
       .required(t('validation.emptyFullName'))
+      .min(3, t('validation.fullNameMinLength'))
       .matches(regex.NAME_REGEX, t('validation.validFullName')),
     email: Yup.string()
       .matches(regex.EMAIL_REGEX_WITH_EMPTY, t('validation.validEmail'))
       .required(t('validation.emptyEmail')),
     mobileno: Yup.string()
-      .matches(regex.DIGIT_REGEX, t('validation.validMobile'))
-      .min(10, t('validation.mobileMinLen'))
+      .matches(regex.MOBIILE, t('validation.validMobile'))
       .required(t('validation.emptyMobile')),
     password: Yup.string()
-      .min(6, t('validation.passMinLength'))
-      .required(t('validation.emptyPassword')),
+      .required(t('validation.emptyPassword'))
+      .matches(regex.PASSWORD, t('validation.passValid')),
     cpassword: Yup.string()
       .required(t('validation.emptyConfirmPassword'))
       .oneOf([Yup.ref('password')], t('validation.notMatchConfirmPassword')),
   });
- 
+
 
 
   const btnSignup = async (
@@ -249,7 +248,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                     value={values.password}
                     leftIcon={<InputIcons icon={imagePaths.lock_icon} />}
                     secureTextEntry={passwordVisibility}
-                  
+
                     rightIcon={
                       <TouchableOpacity
                         onPress={() => {

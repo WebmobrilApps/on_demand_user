@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Modal, StyleSheet, Text, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW } from '../utils';
 import AuthBottomContainer from './AuthBottomContainer';
 import Buttons from './Button';

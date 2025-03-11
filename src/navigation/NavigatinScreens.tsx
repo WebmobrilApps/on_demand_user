@@ -37,6 +37,7 @@ export const NavigatinScreens = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name={RouteName.HOME} component={Bottomtab} />
         <Stack.Screen name={RouteName.LOGIN} component={LoginScreen} />
 
         {/* learning--------- */}
@@ -44,7 +45,6 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={'ChatScreen'} component={ChatScreen} />
         {/* learning--------- */}
         <Stack.Screen name={'SplashScreen'} component={SplashScreen} />
-        <Stack.Screen name={RouteName.HOME} component={Bottomtab} />
         <Stack.Screen name={RouteName.VIEW_ALL} component={ViewAll} />
         <Stack.Screen name={RouteName.SIGNUP} component={SignupScreen} />
         <Stack.Screen  name={RouteName.PRIVACY_POLICY}  component={PrivacyPolicy} />

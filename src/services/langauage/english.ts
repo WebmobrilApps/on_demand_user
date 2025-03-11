@@ -58,6 +58,7 @@ export const english = {
       emptyPassword: 'Password is required.',
 
       passNewMinLength: 'New password must be at least 6 characters.',
+      passValid:'The password must be at least 8 characters long and include at least one uppercase letter, one special character, and one number.',
       emptyNewPassword: 'New password is required.',
 
       passCurrMinLength: 'Current password must be at least 6 characters.',
