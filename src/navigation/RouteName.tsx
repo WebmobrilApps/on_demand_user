@@ -17,5 +17,7 @@ const RouteName = {
     RATING_REVIEW:'RatingRiview',
     NOTIFICATION_ALERT:'NotificationAndAlert',
     LANG_CURRENCY:'LanguageAndCurrency',
+    SERVICE_LIST:'ServiceList',
+    SERVICE_DETAILS:'ServiceDetails',
 };
 export default RouteName;

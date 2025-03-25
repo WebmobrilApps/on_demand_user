@@ -7,3 +7,4 @@ export {default as validationMSG} from './validationMSG';
 export * from './hooks'
 export * from './type'
 export * from './StaticData'
+export * from './commonStyle'

@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: Fonts.MEDIUM,
-    fontSize: SF(15),
+    fontSize: SF(14),
     color: Colors.textAppColor,
   },
   icon: {

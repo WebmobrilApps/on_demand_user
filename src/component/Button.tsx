@@ -1,14 +1,15 @@
-import React, {useMemo} from 'react';
+import React, { useMemo } from "react";
 import {
-  TouchableOpacity,
+  Pressable,
+  Text,
+  ActivityIndicator,
   StyleSheet,
   StyleProp,
   TextStyle,
   ViewStyle,
-} from 'react-native';
-import {Fonts, SF, SH, SW, Colors} from '../utils';
-import HideWithKeyboard from 'react-native-hide-with-keyboard';
-import { Button } from './Button/Button';
+  View,
+} from "react-native";
+import { Fonts, SF, SH, SW, Colors, boxShadow } from "../utils";
 
 type ButtonsProps = {
   title?: string;
@@ -24,8 +25,8 @@ type ButtonsProps = {
 };
 
 const Buttons: React.FC<ButtonsProps> = ({
-  title = '',
-  onPress = () => {},
+  title = "",
+  onPress = () => { },
   isLoading = false,
   buttonStyle = {},
   disable = false,
@@ -33,57 +34,57 @@ const Buttons: React.FC<ButtonsProps> = ({
   icon,
   spacedImages = false,
   linearGradientProps,
-  textColor = '#ffffff',
+  textColor = "#ffffff",
 }) => {
   const styles = useMemo(
     () =>
       StyleSheet.create({
         buttonStyle: {
-          backgroundColor: Colors.themeColor,
-          borderRadius: SW(10),
+          backgroundColor: disable ? "#A9A9A9" : Colors.themeColor,
           height: SH(48),
-          width: '100%',
-          shadowColor: "#000000",
-          shadowOffset: {
-            width: 0,
-            height: 8,
-          },
-          shadowOpacity:  0.17,
-          shadowRadius: 2.54,
-          elevation: 3
+          width: "100%",
+          borderRadius: 10,
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "row",
         },
         buttonTextStyle: {
           color: textColor || Colors.textWhite,
           fontFamily: Fonts.MEDIUM,
-          fontSize: SF(18),
+          fontSize: SF(16),
         },
         buttonViewStyle: {
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: spacedImages ? 'space-around' : 'center',
-          width: '100%',
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: spacedImages ? "space-around" : "center",
+          width: "100%",
         },
         LeftImageViewStyle: {
           marginVertical: SW(5),
         },
       }),
-    [disable, spacedImages, textColor],
+    [disable, spacedImages, textColor]
   );
 
   return (
-    // <HideWithKeyboard>
-      <Button
-        title={title}
-        onPress={onPress}
-        disabled={disable}
-        loading={isLoading}
-        // icon={icon && icon}
-        loadingProps={{color: textColor || Colors.themeColor}}
-        linearGradientProps={linearGradientProps}
-        buttonStyle={[styles.buttonStyle, buttonStyle]}
-        titleStyle={[styles.buttonTextStyle, buttonTextStyle]}
-      />
-    // </HideWithKeyboard>
+    <Pressable
+      onPress={!disable && !isLoading ? onPress : undefined}
+      style={({ pressed }) => [
+        styles.buttonStyle,boxShadow,
+        buttonStyle,
+        pressed && { opacity: 0.8 }, // Slight fade effect when pressed
+      ]}
+      disabled={disable}
+    >
+      {isLoading ? (
+        <ActivityIndicator size="small" color={textColor || Colors.themeColor} />
+      ) : (
+        <View style={styles.buttonViewStyle}>
+          {icon && <View style={styles.LeftImageViewStyle}>{icon}</View>}
+          <Text style={[styles.buttonTextStyle, buttonTextStyle]}>{title}</Text>
+        </View>
+      )}
+    </Pressable>
   );
 };
 

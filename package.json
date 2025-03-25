@@ -43,6 +43,7 @@
     "react-native-screens": "^4.9.1",
     "react-native-size-matters": "^0.4.2",
     "react-native-star-rating-widget": "^1.9.2",
+    "react-native-status-bar-height": "^2.6.0",
     "react-native-svg": "^15.11.2",
     "react-native-swiper": "^1.6.0",
     "react-native-switch": "^1.5.1",

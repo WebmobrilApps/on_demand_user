@@ -39,7 +39,7 @@ const NotificationAndAlert: React.FC<NotificationAndAlertProps> = ({}) => {
   let periodicjson = {name: 'Periodic Updates', id: 10, onClick: () => {}};
 
   return (
-    <Container>
+    <Container isPadding={true}>
       <AppHeader
         headerTitle={t('profile.notificationsAlerts')}
         onPress={() => {
@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: SH(20),
+ 
   },
   toggleLabel: {
     fontFamily: Platform.OS === 'android' ? Fonts.MEDIUM : Fonts.REGULAR,

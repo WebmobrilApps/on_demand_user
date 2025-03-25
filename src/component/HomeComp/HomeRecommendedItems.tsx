@@ -44,13 +44,13 @@ const styles = StyleSheet.create({
     shadowColor: "#000000",
     shadowOffset: {
       width: 0,
-      height: 3,
+      height: 2,
     },
     shadowOpacity: 0.17,
-    shadowRadius: 3.05,
-    elevation: 4,
+    shadowRadius: SH(10),
+    elevation: 3,
     backgroundColor: '#ffffff',
-    borderRadius: SH(10),
+    borderRadius: 30,
   },
   imageLoader: {
     height: SH(100),

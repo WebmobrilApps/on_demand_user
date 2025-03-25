@@ -2,16 +2,9 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
-  Image,
-  ImageProps,
 } from 'react-native';
 import React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 import {Colors, Fonts, SF, SH, SW} from '../../utils';
-import VectorIcon from '../VectoreIcons';
-import imagePaths from '../../assets/images';
-import Swiper from 'react-native-swiper';
 import ImageLoader from '../ImageLoader';
 import { Source } from 'react-native-fast-image';
 
@@ -39,18 +32,20 @@ export default HomeCategoryItem;
 
 const styles = StyleSheet.create({
   container: {
-    width: SH(78),
+    width: SH(90),
     alignItems: 'center',
   },
   imageLoader: {
-    height: SH(54),
-    width: SH(54),
-    borderRadius: SH(54) / 2,
+    height: SH(58),
+    width: SH(58),
+    borderRadius: SH(58) / 2,
+    borderWidth:1,
+    borderColor:Colors.themeColor
   },
   text: {
     color: Colors.textAppColor,
     fontFamily: Fonts.MEDIUM,
-    fontSize: SH(13),
+    fontSize: SF(12),
     marginTop: 5,
   },
 });

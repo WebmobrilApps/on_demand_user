@@ -43,6 +43,7 @@ const imagePaths = {
   recomanded2:require('./recomanded2.jpeg'),
   recomanded3:require('./recomanded3.jpeg'),
   user_img:require('./user_img.png'),
+  cutting:require('./cutting.jpeg'),
   edit_profile:require('./edit_profile.png'),
   right_icon:require('./right_icon.png'),
   makup1:require('./makup1.jpeg'),
@@ -50,5 +51,6 @@ const imagePaths = {
   search_h:require('./search_h.png'),
   filter_h:require('./filter_h.png'),
   US_flag:require('./US_flag.png'),
+  star_f:require('./star_f.png'),
 };
 export default imagePaths;

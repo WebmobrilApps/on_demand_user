@@ -105,7 +105,8 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
     values: { email: string; password: string; cpassword: string; fname: string; mobileno: string; },
     resetForm: any,
   ) => {
-
+    navigation.navigate(RouteName.HOME)
+    return true;
     const fcmToken = await StorageProvider.getItem('fcmToken')
     const device_id = await DeviceInfo.getUniqueId();
     const device_type = Platform.OS == 'android' ? '1' : '2';

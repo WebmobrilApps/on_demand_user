@@ -1,9 +1,11 @@
-import {View, Text, StyleSheet, Image, ImageProps} from 'react-native';
+import { View, Text, StyleSheet, Image, ImageProps, Pressable } from 'react-native';
 import React from 'react';
-import {Colors, Fonts, SF, SH, SW} from '../../utils';
+import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
 import Spacing from '../Spacing';
 import StarRating from 'react-native-star-rating-widget';
+import RouteName from '../../navigation/RouteName';
+import { useNavigation } from '@react-navigation/native';
 
 interface HomeCategoryItemProps {
   name: string;
@@ -11,13 +13,10 @@ interface HomeCategoryItemProps {
   id: string | number;
 }
 
-const HomeCategoryItem: React.FC<HomeCategoryItemProps> = ({
-  name,
-  image,
-  id,
-}) => {
+const HomeCategoryItem: React.FC<HomeCategoryItemProps> = () => {
+  const navigation = useNavigation<any>();
   return (
-    <View style={styles.container}>
+    <Pressable onPress={() => { navigation.navigate(RouteName.SERVICE_LIST) }} style={styles.container}>
       <View style={styles.header}>
         <Image
           source={imagePaths.service_logo1}
@@ -33,7 +32,7 @@ const HomeCategoryItem: React.FC<HomeCategoryItemProps> = ({
       </View>
       <Spacing space={10} />
       <View style={styles.ratingContainer}>
-        <StarRating starStyle={{marginHorizontal:0}} onChange={()=>{}} starSize={SF(16)} rating={3.5}/>
+        <StarRating starStyle={{ marginHorizontal: 0 }} onChange={() => { }} starSize={SF(16)} rating={3.5} />
         <Text style={styles.ratingtxt}>{'4.6'}</Text>
       </View>
       <Spacing space={7} />
@@ -54,7 +53,7 @@ const HomeCategoryItem: React.FC<HomeCategoryItemProps> = ({
           <Text style={styles.closetext}>1.2 hrs</Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 export default HomeCategoryItem;

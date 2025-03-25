@@ -50,7 +50,7 @@ const LanguageAndCurrency: React.FC<LanguageAndCurrencyProps> = ({}) => {
   };
 
   return (
-    <Container>
+    <Container isPadding={true}>
       <LanguageAndCurrencyPopup
         title={title}
         data={data}

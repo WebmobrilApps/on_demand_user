@@ -5,6 +5,7 @@ export const Colors = {
   textWhite:"#ffffff",
   textBlack:"#000000",
   textAppColor:'#3D3D3D',
+  txtAppDarkColor:'#303030',
   textHeader:'#404040',
   placeHolderColor:'#ffffff',
   bgwhite:'#ffffff',
@@ -21,6 +22,9 @@ export const Colors = {
   ratingColor:'#FAAC00',
   addressColor:'#66707A',
   borderColor:'#C9C9C9',
-  switchOff:'#B3B3B3'
+  switchOff:'#B3B3B3',
+  lightGray:'#F2F2F2',
+  lightGraytext:'#999999'
+  
 };
 export default Colors;

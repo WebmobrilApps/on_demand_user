@@ -55,9 +55,10 @@ const HomeScreen = () => {
 
   return (
     <Container
-      isAuth={true}
+      // isAuth={true}
       statusBarStyle="light-content"
-      statusBarColor={Colors.themeDarkColor}>
+      statusBarColor={Colors.themeDarkColor}
+      >
       <HomeHeader />
       <KeyboardAwareScrollView
         bounces={false}
@@ -101,7 +102,7 @@ const HomeScreen = () => {
               })
             }
           />
-          
+
           <FlatList
             horizontal
             contentContainerStyle={styles.flatListContainer}
@@ -112,7 +113,7 @@ const HomeScreen = () => {
           />
 
           {/* Recommended Section ============*/}
-          <HomeSubContainerHeader
+          {/* <HomeSubContainerHeader
             rightText="View All"
             leftText="Recommended for You"
             onClick={() =>
@@ -129,18 +130,18 @@ const HomeScreen = () => {
             contentContainerStyle={styles.flatListRecommended}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => <HomeRecommendedItems {...item} />}
-          />
+          /> */}
 
         </View>
 
         {/* Bottom Banner Image */}
-        <View style={styles.bottomView}>
+        {/* <View style={styles.bottomView}>
           <Image
             source={imagePaths.cleaning2}
             resizeMode="cover"
             style={styles.imageBottom}
           />
-        </View>
+        </View> */}
       </KeyboardAwareScrollView>
     </Container>
   );

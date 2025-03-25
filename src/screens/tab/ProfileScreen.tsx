@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import {FlatList, StatusBar, StyleSheet, Text, View} from 'react-native';
-import {AppHeader, Container, ImageLoader, LogoutPopup, ProfileList} from '../../component';
-import {Colors, Fonts, SF, SH, SW, useDisableGestures} from '../../utils';
-import {useFocusEffect, useNavigation} from '@react-navigation/native';
+import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { AppHeader, Container, ImageLoader, LogoutPopup, ProfileList } from '../../component';
+import { Colors, Fonts, SF, SH, SW, useDisableGestures } from '../../utils';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import imagePaths from '../../assets/images';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import RouteName from '../../navigation/RouteName';
 
 type ProfileProps = {};
-const ProfileScreen: React.FC<ProfileProps> = ({}) => {
+const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
 
   useDisableGestures();
   useFocusEffect(
@@ -22,9 +22,9 @@ const ProfileScreen: React.FC<ProfileProps> = ({}) => {
     }, []),
   );
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigation = useNavigation<any>();
-  const [logoutPopup,setLogoutPopup] = useState<any>(false);
+  const [logoutPopup, setLogoutPopup] = useState<any>(false);
 
   const listData = [
     {
@@ -62,8 +62,8 @@ const ProfileScreen: React.FC<ProfileProps> = ({}) => {
         navigation.navigate(RouteName.RATING_REVIEW);
       },
     },
-    {name: t('profile.loyaltyReferralDiscounts'), id: 6, onClick: () => {}},
-    {name: t('profile.multiLanguageCurrency'), id: 7, onClick: () => {navigation.navigate(RouteName.LANG_CURRENCY);}},
+    { name: t('profile.loyaltyReferralDiscounts'), id: 6, onClick: () => { } },
+    { name: t('profile.multiLanguageCurrency'), id: 7, onClick: () => { navigation.navigate(RouteName.LANG_CURRENCY); } },
     {
       name: t('profile.notificationsAlerts'),
       id: 8,
@@ -71,17 +71,17 @@ const ProfileScreen: React.FC<ProfileProps> = ({}) => {
         navigation.navigate(RouteName.NOTIFICATION_ALERT);
       },
     },
-    {name: t('profile.customerSupport'), id: 9, onClick: () => {}},
-    {name: t('profile.logout'), id: 10, onClick: () => {setLogoutPopup(true)}},
+    { name: t('profile.customerSupport'), id: 9, onClick: () => { } },
+    { name: t('profile.logout'), id: 10, onClick: () => { setLogoutPopup(true) } },
   ];
-  const seperatorComponent = () =>  <View style={styles.separator} />;
+  const seperatorComponent = () => <View style={styles.separator} />;
   return (
     <Container>
-      <LogoutPopup  closeModal={()=>{setLogoutPopup(false)}} modalVisible={logoutPopup} />
+      <LogoutPopup closeModal={() => { setLogoutPopup(false) }} modalVisible={logoutPopup} />
       <AppHeader
         headerTitle={t('profile.headerTitle')}
-        onPress={() => {}}
-        rightOnPress={() => {}}
+        onPress={() => { }}
+        rightOnPress={() => { }}
         headerStyle={styles.headerStyle}
       />
 
@@ -113,7 +113,7 @@ const ProfileScreen: React.FC<ProfileProps> = ({}) => {
           marginHorizontal: SW(25),
         }}
         ItemSeparatorComponent={() => seperatorComponent()}
-        renderItem={({item}) => <ProfileList item={item} />}
+        renderItem={({ item }) => <ProfileList item={item} />}
         keyExtractor={item => item.name}
         removeClippedSubviews={false}
       />

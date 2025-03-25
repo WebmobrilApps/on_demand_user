@@ -11,15 +11,17 @@ interface HomeSubContainerHeaderProps {
   onClick?: (text: string) => void;
   leftText: string;
   rightText: string;
+  marginHori?:number
 }
 
 const HomeSubContainerHeader: React.FC<HomeSubContainerHeaderProps> = ({
   leftText,
   rightText,
+  marginHori=SW(20),
   onClick = () => {},
 }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{marginHorizontal:marginHori}]}>
       <Text style={styles.leftText}>{leftText}</Text>
       <TouchableOpacity style={styles.rightTextContainer} onPress={() => onClick(rightText)}>
         <Text style={styles.rightText}>{rightText}</Text>
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: SW(20),
+ 
   },
   leftText: {
     width: '70%',

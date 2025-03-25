@@ -62,7 +62,7 @@ const MyCalender: React.FC<MyCalenderProps> = ({}) => {
     },
   ];
   return (
-    <Container>
+    <Container isPadding={true}>
       <AppHeader
         headerTitle={t('profile.myCalendar')}
         onPress={() => {

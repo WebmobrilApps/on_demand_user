@@ -33,7 +33,7 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
   const { time, startCountdown, resetCountdown, status, formatTime } = useCountdown();
 
   useEffect(() => {
-    startCountdown(10);
+    startCountdown(60);
   }, []);
 
   useProfileUpdate()
@@ -43,6 +43,7 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
       email,
     };
 
+   return true
     try {
       const response = await resendOtp(userData).unwrap();
       console.log('resendOtp res--', response);
@@ -66,6 +67,8 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
       CustomToast({ message: 'Error', description: 'Please Enter OTP', position: 'top', type: 'danger' });
       return
     }
+    fromScreen=='signup' ? navigation.navigate(RouteName.HOME): navigation.navigate(RouteName.CHANGE_PASSWORD)
+    return false
     let userData = { otp, };
 
     try {

@@ -29,9 +29,9 @@ const LogoutPopup: React.FC<LogoutPopupProps> = ({
           backgroundColor: '#00000050',
           justifyContent: 'flex-end',
         }}>
-        <View style={{ height: '60%' }}>
+        <View style={{ height: '45%' }}>
           <AuthBottomContainer>
-            <View style={{ marginTop: SH(30), justifyContent: "space-between", height: '85%' }}>
+            <View style={{ marginTop: SH(30), justifyContent: "space-between", height: '90%' }}>
               <View>
                 <Text style={styles.heading}>Logout</Text>
                 <Text style={styles.subtitile}>
@@ -59,7 +59,6 @@ const LogoutPopup: React.FC<LogoutPopupProps> = ({
                 />
               </View>
             </View>
-
           </AuthBottomContainer>
         </View>
       </View>

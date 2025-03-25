@@ -4,6 +4,7 @@ const Fonts = {
   LIGHT:"Inter-Light",
   MEDIUM:"Inter-Medium",
   REGULAR:"Inter-Regular",
+  REGULAR_500:"Inter_28pt-Regular",
   SEMI_BOLD:'Inter-SemiBold',
 
   PlusJakartaSans_Bold:"PlusJakartaSans-Bold",

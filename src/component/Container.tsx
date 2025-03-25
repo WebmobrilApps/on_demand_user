@@ -5,13 +5,15 @@ import {
   ViewStyle,
   StatusBar,
   StatusBarStyle,
-  SafeAreaView,
+  // SafeAreaView,
   Platform,
   TouchableOpacity,
   Alert,
 } from 'react-native';
 import {Colors, SH, SW} from '../utils';
 import VectorIcon from './VectoreIcons';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type ContainerProps = {
   children?: React.ReactNode;
@@ -21,6 +23,7 @@ type ContainerProps = {
   isAuth?: boolean;
   isBackButton?: boolean;
   onBackPress?: () => void; // Type-safe onBackPress function
+  isPadding?:boolean
 };
 
 const Container: React.FC<ContainerProps> = ({
@@ -30,12 +33,14 @@ const Container: React.FC<ContainerProps> = ({
   statusBarStyle = 'dark-content', // Default status bar style
   isAuth = false,
   isBackButton = false,
+  isPadding=false,
   onBackPress = () => {}, // Default function to prevent undefined behavior
 }) => {
+  let statusbarColor = statusBarColor || '#ffffff'
   return (
     <View style={[styles.container, style]}>
       <StatusBar
-        backgroundColor={statusBarColor || '#ffffff'}
+        backgroundColor={statusbarColor}
         barStyle={statusBarStyle || 'light-content'}
       />
       {isBackButton && (
@@ -51,9 +56,7 @@ const Container: React.FC<ContainerProps> = ({
           />
         </TouchableOpacity>
       )}
-      <SafeAreaView
-        style={{flex: 0, backgroundColor: statusBarColor || '#ffffff'}}
-      />
+      <SafeAreaView style={{flex:0,backgroundColor:statusbarColor}}/>
       {children}
     </View>
   );
@@ -69,8 +72,8 @@ const styles = StyleSheet.create({
     height: SH(40),
     zIndex: 99,
     position: 'absolute',
-    left: SW(15),
-    top: Platform.OS == 'android' ? SH(20) : SH(45),
+    left: SW(20),
+    top: SH(40),
     alignItems: 'center',
     justifyContent: 'center',
   },

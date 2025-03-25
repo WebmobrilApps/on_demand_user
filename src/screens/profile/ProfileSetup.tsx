@@ -11,6 +11,7 @@ import {
   Container,
   ImageLoader,
   Spacing,
+  Buttons
 } from '../../component';
 import {Colors, Fonts, regex, SF, SH, SW} from '../../utils';
 import {useNavigation} from '@react-navigation/native';
@@ -20,7 +21,6 @@ import VectorIcon from '../../component/VectoreIcons';
 import Inputs from '../../component/Input';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import Buttons from '../../component/Button';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 type ProfileSetupProps = {};
@@ -41,7 +41,7 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({}) => {
       .required(t('validation.emptyMobile')),
   });
   return (
-    <Container>
+    <Container isPadding={true}>
       <AppHeader
         headerTitle={t('profile.profileSetup')}
         onPress={() => {
@@ -288,9 +288,10 @@ const styles = StyleSheet.create({
     width: '40%',
     marginTop: 15,
     alignSelf: 'flex-end',
+    borderRadius:8
   },
   addAddressText: {
-    fontSize: SF(12),
+    fontSize: SF(10),
   },
   submitButton: {
     backgroundColor: Colors.themeColor,

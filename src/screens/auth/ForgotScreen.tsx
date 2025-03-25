@@ -57,7 +57,7 @@ const ForgotScreen: React.FC<ForgotProps> = ({}) => {
         <AuthImgComp icon={imagePaths.forgot_img} />
         <AuthBottomContainer>
           <Formik
-            initialValues={{email: 'test@mailinato.com'}}
+            initialValues={{email: ''}}
             validationSchema={validationSchema}
             onSubmit={(values, {resetForm}) => {
               btnForgot(values, resetForm);

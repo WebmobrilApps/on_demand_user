@@ -19,6 +19,8 @@ import {
   PaymentHistory,
   ProfileSetup,
   RatingRiview,
+  ServiceDetails,
+  ServiceList,
   SplashScreen,
   ViewAll,
 } from '../screens';
@@ -37,20 +39,22 @@ export const NavigatinScreens = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name={RouteName.HOME} component={Bottomtab} />
+        <Stack.Screen name={'SplashScreen'} component={SplashScreen} />
         <Stack.Screen name={RouteName.LOGIN} component={LoginScreen} />
+        <Stack.Screen name={RouteName.HOME} component={Bottomtab} />
 
         {/* learning--------- */}
         <Stack.Screen name={'AllUsersList'} component={AllUsersList} />
         <Stack.Screen name={'ChatScreen'} component={ChatScreen} />
         {/* learning--------- */}
-        <Stack.Screen name={'SplashScreen'} component={SplashScreen} />
         <Stack.Screen name={RouteName.VIEW_ALL} component={ViewAll} />
         <Stack.Screen name={RouteName.SIGNUP} component={SignupScreen} />
         <Stack.Screen  name={RouteName.PRIVACY_POLICY}  component={PrivacyPolicy} />
         <Stack.Screen  name={RouteName.PASS_UPDATE}  component={PasswordUpdateScreen} />
 
         <Stack.Screen name={RouteName.FORGOT_PASS} component={ForgotScreen} />
+        <Stack.Screen name={RouteName.SERVICE_LIST} component={ServiceList} />
+        <Stack.Screen name={RouteName.SERVICE_DETAILS} component={ServiceDetails} />
         <Stack.Screen name={RouteName.OTP_VERIFY} component={OtpVerifyScreen} />
         <Stack.Screen name={RouteName.PROFILE_SETUP} component={ProfileSetup} />
         <Stack.Screen name={RouteName.CHANGE_PASSWORD}  component={ChangePassword}/>

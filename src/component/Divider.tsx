@@ -8,6 +8,7 @@ type DividerProps = {
   width?: string | number;
   marginTop?: number; 
   height?: number; 
+  contStyle?:ViewStyle
 };
 
 const Divider: React.FC<DividerProps> = ({
@@ -15,6 +16,7 @@ const Divider: React.FC<DividerProps> = ({
   width,
   marginTop = 0,
   height = SH(1),
+  contStyle={}
 }) => { 
 
   const styles = useMemo(() => {
@@ -28,7 +30,7 @@ const Divider: React.FC<DividerProps> = ({
     });
   }, [color, height, marginTop, width]);
 
-  return <View style={styles.containerStyle} />;
+  return <View style={[styles.containerStyle,contStyle]} />;
 };
 
 export default Divider;

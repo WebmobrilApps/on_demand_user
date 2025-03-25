@@ -3,12 +3,12 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import { MessageScreen, MyBookingScreen, ProfileScreen} from '../screens/tab';
+import { MessageScreen, ProfileScreen} from '../screens/tab';
 import imagePaths from '../assets/images';
 import {Colors, Fonts, SCREEN_WIDTH, SF, SH, widthPercent} from '../utils';
 import RouteName from './RouteName';
 import AllUsersList from '../screens/AllUsersList';
-import { HomeScreen } from '../screens';
+import { HomeScreen, MyBookingScreen } from '../screens';
 
 const BOTTOM_ROUTE = [
   {
@@ -21,20 +21,20 @@ const BOTTOM_ROUTE = [
     name: RouteName.MY_BOOKING,
     Component: () => <MyBookingScreen />, // Replace with your actual component
     icon: imagePaths.mybooking_tab, // Replace with your icon
-    headerShown: true,
+    headerShown: false,
   },
-  // {
-  //   name: RouteName.MESSAGE,
-  //   Component: () => <MessageScreen />, // Replace with your actual component
-  //   icon: imagePaths.message_tab, // Replace with your icon
-  //   headerShown: true,
-  // },
-    {
-    name: 'AllUsersList',
-    Component: () => <AllUsersList />, // Replace with your actual component
+  {
+    name: RouteName.MESSAGE,
+    Component: () => <MessageScreen />, // Replace with your actual component
     icon: imagePaths.message_tab, // Replace with your icon
     headerShown: true,
   },
+  //   {
+  //   name: 'AllUsersList',
+  //   Component: () => <AllUsersList />, // Replace with your actual component
+  //   icon: imagePaths.message_tab, // Replace with your icon
+  //   headerShown: true,
+  // },
   {
     name: RouteName.PROFILE,
     Component: () => <ProfileScreen />, // Replace with your actual component
@@ -64,23 +64,7 @@ const styles = StyleSheet.create({
 
 // Main Component
 export default function App() {
-  // const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
-
-  // useEffect(() => {
-  //   const keyboardDidShowListener = Keyboard.addListener(
-  //     'keyboardDidShow',
-  //     () => setIsKeyboardVisible(true),
-  //   );
-  //   const keyboardDidHideListener = Keyboard.addListener(
-  //     'keyboardDidHide',
-  //     () => setIsKeyboardVisible(false),
-  //   );
-
-  //   return () => {
-  //     keyboardDidShowListener.remove();
-  //     keyboardDidHideListener.remove();
-  //   };
-  // }, []);
+  
 
   return (
     <Tab.Navigator

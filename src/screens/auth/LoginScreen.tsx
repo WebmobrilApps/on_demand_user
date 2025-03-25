@@ -106,7 +106,8 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
       device_id: device_id,
       device_type: device_type,
     };
-
+    navigation.navigate(RouteName.HOME)
+    return true;
     try {
       const response = await login(userData).unwrap();
       console.log('responseresponse', response);
@@ -122,6 +123,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
           // CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
           dispatch(setToken({ token: response.ResponseBody.token }));
           StorageProvider.saveItem('token', response.ResponseBody.token);
+          StorageProvider.setObject('userData', response.ResponseBody);
           setTimeout(() => {
             navigation.navigate(RouteName.HOME);
           }, 200);
@@ -152,6 +154,8 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
               initialValues={{
                 email: 'veer@gmail.com',
                 password: '123456',
+                // email: '',
+                // password: '',
               }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm }) => {

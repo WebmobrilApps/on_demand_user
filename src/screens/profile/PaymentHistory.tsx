@@ -33,7 +33,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
   ];
 
   return (
-    <Container>
+    <Container isPadding={true}>
       <AppHeader
         headerTitle={t('profile.paymentHistory')}
         onPress={() => navigation.goBack()}

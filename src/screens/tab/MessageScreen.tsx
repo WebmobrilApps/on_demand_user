@@ -4,8 +4,8 @@ import {StyleSheet, Text, View} from 'react-native';
 type HomeProps = {};
 
 const HomeScreen: React.FC<HomeProps> = ({}) => {
-  return <View>
-    <Text>Home</Text>
+  return <View style={{justifyContent:"center",alignItems:'center',flex:1,backgroundColor:'#ffffff'}}>
+    <Text>Message</Text>
   </View>;
 };
 

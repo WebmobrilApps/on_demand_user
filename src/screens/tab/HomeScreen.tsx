@@ -1,8 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, Image, StatusBar } from 'react-native';
+import { StyleSheet, View, FlatList, Image, StatusBar, SafeAreaView } from 'react-native';
 import { Colors, SH, SW, useDisableGestures } from '../../utils';
 import {
-  Container,
   HomeCategoryItem,
   HomeHeader,
   HomeNearServiceItem,
@@ -54,10 +53,7 @@ const HomeScreen = () => {
   ];
 
   return (
-    <Container
-      isAuth={true}
-      statusBarStyle="light-content"
-      statusBarColor={Colors.themeDarkColor}>
+    <SafeAreaView style={{ flex: 1 }}>
       <HomeHeader />
       <KeyboardAwareScrollView
         bounces={false}
@@ -101,7 +97,7 @@ const HomeScreen = () => {
               })
             }
           />
-          
+
           <FlatList
             horizontal
             contentContainerStyle={styles.flatListContainer}
@@ -142,7 +138,7 @@ const HomeScreen = () => {
           />
         </View>
       </KeyboardAwareScrollView>
-    </Container>
+    </SafeAreaView>
   );
 };
 

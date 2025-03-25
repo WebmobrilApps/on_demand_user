@@ -13,6 +13,7 @@ export {default as Spacing} from './Spacing';
 export {default as AppHeader} from './AppHeader';
 export {default as LogoutPopup} from './LogoutPopup';
 export {default as NoInternet} from './NoInternet';
+export {default as Buttons} from './Button';
 export {default as CustomToast} from './CustomToast';
 
 export * from './HomeComp';

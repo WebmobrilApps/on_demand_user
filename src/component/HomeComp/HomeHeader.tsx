@@ -57,7 +57,6 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({
 export default HomeHeader;
 const styles = StyleSheet.create({
   container: {
-    height: SH(80),
     width: '100%',
     borderBottomLeftRadius: SW(30),
     borderBottomRightRadius: SW(30),

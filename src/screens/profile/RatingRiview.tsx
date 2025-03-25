@@ -30,7 +30,7 @@ const RatingRiview: React.FC<RatingRiviewProps> = ({}) => {
   ];
 
   return (
-    <Container>
+    <Container isPadding={true}>
       <AppHeader
         headerTitle={t('profile.ratingsReviews')}
         onPress={() => navigation.goBack()}
