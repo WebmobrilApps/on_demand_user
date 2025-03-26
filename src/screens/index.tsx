@@ -4,3 +4,4 @@ export { default as HomeScreen } from './Home';
 export { default as MyBookingScreen } from './MyBookings/MyBookingScreen';
 export * from './service';
 export * from './profile'
+export * from './shop'

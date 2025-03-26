@@ -19,5 +19,6 @@ const RouteName = {
     LANG_CURRENCY:'LanguageAndCurrency',
     SERVICE_LIST:'ServiceList',
     SERVICE_DETAILS:'ServiceDetails',
+    SHOP_LIST:'ShopList',
 };
 export default RouteName;

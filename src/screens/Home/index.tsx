@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, FlatList, Image, StatusBar } from 'react-native';
-import { Colors, SH, SW, useDisableGestures } from '../../utils';
+import { boxShadow, Colors, SCREEN_WIDTH, SH, SW, useDisableGestures } from '../../utils';
 import {
   Container,
   HomeCategoryItem,
@@ -10,12 +10,14 @@ import {
   HomeSearchBar,
   HomeSubContainerHeader,
   HomeSwiper,
+  ImageLoader,
+  Spacing,
 } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import imagePaths from '../../assets/images';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import RouteName from '../../navigation/RouteName';
-
+import Carousel from "pinar";
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
   useDisableGestures();
@@ -48,17 +50,16 @@ const HomeScreen = () => {
   ];
 
   const swiperData = [
-    { imgUrl: imagePaths.banner1, id: 1 },
-    { imgUrl: imagePaths.banner1, id: 2 },
-    { imgUrl: imagePaths.banner1, id: 3 },
+    { imgUrl: imagePaths.banner2, id: 1 },
+    { imgUrl: imagePaths.banner2, id: 2 },
+    { imgUrl: imagePaths.banner2, id: 3 },
   ];
 
   return (
     <Container
-      // isAuth={true}
       statusBarStyle="light-content"
       statusBarColor={Colors.themeDarkColor}
-      >
+    >
       <HomeHeader />
       <KeyboardAwareScrollView
         bounces={false}
@@ -68,6 +69,8 @@ const HomeScreen = () => {
           <View style={styles.mHorizontal}>
             <HomeSearchBar />
           </View>
+          <Spacing space={10} />
+         
           <View style={styles.swiperContainer}>
             <HomeSwiper swiperData={swiperData} />
           </View>

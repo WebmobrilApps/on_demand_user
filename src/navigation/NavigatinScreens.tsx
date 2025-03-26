@@ -21,6 +21,7 @@ import {
   RatingRiview,
   ServiceDetails,
   ServiceList,
+  ShopList,
   SplashScreen,
   ViewAll,
 } from '../screens';
@@ -42,6 +43,7 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={'SplashScreen'} component={SplashScreen} />
         <Stack.Screen name={RouteName.LOGIN} component={LoginScreen} />
         <Stack.Screen name={RouteName.HOME} component={Bottomtab} />
+        <Stack.Screen name={RouteName.SHOP_LIST} component={ShopList} />
 
         {/* learning--------- */}
         <Stack.Screen name={'AllUsersList'} component={AllUsersList} />

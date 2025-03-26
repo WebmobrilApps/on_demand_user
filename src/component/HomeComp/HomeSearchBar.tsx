@@ -14,20 +14,24 @@ import Inputs from '../Input';
 interface HomeSearchBarProps {
   onTextchange?: (text: string) => void;
   showFilterIcon?: boolean;
+  bgColor?: string;
+  pageName?: string
 }
 
 const HomeSearchBar: React.FC<HomeSearchBarProps> = ({
-  onTextchange = () => {},
+  onTextchange = () => { },
   showFilterIcon = true, // Default to true
+  bgColor = Colors.lightGray,
+  pageName = "NA"
 }) => {
   return (
     <View style={styles.searchContainer}>
-      <View style={{ width: showFilterIcon ? '86%':'100%'}}>
+      <View style={{ width: showFilterIcon ? '86%' : '100%' }}>
         <Inputs
           placeholder={'Search'}
           containerStyle={styles.inputContainer}
           inputStyle={styles.inputStyle}
-          inputContainerStyle={styles.inputInnerContainer}
+          inputContainerStyle={{ ...styles.inputInnerContainer, backgroundColor: bgColor }}
           value=""
           leftIcon={
             <VectorIcon
@@ -42,7 +46,7 @@ const HomeSearchBar: React.FC<HomeSearchBarProps> = ({
       </View>
 
       {/* Render filter icon only if showFilterIcon is true */}
-      {showFilterIcon && (
+      {showFilterIcon && pageName == 'shop' ? (
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
@@ -54,7 +58,17 @@ const HomeSearchBar: React.FC<HomeSearchBarProps> = ({
             style={styles.filterIcon}
           />
         </LinearGradient>
-      )}
+      )
+        :
+        <View
+          style={[styles.filterButton, { backgroundColor: Colors.bgwhite, marginLeft: 15 }]}
+        >
+          <Image
+            source={imagePaths.filter_icon}
+            style={[styles.filterIcon, { tintColor: Colors.themeColor }]}
+          />
+        </View>
+      }
     </View>
   );
 };
