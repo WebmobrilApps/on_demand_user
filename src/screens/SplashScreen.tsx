@@ -1,12 +1,13 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
-import React, {useEffect} from 'react';
-import {Container} from '../component';
+import { Alert, Image, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { Container } from '../component';
 import imagePaths from '../assets/images';
-import {Colors, Fonts, SF, SH} from '../utils';
+import { Colors, Fonts, SF, SH } from '../utils';
 import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import RouteName from '../navigation/RouteName';
-
+import ReactNativeBiometrics, { BiometryTypes } from "react-native-biometrics";
+import * as Keychain from 'react-native-keychain';
 const SplashScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   useEffect(() => {
@@ -14,15 +15,62 @@ const SplashScreen: React.FC = () => {
       gestureEnabled: false,
     });
     setTimeout(() => {
-      navigation.navigate(RouteName.LOGIN);
+      // navigation.navigate(RouteName.LOGIN);
+      biometricLogin();
     }, 1500);
   }, []);
+
+
+  const rnBiometrics = new ReactNativeBiometrics();
+  // const saveCredentials = async (email:any, password:any) => {
+  //   await Keychain.setGenericPassword(email, password, {
+  //     service: 'biometric_login',
+  //   });
+  // };
+  const biometricLogin = async () => {
+    navigation.navigate(RouteName.HOME);
+  try {
+    const { available } = await rnBiometrics.isSensorAvailable();
+    if (!available) {
+      Alert.alert('Biomatric not available')
+      return;
+    }
+    const { success } = await rnBiometrics.simplePrompt({
+      promptMessage: 'Authenticate to log in',
+    });
+  } catch (error) {
+    console.log('errorerror',error);
+    
+  }
+
+    
+    // if (success) {
+    //   const credentials = await Keychain.getGenericPassword({
+    //     service: 'biometric_login',
+    //   });
+
+    //   if (credentials) {
+    //     console.log('Auto Login:', credentials.username, credentials.password);
+    //     // Call your API with stored credentials to log in
+    //   } else {
+    //     console.log('No saved credentials found');
+    //   }
+    // } else {
+    //   console.log('Biometric authentication failed');
+    // }
+  }
+
+
+
+
+
+
 
   return (
     <Container isAuth={true} statusBarStyle="light-content" statusBarColor={Colors.themeDarkColor}>
       <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 0, y: 1}}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
         style={styles.linearGradient}
         colors={[Colors.themeDarkColor, Colors.themeColor]}>
         <Image

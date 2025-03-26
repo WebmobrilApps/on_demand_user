@@ -1,44 +1,72 @@
-import React, {useState} from 'react';
-import {Keyboard, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {Colors, Fonts, regex, SF, SH, SW, validationMSG} from '../../utils';
+import React, { useState } from 'react';
+import { Keyboard, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Colors, Fonts, regex, SF, SH, SW } from '../../utils';
 import {
   AuthBottomContainer,
   AuthImgComp,
   Container,
+  CustomToast,
   InputIcons,
   Spacing,
 } from '../../component';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Inputs from '../../component/Input';
 import imagePaths from '../../assets/images';
-import {Formik} from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Buttons from '../../component/Button';
 import RouteName from '../../navigation/RouteName';
-import {useNavigation} from '@react-navigation/native';
-import {useTranslation} from 'react-i18next';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
+import { useResetPasswordMutation } from '../../services';
 
 type PasswordUpdateProps = {};
 
-const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({}) => {
+const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
   const [passwordVisibility, setpasswordVisibility] = useState(true);
   const [cpasswordVisibility, setcpasswordVisibility] = useState(true);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigation = useNavigation<any>();
+
+  const route = useRoute<any>();
+  const token = route?.params?.userToken;
+
   const validationSchema = Yup.object().shape({
     password: Yup.string()
-      .min(6, t('validation.passMinLength'))
+      .matches(regex.PASSWORD, t('validation.passValid'))
       .required(t('validation.emptyPassword')),
     cpassword: Yup.string()
       .required(t('validation.emptyConfirmPassword'))
       .oneOf([Yup.ref('password')], t('validation.notMatchConfirmPassword')),
   });
 
-  const btnUpdatePassword = (
-    values: {password: string; cpassword: string},
-    resetForm: any,
-  ) => {
-    navigation.navigate(RouteName.LOGIN);
+
+
+  const [resetPassword, { isLoading }] = useResetPasswordMutation()
+
+  const btnUpdatePassword = async (values: { password: string; cpassword: string }, resetForm: any) => {
+    // navigation.navigate(RouteName.LOGIN);
+
+    let data = {
+      data: {
+        password: values.password,
+      },
+      token
+    }
+
+    try {
+      const response = await resetPassword(data).unwrap();
+      console.log('btnUpdatePassword res--', response);
+      if (response.succeeded) {
+        CustomToast({ message: 'Info', description: response.ResponseMessage, position: 'top', type: 'success', });
+        navigation.navigate(RouteName.LOGIN);
+      } else {
+        let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
+        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
+      }
+    } catch (error) {
+      console.error('Login Failed:', error);
+    }
   };
 
   return (
@@ -50,16 +78,16 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({}) => {
       }}
       style={styles.container}>
       <KeyboardAwareScrollView
-        contentContainerStyle={{flexGrow: 1, paddingHorizontal: 0}}
+        contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 0 }}
         showsVerticalScrollIndicator={false}
         extraScrollHeight={SH(40)}>
         <Spacing space={SH(40)} />
         <AuthImgComp icon={imagePaths.pass_update_img} />
         <AuthBottomContainer>
           <Formik
-            initialValues={{password: '', cpassword: ''}}
+            initialValues={{ password: 'Qwerty@1', cpassword: 'Qwerty@1' }}
             validationSchema={validationSchema}
-            onSubmit={(values, {resetForm}) => {
+            onSubmit={(values, { resetForm }) => {
               btnUpdatePassword(values, resetForm);
             }}>
             {({
@@ -78,7 +106,7 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({}) => {
                   </Text>
                   <Inputs
                     placeholder={t('placeholders.createPassword')}
-                    inputStyle={{color: Colors.textWhite}}
+                    inputStyle={{ color: Colors.textWhite }}
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
                     errorMessage={
@@ -108,7 +136,7 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({}) => {
                   <Spacing space={SH(20)} />
                   <Inputs
                     placeholder={t('placeholders.confirmPassword')}
-                    inputStyle={{color: Colors.textWhite}}
+                    inputStyle={{ color: Colors.textWhite }}
                     onChangeText={handleChange('cpassword')}
                     onBlur={() => setFieldTouched('cpassword')}
                     errorMessage={
@@ -145,7 +173,7 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({}) => {
                     handleSubmit();
                     Keyboard.dismiss();
                   }}
-                  // isLoading={true}
+                  isLoading={isLoading}
                 />
               </View>
             )}
@@ -177,7 +205,7 @@ const styles = StyleSheet.create({
     fontSize: SF(20),
     textAlign: 'center',
   },
-  buttonContainer: {backgroundColor: Colors.bgwhite, marginTop: SH(160)},
+  buttonContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(160) },
   bottomInnerContainer: {
     paddingVertical: SH(35),
     paddingHorizontal: SW(20),

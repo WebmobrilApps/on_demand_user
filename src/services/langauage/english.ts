@@ -47,25 +47,25 @@ export const english = {
 
     validation: {
       fullNameMinLength: 'Full name must be at least 3 characters.',
-      emptyFullName: 'Full name is required.',
-      validFullName: 'Please enter a valid full name.',
-      validEmail: 'Please enter a valid email address.',
-      emptyEmail: 'Email is required.',
+      emptyFullName: 'Please enter full name',
+      validFullName: 'Please enter valid full name.',
+      validEmail: 'Please enter valid email.',
+      emptyEmail: 'Please enter email.',
       validMobile: 'Please enter a valid mobile number.',
       mobileMinLen: 'Mobile number must be at least 10 digits.',
-      emptyMobile: 'Mobile number is required.',
+      emptyMobile: 'Please enter Mobile number.',
       passMinLength: 'Password must be at least 6 characters.',
-      emptyPassword: 'Password is required.',
+      emptyPassword: 'Please enter Password.',
 
       passNewMinLength: 'New password must be at least 6 characters.',
-      passValid:'The password must be at least 8 characters long and include at least one uppercase letter, one special character, and one number.',
-      emptyNewPassword: 'New password is required.',
+      passValid:'Password should be between 8 to 16 characters and should include 1 Uppercase, 1 Lowercase, 1 Number and 1 Special Character.',
+      emptyNewPassword: 'Please enter new password.',
 
       passCurrMinLength: 'Current password must be at least 6 characters.',
-      emptyCurrPassword: 'Current password is required.',
+      emptyCurrPassword: 'Please enter current password.',
 
-      emptyConfirmPassword: 'Confirm password is required.',
-      notMatchConfirmPassword: 'Confirm password does not match.',
+      emptyConfirmPassword: 'Please enter confirm password.',
+      notMatchConfirmPassword: `Password didn't matched`,
     },
     socialLogin: {
       google: 'Google button pressed',

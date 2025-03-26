@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.white,
         width: '100%',
         paddingHorizontal: SW(14),
-        height: SH(50),
+        height: SH(46),
         padding: 0,
     },
     backIconContainer: {

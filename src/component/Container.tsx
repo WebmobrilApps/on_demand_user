@@ -5,14 +5,11 @@ import {
   ViewStyle,
   StatusBar,
   StatusBarStyle,
-  // SafeAreaView,
-  Platform,
   TouchableOpacity,
   Alert,
 } from 'react-native';
 import {Colors, SH, SW} from '../utils';
 import VectorIcon from './VectoreIcons';
-import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type ContainerProps = {
@@ -31,9 +28,7 @@ const Container: React.FC<ContainerProps> = ({
   style,
   statusBarColor, // Default status bar color
   statusBarStyle = 'dark-content', // Default status bar style
-  isAuth = false,
   isBackButton = false,
-  isPadding=false,
   onBackPress = () => {}, // Default function to prevent undefined behavior
 }) => {
   let statusbarColor = statusBarColor || '#ffffff'
@@ -70,10 +65,8 @@ const styles = StyleSheet.create({
   backIconContainer: {
     width: SH(40),
     height: SH(40),
-    zIndex: 99,
-    position: 'absolute',
-    left: SW(20),
-    top: SH(40),
+    marginTop: SH(20),
+    marginLeft:20,
     alignItems: 'center',
     justifyContent: 'center',
   },

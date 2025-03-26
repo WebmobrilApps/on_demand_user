@@ -21,10 +21,11 @@ const baseQuery = fetchBaseQuery({
 });
 
 const baseQueryWithAuth = async (args: any, api: any, extraOptions: any) => {
-  const result = await baseQuery(args, api, extraOptions);
+  const result: any = await baseQuery(args, api, extraOptions);
+  console.log('resultresult', result);
 
   // ✅ If token is invalid (401 Unauthorized)
-  if (result.error && result.error.status === 401) {
+  if (!result?.data?.succeeded && result?.data?.ResponseCode === 401) {
     showMessage({
       message: "Session Expired",
       description: "Your session has expired. Please log in again.",
@@ -38,6 +39,7 @@ const baseQueryWithAuth = async (args: any, api: any, extraOptions: any) => {
     // ✅ Navigate to login screen (if using React Navigation)
     // NavigationService.navigate("Login");
   }
+
 
   return result;
 };
@@ -78,6 +80,23 @@ export const authApi = createApi({
         },
       }),
     }),
+    sendOtp: builder.mutation<any, ResenOtpReq>({
+      query: (userData) => ({
+        url: "/sendotp",
+        method: "POST",
+        body: userData,
+      }),
+    }),
+    resetPassword: builder.mutation<any,{ data: any; token: string }>({
+      query: ({data,token}) => ({
+        url: "/resetpassword",
+        method: "POST",
+        body: data,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
     logout: builder.mutation<void, void>({
       query: () => ({
         url: "/logout",
@@ -85,20 +104,18 @@ export const authApi = createApi({
       }),
     }),
     getUserProfile: builder.query<any, void>({
-      query: () => "/getprofile",
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          console.log("Success fetching profile:", data);
-          // Dispatch the fetched data to the Redux store
-          if(data?.succeeded) dispatch(setUserProfileData(data?.ResponseBody)); 
-          
-        } catch (error) {
-          console.log("Error fetching profile:", error);
-        }
-      },
+      query: () => ({
+        url: "/getprofile",
+        method: 'GET'
+      })
     }),
-  }),
+    getTermAndCond: builder.query<any, void>({
+      query: () => ({
+        url: "/gettermsconditions",
+        method: 'GET'
+      })
+    })
+  })
 });
 
 export const {
@@ -106,6 +123,9 @@ export const {
   useRegisterMutation,
   useResendOtpMutation,
   useVerifyOtpMutation,
+  useSendOtpMutation,
+  useResetPasswordMutation,
   useLogoutMutation,
   useGetUserProfileQuery,
+  useGetTermAndCondQuery,
 } = authApi;

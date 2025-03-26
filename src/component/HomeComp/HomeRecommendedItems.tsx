@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import ImageLoader from '../ImageLoader';
-import { Colors, Fonts, SH, SW } from '../../utils';
+import { boxShadow, Colors, Fonts, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
 import { Source } from 'react-native-fast-image';
 
@@ -23,13 +23,13 @@ const HomeRecommendedItems: React.FC<HomeRecommendedItemsProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.imageContainer}>
+      <View style={[styles.imageContainer,boxShadow]}>
         <ImageLoader source={image} resizeMode="cover" mainImageStyle={styles.imageLoader} />
       </View>
       <Text style={styles.text}>{'Service Name'}</Text>
       <View style={styles.ratingContainer}>
-        <Image source={imagePaths.star_filled} resizeMode="contain" style={styles.verifiedIcon} />
-        <Text style={styles.ratingtext}>{'4.5'}</Text>
+        {/* <Image source={imagePaths.star_filled} resizeMode="contain" style={styles.verifiedIcon} /> */}
+        {/* <Text style={styles.ratingtext}>{'4.5'}</Text> */}
       </View>
     </View>
   );
@@ -41,14 +41,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   imageContainer: {
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.17,
     shadowRadius: SH(10),
-    elevation: 3,
     backgroundColor: '#ffffff',
     borderRadius: 30,
   },

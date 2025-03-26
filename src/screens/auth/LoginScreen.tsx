@@ -72,13 +72,12 @@ type LoginProps = {};
 
 const LoginScreen: React.FC<LoginProps> = ({ }) => {
   const navigation = useNavigation<any>();
-  const route = useRoute<any>();
   const [passwordVisibility, setpasswordVisibility] = useState(true);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   useDisableGestures();
 
-  const [login, { isLoading, error }] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
 
   useProfileUpdate()
 
@@ -87,7 +86,6 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
       .matches(regex.EMAIL_REGEX_WITH_EMPTY, t('validation.validEmail'))
       .required(t('validation.emptyEmail')),
     password: Yup.string()
-      .min(6, t('validation.passMinLength'))
       .required(t('validation.emptyPassword')),
   });
 
@@ -106,8 +104,6 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
       device_id: device_id,
       device_type: device_type,
     };
-    navigation.navigate(RouteName.HOME)
-    return true;
     try {
       const response = await login(userData).unwrap();
       console.log('responseresponse', response);
@@ -123,10 +119,12 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
           // CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
           dispatch(setToken({ token: response.ResponseBody.token }));
           StorageProvider.saveItem('token', response.ResponseBody.token);
-          StorageProvider.setObject('userData', response.ResponseBody);
+          
+
           setTimeout(() => {
             navigation.navigate(RouteName.HOME);
           }, 200);
+
         }
         resetForm()
       } else {
@@ -152,10 +150,8 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
           <View style={{ paddingVertical: SH(35), paddingHorizontal: SW(20) }}>
             <Formik
               initialValues={{
-                email: 'veer@gmail.com',
-                password: '123456',
-                // email: '',
-                // password: '',
+                email: '',
+                password: '',
               }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm }) => {

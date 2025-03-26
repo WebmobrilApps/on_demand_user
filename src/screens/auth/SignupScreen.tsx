@@ -27,6 +27,7 @@ import {
   CustomToast,
   InputIcons,
   Spacing,
+  VectoreIcons,
 } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Inputs from '../../component/Input';
@@ -74,7 +75,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
   const { t } = useTranslation();
   const [passwordVisibility, setpasswordVisibility] = useState(true);
   const [cpasswordVisibility, setcpasswordVisibility] = useState(true);
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
   const toggleCheckbox = () => setChecked(!checked);
 
   const [register, { isLoading, error }] = useRegisterMutation();
@@ -105,8 +106,11 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
     values: { email: string; password: string; cpassword: string; fname: string; mobileno: string; },
     resetForm: any,
   ) => {
-    navigation.navigate(RouteName.HOME)
-    return true;
+    if (!checked) {
+      CustomToast({ message: 'Your OTP', description: 'Please accept term of service', position: 'top', type: 'warning' });
+
+      return false
+    };
     const fcmToken = await StorageProvider.getItem('fcmToken')
     const device_id = await DeviceInfo.getUniqueId();
     const device_type = Platform.OS == 'android' ? '1' : '2';
@@ -299,22 +303,26 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                     placeholderTextColor={Colors.placeHolderColor}
                   />
                   <Spacing space={SH(20)} />
-                  {/* check box==============================
+                  {/* check box==============================    */}
                   <View style={styles.checkBoxContainer}>
-                    <CheckBox
-                      checked={checked}
-                      onPress={toggleCheckbox}
-                      iconType="material-community"
-                      containerStyle={{
-                        backgroundColor: 'transparent',
-                        marginLeft: -SW(10),
-                      }}
-                      checkedColor={Colors.white}
-                      uncheckedColor={Colors.white}
-                      checkedIcon="checkbox-outline"
-                      size={SW(25)}
-                      uncheckedIcon={'checkbox-blank-outline'}
-                    />
+                    <Pressable onPress={() => { toggleCheckbox() }} style={{ marginRight: 10 }}>
+                      {
+                        !checked ?
+                          <VectoreIcons
+                            icon="Feather"
+                            color={Colors.white}
+                            name="square"
+                            size={SW(28)}
+                          />
+                          :
+                          <VectoreIcons
+                            icon="Feather"
+                            color={Colors.white}
+                            name="check-square"
+                            size={SW(28)}
+                          />
+                      }
+                    </Pressable>
                     <Text style={styles.consfirmTxt}>
                       By signing up you accept the{' '}
                       <Text
@@ -338,7 +346,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                       </Text>
                     </Text>
                   </View>
-                   */}
+
                   <Spacing space={SH(30)} />
 
                   <Buttons

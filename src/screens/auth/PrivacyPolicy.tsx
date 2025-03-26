@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
+  ActivityIndicator,
   Alert,
   Image,
   Keyboard,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import {
@@ -27,55 +30,64 @@ import {
   InputIcons,
   Spacing,
 } from '../../component';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Inputs from '../../component/Input';
 import imagePaths from '../../assets/images';
-import {Formik} from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Buttons from '../../component/Button';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import RouteName from '../../navigation/RouteName';
-
+import { useGetTermAndCondQuery } from '../../services';
+import RenderHtml from 'react-native-render-html';
 type PrivacyPolicyProps = {};
 
-const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({}) => {
+const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ }) => {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
   let title = route?.params?.title
+  const { data: termAndCond, refetch, isLoading,error } = useGetTermAndCondQuery();
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    if (termAndCond?.ResponseBody?.length > 0) {
+      let data = title == 'Privacy Policy' ? termAndCond.ResponseBody[0]?.content : termAndCond.ResponseBody[3]?.content;
+      setData(data)
+    }
+  }, [termAndCond])
+
+
+
+  if (isLoading) return <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <ActivityIndicator color={'red'} />
+  </View>
+
   return (
     <Container style={styles.container}>
       <AppHeader
         headerTitle={title}
         onPress={() => navigation.goBack()}
         Iconname="arrowleft"
-        rightOnPress={() => {}}
-        headerStyle={{backgroundColor: '#f9f9f9'}}
-        titleStyle={{color: '#333', fontSize: SF(18)}}
+        rightOnPress={() => { }}
+        headerStyle={{ backgroundColor: '#f9f9f9',marginTop:20 }}
+        titleStyle={{ color: '#333', fontSize: SF(18) }}
       />
-      <View style={{padding:20}}>
-        <Text style={{fontFamily:Fonts.REGULAR,lineHeight:SH(20),color:Colors.textAppColor}}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum. Contrary to popular belief, Lorem
-          Ipsum is not simply random text. It has roots in a piece of classical
-          Latin literature from 45 BC, making it over 2000 years old. Richard
-          McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-          looked up one of the more obscure Latin words, consectetur, from a
-          Lorem Ipsum passage, and going through the cites of the word in
-          classical literature, discovered the undoubtable source. Lorem Ipsum
-          comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-          Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
-          This book is a treatise on the theory of ethics, very popular during
-          the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-          amet..", comes from a line in section 1.10.32.
-        </Text>
-      </View>
+      <ScrollView contentContainerStyle={{ padding: 20 }}>
+        {
+          data ?
+            <RenderHtml
+              contentWidth={400}
+              source={{
+                html: `${data}`
+              }}
+            /> :
+            <Text style={{ fontFamily: Fonts.REGULAR, lineHeight: SH(20), color: Colors.textAppColor }}>Something went wrong</Text>
+        }
+        {
+          error  && <Text style={{ fontFamily: Fonts.REGULAR, lineHeight: SH(20), color: Colors.textAppColor }}>Something went wrong</Text>
+        }
+       
+      </ScrollView>
     </Container>
   );
 };
@@ -130,7 +142,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: SW(10),
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
   },

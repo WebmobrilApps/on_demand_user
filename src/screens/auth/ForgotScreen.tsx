@@ -7,38 +7,56 @@ import {
   Text,
   View,
 } from 'react-native';
-import {Colors, Fonts, regex, SF, SH, SW, validationMSG} from '../../utils';
+import { Colors, Fonts, regex, SF, SH, SW, validationMSG } from '../../utils';
 import {
   AuthBottomContainer,
   AuthImgComp,
   Container,
+  CustomToast,
   InputIcons,
   Spacing,
 } from '../../component';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Inputs from '../../component/Input';
 import imagePaths from '../../assets/images';
-import {Formik} from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Buttons from '../../component/Button';
 import RouteName from '../../navigation/RouteName';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
+import { useResendOtpMutation, useSendOtpMutation } from '../../services';
 
 type ForgotProps = {};
 
-const ForgotScreen: React.FC<ForgotProps> = ({}) => {
-  const navigation = useNavigation();
-  const {t} = useTranslation();
+const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
+  const navigation = useNavigation<any>();
+  const { t } = useTranslation();
   const validationSchema = Yup.object().shape({
     email: Yup.string()
-      .matches(regex.EMAIL_REGEX_WITH_EMPTY,t('validation.validEmail'))
+      .matches(regex.EMAIL_REGEX_WITH_EMPTY, t('validation.validEmail'))
       .required(t('validation.emptyEmail')),
   });
 
-  const btnForgot = (values: {email: string}, resetForm: any) => {
-    //@ts-ignore
-    navigation.navigate(RouteName.OTP_VERIFY, {fromScreen: 'forgotpass'});
+  const [sendOtp, { isLoading: otpLoader }] = useSendOtpMutation();
+  const btnForgot = async(values: { email: string }, resetForm: any) => {
+      let userData = {
+        email: values.email,
+      };
+
+      try {
+        const response = await sendOtp(userData).unwrap();
+        console.log('sendOtp res--', response);
+        if (response.succeeded) {
+          CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success', });
+          navigation.navigate(RouteName.OTP_VERIFY, { fromScreen: 'forgotpass', userToken: response.ResponseBody.token,email:values.email });
+        } else {
+          let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
+          CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
+        }
+      } catch (error) {
+        console.error('Login Failed:', error);
+      }
   };
   return (
     <Container
@@ -49,17 +67,17 @@ const ForgotScreen: React.FC<ForgotProps> = ({}) => {
       }}
       style={styles.container}>
       <KeyboardAwareScrollView
-        // bounces={false}
-        contentContainerStyle={{flexGrow: 1, paddingHorizontal: 0}}
+        bounces={false}
+        contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 0 }}
         showsVerticalScrollIndicator={false}
         extraScrollHeight={SH(40)}>
         <Spacing space={SH(40)} />
         <AuthImgComp icon={imagePaths.forgot_img} />
         <AuthBottomContainer>
           <Formik
-            initialValues={{email: ''}}
+            initialValues={{ email: '' }}
             validationSchema={validationSchema}
-            onSubmit={(values, {resetForm}) => {
+            onSubmit={(values, { resetForm }) => {
               btnForgot(values, resetForm);
             }}>
             {({
@@ -74,11 +92,11 @@ const ForgotScreen: React.FC<ForgotProps> = ({}) => {
                 <View>
                   <Text style={styles.heading}>{t('forgotpass.forgotPassword')}</Text>
                   <Text style={styles.subtitile}>
-                  {t('forgotpass.subtitle')}
+                    {t('forgotpass.subtitle')}
                   </Text>
                   <Inputs
                     placeholder={t('placeholders.email')}
-                    inputStyle={{color: Colors.textWhite}}
+                    inputStyle={{ color: Colors.textWhite }}
                     onChangeText={handleChange('email')}
                     onBlur={() => setFieldTouched('email')}
                     inputType="email-address"
@@ -101,7 +119,7 @@ const ForgotScreen: React.FC<ForgotProps> = ({}) => {
                     handleSubmit();
                     Keyboard.dismiss();
                   }}
-                  // isLoading={true}
+                  isLoading={otpLoader}
                 />
               </View>
             )}
@@ -118,7 +136,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bgwhite,
   },
-  brnContainer:{backgroundColor: Colors.bgwhite,marginTop:SH(200)},
+  brnContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(200) },
   subtitile: {
     color: Colors.textWhite,
     fontFamily: Fonts.REGULAR,

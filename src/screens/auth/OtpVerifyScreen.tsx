@@ -37,13 +37,12 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
   }, []);
 
   useProfileUpdate()
-  
+
   const btnResendOtp = async () => {
     let userData = {
       email,
     };
 
-   return true
     try {
       const response = await resendOtp(userData).unwrap();
       console.log('resendOtp res--', response);
@@ -67,20 +66,23 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
       CustomToast({ message: 'Error', description: 'Please Enter OTP', position: 'top', type: 'danger' });
       return
     }
-    fromScreen=='signup' ? navigation.navigate(RouteName.HOME): navigation.navigate(RouteName.CHANGE_PASSWORD)
-    return false
-    let userData = { otp, };
+
+    let userData = { otp };
 
     try {
 
       const response = await verifyOtp({ otpData: userData, token: userToken }).unwrap();
+      console.log('btnVerifyOtp response', response);
 
       if (response.succeeded) {
         if (fromScreen == 'signup') {
           CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
-          let data = response.ResponseBody;
           dispatch(setToken({ token: response.ResponseBody.token }));
           navigation.navigate(RouteName.HOME);
+        }
+        if (fromScreen === 'forgotpass') {
+          CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
+          navigation.navigate(RouteName.PASS_UPDATE, { userToken: response.ResponseBody.token });
         }
         resetCountdown();
       } else {
