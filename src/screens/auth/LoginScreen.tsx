@@ -150,8 +150,8 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
           <View style={{ paddingVertical: SH(35), paddingHorizontal: SW(20) }}>
             <Formik
               initialValues={{
-                email: '',
-                password: '',
+                email: 'veer@mailinator.com',
+                password: 'Qwerty@1',
               }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm }) => {
@@ -285,7 +285,7 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.bgwhite,
+    backgroundColor: "#ffffff",
   },
   errorText: {
     color: 'red',

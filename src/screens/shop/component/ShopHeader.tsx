@@ -25,47 +25,55 @@ const ShopHeader: React.FC<HeaderProps> = ({
             end={{ x: 0, y: 1 }}
             style={styles.container}
             colors={[Colors.themeDarkColor, Colors.themeColor]}>
-            <TouchableOpacity
-                onPress={() => { }} // Call the passed onBackPress function
-                activeOpacity={0.5}
-                style={styles.backIconContainer}>
-                <VectorIcon
-                    icon="FontAwesome"
-                    color={Colors.white}
-                    name="angle-left"
-                    size={SW(35)}
-                />
-            </TouchableOpacity>
 
-
-
-
-            <View style={{ width: '70%', marginRight: 25 }}>
-                <Inputs
-                    placeholder={'Search'}
-                    containerStyle={{ padding: 0 }}
-                    inputStyle={styles.inputStyle}
-                    inputContainerStyle={styles.inputInnerContainer}
-                    value=""
-                    leftIcon={
-                        <VectorIcon
-                            color={Colors.searchBarPlac}
-                            name="search1"
-                            icon="AntDesign"
-                            size={SF(20)}
-                        />
-                    }
-                    placeholderTextColor={Colors.searchBarPlac}
-                />
-            </View>
-            <Pressable
-                style={styles.filterButton}
+            <View
+                style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginHorizontal:25,
+                    marginVertical:20
+                }}
             >
-                <Image
-                    source={imagePaths.filter_icon}
-                    style={styles.filterIcon}
-                />
-            </Pressable>
+                <TouchableOpacity
+                    onPress={() => { }} // Call the passed onBackPress function
+                    activeOpacity={0.5}
+                    style={styles.backIconContainer}>
+                    <VectorIcon
+                        icon="FontAwesome"
+                        color={Colors.white}
+                        name="angle-left"
+                        size={SW(35)}
+                    />
+                </TouchableOpacity>
+
+                <View style={{ width: '70%', marginRight: 25 }}>
+                    <Inputs
+                        placeholder={'Search'}
+                        containerStyle={{ padding: 0 }}
+                        inputStyle={styles.inputStyle}
+                        inputContainerStyle={styles.inputInnerContainer}
+                        value=""
+                        leftIcon={
+                            <VectorIcon
+                                color={Colors.searchBarPlac}
+                                name="search1"
+                                icon="AntDesign"
+                                size={SF(20)}
+                            />
+                        }
+                        placeholderTextColor={Colors.searchBarPlac}
+                    />
+                </View>
+                <Pressable
+                    style={styles.filterButton}
+                >
+                    <Image
+                        source={imagePaths.filter_icon}
+                        style={styles.filterIcon}
+                    />
+                </Pressable>
+            </View>
         </LinearGradient>
     );
 };
@@ -73,11 +81,6 @@ export default ShopHeader;
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        flexDirection: 'row',
-        paddingVertical: 20,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: SW(40)
     },
 
     inputStyle: {
@@ -98,7 +101,7 @@ const styles = StyleSheet.create({
         zIndex: 99,
         alignItems: 'flex-start',
         justifyContent: 'center',
-        marginRight: 30
+        marginRight: 30,
     },
 
     filterButton: {

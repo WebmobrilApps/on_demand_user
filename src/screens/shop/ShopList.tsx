@@ -47,6 +47,7 @@ const recommendedData = [
 const ShopList: React.FC<shopProps> = ({ }) => {
     const [selectedSubCat, setSelectedSubCat] = useState(['All'])
     return <Container
+        isAuth={true}
         statusBarStyle="light-content"
         statusBarColor={Colors.themeDarkColor}
     >
@@ -56,7 +57,10 @@ const ShopList: React.FC<shopProps> = ({ }) => {
             contentContainerStyle={styles.scrollContainer}
             showsVerticalScrollIndicator={false}
         >
-            <SubCatList data={subCatDdata} />
+            <View style={{ ...paddHori }}>
+                <SubCatList data={subCatDdata} />
+            </View>
+            <Text style={{ marginTop: SH(15), ...marHori, fontFamily: Fonts.SEMI_BOLD, color: Colors.textAppColor }}>Special Offers</Text>
             <FlatList
                 horizontal
                 data={recommendedData}
@@ -70,13 +74,19 @@ const ShopList: React.FC<shopProps> = ({ }) => {
 }
 export default ShopList
 
- 
+const marHori = {
+    marginHorizontal: SW(25)
+}
+const paddHori = {
+    paddingHorizontal: SW(25)
+}
 const styles = StyleSheet.create({
     scrollContainer: {
         paddingBottom: SH(30),
     },
     flatListRecommended: {
-        marginTop: SH(25),
         marginBottom: SH(35),
+        marginTop: SH(15),
+        ...marHori
     },
 });

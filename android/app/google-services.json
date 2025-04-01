@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "831021292559",
-    "project_id": "ssnap-b430f",
-    "storage_bucket": "ssnap-b430f.firebasestorage.app"
+    "project_number": "530387899669",
+    "project_id": "ssnap-69f09",
+    "storage_bucket": "ssnap-69f09.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:831021292559:android:13bfbb30c9f65e1c03977a",
+        "mobilesdk_app_id": "1:530387899669:android:0b28b8c14203605b29451c",
         "android_client_info": {
-          "package_name": "com.ssnap"
+          "package_name": "com.ssnap.app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDZNewoEtjoxco6b3vwJ6Q2GTLnBGzZbRA"
+          "current_key": "AIzaSyD0MbH5IOBo3TT4Q5I46l1s9Va6m4BDLz4"
         }
       ],
       "services": {

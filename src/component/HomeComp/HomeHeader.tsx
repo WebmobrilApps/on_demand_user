@@ -1,9 +1,11 @@
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {Colors, Fonts, SF, SH, SW} from '../../utils';
+import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import VectorIcon from '../VectoreIcons';
 import imagePaths from '../../assets/images';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+
 interface HomeHeaderProps {
   onclickAdd?: (text: string) => void;
   onclicCalender?: (text: string) => void;
@@ -12,16 +14,16 @@ interface HomeHeaderProps {
 }
 
 const HomeHeader: React.FC<HomeHeaderProps> = ({
-  onclickAdd = () => {},
-  onclicCalender = () => {},
-  onclicHeart = () => {},
-  onclicNotification = () => {},
+  onclickAdd = () => { },
+  onclicCalender = () => { },
+  onclicHeart = () => { },
+  onclicNotification = () => { },
 }) => {
   return (
     <LinearGradient
-      start={{x: 0, y: 0}}
-      end={{x: 0, y: 1}}
-      style={styles.container}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      style={[styles.container, { paddingTop: Platform.OS == 'android' ? getStatusBarHeight() : 0 }]}
       colors={[Colors.themeDarkColor, Colors.themeColor]}>
       <View style={styles.leftView}>
         <VectorIcon

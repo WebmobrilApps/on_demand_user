@@ -4,6 +4,7 @@ import {
   Keyboard,
   Platform,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -43,6 +44,7 @@ import { ChatContext } from '../ChatProvider';
 import { useDispatch } from 'react-redux';
 import { StorageProvider, useLoginMutation, useRegisterMutation } from '../../services';
 import DeviceInfo from 'react-native-device-info';
+import InputField from '../../component/TextInputCustom';
 
 const SocialButton = ({
   icon,
@@ -153,13 +155,15 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
       isAuth={true}
       style={styles.container}>
       <KeyboardAwareScrollView
-        contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 0 }}
-        showsVerticalScrollIndicator={false}
-        extraScrollHeight={SH(40)}>
+        style={{ flex: 1 }}
+        contentContainerStyle={{ flexGrow: 1 }}
+        enableOnAndroid={true} // Important for Android
+        extraScrollHeight={50} // Adjusts scroll height when keyboard appears
+        keyboardShouldPersistTaps="handled" // Allows tap on input when keyboard is open
+        resetScrollToCoords={{ x: 0, y: 0 }}
+      >
         <Spacing space={SH(40)} />
-
         <AuthImgComp icon={imagePaths.signup_img} />
-
         <AuthBottomContainer>
           <View style={{ paddingVertical: SH(35), paddingHorizontal: SW(20) }}>
             <Formik
@@ -253,7 +257,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                     value={values.password}
                     leftIcon={<InputIcons icon={imagePaths.lock_icon} />}
                     secureTextEntry={passwordVisibility}
-
+                    inputType="default"
                     rightIcon={
                       <TouchableOpacity
                         onPress={() => {
@@ -273,6 +277,20 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
 
                   <Spacing space={SH(20)} />
 
+                  {/* <InputField
+                    placeholder={t('placeholders.reEnterPassword')}
+                    value={values.cpassword}
+                    onChangeText={handleChange('cpassword')}
+                    keyboardType="default"
+                    leftIcon={imagePaths.lock_icon}
+                    errorMessage={touched.cpassword && errors.cpassword && errors.cpassword? errors.cpassword: ''}
+                    rightIcon={!cpasswordVisibility ? imagePaths.eye_open : imagePaths.eye_off_icon}
+                    onRightIconPress={() => setcpasswordVisibility(!cpasswordVisibility)}
+                    secureTextEntry={cpasswordVisibility}
+                    marginTop={SH(20)}
+                    marginBottom={SH(20)}
+                  /> */}
+
                   <Inputs
                     placeholder={t('placeholders.reEnterPassword')}
                     inputStyle={{ color: Colors.textWhite }}
@@ -284,6 +302,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                         : ''
                     }
                     value={values.cpassword}
+                    inputType="default"
                     leftIcon={<InputIcons icon={imagePaths.lock_icon} />}
                     secureTextEntry={cpasswordVisibility}
                     rightIcon={

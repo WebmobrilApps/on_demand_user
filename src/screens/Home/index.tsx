@@ -57,6 +57,7 @@ const HomeScreen = () => {
 
   return (
     <Container
+      isAuth={true}
       statusBarStyle="light-content"
       statusBarColor={Colors.themeDarkColor}
     >
@@ -70,7 +71,7 @@ const HomeScreen = () => {
             <HomeSearchBar />
           </View>
           <Spacing space={10} />
-         
+
           <View style={styles.swiperContainer}>
             <HomeSwiper swiperData={swiperData} />
           </View>

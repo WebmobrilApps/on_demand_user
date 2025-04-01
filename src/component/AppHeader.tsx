@@ -10,7 +10,7 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import {SF, SH, SW, Fonts, Colors} from '../utils';
-import {Container, VectoreIcons} from '.';
+import {  VectoreIcons} from '.';
 
 type AppHeaderProps = {
   headerStyle?: ViewStyle;

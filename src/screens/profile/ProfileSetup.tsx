@@ -41,7 +41,7 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({}) => {
       .required(t('validation.emptyMobile')),
   });
   return (
-    <Container isPadding={true}>
+    <Container isPadding={false}>
       <AppHeader
         headerTitle={t('profile.profileSetup')}
         onPress={() => {

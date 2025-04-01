@@ -28,7 +28,9 @@ const SplashScreen: React.FC = () => {
   //   });
   // };
   const biometricLogin = async () => {
-    navigation.navigate(RouteName.HOME);
+    navigation.navigate(RouteName.LOGIN);
+    // navigation.navigate(RouteName.HOME);
+    return false;
   try {
     const { available } = await rnBiometrics.isSensorAvailable();
     if (!available) {

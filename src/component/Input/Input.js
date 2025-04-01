@@ -111,7 +111,6 @@ Input.displayName = 'Input';
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        // paddingHorizontal: 10,
     },
     disabledInput: {
         opacity: 0.5,

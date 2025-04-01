@@ -69,7 +69,7 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ }) => {
         onPress={() => navigation.goBack()}
         Iconname="arrowleft"
         rightOnPress={() => { }}
-        headerStyle={{ backgroundColor: '#f9f9f9',marginTop:20 }}
+        headerStyle={{ backgroundColor: '#ffffff',  }}
         titleStyle={{ color: '#333', fontSize: SF(18) }}
       />
       <ScrollView contentContainerStyle={{ padding: 20 }}>

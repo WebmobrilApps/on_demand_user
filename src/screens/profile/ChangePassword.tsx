@@ -32,7 +32,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
     resetForm: any,
   ) => {};
   return (
-    <Container isAuth={true} isPadding={true}>
+    <Container isAuth={false} isPadding={true}>
       <AppHeader
         headerTitle={t('profile.changePassword')}
         onPress={() => {

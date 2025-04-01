@@ -6,9 +6,10 @@ import {
   StatusBar,
   StatusBarStyle,
   TouchableOpacity,
+  SafeAreaView as SafeAreaViewRN,
   Alert,
 } from 'react-native';
-import {Colors, SH, SW} from '../utils';
+import { Colors, SH, SW } from '../utils';
 import VectorIcon from './VectoreIcons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -20,7 +21,7 @@ type ContainerProps = {
   isAuth?: boolean;
   isBackButton?: boolean;
   onBackPress?: () => void; // Type-safe onBackPress function
-  isPadding?:boolean
+  isPadding?: boolean
 };
 
 const Container: React.FC<ContainerProps> = ({
@@ -29,29 +30,26 @@ const Container: React.FC<ContainerProps> = ({
   statusBarColor, // Default status bar color
   statusBarStyle = 'dark-content', // Default status bar style
   isBackButton = false,
-  onBackPress = () => {}, // Default function to prevent undefined behavior
+  isAuth = false,
+  onBackPress = () => { }, // Default function to prevent undefined behavior
 }) => {
   let statusbarColor = statusBarColor || '#ffffff'
+
+  if (!isAuth) {
+    return (
+      <SafeAreaView style={[styles.container, style]}>
+        {children}
+      </SafeAreaView>
+    )
+  }
   return (
     <View style={[styles.container, style]}>
       <StatusBar
-        backgroundColor={statusbarColor}
+        backgroundColor={statusBarColor}
         barStyle={statusBarStyle || 'light-content'}
       />
-      {isBackButton && (
-        <TouchableOpacity
-          onPress={onBackPress} // Call the passed onBackPress function
-          activeOpacity={0.5}
-          style={styles.backIconContainer}>
-          <VectorIcon
-            icon="FontAwesome"
-            color={Colors.textAppColor}
-            name="angle-left"
-            size={SW(35)}
-          />
-        </TouchableOpacity>
-      )}
-      <SafeAreaView style={{flex:0,backgroundColor:statusbarColor}}/>
+    
+      <SafeAreaViewRN style={{height:0,backgroundColor:statusBarColor}}/>
       {children}
     </View>
   );
@@ -60,15 +58,16 @@ const Container: React.FC<ContainerProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.bgwhite, // Default container background
+    backgroundColor: '#ffffff', // Default container background
   },
   backIconContainer: {
     width: SH(40),
     height: SH(40),
-    marginTop: SH(20),
-    marginLeft:20,
+    marginTop: SH(40),
+    marginLeft: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    
   },
 });
 
