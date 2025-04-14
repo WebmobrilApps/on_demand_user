@@ -15,6 +15,7 @@ export {default as LogoutPopup} from './LogoutPopup';
 export {default as NoInternet} from './NoInternet';
 export {default as Buttons} from './Button';
 export {default as CustomToast} from './CustomToast';
+export {default as InputField} from './TextInputCustom';
 
 export * from './HomeComp';
 export * from './ProfileComp'

@@ -156,15 +156,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     icon: {
-        width: SH(15),
-        height: SH(15),
+        width: SF(15),
+        height: SF(15),
         resizeMode: 'contain',
         tintColor: Colors.textAppColor,
     },
     locationText: {
         color: Colors.textAppColor,
         fontFamily: Fonts.MEDIUM,
-        fontSize: SH(12),
+        fontSize: SF(12),
         marginLeft: SW(5),
     },
     dotText: {
@@ -175,10 +175,10 @@ const styles = StyleSheet.create({
     closedText: {
         color: Colors.gray2,
         fontFamily: Fonts.MEDIUM,
-        fontSize: SH(12),
+        fontSize: SF(12),
     },
     footer: {
-        flexDirection: 'row',
+        flexDirection: 'row',   
         alignItems: 'center',
     },
     priceContainer: {
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     priceText: {
         color: Colors.textAppColor,
         fontFamily: Fonts.MEDIUM,
-        fontSize: SH(12),
+        fontSize: SF(12),
         marginLeft: SW(5),
     },
     durationContainer: {

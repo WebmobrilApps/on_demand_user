@@ -45,11 +45,10 @@ const Container: React.FC<ContainerProps> = ({
   return (
     <View style={[styles.container, style]}>
       <StatusBar
-        backgroundColor={statusBarColor}
+        backgroundColor={statusbarColor}
         barStyle={statusBarStyle || 'light-content'}
       />
-    
-      <SafeAreaViewRN style={{height:0,backgroundColor:statusBarColor}}/>
+      <SafeAreaViewRN style={{height:0,backgroundColor:statusbarColor}}/> 
       {children}
     </View>
   );

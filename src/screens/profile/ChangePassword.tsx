@@ -1,20 +1,18 @@
 import React from 'react';
-import {Keyboard, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {AppHeader, Container, ImageLoader, Spacing} from '../../component';
-import {Colors, Fonts, regex, SF, SH, SW} from '../../utils';
-import {useNavigation} from '@react-navigation/native';
+import { Keyboard, StyleSheet, View } from 'react-native';
+import { AppHeader, Container, InputField } from '../../component';
+import { Colors, SH, SW } from '../../utils';
+import { useNavigation } from '@react-navigation/native';
 import imagePaths from '../../assets/images';
-import {useTranslation} from 'react-i18next';
-import VectorIcon from '../../component/VectoreIcons';
-import Inputs from '../../component/Input';
-import {Formik} from 'formik';
+import { useTranslation } from 'react-i18next';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Buttons from '../../component/Button';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 type ChangePasswordProps = {};
-const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
-  const {t} = useTranslation();
+const ChangePassword: React.FC<ChangePasswordProps> = ({ }) => {
+  const { t } = useTranslation();
   const navigation = useNavigation<any>();
   const validationSchema = Yup.object().shape({
     currpassword: Yup.string()
@@ -28,9 +26,9 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
       .oneOf([Yup.ref('password')], t('validation.notMatchConfirmPassword')),
   });
   const btnUpdatePassword = (
-    values: {currpassword: string; npassword: string; confirmpassword: string},
+    values: { currpassword: string; npassword: string; confirmpassword: string },
     resetForm: any,
-  ) => {};
+  ) => { };
   return (
     <Container isAuth={false} isPadding={true}>
       <AppHeader
@@ -39,7 +37,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
           navigation.goBack();
         }}
         Iconname="arrowleft"
-        rightOnPress={() => {}}
+        rightOnPress={() => { }}
         headerStyle={styles.header}
       />
       <KeyboardAwareScrollView
@@ -54,7 +52,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
               confirmpassword: '',
             }}
             validationSchema={validationSchema}
-            onSubmit={(values, {resetForm}) => {
+            onSubmit={(values, { resetForm }) => {
               btnUpdatePassword(values, resetForm);
             }}>
             {({
@@ -66,51 +64,40 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
               touched,
             }) => (
               <>
-                <View style={{height:'80%'}}>
-                  <Inputs
-                    inputStyle={{color: Colors.textAppColor}}
+                <View style={{ height: '80%' }}>
+
+                  <InputField
+                    value={values.currpassword}
+                    label={t('placeholders.currentPassword')}
                     onChangeText={handleChange('currpassword')}
                     onBlur={() => setFieldTouched('currpassword')}
-                    label={t('placeholders.currentPassword')}
-                    inputContainerStyle={styles.inputContainer}
-                    errorMessage={
-                      touched.currpassword &&
-                      errors.currpassword &&
-                      errors.currpassword
-                        ? errors.currpassword
-                        : ''
-                    }
-                    value={values.currpassword}
+                    leftIcon={imagePaths.lock_icon}
+                    errorMessage={touched.currpassword && errors.currpassword && errors.currpassword ? errors.currpassword : ''}
+                    keyboardType={'visible-password'}
+                    color={Colors.textAppColor}
+                    textColor={Colors.textAppColor}
                   />
-                  <Spacing space={SH(20)} />
-                  <Inputs
-                    inputStyle={{color: Colors.textAppColor}}
+                  <InputField
+                    label={t('placeholders.newPassword')}
+                    value={values.npassword}
                     onChangeText={handleChange('npassword')}
                     onBlur={() => setFieldTouched('npassword')}
-                    label={t('placeholders.newPassword')}
-                    inputContainerStyle={styles.inputContainer}
-                    errorMessage={
-                      touched.npassword && errors.npassword && errors.npassword
-                        ? errors.npassword
-                        : ''
-                    }
-                    value={values.npassword}
+                    leftIcon={imagePaths.lock_icon}
+                    errorMessage={touched.npassword && errors.npassword && errors.npassword ? errors.npassword : ''}
+                    keyboardType={'visible-password'}
+                    color={Colors.textAppColor}
+                    textColor={Colors.textAppColor}
                   />
-                  <Spacing space={SH(20)} />
-                  <Inputs
-                    inputStyle={{color: Colors.textAppColor}}
+                  <InputField
+                    label={t('placeholders.confirmPassword')}
+                    value={values.confirmpassword}
                     onChangeText={handleChange('confirmpassword')}
                     onBlur={() => setFieldTouched('confirmpassword')}
-                    label={t('placeholders.confirmPassword')}
-                    inputContainerStyle={styles.inputContainer}
-                    errorMessage={
-                      touched.confirmpassword &&
-                      errors.confirmpassword &&
-                      errors.confirmpassword
-                        ? errors.confirmpassword
-                        : ''
-                    }
-                    value={values.confirmpassword}
+                    leftIcon={imagePaths.lock_icon}
+                    errorMessage={touched.confirmpassword && errors.confirmpassword && errors.confirmpassword ? errors.confirmpassword : ''}
+                    keyboardType={'visible-password'}
+                    color={Colors.textAppColor}
+                    textColor={Colors.textAppColor}
                   />
                 </View>
 
@@ -122,7 +109,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
                     handleSubmit();
                     Keyboard.dismiss();
                   }}
-                  // isLoading={true}
+                // isLoading={true}
                 />
               </>
             )}

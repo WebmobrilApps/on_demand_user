@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import {
+  Dimensions,
   Image,
   Keyboard,
   Platform,
@@ -14,7 +15,6 @@ import {
   Colors,
   Fonts,
   regex,
-  SCREEN_WIDTH,
   SF,
   SH,
   socialButtons,
@@ -26,6 +26,7 @@ import {
   AuthImgComp,
   Container,
   CustomToast,
+  InputField,
   InputIcons,
   Spacing,
   VectoreIcons,
@@ -44,8 +45,7 @@ import { ChatContext } from '../ChatProvider';
 import { useDispatch } from 'react-redux';
 import { StorageProvider, useLoginMutation, useRegisterMutation } from '../../services';
 import DeviceInfo from 'react-native-device-info';
-import InputField from '../../component/TextInputCustom';
-
+const SCREEN_WIDTH =  Dimensions.get('window').width
 const SocialButton = ({
   icon,
   onPress,
@@ -122,7 +122,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
       "email": values.email,
       "password": values.password,
       "mobile": values.mobileno,
-      "fcmToken": fcmToken,
+      "fcmToken": fcmToken || 'fcm-token',
       "device_id": device_id,
       "device_type": device_type
     }
@@ -188,110 +188,62 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                 touched,
               }) => (
                 <>
-                  <Inputs
+
+                  <InputField
                     placeholder={t('placeholders.fullname')}
-                    inputStyle={{ color: Colors.textWhite }}
-                    onChangeText={handleChange('fname')}
-                    // onBlur={() => setFieldTouched('fname')}
-                    onBlur={() => setFieldValue('fname', values.fname.trim())}
                     value={values.fname}
-                    errorMessage={
-                      touched.fname && errors.fname && errors.fname
-                        ? errors.fname
-                        : ''
-                    }
-                    inputType="default"
-                    leftIcon={<InputIcons icon={imagePaths.email_icon} />}
-                    placeholderTextColor={Colors.placeHolderColor}
+                    onChangeText={handleChange('fname')}
+                    onBlur={() => setFieldValue('fname', values.fname.trim())}
+                    leftIcon={imagePaths.mobile_icon}
+                    errorMessage={touched.fname && errors.fname && errors.fname ? errors.fname : ''}
+                    keyboardType="default"
                   />
 
-                  <Spacing space={SH(20)} />
-
-                  <Inputs
+                  <InputField
                     placeholder={t('placeholders.mobileno')}
-                    inputStyle={{ color: Colors.textWhite }}
-                    onChangeText={handleChange('mobileno')}
-                    // onBlur={() => setFieldTouched('mobileno')}
-                    onBlur={() => setFieldValue('mobileno', values.mobileno.trim())}
                     value={values.mobileno}
-                    errorMessage={
-                      touched.mobileno && errors.mobileno && errors.mobileno
-                        ? errors.mobileno
-                        : ''
-                    }
-                    inputType="number-pad"
-                    leftIcon={<InputIcons icon={imagePaths.mobile_icon} />}
-                    placeholderTextColor={Colors.placeHolderColor}
+                    onChangeText={handleChange('mobileno')}
+                    onBlur={() => setFieldValue('mobileno', values.mobileno.trim())}
+                    leftIcon={imagePaths.mobile_icon}
+                    errorMessage={touched.mobileno && errors.mobileno && errors.mobileno ? errors.mobileno : ''}
+                    keyboardType={'number-pad'}
                   />
-                  <Spacing space={SH(20)} />
-
-                  <Inputs
+                  <InputField
                     placeholder={t('placeholders.email')}
-                    inputStyle={{ color: Colors.textWhite }}
-                    onChangeText={handleChange('email')}
-                    // onBlur={() => setFieldTouched('email')}
-                    onBlur={() => setFieldValue('email', values.email.trim())}
-                    inputType="email-address"
                     value={values.email}
-                    errorMessage={
-                      touched.email && errors.email && errors.email
-                        ? errors.email
-                        : ''
-                    }
-                    leftIcon={<InputIcons icon={imagePaths.email_icon} />}
-                    placeholderTextColor={Colors.placeHolderColor}
+                    onChangeText={handleChange('email')}
+                    onBlur={() => setFieldValue('email', values.email.trim())}
+                    leftIcon={imagePaths.email_icon}
+                    errorMessage={touched.email && errors.email && errors.email ? errors.email : ''}
+                    keyboardType={'email-address'}
                   />
 
-                  <Spacing space={SH(20)} />
-
-                  <Inputs
+                  <InputField
                     placeholder={t('placeholders.password')}
-                    inputStyle={{ color: Colors.textWhite }}
+                    value={values.password}
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
-                    errorMessage={
-                      touched.password && errors.password && errors.password
-                        ? errors.password
-                        : ''
-                    }
-                    value={values.password}
-                    leftIcon={<InputIcons icon={imagePaths.lock_icon} />}
+                    leftIcon={imagePaths.lock_icon}
+                    errorMessage={touched.password && errors.password && errors.password ? errors.password : ''}
+                    rightIcon={!passwordVisibility ? imagePaths.eye_open : imagePaths.eye_off_icon}
+                    onRightIconPress={() => setpasswordVisibility(!passwordVisibility)}
                     secureTextEntry={passwordVisibility}
-                    inputType="default"
-                    rightIcon={
-                      <TouchableOpacity
-                        onPress={() => {
-                          setpasswordVisibility(!passwordVisibility);
-                        }}>
-                        <InputIcons
-                          icon={
-                            !passwordVisibility
-                              ? imagePaths.eye_open
-                              : imagePaths.eye_off_icon
-                          }
-                        />
-                      </TouchableOpacity>
-                    }
-                    placeholderTextColor={Colors.placeHolderColor}
+                    keyboardType={'visible-password'}
                   />
-
-                  <Spacing space={SH(20)} />
-
-                  {/* <InputField
+                  <InputField
                     placeholder={t('placeholders.reEnterPassword')}
                     value={values.cpassword}
                     onChangeText={handleChange('cpassword')}
-                    keyboardType="default"
+                    onBlur={() => setFieldTouched('cpassword')}
                     leftIcon={imagePaths.lock_icon}
-                    errorMessage={touched.cpassword && errors.cpassword && errors.cpassword? errors.cpassword: ''}
+                    errorMessage={touched.cpassword && errors.cpassword && errors.cpassword ? errors.cpassword : ''}
                     rightIcon={!cpasswordVisibility ? imagePaths.eye_open : imagePaths.eye_off_icon}
                     onRightIconPress={() => setcpasswordVisibility(!cpasswordVisibility)}
                     secureTextEntry={cpasswordVisibility}
-                    marginTop={SH(20)}
-                    marginBottom={SH(20)}
-                  /> */}
+                    keyboardType={'visible-password'}
+                  />
 
-                  <Inputs
+                  {/* <Inputs
                     placeholder={t('placeholders.reEnterPassword')}
                     inputStyle={{ color: Colors.textWhite }}
                     onChangeText={handleChange('cpassword')}
@@ -320,7 +272,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                       </TouchableOpacity>
                     }
                     placeholderTextColor={Colors.placeHolderColor}
-                  />
+                  /> */}
                   <Spacing space={SH(20)} />
                   {/* check box==============================    */}
                   <View style={styles.checkBoxContainer}>
@@ -395,7 +347,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                         key={index}
                         icon={button.icon}
                         width={(SCREEN_WIDTH * 0.4) / 4}
-                        iconSize={SH(26)}
+                        iconSize={SF(26)}
                         onPress={button.onPress}
                       />
                     ))}
@@ -479,7 +431,6 @@ const styles = StyleSheet.create({
   },
   socialIconContainer: {
     flexDirection: 'row',
-    width: SCREEN_WIDTH * 0.35,
     alignSelf: 'center',
     justifyContent: 'space-between',
   },
@@ -493,8 +444,6 @@ const styles = StyleSheet.create({
     color: Colors.textWhite,
     fontFamily: Fonts.MEDIUM,
     fontSize: SF(12),
-    lineHeight: SH(18),
-    // textAlign: 'center',
   },
   checkBoxContainer: {
     flexDirection: 'row',

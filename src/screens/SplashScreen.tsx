@@ -1,15 +1,16 @@
-import { Alert, Image, StyleSheet, Text, View } from 'react-native';
+import { Alert, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect } from 'react';
 import { Container } from '../component';
 import imagePaths from '../assets/images';
 import { Colors, Fonts, SF, SH } from '../utils';
 import LinearGradient from 'react-native-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import RouteName from '../navigation/RouteName';
 import ReactNativeBiometrics, { BiometryTypes } from "react-native-biometrics";
 import * as Keychain from 'react-native-keychain';
 const SplashScreen: React.FC = () => {
   const navigation = useNavigation<any>();
+
   useEffect(() => {
     navigation.setOptions({
       gestureEnabled: false,

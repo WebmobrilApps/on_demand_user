@@ -17,8 +17,8 @@ const AuthImgComp: React.FC<AuthImgCompProps> = ({icon}) => {
      <Image
         source={icon}
         style={{
-          height: SH(200),
-          width: SH(200),
+          height: SF(200),
+          width: SF(200),
           alignSelf: 'center',
         }}
         resizeMode="contain"

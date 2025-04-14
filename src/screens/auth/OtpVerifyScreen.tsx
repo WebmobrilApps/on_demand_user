@@ -34,9 +34,9 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
 
   useEffect(() => {
     startCountdown(60);
-  }, []);
+  }, [startCountdown]);
 
-  useProfileUpdate()
+  useProfileUpdate();
 
   const btnResendOtp = async () => {
     let userData = {
@@ -47,13 +47,13 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
       const response = await resendOtp(userData).unwrap();
       console.log('resendOtp res--', response);
       if (response.succeeded) {
-        CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success', });
+        CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success' });
         setUserToken(response.ResponseBody.token);
         resetCountdown();
         startCountdown(60);
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
+        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger' });
       }
     } catch (error) {
       console.error('Login Failed:', error);
@@ -64,7 +64,7 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
 
     if (!otp) {
       CustomToast({ message: 'Error', description: 'Please Enter OTP', position: 'top', type: 'danger' });
-      return
+      return;
     }
 
     let userData = { otp };
@@ -75,7 +75,7 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
       console.log('btnVerifyOtp response', response);
 
       if (response.succeeded) {
-        if (fromScreen == 'signup') {
+        if (fromScreen === 'signup') {
           CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
           dispatch(setToken({ token: response.ResponseBody.token }));
           navigation.navigate(RouteName.HOME);
@@ -87,7 +87,7 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
         resetCountdown();
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
+        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger' });
       }
     } catch (error) {
       console.error('Login Failed:', error);
@@ -104,7 +104,7 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
       style={styles.container}>
       <KeyboardAwareScrollView
         bounces={false}
-        contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 0 }}
+        contentContainerStyle={styles.scropllViewContainer}
         showsVerticalScrollIndicator={false}
         extraScrollHeight={SH(40)}>
         <Spacing space={SH(40)} />
@@ -116,7 +116,6 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
               <Text style={styles.subtitile}>{t('otpverify.subtitle')}</Text>
 
               <OTPTextView
-                // containerStyle={{paddingHorizontal: 20}}
                 ref={input}
                 textInputStyle={styles.textInputContainer}
                 handleTextChange={val => {
@@ -129,25 +128,16 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
               />
 
               <View
-                style={{
-                  paddingRight: 7,
-                  alignItems: 'flex-end',
-                }}>
+                style={styles.resteTextCont}>
                 {otpLoader ? (
-                  <ActivityIndicator color={'#ffffff'} style={{ marginTop: 8 }} />
+                  <ActivityIndicator color={'#ffffff'} style={styles.activeIndigator} />
                 ) : (
                   <Text
                     onPress={() => {
-                      status != 'running' && btnResendOtp();
+                      status !== 'running' && btnResendOtp();
                     }}
-                    style={{
-                      fontFamily: Fonts.REGULAR,
-                      fontSize: SF(14),
-                      textAlign: 'right',
-                      marginTop: 8,
-                      color: Colors.textWhite,
-                    }}>
-                    {status == 'running' ? formatTime(time) : 'Resend OTP'}
+                    style={styles.resteText}>
+                    {status === 'running' ? formatTime(time) : 'Resend OTP'}
                   </Text>
                 )}
               </View>
@@ -175,6 +165,10 @@ export default OtpVerifyScreen;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bgwhite,
+  },
+  scropllViewContainer:{
+    flexGrow: 1,
+    paddingHorizontal: 0,
   },
   subtitile: {
     color: Colors.textWhite,
@@ -207,4 +201,15 @@ const styles = StyleSheet.create({
     color: Colors.white,
     backgroundColor: 'transparent',
   },
+  resteTextCont:{
+    paddingRight: 7,
+    alignItems: 'flex-end',
+  },
+  resteText:{
+      fontFamily: Fonts.REGULAR,
+      fontSize: SF(14),
+      textAlign: 'right',
+      marginTop: 8,
+  },
+  activeIndigator:{ marginTop: 8 },
 });

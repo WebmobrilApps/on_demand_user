@@ -47,7 +47,6 @@ interface InputsProps {
 }
 
 const Inputs: React.FC<InputsProps> = ({
-  title = '',
   placeholder = '',
   titleStyle = {},
   inputStyle = {},
@@ -72,7 +71,6 @@ const Inputs: React.FC<InputsProps> = ({
   multiline = false,
   maxLength,
   isDisabled = false,
-  onBlured = () => {},
   placeholderTextColor = Colors.placeHolderColor,
 }) => {
   const styles = useMemo(
@@ -86,7 +84,7 @@ const Inputs: React.FC<InputsProps> = ({
           ...containerStyle,
         },
         inputContainerStyle: {
-          borderRadius: SW(10),
+          borderRadius: 10,
           height: SH(50),
           justifyContent: 'center',
           marginHorizontal: SH(0),
@@ -100,7 +98,7 @@ const Inputs: React.FC<InputsProps> = ({
           fontFamily: Fonts.REGULAR,
           height: SH(44),
           color: Colors.black,
-          borderRadius: SH(10),
+          borderRadius: 10,
           textAlignVertical: 'top',
           ...inputStyle,
         },

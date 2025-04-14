@@ -3,6 +3,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  DimensionValue,
 } from 'react-native';
 import React from 'react';
 import { Colors, Fonts, SF, SW } from '../../utils';
@@ -11,7 +12,7 @@ interface HomeSubContainerHeaderProps {
   onClick?: (text: string) => void;
   leftText: string;
   rightText: string;
-  marginHori?:number
+  marginHori?:DimensionValue
 }
 
 const HomeSubContainerHeader: React.FC<HomeSubContainerHeaderProps> = ({
@@ -36,7 +37,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
- 
   },
   leftText: {
     width: '70%',

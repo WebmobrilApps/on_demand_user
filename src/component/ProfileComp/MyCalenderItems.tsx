@@ -22,11 +22,11 @@ const MyCalenderItems: React.FC<MyCalenderItemsProps> = ({item}) => {
       <View style={styles.leftContainer}>
         <ImageLoader
           source={imagePaths.makup1}
-          resizeMode="contain"
+          resizeMode="cover"
           mainImageStyle={styles.leftImage}
         />
       </View>
-      <View style={{marginLeft: 10, width: '60%'}}>
+      <View style={{marginLeft: SF(10), width: '60%'}}>
         <Text style={styles.text}>{item.name}</Text>
         <Text style={styles.text2}>{item?.datetime}</Text>
       </View>
@@ -52,10 +52,10 @@ export default MyCalenderItems;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.themelight,
-    paddingHorizontal: SW(18),
+    paddingHorizontal: SW(10),
     paddingVertical: SH(15),
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: SF(10),
     flexDirection: 'row',
   },
   text: {
@@ -74,6 +74,14 @@ const styles = StyleSheet.create({
     width: SH(18),
   },
   leftContainer: {
+    width: SF(115),
+    height: SF(85),
+    overflow:"hidden",
+    borderRadius: SF(15),
+  },
+  leftImage: {
+    width: SF(115),
+    height: SF(85),
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
@@ -82,14 +90,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.17,
     shadowRadius: 3.05,
     elevation: 4,
-    backgroundColor: Colors.bgwhite,
-    borderRadius: SH(15),
-    width: SH(115),
-    height: SH(85),
-  },
-  leftImage: {
-    width: SH(115),
-    height: SH(85),
-    borderRadius: SH(15),
   },
 });

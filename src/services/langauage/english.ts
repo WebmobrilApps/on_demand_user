@@ -53,17 +53,14 @@ export const english = {
       emptyEmail: 'Please enter email.',
       validMobile: 'Please enter a valid mobile number.',
       mobileMinLen: 'Mobile number must be at least 10 digits.',
-      emptyMobile: 'Please enter Mobile number.',
+      emptyMobile: 'Please enter mobile number.',
       passMinLength: 'Password must be at least 6 characters.',
-      emptyPassword: 'Please enter Password.',
-
+      emptyPassword: 'Please enter password.',
       passNewMinLength: 'New password must be at least 6 characters.',
       passValid:'Password should be between 8 to 16 characters and should include 1 Uppercase, 1 Lowercase, 1 Number and 1 Special Character.',
       emptyNewPassword: 'Please enter new password.',
-
       passCurrMinLength: 'Current password must be at least 6 characters.',
       emptyCurrPassword: 'Please enter current password.',
-
       emptyConfirmPassword: 'Please enter confirm password.',
       notMatchConfirmPassword: `Password didn't matched`,
     },

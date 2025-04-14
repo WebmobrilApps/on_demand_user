@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     button: {
-        paddingVertical: SH(3),
+        paddingVertical: SH(4),
         paddingHorizontal: SW(10),
         borderRadius: 4,
     },

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image, FlatList, StyleSheet} from 'react-native';
-import {Colors, SH, SW, Fonts, SF} from '../utils';
+import {Colors, SH, SW, Fonts, SF, boxShadowlight} from '../utils';
 import imagePaths from '../assets/images';
 import {AppHeader, Container, HomeSearchBar} from '../component';
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -91,7 +91,7 @@ const TwoColumnList: React.FC = () => {
     if (type === ListType.NEAR_BY) {
       const nearItem = item as NearByItem;
       return (
-        <View style={styles.itemNearByContainer}>
+        <View style={[styles.itemNearByContainer,boxShadowlight]}>
           <Image source={item.image} style={styles.image} resizeMode="cover" />
           <View style={{paddingHorizontal: SW(10)}}>
             <View style={styles.ratingContainer}>
@@ -135,7 +135,7 @@ const TwoColumnList: React.FC = () => {
       );
     } else {
       return (
-        <View style={styles.itemContainer}>
+        <View style={[styles.itemContainer,boxShadowlight]}>
           <Image source={item.image} style={styles.image} resizeMode="cover" />
           <Text style={styles.text}>{item.name}</Text>
         </View>
@@ -192,11 +192,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.themelight,
     borderRadius: SW(10),
     paddingBottom: SH(10),
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+ 
   },
   itemNearByContainer: {
     width: '48%',
@@ -205,10 +201,6 @@ const styles = StyleSheet.create({
     borderRadius: SW(10),
     paddingBottom: SH(10),
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
   },
   image: {
     width: '100%',

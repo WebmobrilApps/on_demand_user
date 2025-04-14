@@ -1,11 +1,10 @@
 const Fonts = {
-  BOLD:"Inter-Bold",
-  EXTRA_BOLD:"Inter-ExtraBold",
-  LIGHT:"Inter-Light",
-  MEDIUM:"Inter-Medium",
-  REGULAR:"Inter-Regular",
-  REGULAR_500:"Inter_28pt-Regular",
-  SEMI_BOLD:'Inter-SemiBold',
+  BOLD:"Inter-Bold",//700
+  EXTRA_BOLD:"Inter-ExtraBold",//800
+  LIGHT:"Inter-Light",//300
+  MEDIUM:"Inter-Medium",//500
+  REGULAR:"Inter-Regular",//400
+  SEMI_BOLD:'Inter-SemiBold',//600
 
   PlusJakartaSans_Bold:"PlusJakartaSans-Bold",
   PlusJakartaSans_EXTRA_BOLD:"PlusJakartaSans-ExtraBold",

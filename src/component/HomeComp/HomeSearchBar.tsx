@@ -10,6 +10,7 @@ import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import VectorIcon from '../VectoreIcons';
 import imagePaths from '../../assets/images';
 import Inputs from '../Input';
+import InputField from '../TextInputCustom';
 
 interface HomeSearchBarProps {
   onTextchange?: (text: string) => void;
@@ -19,34 +20,26 @@ interface HomeSearchBarProps {
 }
 
 const HomeSearchBar: React.FC<HomeSearchBarProps> = ({
-  onTextchange = () => { },
-  showFilterIcon = true, // Default to true
+  showFilterIcon = false, // Default to true
   bgColor = Colors.lightGray,
-  pageName = "NA"
 }) => {
   return (
     <View style={styles.searchContainer}>
       <View style={{ width: showFilterIcon ? '86%' : '100%' }}>
-        <Inputs
+        <InputField
           placeholder={'Search'}
+          inputContainer={{ backgroundColor: bgColor,borderWidth:0 }}
           containerStyle={styles.inputContainer}
           inputStyle={styles.inputStyle}
-          inputContainerStyle={{ ...styles.inputInnerContainer, backgroundColor: bgColor }}
-          value=""
-          leftIcon={
-            <VectorIcon
-              color={Colors.searchBarPlac}
-              name="search1"
-              icon="AntDesign"
-              size={SF(20)}
-            />
-          }
           placeholderTextColor={Colors.searchBarPlac}
+          leftIcon={imagePaths.Search}
+          color={Colors.searchBarPlac}
         />
+      
       </View>
 
       {/* Render filter icon only if showFilterIcon is true */}
-      {showFilterIcon && pageName == 'shop' ? (
+      {showFilterIcon &&
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
@@ -58,17 +51,8 @@ const HomeSearchBar: React.FC<HomeSearchBarProps> = ({
             style={styles.filterIcon}
           />
         </LinearGradient>
-      )
-        :
-        <View
-          style={[styles.filterButton, { backgroundColor: Colors.bgwhite, marginLeft: 15 }]}
-        >
-          <Image
-            source={imagePaths.filter_icon}
-            style={[styles.filterIcon, { tintColor: Colors.themeColor }]}
-          />
-        </View>
       }
+
     </View>
   );
 };
@@ -85,32 +69,25 @@ const styles = StyleSheet.create({
     width: '86%',
   },
   inputContainer: {
-    backgroundColor: 'red',
     padding: 0,
   },
   inputStyle: {
     color: Colors.searchBarPlac,
     fontFamily: Fonts.MEDIUM,
     marginLeft: Platform.OS == 'ios' ? 3 : 0,
-    fontSize: SH(16),
+    fontSize: SF(16),
   },
-  inputInnerContainer: {
-    backgroundColor: Colors.lightGray,
-    width: '100%',
-    paddingHorizontal: SW(14),
-    height: SH(45),
-    padding: 0,
-  },
+ 
   filterButton: {
-    borderRadius: SW(10),
+    borderRadius: SF(10),
     justifyContent: 'center',
     alignItems: 'center',
-    height: SH(38),
-    width: SH(38),
+    height: SF(38),
+    width: SF(38),
   },
   filterIcon: {
-    height: SH(22),
-    width: SH(22),
+    height: SF(22),
+    width: SF(22),
     resizeMode: 'contain',
   },
 });

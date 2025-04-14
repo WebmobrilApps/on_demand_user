@@ -6,6 +6,7 @@ import {
   AuthImgComp,
   Container,
   CustomToast,
+  InputField,
   InputIcons,
   Spacing,
 } from '../../component';
@@ -94,6 +95,7 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
               handleChange,
               setFieldTouched,
               handleSubmit,
+              setFieldValue,
               values,
               errors,
               touched,
@@ -104,67 +106,32 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
                   <Text style={styles.subtitile}>
                     {t('updatepass.subtitle')}
                   </Text>
-                  <Inputs
-                    placeholder={t('placeholders.createPassword')}
-                    inputStyle={{ color: Colors.textWhite }}
-                    onChangeText={handleChange('password')}
-                    onBlur={() => setFieldTouched('password')}
-                    errorMessage={
-                      touched.password && errors.password && errors.password
-                        ? errors.password
-                        : ''
-                    }
+                  <InputField
+                    placeholder={t('placeholders.password')}
                     value={values.password}
-                    leftIcon={<InputIcons icon={imagePaths.lock_icon} />}
+                    onChangeText={handleChange('password')}
+                    onBlur={() => setFieldValue('password', values.password.trim())}
+                    leftIcon={imagePaths.lock_icon}
+                    errorMessage={touched.password && errors.password && errors.password ? errors.password : ''}
+                    rightIcon={!passwordVisibility ? imagePaths.eye_open : imagePaths.eye_off_icon}
+                    onRightIconPress={() => setpasswordVisibility(!passwordVisibility)}
                     secureTextEntry={passwordVisibility}
-                    rightIcon={
-                      <TouchableOpacity
-                        onPress={() => {
-                          setpasswordVisibility(!passwordVisibility);
-                        }}>
-                        <InputIcons
-                          icon={
-                            !passwordVisibility
-                              ? imagePaths.eye_open
-                              : imagePaths.eye_off_icon
-                          }
-                        />
-                      </TouchableOpacity>
-                    }
-                    placeholderTextColor={Colors.placeHolderColor}
+                    keyboardType={'visible-password'}
                   />
-                  <Spacing space={SH(20)} />
-                  <Inputs
+
+                  <InputField
                     placeholder={t('placeholders.confirmPassword')}
-                    inputStyle={{ color: Colors.textWhite }}
-                    onChangeText={handleChange('cpassword')}
-                    onBlur={() => setFieldTouched('cpassword')}
-                    errorMessage={
-                      touched.cpassword && errors.cpassword && errors.cpassword
-                        ? errors.cpassword
-                        : ''
-                    }
                     value={values.cpassword}
-                    leftIcon={<InputIcons icon={imagePaths.lock_icon} />}
+                    onChangeText={handleChange('cpassword')}
+                    onBlur={() => setFieldValue('cpassword', values.cpassword.trim())}
+                    leftIcon={imagePaths.lock_icon}
+                    errorMessage={touched.cpassword && errors.cpassword && errors.cpassword ? errors.cpassword : ''}
+                    rightIcon={!cpasswordVisibility ? imagePaths.eye_open : imagePaths.eye_off_icon}
+                    onRightIconPress={() => setcpasswordVisibility(!cpasswordVisibility)}
                     secureTextEntry={cpasswordVisibility}
-                    rightIcon={
-                      <TouchableOpacity
-                        onPress={() => {
-                          setcpasswordVisibility(!cpasswordVisibility);
-                        }}>
-                        <InputIcons
-                          icon={
-                            !cpasswordVisibility
-                              ? imagePaths.eye_open
-                              : imagePaths.eye_off_icon
-                          }
-                        />
-                      </TouchableOpacity>
-                    }
-                    placeholderTextColor={Colors.placeHolderColor}
+                    keyboardType={'visible-password'}
                   />
                 </View>
-
                 <Buttons
                   buttonStyle={styles.buttonContainer}
                   textColor={Colors.themeColor}

@@ -5,6 +5,7 @@ import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
 import android.os.Bundle;
+import android.content.pm.ActivityInfo
 
 class MainActivity : ReactActivity() {
 
@@ -15,6 +16,7 @@ class MainActivity : ReactActivity() {
   override fun getMainComponentName(): String = "Ssnap"
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(null)
+    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
   }
   /**
    * Returns the instance of the [ReactActivityDelegate]. We use [DefaultReactActivityDelegate]

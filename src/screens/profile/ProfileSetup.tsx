@@ -11,21 +11,22 @@ import {
   Container,
   ImageLoader,
   Spacing,
-  Buttons
+  Buttons,
+  InputField
 } from '../../component';
-import {Colors, Fonts, regex, SF, SH, SW} from '../../utils';
-import {useNavigation} from '@react-navigation/native';
+import { Colors, Fonts, regex, SF, SH, SW } from '../../utils';
+import { useNavigation } from '@react-navigation/native';
 import imagePaths from '../../assets/images';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import VectorIcon from '../../component/VectoreIcons';
 import Inputs from '../../component/Input';
-import {Formik} from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 type ProfileSetupProps = {};
-const ProfileSetup: React.FC<ProfileSetupProps> = ({}) => {
-  const {t} = useTranslation();
+const ProfileSetup: React.FC<ProfileSetupProps> = ({ }) => {
+  const { t } = useTranslation();
   const navigation = useNavigation<any>();
   const validationSchema = Yup.object().shape({
     fname: Yup.string()
@@ -48,7 +49,7 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({}) => {
           navigation.goBack();
         }}
         Iconname="arrowleft"
-        rightOnPress={() => {}}
+        rightOnPress={() => { }}
         headerStyle={styles.header}
       />
       <KeyboardAwareScrollView
@@ -84,71 +85,53 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({}) => {
               email: '',
             }}
             validationSchema={validationSchema}
-            onSubmit={(values, {resetForm}) => {
+            onSubmit={(values, { resetForm }) => {
               // btnSignup(values, resetForm);
             }}>
             {({
               handleChange,
               setFieldTouched,
               handleSubmit,
+              setFieldValue,
               values,
               errors,
               touched,
             }) => (
               <>
-                <Inputs
-                  placeholder={''}
-                  inputStyle={styles.inputText}
-                  onChangeText={handleChange('fname')}
-                  onBlur={() => setFieldTouched('fname')}
-                  value={values.fname}
-                  errorMessage={
-                    touched.fname && errors.fname && errors.fname
-                      ? errors.fname
-                      : ''
-                  }
+
+                <InputField
                   label={t('placeholders.fullname')}
-                  inputContainerStyle={styles.inputContainer}
-                  inputType="default"
-                  placeholderTextColor={Colors.placeHolderColor}
+                  value={values.fname}
+                  onChangeText={handleChange('fname')}
+                  onBlur={() => setFieldValue('fname', values.fname.trim())}
+                  errorMessage={touched.fname && errors.fname && errors.fname ? errors.fname : ''}
+                  keyboardType="default"
+                  color={Colors.textAppColor}
+                  textColor={Colors.textAppColor}
                 />
-
-                <Spacing space={SH(20)} />
-                <Inputs
-                  placeholder={''}
-                  inputStyle={styles.inputText}
-                  onChangeText={handleChange('mobileno')}
-                  onBlur={() => setFieldTouched('mobileno')}
-                  value={values.mobileno}
-                  errorMessage={
-                    touched.mobileno && errors.mobileno && errors.mobileno
-                      ? errors.mobileno
-                      : ''
-                  }
-                  inputType="number-pad"
+                <InputField
                   label={t('placeholders.mobileno')}
-                  inputContainerStyle={styles.inputContainer}
+                  value={values.mobileno}
+                  onChangeText={handleChange('mobileno')}
+                  onBlur={() => setFieldValue('mobileno', values.mobileno.trim())}
+                  errorMessage={touched.mobileno && errors.mobileno && errors.mobileno ? errors.mobileno : ''}
+                  keyboardType={'number-pad'}
+                  color={Colors.textAppColor}
+                  textColor={Colors.textAppColor}
                 />
-                <Spacing space={SH(20)} />
 
-                <Inputs
-                  placeholder={t('placeholders.email')}
-                  inputStyle={styles.inputText}
-                  onChangeText={handleChange('email')}
-                  onBlur={() => setFieldTouched('email')}
-                  inputType="email-address"
-                  value={values.email}
-                  errorMessage={
-                    touched.email && errors.email && errors.email
-                      ? errors.email
-                      : ''
-                  }
-                  placeholderTextColor={Colors.placeHolderColor}
-            
+                <InputField
                   label={t('placeholders.emailId')}
-                  inputContainerStyle={styles.inputContainer}
+                  value={values.email}
+                  onChangeText={handleChange('email')}
+                  onBlur={() => setFieldValue('email', values.email.trim())}
+                  errorMessage={touched.email && errors.email && errors.email ? errors.email : ''}
+                  keyboardType={'email-address'}
+                  color={Colors.textAppColor}
+                  textColor={Colors.textAppColor}
                 />
-                <Spacing space={SH(25)} />
+               
+                <Spacing space={SH(20)} />
                 <View style={styles.addressContainer}>
                   <View style={styles.addressInfo}>
                     <Text style={styles.addressName}>John Kevin</Text>
@@ -173,7 +156,7 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({}) => {
                     //   handleSubmit();
                     Keyboard.dismiss();
                   }}
-                  // isLoading={true}
+                // isLoading={true}
                 />
 
                 <Buttons
@@ -184,7 +167,7 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({}) => {
                     handleSubmit();
                     Keyboard.dismiss();
                   }}
-                  // isLoading={true}
+                // isLoading={true}
                 />
               </>
             )}
@@ -216,18 +199,18 @@ const styles = StyleSheet.create({
     marginBottom: SH(20),
   },
   userConImage: {
-    width: SH(70),
-    height: SH(70),
+    width: SF(70),
+    height: SF(70),
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,
     borderColor: Colors.borderColor,
-    borderRadius: SH(68) / 2,
+    borderRadius: SF(35),
   },
   userImage: {
-    width: SH(66),
-    height: SH(66),
-    borderRadius: SH(66) / 2,
+    width: SF(66),
+    height: SF(66),
+    borderRadius: SF(33),
   },
   editIcon: {
     position: 'absolute',
@@ -288,7 +271,7 @@ const styles = StyleSheet.create({
     width: '40%',
     marginTop: 15,
     alignSelf: 'flex-end',
-    borderRadius:8
+    borderRadius: 8
   },
   addAddressText: {
     fontSize: SF(10),

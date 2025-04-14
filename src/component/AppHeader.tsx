@@ -39,12 +39,12 @@ const AppHeader: React.FC<AppHeaderProps> = ({
     <View style={[styles.containerView,headerStyle]}>
       <TouchableOpacity
         onPress={onPress}
-        style={[styles.leftContainer, {height: '80%'}]}>
+        style={[styles.leftContainer, {height: '100%'}]}>
         {Iconname && (
           <VectoreIcons
             icon="FontAwesome"
             name={'angle-left'}
-            size={SF(35)}
+            size={SF(30)}
             color={Colors.textHeader}
           />
         )}
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
     alignItems: 'center',
     backgroundColor: '#fff',
-    height: Platform.OS === 'ios' ? SH(50) : SH(50),
+    height: Platform.OS === 'ios' ? SF(50) : SF(50),
     shadowColor: Colors.textBlack,
     shadowOffset: {width: 0, height: 5},
   },

@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import {
-  Alert,
+  Dimensions,
   Image,
   Keyboard,
   Platform,
@@ -13,7 +13,6 @@ import {
   Colors,
   Fonts,
   regex,
-  SCREEN_WIDTH,
   SF,
   SH,
   socialButtons,
@@ -26,24 +25,22 @@ import {
   AuthImgComp,
   Container,
   CustomToast,
-  InputIcons,
+  InputField,
   Spacing,
 } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import Inputs from '../../component/Input';
 import imagePaths from '../../assets/images';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Buttons from '../../component/Button';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../navigation/RouteName';
 import { useTranslation } from 'react-i18next';
-import { ChatContext } from '../ChatProvider';
-import { StorageProvider, useGetUserProfileQuery, useLoginMutation } from '../../services';
-import { useDispatch, useSelector } from 'react-redux';
-import { setToken, setSignupData, RootState } from '../../redux';
+import { StorageProvider, useLoginMutation } from '../../services';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../redux';
 import DeviceInfo from 'react-native-device-info';
-
+const SCREEN_WIDTH =  Dimensions.get('window').width
 const SocialButton = ({
   icon,
   onPress,
@@ -79,7 +76,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
 
   const [login, { isLoading }] = useLoginMutation();
 
-  useProfileUpdate()
+  useProfileUpdate();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -89,18 +86,16 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
       .required(t('validation.emptyPassword')),
   });
 
-
-
   const btnSignIn = async (values: { email: string; password: string }, resetForm: any) => {
 
-    const fcmToken = await StorageProvider.getItem('fcmToken')
+    const fcmToken = await StorageProvider.getItem('fcmToken');
     const device_id = await DeviceInfo.getUniqueId();
-    const device_type = Platform.OS == 'android' ? '1' : '2';
+    const device_type = Platform.OS === 'android' ? '1' : '2';
 
     let userData = {
       email: values.email,
       password: values.password,
-      fcmToken: fcmToken,
+      fcmToken: fcmToken || 'fcm-token',
       device_id: device_id,
       device_type: device_type,
     };
@@ -108,7 +103,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
       const response = await login(userData).unwrap();
       console.log('responseresponse', response);
       if (response.succeeded) {
-        if (response.ResponseBody.is_verified == false) {
+        if (response.ResponseBody.is_verified === false) {
           CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success' });
           navigation.navigate(RouteName.OTP_VERIFY, {
             fromScreen: 'signup',
@@ -119,22 +114,21 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
           // CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
           dispatch(setToken({ token: response.ResponseBody.token }));
           StorageProvider.saveItem('token', response.ResponseBody.token);
-          
-
           setTimeout(() => {
             navigation.navigate(RouteName.HOME);
           }, 200);
 
         }
-        resetForm()
+        resetForm();
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
+        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger' });
       }
     } catch (error) {
       console.error('Login Failed:', error);
     }
   };
+
 
   return (
     <Container isAuth={true} style={styles.container}>
@@ -164,54 +158,30 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
                 values,
                 errors,
                 touched,
+                setFieldValue
               }) => (
                 <>
-                  <Inputs
+                  <InputField
                     placeholder={t('placeholders.email')}
-                    inputStyle={{ color: Colors.textWhite }}
-                    onChangeText={handleChange('email')}
-                    onBlur={() => setFieldTouched('email')}
                     value={values.email}
-                    inputType="email-address"
-                    errorMessage={
-                      touched.email && errors.email && errors.email
-                        ? errors.email
-                        : ''
-                    }
-                    leftIcon={<InputIcons icon={imagePaths.email_icon} />}
-                    placeholderTextColor={Colors.placeHolderColor}
+                    onChangeText={handleChange('email')}
+                    onBlur={() => setFieldValue('email', values.email.trim())}
+                    leftIcon={imagePaths.email_icon}
+                    errorMessage={touched.email && errors.email && errors.email ? errors.email : ''}
+                    keyboardType={'email-address'}
                   />
 
-                  <Spacing space={SH(20)} />
-
-                  <Inputs
+                  <InputField
                     placeholder={t('placeholders.password')}
-                    inputStyle={{ color: Colors.textWhite }}
+                    value={values.password}
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
-                    errorMessage={
-                      touched.password && errors.password && errors.password
-                        ? errors.password
-                        : ''
-                    }
-                    value={values.password}
-                    leftIcon={<InputIcons icon={imagePaths.lock_icon} />}
+                    leftIcon={imagePaths.lock_icon}
+                    errorMessage={touched.password && errors.password && errors.password ? errors.password : ''}
+                    rightIcon={!passwordVisibility ? imagePaths.eye_open : imagePaths.eye_off_icon}
+                    onRightIconPress={() => setpasswordVisibility(!passwordVisibility)}
                     secureTextEntry={passwordVisibility}
-                    rightIcon={
-                      <TouchableOpacity
-                        onPress={() => {
-                          setpasswordVisibility(!passwordVisibility);
-                        }}>
-                        <InputIcons
-                          icon={
-                            !passwordVisibility
-                              ? imagePaths.eye_open
-                              : imagePaths.eye_off_icon
-                          }
-                        />
-                      </TouchableOpacity>
-                    }
-                    placeholderTextColor={Colors.placeHolderColor}
+                    keyboardType={'visible-password'}
                   />
 
                   <Spacing space={SH(20)} />
@@ -252,8 +222,8 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
                       <SocialButton
                         key={index}
                         icon={button.icon}
-                        width={(SCREEN_WIDTH * 0.4) / 4}
-                        iconSize={SH(26)}
+                        width={SF(40)}
+                        iconSize={SF(26)}
                         onPress={button.onPress}
                       />
                     ))}
@@ -285,7 +255,7 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ffffff",
+    backgroundColor: '#ffffff',
   },
   errorText: {
     color: 'red',
@@ -337,7 +307,7 @@ const styles = StyleSheet.create({
   },
   socialIconContainer: {
     flexDirection: 'row',
-    width: SCREEN_WIDTH * 0.35,
+    // width: SCREEN_WIDTH * 0.35,
     alignSelf: 'center',
     justifyContent: 'space-between',
   },

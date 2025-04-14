@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { AppHeader, Container, ImageLoader, LogoutPopup, ProfileList } from '../../component';
 import { Colors, Fonts, SF, SH, SW, useDisableGestures } from '../../utils';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
@@ -137,18 +137,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   userConImage: {
-    width: SH(70),
-    height: SH(70),
+    width: SF(70),
+    height: SF(70),
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,
     borderColor: Colors.borderColor,
-    borderRadius: SH(68) / 2,
+    borderRadius: SF(68) / 2,
   },
   userImage: {
-    width: SH(66),
-    height: SH(66),
-    borderRadius: SH(66) / 2,
+    width: SF(66),
+    height: SF(66),
+    borderRadius: SF(66) / 2,
   },
   userDetailsContainer: {
     width: '60%',
@@ -163,9 +163,9 @@ const styles = StyleSheet.create({
     marginTop: SH(2),
   },
   editProfileIcon: {
-    width: SH(40),
-    height: SH(40),
-    borderRadius: SH(10),
+    width: SF(40),
+    height: SF(40),
+    borderRadius: SF(10),
   },
   separator: {
     height: SH(15),

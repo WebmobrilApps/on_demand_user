@@ -29,7 +29,7 @@ export default ProfileList;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.themelight,
-    height: SH(45),
+    height: SF(45),
     justifyContent: 'space-between',
     paddingRight: SW(15),
     paddingLeft: SW(25),
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     color: Colors.textAppColor,
   },
   icon: {
-    height: SH(18),
-    width: SH(18),
+    height: SF(18),
+    width: SF(18),
   },
 });

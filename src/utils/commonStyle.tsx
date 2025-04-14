@@ -1,9 +1,6 @@
-import { ViewStyle } from "react-native";
 
 
 import { StyleSheet } from 'react-native';
-import COLORS from './colors';
-import FONTS from './fonts';
 
 export const commonStyles = StyleSheet.create({
   rowSpaceBetweenCss: {
@@ -19,6 +16,17 @@ export const boxShadow = {
       offsetX: 0,
       offsetY: 7,
       blurRadius: '20',
+      spreadDistance: '0',
+      color: `rgba(0, 0, 0, 0.2)`,
+    },
+  ],
+}
+export const boxShadowlight= {
+  boxShadow: [
+    {
+      offsetX: 0,
+      offsetY: 1,
+      blurRadius: '5',
       spreadDistance: '0',
       color: `rgba(0, 0, 0, 0.2)`,
     },
@@ -44,5 +52,12 @@ export const rowFlexEndCss = {
   flexDirection: "row",
   justifyContent: "flex-end",
   alignItems: 'center'
+}
+
+export const $paddingHorizontal = {
+  paddingHorizontal:'5%'
+}
+export const $marginHorizontal = {
+  marginHorizontal:'5%'
 }
 

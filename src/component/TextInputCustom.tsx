@@ -29,6 +29,7 @@ interface InputFieldProps extends TextInputProps {
     color?: string;
     marginBottom?: DimensionValue,
     marginTop?: DimensionValue,
+    inputContainer?: ViewStyle;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -54,8 +55,9 @@ const InputField: React.FC<InputFieldProps> = ({
     placeholderTextColor = Colors.white,
     textColor = Colors.white,
     color = Colors.white,
-    marginBottom = SH(5),
-    marginTop = SH(5),
+    marginBottom = SH(10),
+    marginTop = SH(10),
+    inputContainer,
     ...props
 }) => {
     const styles = useMemo(
@@ -69,28 +71,28 @@ const InputField: React.FC<InputFieldProps> = ({
                     ...containerStyle,
                 },
                 label: {
-                    fontSize: 14,
+                    fontSize: SF(14),
                     fontWeight: "bold",
-                    marginBottom: 5,
+                    marginBottom: SH(10),
                     color: color,
                 },
                 inputContainer: {
                     flexDirection: "row",
                     alignItems: "center",
                     borderWidth: 1,
-                    // borderColor: errorMessage ? "red" : color,
                     borderColor: color,
-                    borderRadius: 8,
+                    borderRadius: SF(10),
                     paddingHorizontal: 10,
                     paddingVertical: SH(3.6),
                     backgroundColor: isDisabled ? "#f2f2f2" : "transparent",
+                    ...inputContainer
                 },
                 input: {
                     flex: 1,
-                    paddingVertical: Platform.OS === "ios" ? 10 : 8,
+                    paddingVertical: Platform.OS === "ios" ? SF(10) : SF(8),
                     color: textColor,
                     fontSize: SF(14.5),
-                    paddingLeft: SW(10),
+                    paddingLeft: SF(10),
                     fontFamily: Fonts.REGULAR,
                     ...inputStyle,
                 },
@@ -113,7 +115,7 @@ const InputField: React.FC<InputFieldProps> = ({
                 {leftIcon && <View style={{ paddingHorizontal: SF(2) }}>
                     <Image
                         source={leftIcon}
-                        style={{ width: SH(20), height: SH(20), tintColor: color }}
+                        style={{ width: SF(20), height: SF(20), tintColor: color }}
                         resizeMode="contain"
                     />
                 </View>}
@@ -137,7 +139,7 @@ const InputField: React.FC<InputFieldProps> = ({
                     <TouchableOpacity onPress={onRightIconPress}>
                         <Image
                             source={rightIcon}
-                            style={{ width: SH(20), height: SH(20), tintColor: color }}
+                            style={{ width: SF(20), height: SF(20), tintColor: color }}
                             resizeMode="contain"
                         />
                     </TouchableOpacity>

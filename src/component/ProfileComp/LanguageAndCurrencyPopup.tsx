@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    height: SH(54),
+    height: SF(54),
     paddingHorizontal: SW(15),
     borderBottomWidth: 1,
     borderColor: `${Colors.textAppColor}50`,

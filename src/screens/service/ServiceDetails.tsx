@@ -76,12 +76,12 @@ const ServiceDetails: React.FC = () => {
                     <Spacing space={10} />
 
                 </View>
-                <View style={{ paddingHorizontal: 20 }}>
+                <View style={{ paddingHorizontal: '7%' }}>
                     <Spacing space={20} />
                     <HomeSubContainerHeader
                         rightText="View All"
                         marginHori={0}
-                        leftText="Browse all categories"
+                        leftText="Gallery"
                         onClick={() =>
                             navigation.navigate(RouteName.VIEW_ALL, {
                                 title: 'All Categories',
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     headerStyle: { backgroundColor: Colors.bgwhite, marginVertical: SH(10), marginHorizontal: 10, marginBottom: 20 },
     headerTitleStyle: { color: Colors.textHeader, fontSize: SF(18) },
     serviceContainer: { backgroundColor: Colors.themelight, width: '86%', alignSelf: 'center', borderRadius: 10 },
-    serviceImageContainer: { width: '100%', height: SH(150), borderRadius: 10, overflow: 'hidden' },
+    serviceImageContainer: { width: '100%', height: SF(150), borderRadius: 10, overflow: 'hidden' },
     serviceImage: { width: '100%', height: '100%' },
     serviceInfoContainer: { flexDirection: 'row', justifyContent: 'space-between', margin: SW(15) },
     serviceDetails: { width: '63%' },
@@ -168,9 +168,9 @@ const styles = StyleSheet.create({
     alignCenter: { flexDirection: 'row', alignItems: 'center' },
     userReviewHeading: { fontFamily: Fonts.BOLD, fontSize: SW(14), color: Colors.txtAppDarkColor },
     galleryColCont: { width: '48%' },
-    galleryColImga: { height: SH(120), width: '100%', borderRadius: 10 },
+    galleryColImga: { height: SF(120), width: '100%', borderRadius: 10 },
     galleryBottomCont: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 },
-    galleryUpImage: { height: SH(208), width: '100%', borderRadius: 10 }
+    galleryUpImage: { height: SF(208), width: '100%', borderRadius: 10 }
 });
 
 export default ServiceDetails;

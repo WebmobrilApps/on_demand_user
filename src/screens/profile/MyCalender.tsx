@@ -8,17 +8,18 @@ import {
   AppHeader,
   Container,
   MyCalenderItems,
+  Spacing,
 } from '../../component';
-import {Colors,  SH, SW} from '../../utils';
-import {useNavigation} from '@react-navigation/native';
-import {useTranslation} from 'react-i18next';
+import { Colors, SH, SW } from '../../utils';
+import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 
 type MyCalenderProps = {};
-const MyCalender: React.FC<MyCalenderProps> = ({}) => {
-  const {t} = useTranslation();
+const spaceContainer = () => <Spacing space={SH(15)} />;
+const MyCalender: React.FC<MyCalenderProps> = ({ }) => {
+  const { t } = useTranslation();
   const navigation = useNavigation<any>();
-   
   const calenderData = [
     {
       name: 'Facial For Glow',
@@ -69,17 +70,17 @@ const MyCalender: React.FC<MyCalenderProps> = ({}) => {
           navigation.goBack();
         }}
         Iconname="arrowleft"
-        rightOnPress={() => {}}
+        rightOnPress={() => { }}
         headerStyle={styles.header}
       />
 
       <View style={styles.container}>
         <FlatList
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{paddingBottom: SH(90)}}
+          contentContainerStyle={{ paddingBottom: SH(90) }}
           data={calenderData}
-          ItemSeparatorComponent={() => <View style={styles.separator} />}
-          renderItem={({item}) => <MyCalenderItems item={item} />}
+          ItemSeparatorComponent={spaceContainer}
+          renderItem={({ item }) => <MyCalenderItems item={item} />}
           keyExtractor={(item, index) => item.name + index}
           removeClippedSubviews={false}
         />

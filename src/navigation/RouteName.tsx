@@ -20,5 +20,6 @@ const RouteName = {
     SERVICE_LIST:'ServiceList',
     SERVICE_DETAILS:'ServiceDetails',
     SHOP_LIST:'ShopList',
+    SHOP_DETAILS:'ShopDetails',
 };
 export default RouteName;

@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import ImageLoader from '../ImageLoader';
-import { boxShadow, Colors, Fonts, SH, SW } from '../../utils';
+import { boxShadowlight, Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
 import { Source } from 'react-native-fast-image';
 
@@ -15,15 +15,13 @@ interface HomeRecommendedItemsProps {
   image: Source;
   id: string | number;
 }
-
+ 
 const HomeRecommendedItems: React.FC<HomeRecommendedItemsProps> = ({
-  name,
   image,
-  id,
 }) => {
   return (
-    <View style={styles.container}>
-      <View style={[styles.imageContainer,boxShadow]}>
+    <View>
+      <View style={[styles.imageContainer,boxShadowlight]}>
         <ImageLoader source={image} resizeMode="cover" mainImageStyle={styles.imageLoader} />
       </View>
       <Text style={styles.text}>{'Service Name'}</Text>
@@ -37,23 +35,18 @@ const HomeRecommendedItems: React.FC<HomeRecommendedItemsProps> = ({
 export default HomeRecommendedItems;
 
 const styles = StyleSheet.create({
-  container: {
-    marginRight: 10,
-  },
   imageContainer: {
-    shadowRadius: SH(10),
-    backgroundColor: '#ffffff',
-    borderRadius: 30,
+    borderRadius: 10,
   },
   imageLoader: {
-    height: SH(100),
-    width: SH(135),
-    borderRadius: SH(10),
+    height: SF(100),
+    width: SF(135),
+    borderRadius: SF(10),
   },
   text: {
     color: Colors.textAppColor,
     fontFamily: Fonts.MEDIUM,
-    fontSize: SH(13),
+    fontSize: SF(13),
     marginTop: 5,
   },
   ratingContainer: {

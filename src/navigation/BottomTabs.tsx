@@ -1,15 +1,15 @@
 import React  from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import { MessageScreen, ProfileScreen} from '../screens/tab';
 import imagePaths from '../assets/images';
-import {Colors, Fonts, SCREEN_WIDTH, SF, SH, widthPercent} from '../utils';
+import {Colors, Fonts, SF, SH, widthPercent} from '../utils';
 import RouteName from './RouteName';
 import AllUsersList from '../screens/AllUsersList';
 import { HomeScreen, MyBookingScreen } from '../screens';
-
+const SCREEN_WIDTH =  Dimensions.get('window').width
 const BOTTOM_ROUTE = [
   {
     name: RouteName.HOME,
@@ -86,8 +86,8 @@ export default function App() {
         headerShadowVisible: false,
         tabBarStyle: {
           backgroundColor: '#ffffff',
-          height:SH(60),
-          paddingTop:SH(8)
+          height:SF(60),
+          paddingTop:SF(8)
         },
       }}>
       {BOTTOM_ROUTE.map((route) => (

@@ -42,7 +42,7 @@ const MyBookingScreen: React.FC = () => {
           <Text style={styles.dateTime}>{`06-March-2025 ${'\n'}8:00 am - 8:30 am`}</Text>
           <Text style={styles.dateTime}>{`WM Barbershop`}</Text>
           <Text style={styles.dateTime}>{`1893 Cheshire Bridge Rd Ne, 30325`}</Text>
-          <View style={[commonStyles.rowSpaceBetweenCss,{marginTop:7}]}>
+          <View style={[commonStyles.rowSpaceBetweenCss,{marginTop:SF(7)}]}>
             <Text style={styles.price}>{`$1893`}</Text>
             <Buttons
               buttonStyle={styles.bookAgain}
@@ -99,9 +99,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageWrapper: {
-    width: SW(82),
-    height: SH(113),
-    borderRadius: SW(10) / 2,
+    width: SF(82),
+    height: SF(113),
+    borderRadius: SF(10) / 2,
     overflow: 'hidden'
   },
   logo: {
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     flex: 1,
-    paddingLeft: 10
+    paddingLeft: SF(10)
   },
   titleContainer: {
     flexDirection: 'row',
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.bgwhite,
     marginVertical: SH(10),
     marginHorizontal: 10,
-    marginBottom: 20
+    marginBottom: SF(20)
   },
   headerTitleStyle: {
     color: Colors.textHeader,
@@ -151,10 +151,10 @@ const styles = StyleSheet.create({
   },
   bookAgain: {
     backgroundColor: Colors.themeColor,
-    height: SH(25),
+    height: SF(25),
     width: '40%',
     alignSelf: 'flex-end',
-    borderRadius: 6
+    borderRadius: SF(6)
   },
   bookAgainText: {
     fontSize: SF(10),

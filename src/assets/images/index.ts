@@ -18,7 +18,6 @@ const imagePaths = {
   pass_update_img:require('./pass_update_img.png'),
   mobile_icon:require('./mobile_icon.png'),
   app_icon:require('./app_icon.png'),
-  
   heart_icon:require('./heart_icon.png'),
   calender_icon:require('./calender_icon.png'),
   notification_icon:require('./notification_icon.png'),
@@ -26,6 +25,7 @@ const imagePaths = {
   filter_icon:require('./filter_icon.png'),
   banner1:require('./banner1.png'),
   banner2:require('./plumb_img.png'),
+  Search:require('./Search.png'),
 
   carpentry:require('./carpentry.png'),
   cleaning:require('./cleaning.png'),
@@ -43,6 +43,10 @@ const imagePaths = {
   recomanded2:require('./recomanded2.jpeg'),
   recomanded3:require('./recomanded3.jpeg'),
   user_img:require('./user_img.png'),
+  user:require('./user.jpeg'),
+  user1:require('./user1.jpeg'),
+  user2:require('./user2.jpeg'),
+  user4:require('./user4.jpeg'),
   cutting:require('./cutting.jpeg'),
   edit_profile:require('./edit_profile.png'),
   right_icon:require('./right_icon.png'),
@@ -52,5 +56,13 @@ const imagePaths = {
   filter_h:require('./filter_h.png'),
   US_flag:require('./US_flag.png'),
   star_f:require('./star_f.png'),
+
+
+  barber:require('./barber.png'),
+  barber1:require('./barber1.jpeg'),
+  barber2:require('./barber2.jpeg'),
+  barber3:require('./barber3.jpeg'),
+  barber4:require('./barber4.jpeg'),
+  barber5:require('./barber5.png'),
 };
 export default imagePaths;

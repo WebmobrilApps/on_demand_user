@@ -22,36 +22,18 @@ import {
   RatingRiview,
   ServiceDetails,
   ServiceList,
+  ShopDetails,
   ShopList,
   SplashScreen,
   ViewAll,
 } from '../screens';
-{
-  /* learning---------------- */
-}
+
 import AllUsersList from '../screens/AllUsersList';
 import ChatScreen from '../screens/ChatScreen';
 import { navigationRef } from '../services/NavigationService';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { AppHeader, HomeHeader, HomeSearchBar } from '../component';
-import VectorIcon from '../component/VectoreIcons';
-import { Colors, SW } from '../utils';
-{
-  /* learning---------------- */
-}
-const Stack = createNativeStackNavigator();
-const headerOption = {
-  headerShown: true,
-  title: "",
-  headerBackTitle: "",
-  headerBackTitleVisible: false,
-  headerShadowVisible: false,
-  headerBackVisible: false, // Hides the back button
-  headerStyle: { backgroundColor: '#ffffff' },
-  headerTintColor: '#000000', // Change text color
-  headerLeft: () => null
 
-}
+const Stack = createNativeStackNavigator();
+
 export const NavigatinScreens = () => {
   return (
     <NavigationContainer ref={navigationRef}>
@@ -59,6 +41,7 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={'SplashScreen'}  component={SplashScreen} />
         <Stack.Screen name={RouteName.HOME} component={Bottomtab} />
         <Stack.Screen name={RouteName.SHOP_LIST} component={ShopList} />
+        <Stack.Screen name={RouteName.SHOP_DETAILS} component={ShopDetails} />
         {/* auth-====== */}
         <Stack.Screen name={RouteName.LOGIN} component={LoginScreen} />
         <Stack.Screen name={RouteName.SIGNUP} component={SignupScreen} />

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ImageProps, Pressable } from 'react-native';
+import { View, Text, StyleSFeet, Image, ImageProps, Pressable, StyleSheet } from 'react-native';
 import React from 'react';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
@@ -70,22 +70,22 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   logo: {
-    width: SW(34),
-    height: SW(34),
-    borderRadius: SW(34) / 2,
+    width: SF(34),
+    height: SF(34),
+    borderRadius: SF(34) / 2,
   },
   verifiedIcon: {
-    width: SW(16),
-    height: SW(16),
+    width: SF(16),
+    height: SF(16),
   },
   text: {
     color: Colors.textAppColor,
     fontFamily: Fonts.MEDIUM,
-    fontSize: SH(13),
-    width: SW(130),
+    fontSize: SF(13),
+    width: SF(130),
   },
   ratingContainer: {
-    width: SW(90),
+    width: SF(90),
     backgroundColor: 'transparent',
     flexDirection: 'row',
     alignItems: 'center',
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     color: Colors.textAppColor,
     fontFamily: Fonts.REGULAR,
     marginLeft: 5,
-    fontSize: SH(12),
+    fontSize: SF(12),
   },
   locationContainer: {
     width: SW(90),
@@ -106,22 +106,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   locationIcon: {
-    height: SH(15),
-    width: SH(15),
+    height: SF(15),
+    width: SF(15),
     resizeMode: 'contain',
     tintColor: Colors.textAppColor,
   },
   addtext: {
     color: Colors.textAppColor,
-    fontFamily: Fonts.REGULAR,
+    fontFamily: Fonts.MEDIUM,
     marginLeft: 5,
-    fontSize: SH(12),
+    fontSize: SF(12),
   },
   closetext: {
     color: Colors.gray2,
     fontFamily: Fonts.MEDIUM,
     marginLeft: 5,
-    fontSize: SH(12),
+    fontSize: SF(12),
   },
   dotText: {
     fontFamily: Fonts.EXTRA_BOLD,
@@ -139,8 +139,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   moneyIcon: {
-    height: SH(15),
-    width: SH(15),
+    height: SF(15),
+    width: SF(15),
     resizeMode: 'contain',
     tintColor: Colors.textAppColor,
   },
@@ -149,8 +149,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   clockIcon: {
-    height: SH(12),
-    width: SH(12),
+    height: SF(12),
+    width: SF(12),
     resizeMode: 'contain',
     tintColor: Colors.gray2,
   },

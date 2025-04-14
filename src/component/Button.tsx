@@ -41,7 +41,7 @@ const Buttons: React.FC<ButtonsProps> = ({
       StyleSheet.create({
         buttonStyle: {
           backgroundColor: disable ? "#A9A9A9" : Colors.themeColor,
-          height: SH(48),
+          height: SF(48),
           width: "100%",
           borderRadius: 10,
           justifyContent: "center",
@@ -77,7 +77,7 @@ const Buttons: React.FC<ButtonsProps> = ({
       disabled={disable}
     >
       {isLoading ? (
-        <ActivityIndicator size="small" color={textColor || Colors.themeColor} />
+        <ActivityIndicator size="large" color={textColor || Colors.themeColor} />
       ) : (
         <View style={styles.buttonViewStyle}>
           {icon && <View style={styles.LeftImageViewStyle}>{icon}</View>}
