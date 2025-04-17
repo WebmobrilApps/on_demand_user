@@ -9,7 +9,7 @@ import {
   ViewStyle,
   View,
 } from "react-native";
-import { Fonts, SF, SH, SW, Colors, boxShadow } from "../utils";
+import { Fonts, SF, SH, SW, Colors, boxShadow, boxShadowlight } from "../utils";
 
 type ButtonsProps = {
   title?: string;
@@ -70,7 +70,7 @@ const Buttons: React.FC<ButtonsProps> = ({
     <Pressable
       onPress={!disable && !isLoading ? onPress : undefined}
       style={({ pressed }) => [
-        styles.buttonStyle,boxShadow,
+        styles.buttonStyle,boxShadowlight,
         buttonStyle,
         pressed && { opacity: 0.8 }, // Slight fade effect when pressed
       ]}

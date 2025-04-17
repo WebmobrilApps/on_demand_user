@@ -13,6 +13,9 @@ import {
 import Bottomtab from './BottomTabs';
 import { NavigationContainer } from '@react-navigation/native';
 import {
+  BookAppointment,
+  BookingDetails,
+  BookingPrivacyPolicy,
   ChangePassword,
   LanguageAndCurrency,
   MyCalender,
@@ -20,6 +23,7 @@ import {
   PaymentHistory,
   ProfileSetup,
   RatingRiview,
+  ReportShop,
   ServiceDetails,
   ServiceList,
   ShopDetails,
@@ -66,6 +70,10 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={RouteName.RATING_REVIEW} component={RatingRiview} />
         <Stack.Screen name={RouteName.NOTIFICATION_ALERT} component={NotificationAndAlert} />
         <Stack.Screen name={RouteName.LANG_CURRENCY} component={LanguageAndCurrency} />
+        <Stack.Screen name={RouteName.BOOKING_PRI_POLI} component={BookingPrivacyPolicy} />
+        <Stack.Screen name={RouteName.REPORT_SHOP} component={ReportShop} />
+        <Stack.Screen name={RouteName.BOOK_APPOINT} component={BookAppointment} />
+        <Stack.Screen name={RouteName.BOOK_DETAILS} component={BookingDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -21,5 +21,10 @@ const RouteName = {
     SERVICE_DETAILS:'ServiceDetails',
     SHOP_LIST:'ShopList',
     SHOP_DETAILS:'ShopDetails',
+    CHOOSE_LANG:'ChooseLanguage',
+    BOOKING_PRI_POLI:'BookingPrivacyPolicy',
+    REPORT_SHOP:'ReportShop',
+    BOOK_APPOINT:'BookAppointment',
+    BOOK_DETAILS:'BookingDetails',
 };
 export default RouteName;

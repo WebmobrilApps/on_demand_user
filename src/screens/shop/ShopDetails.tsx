@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AppHeader, Container, ImageLoader, Spacing, VectoreIcons } from '../../component';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
 import { useNavigation } from '@react-navigation/native';
-import { Portfolio, Reviews, Services } from './component';
+import { Details, Portfolio, Reviews, Services } from './component';
 
 interface shopProps { }
 const shopDetailTabs = [
@@ -19,54 +19,69 @@ const ShopDetails: React.FC<shopProps> = () => {
     const [activeTab, setActiveTabs] = useState<string>('services');
     return (
         <Container isPadding={false}>
+              
             <Spacing />
-            <AppHeader
-                headerTitle={''}
-                onPress={() => {
+            <View style={{
+                flexDirection: "row", alignItems: "center", paddingHorizontal: "9%", paddingBottom: SH(10), borderBottomWidth: activeTab === 'details' ? 0.6 : 0,
+                borderColor: '#3D3D3D40',
+            }}>
+                <TouchableOpacity onPress={() => {
                     navigation.goBack();
-                }}
-                Iconname="arrowleft"
-                rightOnPress={() => { }}
-                headerStyle={styles.header}
-            />
+                }}>
+                    <VectoreIcons
+                        icon="FontAwesome"
+                        name={'angle-left'}
+                        size={SF(30)}
+                        color={Colors.textHeader}
+                    />
+                </TouchableOpacity>
+                {activeTab === 'details' ? <View style={[styles.shopTextBlock, { marginLeft: 20 }]}>
+                    <Text style={styles.shopTitle}>
+                        WM Barbershop <Text style={styles.shopCount}>(250)</Text>
+                    </Text>
+                </View> : ''}
+            </View>
+
             <ScrollView
                 bounces={false}
                 contentContainerStyle={styles.scrollContainer}
                 showsVerticalScrollIndicator={false}
             >
-                <View style={styles.bannerContainer}>
-                    <ImageLoader
-                        source={imagePaths.barber5}
-                        mainImageStyle={styles.bannerImage}
-                        resizeMode="contain"
-                    />
-                </View>
+                {activeTab !== 'details' && <>
+                    <View style={styles.bannerContainer}>
+                        <ImageLoader
+                            source={imagePaths.barber5}
+                            mainImageStyle={styles.bannerImage}
+                            resizeMode="contain"
+                        />
+                    </View>
 
-                <View style={styles.shopInfoContainer}>
-                    <View style={styles.shopTextBlock}>
-                        <Text style={styles.shopTitle}>
-                            WM Barbershop <Text style={styles.shopCount}>(250)</Text>
-                        </Text>
-                        <Text style={styles.shopAddress}>
-                            1893 Cheshire Bridge Rd Ne, 30325 {'\n'}Home Service
-                        </Text>
+                    <View style={styles.shopInfoContainer}>
+                        <View style={styles.shopTextBlock}>
+                            <Text style={styles.shopTitle}>
+                                WM Barbershop <Text style={styles.shopCount}>(250)</Text>
+                            </Text>
+                            <Text style={styles.shopAddress}>
+                                1893 Cheshire Bridge Rd Ne, 30325 {'\n'}Home Service
+                            </Text>
+                        </View>
+                        <View style={styles.iconsBlock}>
+                            <VectoreIcons
+                                icon="Feather"
+                                name="share-2"
+                                size={SF(20)}
+                                color={Colors.black}
+                            />
+                            <VectoreIcons
+                                icon="FontAwesome"
+                                name="heart-o"
+                                size={SF(20)}
+                                color={Colors.black}
+                                style={styles.heartIcon}
+                            />
+                        </View>
                     </View>
-                    <View style={styles.iconsBlock}>
-                        <VectoreIcons
-                            icon="Feather"
-                            name="share-2"
-                            size={SF(20)}
-                            color={Colors.black}
-                        />
-                        <VectoreIcons
-                            icon="FontAwesome"
-                            name="heart-o"
-                            size={SF(20)}
-                            color={Colors.black}
-                            style={styles.heartIcon}
-                        />
-                    </View>
-                </View>
+                </>}
                 {/* tabs=========== */}
                 <View style={styles.tabBar}>
                     {
@@ -77,11 +92,11 @@ const ShopDetails: React.FC<shopProps> = () => {
                         })
                     }
                 </View>
-                <Spacing />
+                {activeTab !== 'details' && <Spacing />}
                 {activeTab === 'services' && <Services />}
                 {activeTab === 'reviews' && <Reviews />}
                 {activeTab === 'portfolio' && <Portfolio />}
-          
+                {activeTab === 'details' && <Details/>}
                 {/* pages=========== */}
 
             </ScrollView>
@@ -148,7 +163,7 @@ const styles = StyleSheet.create({
     tabBar: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        paddingVertical: SH(20),
+        paddingVertical: SH(10),
         backgroundColor: Colors.white,
         borderBottomWidth: 0.6,
         borderColor: '#3D3D3D40',

@@ -16,6 +16,10 @@ export {default as NoInternet} from './NoInternet';
 export {default as Buttons} from './Button';
 export {default as CustomToast} from './CustomToast';
 export {default as InputField} from './TextInputCustom';
+export {default as DropdownComponent} from './DropdownComponent';
+export {default as Calender} from './Calender';
+export {default as BookingSlots} from './BookingSlots';
+export {default as UserprofileView} from './UserprofileView';
 
 export * from './HomeComp';
 export * from './ProfileComp'

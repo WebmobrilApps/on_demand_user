@@ -11,7 +11,8 @@ import {
     TextInputProps,
     Image,
     ImageSourcePropType,
-    DimensionValue
+    DimensionValue,
+    I18nManager
 } from "react-native";
 import { Colors, Fonts, SF, SH, SW } from "../utils";
 
@@ -93,6 +94,7 @@ const InputField: React.FC<InputFieldProps> = ({
                     color: textColor,
                     fontSize: SF(14.5),
                     paddingLeft: SF(10),
+                    textAlign:I18nManager.isRTL ? 'right':'left',
                     fontFamily: Fonts.REGULAR,
                     ...inputStyle,
                 },

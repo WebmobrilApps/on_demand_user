@@ -1,8 +1,10 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import React, { FC } from 'react';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
 import { Buttons } from '../../../component';
 import AvailTeamMember from './AvailTeamMember';
+import { useNavigation } from '@react-navigation/native';
+import RouteName from '../../../navigation/RouteName';
 
 const services = [
     { id: 1, name: 'Haircut + Beard ✈️', price: '$55.00', time: '30m' },
@@ -19,7 +21,7 @@ interface servicesInterface {
 }
 const SeparatorComponent = () => <View style={styles.itemSepearator} />;
 const Services: FC<servicesInterface> = ({ }) => {
-
+    const navigation = useNavigation<any>();
     const renderItem = ({ item }: any) => (
         <View style={styles.serviceItem}>
             <View>
@@ -36,9 +38,7 @@ const Services: FC<servicesInterface> = ({ }) => {
                     textColor={Colors.textWhite}
                     title={'Book'}
                     buttonTextStyle={styles.bookText}
-                    onPress={() => {
-                        // closeModal()
-                    }}
+                    onPress={() => { navigation.navigate(RouteName.BOOK_APPOINT)}}
                 />
             </View>
         </View>
@@ -54,6 +54,7 @@ const Services: FC<servicesInterface> = ({ }) => {
                 showsVerticalScrollIndicator={false}
             />
             <View style={styles.paddingHoriTeamMeme}>
+
                 <AvailTeamMember />
             </View>
         </>

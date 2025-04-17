@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, FlatList, StyleSheet, Pressable, Keyboard } from 'react-native';
 import { Colors, SH, SW, Fonts, SF, boxShadow, rowSpaceBetweenCss, commonStyles } from '../../utils';
 import imagePaths from '../../assets/images';
@@ -6,6 +6,7 @@ import { AppHeader, Buttons, Container, ImageLoader, Spacing } from '../../compo
 import { useNavigation } from '@react-navigation/native';
 import StarRating from 'react-native-star-rating-widget';
 import RouteName from '../../navigation/RouteName';
+import { TabTop } from './component';
 
 const nearByData = [
   {
@@ -30,19 +31,20 @@ const nearByData = [
 
 const MyBookingScreen: React.FC = () => {
   const navigation = useNavigation<any>();
+  const [activeTab, setActiveTabs] = useState<number>(1);
 
   const renderItem = ({ item }: { item: any }) => (
-    <Pressable onPress={() => navigation.navigate(RouteName.SERVICE_DETAILS)} style={styles.serviceContainer}>
+    <Pressable onPress={() => navigation.navigate(RouteName.BOOK_DETAILS)} style={styles.serviceContainer}>
       <View style={styles.header}>
         <View style={[styles.imageWrapper, boxShadow]}>
-          <ImageLoader source={{uri:item.image}} resizeMode="cover" mainImageStyle={styles.logo} />
+          <ImageLoader source={{ uri: item.image }} resizeMode="cover" mainImageStyle={styles.logo} />
         </View>
         <View style={styles.infoContainer}>
-          <Text style={styles.text}>Haircut + Beard <Text style={{color:Colors.lightGraytext}}>With Juana</Text></Text>
+          <Text style={styles.text}>Haircut + Beard <Text style={{ color: Colors.lightGraytext }}>With Juana</Text></Text>
           <Text style={styles.dateTime}>{`06-March-2025 ${'\n'}8:00 am - 8:30 am`}</Text>
           <Text style={styles.dateTime}>{`WM Barbershop`}</Text>
           <Text style={styles.dateTime}>{`1893 Cheshire Bridge Rd Ne, 30325`}</Text>
-          <View style={[commonStyles.rowSpaceBetweenCss,{marginTop:SF(7)}]}>
+          <View style={[commonStyles.rowSpaceBetweenCss, { marginTop: SF(7) }]}>
             <Text style={styles.price}>{`$1893`}</Text>
             <Buttons
               buttonStyle={styles.bookAgain}
@@ -68,6 +70,9 @@ const MyBookingScreen: React.FC = () => {
         headerStyle={styles.headerStyle}
         titleStyle={styles.headerTitleStyle}
       />
+      <View style={styles.tabView}>
+        <TabTop activeTab={activeTab} changeTab={(val) => setActiveTabs(val)} />
+      </View>
       <FlatList
         contentContainerStyle={styles.flatListContainer}
         data={nearByData}
@@ -158,8 +163,9 @@ const styles = StyleSheet.create({
   },
   bookAgainText: {
     fontSize: SF(10),
-    fontFamily:Fonts.SEMI_BOLD
+    fontFamily: Fonts.SEMI_BOLD
   },
+  tabView: { paddingHorizontal: SW(20), marginBottom: SH(30) }
 });
 
 export default MyBookingScreen;

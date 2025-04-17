@@ -64,5 +64,7 @@ const imagePaths = {
   barber3:require('./barber3.jpeg'),
   barber4:require('./barber4.jpeg'),
   barber5:require('./barber5.png'),
+  map_img:require('./map_img.png'),
+  phone_img:require('./phone_img.png'),
 };
 export default imagePaths;

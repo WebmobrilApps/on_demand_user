@@ -5,3 +5,4 @@ export {default as Reviews} from './Reviews';
 export {default as Shops} from './Shops';
 export {default as AvailTeamMember} from './AvailTeamMember';
 export {default as Portfolio} from './Portfolio';
+export {default as Details} from './Details';

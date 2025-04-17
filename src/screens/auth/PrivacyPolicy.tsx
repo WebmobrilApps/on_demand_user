@@ -15,8 +15,7 @@ import {
 import {
   Colors,
   Fonts,
-  regex,
-  SCREEN_WIDTH,
+  regex, 
   SF,
   SH,
   SW,
@@ -97,65 +96,5 @@ export default PrivacyPolicy;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bgwhite,
-  },
-  errorText: {
-    color: 'red',
-    fontSize: SF(12),
-  },
-  submitButton: {
-    color: Colors.textWhite,
-    fontSize: SF(16),
-    fontWeight: 'bold',
-    paddingVertical: SH(10),
-    paddingHorizontal: SW(20),
-    backgroundColor: Colors.themeColor,
-    borderRadius: SH(5),
-    textAlign: 'center',
-  },
-  forgotPassTxt: {
-    color: Colors.textWhite,
-    fontFamily: Fonts.REGULAR,
-    fontSize: SF(14),
-    alignSelf: 'flex-end',
-    textAlign: 'right',
-  },
-  lineViewContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 6,
-  },
-  leftRightLine: {
-    height: 2,
-    backgroundColor: Colors.white,
-    width: SCREEN_WIDTH * 0.39,
-  },
-  ortext: {
-    color: Colors.textWhite,
-    fontFamily: Fonts.SEMI_BOLD,
-    fontSize: SF(14),
-    alignSelf: 'flex-end',
-    textAlign: 'right',
-  },
-  socialButton: {
-    backgroundColor: 'transparent',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: SW(10),
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-  },
-  socialIconContainer: {
-    flexDirection: 'row',
-    width: SCREEN_WIDTH * 0.35,
-    alignSelf: 'center',
-    justifyContent: 'space-between',
-  },
-  dontHaveAccTxt: {
-    color: Colors.textWhite,
-    fontFamily: Fonts.REGULAR,
-    fontSize: SF(14),
-    textAlign: 'center',
   },
 });

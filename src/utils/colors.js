@@ -22,7 +22,8 @@ export const Colors = {
   borderColor:'#C9C9C9',
   switchOff:'#B3B3B3',
   lightGray:'#F2F2F2',
-  lightGraytext:'#999999'
+  lightGraytext:'#999999',
+  successColor:'#52B46B',
   
 };
 export default Colors;
