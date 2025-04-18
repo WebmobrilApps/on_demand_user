@@ -26,5 +26,6 @@ const RouteName = {
     REPORT_SHOP:'ReportShop',
     BOOK_APPOINT:'BookAppointment',
     BOOK_DETAILS:'BookingDetails',
+    FILTER_SCREEN:'FilterScreen',
 };
 export default RouteName;

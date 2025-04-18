@@ -17,6 +17,7 @@ import {
   BookingDetails,
   BookingPrivacyPolicy,
   ChangePassword,
+  FilterScreen,
   LanguageAndCurrency,
   MyCalender,
   NotificationAndAlert,
@@ -42,8 +43,8 @@ export const NavigatinScreens = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator screenOptions={{headerShown:false}}>
-        <Stack.Screen name={'SplashScreen'}  component={SplashScreen} />
         <Stack.Screen name={RouteName.HOME} component={Bottomtab} />
+        <Stack.Screen name={'SplashScreen'}  component={SplashScreen} />
         <Stack.Screen name={RouteName.SHOP_LIST} component={ShopList} />
         <Stack.Screen name={RouteName.SHOP_DETAILS} component={ShopDetails} />
         {/* auth-====== */}
@@ -74,6 +75,7 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={RouteName.REPORT_SHOP} component={ReportShop} />
         <Stack.Screen name={RouteName.BOOK_APPOINT} component={BookAppointment} />
         <Stack.Screen name={RouteName.BOOK_DETAILS} component={BookingDetails} />
+        <Stack.Screen name={RouteName.FILTER_SCREEN} component={FilterScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

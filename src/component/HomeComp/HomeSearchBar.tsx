@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Image,
   Platform,
+  Pressable,
 } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
@@ -11,6 +12,8 @@ import VectorIcon from '../VectoreIcons';
 import imagePaths from '../../assets/images';
 import Inputs from '../Input';
 import InputField from '../TextInputCustom';
+import { navigate } from '../../services/NavigationService';
+import RouteName from '../../navigation/RouteName';
 
 interface HomeSearchBarProps {
   onTextchange?: (text: string) => void;
@@ -40,6 +43,8 @@ const HomeSearchBar: React.FC<HomeSearchBarProps> = ({
 
       {/* Render filter icon only if showFilterIcon is true */}
       {showFilterIcon &&
+      <Pressable onPress={()=>{navigate(RouteName.FILTER_SCREEN)}}>
+
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
@@ -51,6 +56,7 @@ const HomeSearchBar: React.FC<HomeSearchBarProps> = ({
             style={styles.filterIcon}
           />
         </LinearGradient>
+      </Pressable>
       }
 
     </View>
