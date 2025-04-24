@@ -21,6 +21,7 @@ import {
   LanguageAndCurrency,
   MyCalender,
   NotificationAndAlert,
+  NotificationScreen,
   PaymentHistory,
   ProfileSetup,
   RatingRiview,
@@ -61,6 +62,7 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={RouteName.VIEW_ALL} component={ViewAll} />
         <Stack.Screen name={RouteName.PRIVACY_POLICY} component={PrivacyPolicy} />
         <Stack.Screen name={RouteName.PASS_UPDATE} component={PasswordUpdateScreen} />
+        <Stack.Screen name={RouteName.NOTIFICATION} component={NotificationScreen} />
 
         <Stack.Screen name={RouteName.FORGOT_PASS} component={ForgotScreen} />
         <Stack.Screen name={RouteName.SERVICE_LIST} component={ServiceList} />

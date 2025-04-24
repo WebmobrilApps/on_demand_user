@@ -5,6 +5,8 @@ import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import VectorIcon from '../VectoreIcons';
 import imagePaths from '../../assets/images';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { useNavigation } from '@react-navigation/native';
+import RouteName from '../../navigation/RouteName';
 
 interface HomeHeaderProps {
   onclickAdd?: (text: string) => void;
@@ -19,6 +21,9 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({
   onclicHeart = () => { },
   onclicNotification = () => { },
 }) => {
+
+  const navigation = useNavigation<any>();
+
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
@@ -50,7 +55,9 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({
           <TouchableOpacity style={styles.iconButton}>
             <Image source={imagePaths.heart_icon} style={styles.icon} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
+          <TouchableOpacity style={styles.iconButton} onPress={()=>{
+            navigation.navigate(RouteName.NOTIFICATION)
+          }}>
             <Image source={imagePaths.notification_icon} style={styles.icon} />
           </TouchableOpacity>
         </View>

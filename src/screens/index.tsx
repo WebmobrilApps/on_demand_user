@@ -1,7 +1,8 @@
 export { default as SplashScreen } from './SplashScreen';
 export { default as ViewAll } from './ViewAll';
 export { default as HomeScreen } from './Home';
-export { default as FilterScreen } from './FilterScreen';
+export { default as FilterScreen } from './Filter/FilterScreen';
+export { default as NotificationScreen } from './NotificationScreen';
 // export { default as MyBookingScreen } from './Bookings/MyBookingScreen';
 export * from './service';
 export * from './profile'

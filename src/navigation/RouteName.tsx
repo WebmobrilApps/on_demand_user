@@ -27,5 +27,6 @@ const RouteName = {
     BOOK_APPOINT:'BookAppointment',
     BOOK_DETAILS:'BookingDetails',
     FILTER_SCREEN:'FilterScreen',
+    NOTIFICATION:'NotificationScreen',
 };
 export default RouteName;
