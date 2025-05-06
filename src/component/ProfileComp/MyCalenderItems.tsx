@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {Colors, Fonts, SF, SH, SW} from '../../utils';
+import {boxShadow, Colors, Fonts, SF, SH, SW} from '../../utils';
 import imagePaths from '../../assets/images';
 import ImageLoader from '../ImageLoader';
 
@@ -19,7 +19,7 @@ const MyCalenderItems: React.FC<MyCalenderItemsProps> = ({item}) => {
       activeOpacity={1}
       onPress={item.onClick}
       style={styles.container}>
-      <View style={styles.leftContainer}>
+      <View style={[styles.leftContainer,boxShadow]}>
         <ImageLoader
           source={imagePaths.makup1}
           resizeMode="cover"
@@ -40,7 +40,7 @@ const MyCalenderItems: React.FC<MyCalenderItemsProps> = ({item}) => {
         }}>
         <Image
           source={imagePaths.siren}
-          style={{width: SW(16), height: SW(16)}}
+          style={{width: SW(12), height: SW(12)}}
         />
       </TouchableOpacity>
     </TouchableOpacity>
@@ -60,35 +60,27 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: Fonts.SEMI_BOLD,
-    fontSize: SF(15),
+    fontSize: SF(16),
     color: Colors.textAppColor,
   },
   text2: {
     fontFamily: Fonts.MEDIUM,
     fontSize: SF(12),
     color: Colors.textAppColor,
-    marginTop: SH(3),
+    marginTop: SH(4),
   },
   icon: {
     height: SH(18),
     width: SH(18),
   },
   leftContainer: {
-    width: SF(115),
-    height: SF(85),
+    width: SF(107),
+    height: SF(80),
     overflow:"hidden",
     borderRadius: SF(15),
   },
   leftImage: {
-    width: SF(115),
-    height: SF(85),
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.17,
-    shadowRadius: 3.05,
-    elevation: 4,
+   height:"100%",
+   width:"100%"
   },
 });

@@ -5,17 +5,21 @@ import AppHeader from '../AppHeader';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import i18next from 'i18next';
 import RNRestart from 'react-native-restart';
+import Divider from '../Divider';
 type LanguageAndCurrencyPopupProps = {
   modalVisible: boolean;
   clodeModal: () => void;
   title: string;
-  data: any
+  data: any,
+  type: string
 };
+const seperatorComponent = () => <Divider color={`${Colors.textAppColor}10`}/>;
 const LanguageAndCurrencyPopup: React.FC<LanguageAndCurrencyPopupProps> = ({
   modalVisible = true,
   clodeModal,
   title = '',
   data,
+  type
 }) => {
   return (
     <Modal
@@ -24,7 +28,7 @@ const LanguageAndCurrencyPopup: React.FC<LanguageAndCurrencyPopupProps> = ({
       visible={modalVisible}
       onRequestClose={() => clodeModal()} // Android back button handler
     >
-      <Container>
+      <Container isAuth>
         <AppHeader
           headerTitle={title}
           onPress={() => {
@@ -38,30 +42,39 @@ const LanguageAndCurrencyPopup: React.FC<LanguageAndCurrencyPopupProps> = ({
           <FlatList
             data={data}
             showsVerticalScrollIndicator={false}
+            bounces={false}
+            ItemSeparatorComponent={seperatorComponent}
             contentContainerStyle={{
               paddingBottom: SH(20),
             }}
             renderItem={({ item }) => {
               return (
                 <>
-                  <TouchableOpacity onPress={() => {
-                    console.log('i18next.language===', i18next.language === 'ar');
-                    i18next.changeLanguage(i18next.language === 'ar' ? 'en' : 'ar').then(() => {
-                      I18nManager.allowRTL(i18next.language === 'ar');
-                      I18nManager.forceRTL(i18next.language === 'ar');
-                      RNRestart.Restart()
-                    })
-                  }} style={styles.itemContainerDeactive}>
-                    <Image
-                      source={item.image}
-                      style={{ width: SW(35), height: SH(25) }}
-                    />
-                    <Text style={styles.textCountryDeac}>{item.name}</Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      console.log('i18next.language===', i18next.language === 'ar');
+                      // i18next.changeLanguage(i18next.language === 'ar' ? 'en' : 'ar').then(() => {
+                      //   I18nManager.allowRTL(i18next.language === 'ar');
+                      //   I18nManager.forceRTL(i18next.language === 'ar');
+                      // })
+                    }}
+                    style={styles.itemContainerDeactive}>
+                    {type == 'language' ?
+                      <>
+                        <Image
+                          source={item.image}
+                          style={{ width: SW(35), height: SH(25) }}
+                        />
+                        <Text style={styles.textCountryDeac}>{item.name}</Text>
+                      </>
+                      :
+                      <Text style={styles.textCountryDeac}>{`${item.code} - ${item.name}`}</Text>
+                    }
                   </TouchableOpacity>
                 </>
               );
             }}
-            keyExtractor={item => item.name}
+            keyExtractor={(item,index) => item.name+index}
           />
         </View>
       </Container>
@@ -74,11 +87,12 @@ export default LanguageAndCurrencyPopup;
 const styles = StyleSheet.create({
   header: {
     backgroundColor: Colors.bgwhite,
-    paddingHorizontal: SW(25),
+    paddingHorizontal: SW(40),
   },
   container: {
     paddingHorizontal: SW(25),
-    paddingTop: SH(40),
+    paddingTop: SH(20),
+    paddingBottom: SH(40),
   },
   separator: {
     height: SH(1),
@@ -88,13 +102,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    height: SF(54),
+    height: SF(60),
     paddingHorizontal: SW(15),
-    borderBottomWidth: 1,
-    borderColor: `${Colors.textAppColor}50`,
   },
   textCountryDeac: {
-    fontFamily: Fonts.REGULAR,
+    fontFamily: Fonts.MEDIUM,
+    color: Colors.textAppColor,
     fontSize: SF(16),
     marginLeft: SW(10),
   },

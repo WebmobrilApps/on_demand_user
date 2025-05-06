@@ -1,7 +1,8 @@
 import React, { FC, useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import { Colors, Fonts, SF, SH } from '../utils';
+import imagePaths from '../assets/images';
 
 interface DropdownComponentProps{
   data:any
@@ -27,6 +28,7 @@ const DropdownComponent:FC<DropdownComponentProps>=({data}) => {
       iconStyle={styles.iconStyle}
       data={data}
       search={false}
+      // renderLeftIcon={<Image source={imagePaths.drop_down} />}
       maxHeight={300}
       labelField="label"
       valueField="value"

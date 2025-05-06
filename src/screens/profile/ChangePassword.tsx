@@ -71,7 +71,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ }) => {
                     label={t('placeholders.currentPassword')}
                     onChangeText={handleChange('currpassword')}
                     onBlur={() => setFieldTouched('currpassword')}
-                    leftIcon={imagePaths.lock_icon}
+                    // leftIcon={imagePaths.lock_icon}
                     errorMessage={touched.currpassword && errors.currpassword && errors.currpassword ? errors.currpassword : ''}
                     keyboardType={'visible-password'}
                     color={Colors.textAppColor}
@@ -82,7 +82,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ }) => {
                     value={values.npassword}
                     onChangeText={handleChange('npassword')}
                     onBlur={() => setFieldTouched('npassword')}
-                    leftIcon={imagePaths.lock_icon}
+                    // leftIcon={imagePaths.lock_icon}
                     errorMessage={touched.npassword && errors.npassword && errors.npassword ? errors.npassword : ''}
                     keyboardType={'visible-password'}
                     color={Colors.textAppColor}
@@ -93,7 +93,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ }) => {
                     value={values.confirmpassword}
                     onChangeText={handleChange('confirmpassword')}
                     onBlur={() => setFieldTouched('confirmpassword')}
-                    leftIcon={imagePaths.lock_icon}
+                    // leftIcon={imagePaths.lock_icon}
                     errorMessage={touched.confirmpassword && errors.confirmpassword && errors.confirmpassword ? errors.confirmpassword : ''}
                     keyboardType={'visible-password'}
                     color={Colors.textAppColor}
@@ -104,7 +104,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ }) => {
                 <Buttons
                   buttonStyle={styles.submitButton}
                   textColor={Colors.textWhite}
-                  title={t('placeholders.save')}
+                  title={t('placeholders.update')}
                   onPress={() => {
                     handleSubmit();
                     Keyboard.dismiss();

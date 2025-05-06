@@ -11,7 +11,6 @@ import {
   Spacing,
 } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import Inputs from '../../component/Input';
 import imagePaths from '../../assets/images';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -46,7 +45,8 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
   const [resetPassword, { isLoading }] = useResetPasswordMutation()
 
   const btnUpdatePassword = async (values: { password: string; cpassword: string }, resetForm: any) => {
-    // navigation.navigate(RouteName.LOGIN);
+    navigation.navigate(RouteName.LOGIN);
+    return
 
     let data = {
       data: {
@@ -118,6 +118,7 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
                     secureTextEntry={passwordVisibility}
                     keyboardType={'visible-password'}
                   />
+                  <Spacing space={8}/>
 
                   <InputField
                     placeholder={t('placeholders.confirmPassword')}
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
     fontSize: SF(20),
     textAlign: 'center',
   },
-  buttonContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(160) },
+  buttonContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(100) },
   bottomInnerContainer: {
     paddingVertical: SH(35),
     paddingHorizontal: SW(20),

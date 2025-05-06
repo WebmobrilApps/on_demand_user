@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, FlatList, StatusBar } from 'react-native';
-import { Colors, SF, SH, SW, useDisableGestures } from '../../utils';
+import { categoryData, Colors, SF, SH, SW, useDisableGestures } from '../../utils';
 import {
-  Container,
   HomeHeader,
   HomeNearServiceItem,
   HomeSearchBar,
@@ -28,27 +27,8 @@ const HomeScreen = () => {
       };
     }, []),
   );
-  const categoryData = [
-    { image: imagePaths.plumb_img, name: 'Plumbing', id: 1 },
-    { image: imagePaths.carpentry, name: 'Carpentry', id: 2 },
-    { image: imagePaths.painting, name: 'Painting', id: 3 },
-    { image: imagePaths.electrical, name: 'Electrical', id: 4 },
-    { image: imagePaths.electrical, name: 'Electrical', id: 5 },
-    { image: imagePaths.cleaning, name: 'Cleaning', id: 6 },
-    { image: imagePaths.cleaning, name: 'Cleaning', id: 7 },
-    { image: imagePaths.carpentry, name: 'Carpentry', id: 8 },
-    { image: imagePaths.painting, name: 'Painting', id: 11 },
-    { image: imagePaths.electrical, name: 'Electrical', id: 9 },
-    { image: imagePaths.electrical, name: 'Electrical', id: 10 },
-  ];
 
-  // const recommendedData = [
-  //   { image: imagePaths.recomanded1, name: 'Plumbing', id: 1 },
-  //   { image: imagePaths.recomanded2, name: 'Carpentry', id: 2 },
-  //   { image: imagePaths.recomanded3, name: 'Painting', id: 3 },
-  //   { image: imagePaths.recomanded1, name: 'Electrical', id: 4 },
-  //   { image: imagePaths.recomanded3, name: 'Cleaning', id: 5 },
-  // ];
+ 
 
   const swiperData = [
     { imgUrl: imagePaths.banner2, id: 1 },
@@ -57,11 +37,7 @@ const HomeScreen = () => {
   ];
 
   return (
-    <Container
-      isAuth={true}
-      statusBarStyle="light-content"
-      statusBarColor={Colors.themeDarkColor}
-    >
+    <> 
       <HomeHeader />
       <KeyboardAwareScrollView
         bounces={false}
@@ -71,10 +47,11 @@ const HomeScreen = () => {
           <View style={styles.mHorizontal}>
             <HomeSearchBar showFilterIcon={true} />
           </View>
-
+          <Spacing space={SF(10)} />
+          {/* Home swiper ========================= */}
           <HomeSwiper swiperData={swiperData} />
           <Spacing space={SF(40)} />
-          {/* Category Section */}
+          {/* Category Section========================= */}
           <HomeSubContainerHeader
             rightText="View All"
             marginHori={'7%'}
@@ -90,7 +67,7 @@ const HomeScreen = () => {
           <View style={styles.flatListWrapper}>
             <HomeCategory categoryData={categoryData} isLoading={false} />
           </View>
-          {/* Near By Services Section */}
+          {/* Near By Services Section ==========================*/}
           <HomeSubContainerHeader
             rightText="View All"
             leftText="Service Provider Near You"
@@ -134,16 +111,9 @@ const HomeScreen = () => {
 
         </View>
 
-        {/* Bottom Banner Image */}
-        {/* <View style={styles.bottomView}>
-          <Image
-            source={imagePaths.cleaning2}
-            resizeMode="cover"
-            style={styles.imageBottom}
-          />
-        </View> */}
+        
       </KeyboardAwareScrollView>
-    </Container>
+    </>
   );
 };
 
@@ -159,7 +129,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingVertical: SH(10),
+    paddingVertical: SH(17),
   },
   mHorizontal: {
     paddingHorizontal: '7%',
@@ -183,14 +153,6 @@ const styles = StyleSheet.create({
     marginHorizontal: SW(25),
     ...commonSpacing,
   },
-  bottomView: {
-    width: '100%',
-    paddingHorizontal: SW(25),
-    borderRadius: SW(10),
-  },
-  imageBottom: {
-    width: '100%',
-    height: SH(200),
-    borderRadius: SW(10),
-  },
+  
+  
 });

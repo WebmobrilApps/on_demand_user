@@ -45,7 +45,7 @@ const BookAppointment: React.FC<BookAppointmentProps> = () => {
                 rightOnPress={() => { }}
                 headerStyle={styles.header}
             />
-            <Spacing />
+         
             <ScrollView
                 bounces={false}
                 contentContainerStyle={styles.scrollContainer}
@@ -70,9 +70,10 @@ const BookAppointment: React.FC<BookAppointmentProps> = () => {
                     <View style={styles.serviceItem}>
                         <TouchableOpacity style={styles.crossIcon}>
                             <VectoreIcons
-                                icon='Entypo'
-                                name='circle-with-cross'
+                                icon='AntDesign'
+                                name='closecircle'
                                 color='#BBBBBB'
+                                size={SF(16)}
                             />
                         </TouchableOpacity>
                         <View>
@@ -156,26 +157,27 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     serviceTitle: {
-        fontSize: SF(12),
+        fontSize: SF(10),
         fontFamily: Fonts.SEMI_BOLD,
         color: Colors.lightGraytext,
     },
     serviceSub: {
-        fontSize: SF(10),
+        fontSize: SF(8),
         color: Colors.lightGraytext,
         fontFamily: Fonts.MEDIUM,
+        marginTop:3
     },
     rightBlock: {
         alignItems: 'flex-end',
         marginRight: SW(15),
     },
     price: {
-        fontSize: SF(12),
+        fontSize: SF(10),
         fontFamily: Fonts.SEMI_BOLD,
         color: Colors.lightGraytext,
     },
     duration: {
-        fontSize: SF(10),
+        fontSize: SF(8),
         color: Colors.lightGraytext,
         fontFamily: Fonts.MEDIUM,
         marginTop: 2,

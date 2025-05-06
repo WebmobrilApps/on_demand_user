@@ -3,7 +3,6 @@ import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
 import Firebase
-#import <React/RCTI18nUtil.h> 
 @main
 class AppDelegate: RCTAppDelegate {
   override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -14,7 +13,6 @@ class AppDelegate: RCTAppDelegate {
      FirebaseApp.configure()
     // They will be passed down to the ViewController used by React Native.
     self.initialProps = [:]
-    [[RCTI18nUtil sharedInstance] allowRTL:YES];
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 

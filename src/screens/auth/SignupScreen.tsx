@@ -32,20 +32,17 @@ import {
   VectoreIcons,
 } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import Inputs from '../../component/Input';
 import imagePaths from '../../assets/images';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Buttons from '../../component/Button';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../navigation/RouteName';
-// import { CheckBox } from '@rneui/base';
 import { useTranslation } from 'react-i18next';
-import { ChatContext } from '../ChatProvider';
 import { useDispatch } from 'react-redux';
-import { StorageProvider, useLoginMutation, useRegisterMutation } from '../../services';
+import { StorageProvider, useRegisterMutation } from '../../services';
 import DeviceInfo from 'react-native-device-info';
-const SCREEN_WIDTH =  Dimensions.get('window').width
+const SCREEN_WIDTH = Dimensions.get('window').width
 const SocialButton = ({
   icon,
   onPress,
@@ -101,8 +98,6 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
       .required(t('validation.emptyConfirmPassword'))
       .oneOf([Yup.ref('password')], t('validation.notMatchConfirmPassword')),
   });
-
-
 
   const btnSignup = async (
     values: { email: string; password: string; cpassword: string; fname: string; mobileno: string; },
@@ -162,10 +157,10 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
         keyboardShouldPersistTaps="handled" // Allows tap on input when keyboard is open
         resetScrollToCoords={{ x: 0, y: 0 }}
       >
-        <Spacing space={SH(40)} />
-        <AuthImgComp icon={imagePaths.signup_img} />
+        <Spacing space={SH(10)} />
+        <AuthImgComp icon={imagePaths.signup_img} height={SF(174)} width={SF(150)} />
         <AuthBottomContainer>
-          <View style={{ paddingVertical: SH(35), paddingHorizontal: SW(20) }}>
+          <View style={styles.gradientContainer}>
             <Formik
               initialValues={{
                 email: '',
@@ -194,7 +189,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                     value={values.fname}
                     onChangeText={handleChange('fname')}
                     onBlur={() => setFieldValue('fname', values.fname.trim())}
-                    leftIcon={imagePaths.mobile_icon}
+                    leftIcon={imagePaths.email_icon}
                     errorMessage={touched.fname && errors.fname && errors.fname ? errors.fname : ''}
                     keyboardType="default"
                   />
@@ -243,54 +238,25 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                     keyboardType={'visible-password'}
                   />
 
-                  {/* <Inputs
-                    placeholder={t('placeholders.reEnterPassword')}
-                    inputStyle={{ color: Colors.textWhite }}
-                    onChangeText={handleChange('cpassword')}
-                    onBlur={() => setFieldTouched('cpassword')}
-                    errorMessage={
-                      touched.cpassword && errors.cpassword && errors.cpassword
-                        ? errors.cpassword
-                        : ''
-                    }
-                    value={values.cpassword}
-                    inputType="default"
-                    leftIcon={<InputIcons icon={imagePaths.lock_icon} />}
-                    secureTextEntry={cpasswordVisibility}
-                    rightIcon={
-                      <TouchableOpacity
-                        onPress={() => {
-                          setcpasswordVisibility(!cpasswordVisibility);
-                        }}>
-                        <InputIcons
-                          icon={
-                            !cpasswordVisibility
-                              ? imagePaths.eye_open
-                              : imagePaths.eye_off_icon
-                          }
-                        />
-                      </TouchableOpacity>
-                    }
-                    placeholderTextColor={Colors.placeHolderColor}
-                  /> */}
-                  <Spacing space={SH(20)} />
+                  
+                  <Spacing space={SH(10)} />
                   {/* check box==============================    */}
                   <View style={styles.checkBoxContainer}>
                     <Pressable onPress={() => { toggleCheckbox() }} style={{ marginRight: 10 }}>
                       {
                         !checked ?
                           <VectoreIcons
-                            icon="Feather"
+                            icon="Ionicons"
                             color={Colors.white}
-                            name="square"
-                            size={SW(28)}
+                            name="square-outline"
+                            size={SW(24)}
                           />
                           :
                           <VectoreIcons
-                            icon="Feather"
+                            icon="Ionicons"
                             color={Colors.white}
-                            name="check-square"
-                            size={SW(28)}
+                            name="checkbox-outline"
+                            size={SW(24)}
                           />
                       }
                     </Pressable>
@@ -302,7 +268,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                             title: 'Terms of Service',
                           });
                         }}
-                        style={{ textDecorationLine: 'underline' }}>
+                        style={{ fontSize: SF(12), fontFamily: Fonts.SEMI_BOLD }}>
                         Terms of Service
                       </Text>{' '}
                       & {'\n'}
@@ -312,16 +278,16 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                             title: 'Privacy Policy',
                           });
                         }}
-                        style={{ textDecorationLine: 'underline' }}>
+                        style={{ fontSize: SF(12), fontFamily: Fonts.SEMI_BOLD }}>
                         Privacy Policy
                       </Text>
                     </Text>
                   </View>
 
-                  <Spacing space={SH(30)} />
+                  <Spacing space={SH(25)} />
 
                   <Buttons
-                    buttonStyle={{ backgroundColor: Colors.bgwhite }}
+                    buttonStyle={styles.buttonContainer}
                     textColor={Colors.themeColor}
                     title={t('signup.signUpButton')}
                     onPress={() => {
@@ -330,30 +296,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                     }}
                   // isLoading={true}
                   />
-
-                  <Spacing space={SH(30)} />
-
-                  <View style={styles.lineViewContainer}>
-                    <View style={styles.leftRightLine} />
-                    <Text style={styles.ortext}>{t('signup.orText')}</Text>
-                    <View style={styles.leftRightLine} />
-                  </View>
-
-                  <Spacing space={SH(20)} />
-
-                  <View style={styles.socialIconContainer}>
-                    {socialButtons.map((button, index) => (
-                      <SocialButton
-                        key={index}
-                        icon={button.icon}
-                        width={(SCREEN_WIDTH * 0.4) / 4}
-                        iconSize={SF(26)}
-                        onPress={button.onPress}
-                      />
-                    ))}
-                  </View>
-
-                  <Spacing space={SH(25)} />
+                  {/* <Image source={imagePaths.face_lock} style={styles.fingerPrintImage} /> */}
 
                   <Text style={styles.dontHaveAccTxt}>
                     {t('signup.alreadyHaveAccount')}{' '}
@@ -361,7 +304,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                       onPress={() => {
                         navigation.navigate(RouteName.LOGIN);
                       }}
-                      style={{ fontFamily: Fonts.BOLD, fontSize: SF(16) }}>
+                      style={styles.dontHaveAccLogintxt}>
                       {t('signup.logIn')}{' '}
                     </Text>
                   </Text>
@@ -385,6 +328,8 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: SF(12),
   },
+  gradientContainer:{ paddingVertical: SH(35), paddingHorizontal: SW(25) },
+  buttonContainer: { backgroundColor: Colors.bgwhite, width: '93%', alignSelf: 'center' },
   submitButton: {
     color: Colors.textWhite,
     fontSize: SF(16),
@@ -402,24 +347,15 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     textAlign: 'right',
   },
-  lineViewContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 6,
+
+  fingerPrintImage: { 
+    height: SF(48), 
+    width: SF(48), 
+    resizeMode: "contain", 
+    alignSelf: "center", 
+    marginVertical: SH(14) 
   },
-  leftRightLine: {
-    height: 1,
-    backgroundColor: Colors.white,
-    width: SCREEN_WIDTH * 0.39,
-  },
-  ortext: {
-    color: Colors.textWhite,
-    fontFamily: Fonts.SEMI_BOLD,
-    fontSize: SF(14),
-    alignSelf: 'flex-end',
-    textAlign: 'right',
-  },
+
   socialButton: {
     backgroundColor: 'transparent',
     justifyContent: 'center',
@@ -437,13 +373,17 @@ const styles = StyleSheet.create({
   dontHaveAccTxt: {
     color: Colors.textWhite,
     fontFamily: Fonts.REGULAR,
-    fontSize: SF(14),
+    fontSize: SF(12),
     textAlign: 'center',
+    marginTop:SH(25)
+  },
+  dontHaveAccLogintxt: {
+    fontFamily: Fonts.MEDIUM, fontSize: SF(14)
   },
   consfirmTxt: {
     color: Colors.textWhite,
     fontFamily: Fonts.MEDIUM,
-    fontSize: SF(12),
+    fontSize: SF(10),
   },
   checkBoxContainer: {
     flexDirection: 'row',

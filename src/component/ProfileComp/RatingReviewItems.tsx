@@ -1,9 +1,10 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {boxShadowlight, Colors, Fonts, SF, SH, SW} from '../../utils';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { boxShadowlight, Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
 import ImageLoader from '../ImageLoader';
 import StarRating from 'react-native-star-rating-widget';
+import Divider from '../Divider';
 
 type PaymentHistoryItemProps = {
   item: {
@@ -15,11 +16,11 @@ type PaymentHistoryItemProps = {
   };
 };
 
-const PaymentHistoryItem: React.FC<PaymentHistoryItemProps> = ({item}) => {
+const PaymentHistoryItem: React.FC<PaymentHistoryItemProps> = ({ item }) => {
   return (
     <TouchableOpacity activeOpacity={1} style={styles.container}>
       <View style={styles.row}>
-        <View style={[styles.leftContainer,boxShadowlight]}>
+        <View style={[styles.leftContainer, boxShadowlight]}>
           <ImageLoader
             source={imagePaths.makup1}
             resizeMode="cover"
@@ -28,16 +29,24 @@ const PaymentHistoryItem: React.FC<PaymentHistoryItemProps> = ({item}) => {
         </View>
         <View style={styles.itemDetails}>
           <Text style={styles.text}>{item.name}</Text>
-          <Text style={styles.textprice}>{item.price}</Text>
+          <Text style={styles.textprice}>{item.price}   <Text style={styles.textprice1}>$100</Text></Text>
         </View>
       </View>
       <View style={styles.reviewContainer}>
+        <View style={styles.yourCommentBox}>
+          <Text style={styles.textYour}>{'Your Comment'}</Text>
+          <View style={{flexDirection:"row",alignItems:'center', }}>
+            <Image source={imagePaths.trash_icon} style={{height:SF(14),width:SF(14)}}/>
+            <Image source={imagePaths.edit_icon} style={{height:SF(14),width:SF(14),marginLeft:SF(10)}}/>
+          </View>
+        </View>
         <View style={styles.reviewHeader}>
           <View style={styles.ratingContainer}>
             <StarRating
               starStyle={styles.starStyle}
-              onChange={() => {}}
-              starSize={SF(18)}
+              onChange={() => { }}
+              starSize={SF(16)}
+              color={Colors.ratingColor1}
               rating={3.5}
             />
             <Text style={styles.ratingtxt}>{'4.6'}</Text>
@@ -45,9 +54,7 @@ const PaymentHistoryItem: React.FC<PaymentHistoryItemProps> = ({item}) => {
           <Text style={styles.reviewDate}>25 Jan</Text>
         </View>
         <Text style={styles.reviewText}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s
+        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet.
         </Text>
       </View>
     </TouchableOpacity>
@@ -60,14 +67,15 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.themelight,
     borderRadius: SF(10),
-    padding: SW(12),
+    paddingVertical: SW(12),
+    paddingHorizontal:SW(12)
   },
   row: {
     flexDirection: 'row',
   },
   itemDetails: {
-    marginLeft: 10,
-    width: '60%',
+    marginLeft: SW(12),
+    flex: 1,
   },
   text: {
     marginTop: 2,
@@ -75,15 +83,27 @@ const styles = StyleSheet.create({
     fontSize: SF(16),
     color: Colors.textAppColor,
   },
+  textYour: {
+    marginTop: 2,
+    fontFamily: Fonts.MEDIUM,
+    fontSize: SF(14),
+    color: Colors.textAppColor,
+  },
   textprice: {
-    fontFamily: Fonts.SEMI_BOLD,
+    fontFamily: Fonts.MEDIUM,
     fontSize: SF(16),
     color: Colors.themeColor,
-    marginTop: 3,
+    marginTop: SH(4),
+  },
+  textprice1: {
+    fontFamily: Fonts.REGULAR,
+    fontSize: SF(16),
+    color: '#B3B3B3',
+    textDecorationLine: "line-through",
   },
   reviewContainer: {
     backgroundColor: Colors.bgwhite,
-    padding: SF(10),
+    padding: SF(12),
     borderRadius: SF(10),
     marginTop: SF(10),
   },
@@ -102,32 +122,34 @@ const styles = StyleSheet.create({
     marginHorizontal: 0,
   },
   ratingtxt: {
-    color: Colors.textAppColor,
-    fontFamily: Fonts.REGULAR,
+    color: '#6C757D',
+    fontFamily: Fonts.MEDIUM,
     marginLeft: 5,
-    fontSize: SF(15),
+    fontSize: SF(14),
   },
   reviewDate: {
-    fontFamily: Fonts.REGULAR,
-    color: Colors.gray2,
+    fontFamily: Fonts.MEDIUM,
+    color: '#6C757D',
     textAlign: 'right',
     fontSize: SF(14),
   },
   reviewText: {
-    fontFamily: Fonts.REGULAR,
-    color: Colors.gray2,
+    fontFamily: Fonts.MEDIUM,
+    color: '#6C757D',
     textAlign: 'left',
-    marginTop: 3,
-    fontSize:SF(14)
+    marginTop: SH(9),
+    fontSize: SF(14),
+    lineHeight: SF(20)
   },
   leftContainer: {
     borderRadius: SF(10),
-    width: SF(115),
-    height: SF(85),
-    overflow:"hidden"
+    width: SF(107),
+    height: SF(81),
+    overflow: "hidden"
   },
   leftImage: {
-    width: SF(115),
-    height: SF(85),
+    width: '100%',
+    height: '100%',
   },
+  yourCommentBox:{ borderBottomWidth: 1, borderBottomColor: '#EBEBEB', paddingBottom: SH(20), marginBottom: SF(20), flexDirection: "row", alignItems: "center",justifyContent:'space-between' }
 });

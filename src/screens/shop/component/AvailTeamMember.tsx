@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
         fontSize: SF(9),
         fontFamily: Fonts.MEDIUM,
         color: Colors.textHeader,
+        marginTop:2
     },
     itemSepearator: {
         width: SW(15),

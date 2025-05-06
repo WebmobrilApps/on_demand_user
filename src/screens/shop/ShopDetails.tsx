@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AppHeader, Container, ImageLoader, Spacing, VectoreIcons } from '../../component';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
@@ -19,13 +19,16 @@ const ShopDetails: React.FC<shopProps> = () => {
     const [activeTab, setActiveTabs] = useState<string>('services');
     return (
         <Container isPadding={false}>
-              
+            <StatusBar
+                barStyle={'dark-content'}
+            />
             <Spacing />
             <View style={{
                 flexDirection: "row", alignItems: "center", paddingHorizontal: "9%", paddingBottom: SH(10), borderBottomWidth: activeTab === 'details' ? 0.6 : 0,
                 borderColor: '#3D3D3D40',
             }}>
                 <TouchableOpacity onPress={() => {
+                
                     navigation.goBack();
                 }}>
                     <VectoreIcons
@@ -96,7 +99,7 @@ const ShopDetails: React.FC<shopProps> = () => {
                 {activeTab === 'services' && <Services />}
                 {activeTab === 'reviews' && <Reviews />}
                 {activeTab === 'portfolio' && <Portfolio />}
-                {activeTab === 'details' && <Details/>}
+                {activeTab === 'details' && <Details />}
                 {/* pages=========== */}
 
             </ScrollView>
@@ -165,18 +168,18 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         paddingVertical: SH(10),
         backgroundColor: Colors.white,
-        borderBottomWidth: 0.6,
+        borderBottomWidth: 0.7,
         borderColor: '#3D3D3D40',
         paddingHorizontal: '7%',
     },
     activeTab: {
-        fontSize: SF(14),
+        fontSize: SF(12),
         fontFamily: Fonts.SEMI_BOLD,
         color: Colors.themeColor,
         textDecorationLine: 'underline',
     },
     inactiveTab: {
-        fontSize: SF(14),
+        fontSize: SF(12),
         fontFamily: Fonts.MEDIUM,
         color: Colors.txtAppDarkColor,
     },

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import imagePaths from '../../../assets/images';
 import StarRating from 'react-native-star-rating-widget';
-import { Fonts, SF, SH, SW } from '../../../utils';
+import { Colors, Fonts, SF, SH, SW } from '../../../utils';
 import { VectoreIcons } from '../../../component';
 
 interface RatingBreakdown {
@@ -57,7 +57,7 @@ const reviews: Review[] = [
         date: '1 week ago',
         rating: 5,
         comment:
-        "Lorem ipsum dolor sit amet consectetur. Gravida nulla quis ultrices in nununc aliquam lacus. Nunc lorem nulla ullamcorper nunc pulvinar erat mi tempor facilisi. Egestas consectetur orci libero faucibus in platea habitant etiam.. Arcu etiam ornare bibendum ornare duis enim..",
+            "Lorem ipsum dolor sit amet consectetur. Gravida nulla quis ultrices in nununc aliquam lacus. Nunc lorem nulla ullamcorper nunc pulvinar erat mi tempor facilisi. Egestas consectetur orci libero faucibus in platea habitant etiam.. Arcu etiam ornare bibendum ornare duis enim..",
         likes: 4,
         replies: 1,
         verified: true,
@@ -68,7 +68,7 @@ const reviews: Review[] = [
         date: '1 week ago',
         rating: 5,
         comment:
-        "Lorem ipsum dolor sit amet consectetur. Gravida nulla quis ultrices in nununc aliquam lacus. Nunc lorem nulla ullamcorper nunc pulvinar erat mi tempor facilisi. Egestas consectetur orci libero faucibus in platea habitant etiam.. Arcu etiam ornare bibendum ornare duis enim..",
+            "Lorem ipsum dolor sit amet consectetur. Gravida nulla quis ultrices in nununc aliquam lacus. Nunc lorem nulla ullamcorper nunc pulvinar erat mi tempor facilisi. Egestas consectetur orci libero faucibus in platea habitant etiam.. Arcu etiam ornare bibendum ornare duis enim..",
         likes: 4,
         replies: 1,
         verified: true,
@@ -93,13 +93,14 @@ const Reviews: React.FC = () => {
                     <StarRating
                         starStyle={styles.starStyleForUser}
                         onChange={() => { }}
+                        color={Colors.ratingColor1}
                         starSize={SF(10)}
                         rating={3.5}
                     />
                 </View>
                 {item.verified && (
                     <Text style={styles.verifiedUser}>
-                        Verified User <VectoreIcons name='checksquare' icon='AntDesign' size={SF(10)} color='green'/> 
+                        Verified User ✅
                     </Text>
                 )}
             </View>
@@ -107,23 +108,28 @@ const Reviews: React.FC = () => {
 
             <Text style={styles.comment}>{item.comment}</Text>
 
-             <View style={styles.actionRow}>
+            <View style={styles.actionRow}>
                 <Text style={styles.actionText}>
-                    <VectoreIcons name='thumbs-up' icon='Feather' size={SF(9)}/>  {item.likes}
+                    <VectoreIcons name='thumbs-up' icon='Feather' size={SF(9)} />  {item.likes}
                 </Text>
                 <Text style={[styles.actionText, { marginLeft: 16 }]}>
-                <VectoreIcons name='thumbs-down' icon='Feather' size={SF(9)}/>  {item.replies}
+                    <VectoreIcons name='thumbs-down' icon='Feather' size={SF(9)} />  {item.replies}
                 </Text>
                 <TouchableOpacity style={{ marginLeft: 'auto' }}>
-                    <Text style={styles.reportText}>Report <VectoreIcons name='flag' icon='Ionicons' size={SF(9)}/></Text>
+                    <Text style={styles.reportText}>Report <Text style={{ fontSize: SF(12) }}>⚑</Text></Text>
                 </TouchableOpacity>
-            </View>  
+            </View>
 
             {item.reply && (
                 <View style={styles.replyBox}>
-                    <Text style={styles.replyTitle}>WM Barbershop</Text>
-                    <Text style={styles.replyDate}>on March 20th</Text>
-                    <Text style={styles.replyText}>{item.reply}</Text>
+                    <View>
+                        <Image style={{height:SF(10),width:SF(12)}} source={imagePaths.return_up_back} />
+                    </View>
+                    <View style={{marginLeft:10}}>
+                        <Text style={styles.replyTitle}>WM Barbershop</Text>
+                        <Text style={styles.replyDate}>on March 20th</Text>
+                        <Text style={styles.replyText}>Thank you so much! 🤝</Text>
+                    </View>
                 </View>
             )}
         </View>
@@ -136,6 +142,7 @@ const Reviews: React.FC = () => {
                     <Text style={styles.ratingNumber}>4.8</Text>
                     <StarRating
                         starStyle={styles.starStyle}
+                        color={Colors.ratingColor1}
                         onChange={() => { }}
                         starSize={SF(12)}
                         rating={3.5}
@@ -149,6 +156,7 @@ const Reviews: React.FC = () => {
                                 starStyle={{ marginHorizontal: 0.5 }}
                                 onChange={() => { }}
                                 starSize={SF(14)}
+                                color={Colors.ratingColor1}
                                 rating={item.star}
                             />
                             <Text style={{ marginHorizontal: SW(10), fontSize: SF(9), color: "#1D2026", fontFamily: Fonts.MEDIUM }}>{item.star}</Text>
@@ -244,7 +252,7 @@ const styles = StyleSheet.create({
     nameRow: {
         flex: 1,
     },
-    usrNameDateContainer:{ flexDirection: "row", alignItems: "center" },
+    usrNameDateContainer: { flexDirection: "row", alignItems: "center" },
     userName: {
         fontFamily: Fonts.MEDIUM,
         fontSize: SF(12),
@@ -263,55 +271,62 @@ const styles = StyleSheet.create({
         fontSize: SF(14),
         color: '#6E7485',
         fontFamily: Fonts.BOLD,
-        marginTop:-SH(5)
+        marginTop: -SH(5)
     },
     starStyleForUser: {
         marginHorizontal: 0,
     },
-     
+
     starRow: {
         flexDirection: 'row',
         marginVertical: 4,
     },
     comment: {
         fontSize: SF(8),
-        marginVertical:SH(4),
-        color:'#4E5566'
+        marginVertical: SH(4),
+        color: '#4E5566'
     },
     actionRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop:5
+        marginTop: 5
     },
     actionText: {
         fontSize: SF(9),
         color: '#3D3D3D',
-        backgroundColor:'#F0F0F0',
-        paddingHorizontal:SW(7),
-        paddingVertical:SH(4),
-        borderRadius:4
+        backgroundColor: '#F0F0F0',
+        paddingHorizontal: SW(7),
+        paddingVertical: SH(4),
+        borderRadius: 4
     },
     reportText: {
         fontSize: SF(9),
-        fontFamily:Fonts.REGULAR,
+        fontFamily: Fonts.REGULAR,
         color: '#4E5566',
     },
     replyBox: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
         backgroundColor: '#F6F6F6',
         padding: 10,
         marginTop: 8,
         borderRadius: 6,
     },
+
     replyTitle: {
-        fontWeight: '600',
-        fontSize: 13,
+        fontFamily: Fonts.MEDIUM,
+        fontSize: SF(8),
+        color:Colors.lightGraytext
     },
     replyDate: {
-        fontSize: 10,
-        color: 'gray',
+        fontFamily: Fonts.REGULAR,
+        fontSize:SF(6),
+        color:Colors.lightGraytext
     },
     replyText: {
-        fontSize: 12,
-        marginTop: 4,
+        fontFamily: Fonts.SEMI_BOLD,
+        fontSize:SF(8),
+        color:Colors.lightGraytext,
+        marginTop:8
     },
 });

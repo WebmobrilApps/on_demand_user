@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, FlatList, StyleSheet, Pressable, Keyboard } from 'react-native';
-import { Colors, SH, SW, Fonts, SF, boxShadow, rowSpaceBetweenCss, commonStyles } from '../../utils';
+import { Colors, SH, SW, Fonts, SF, boxShadow, rowSpaceBetweenCss, commonStyles, nearByData } from '../../utils';
 import imagePaths from '../../assets/images';
 import { AppHeader, Buttons, Container, ImageLoader, Spacing } from '../../component';
 import { useNavigation } from '@react-navigation/native';
@@ -8,26 +8,7 @@ import StarRating from 'react-native-star-rating-widget';
 import RouteName from '../../navigation/RouteName';
 import { TabTop } from './component';
 
-const nearByData = [
-  {
-    image: `https://cdn.pixabay.com/photo/2024/02/15/13/52/students-8575444_1280.png`,
-    name: 'Richar Kandowen',
-    id: 1,
-    rating: 4.5,
-    ratingCount: 450,
-    location: 'Ikeja, Nigeria',
-    price: 80,
-  },
-  {
-    image: 'https://cdn.pixabay.com/photo/2024/02/15/13/55/ai-generated-8575453_1280.png',
-    name: 'Palmcedar Cleaning',
-    id: 2,
-    rating: 4.5,
-    ratingCount: 450,
-    location: 'Ikeja, Nigeria',
-    price: 80,
-  },
-];
+
 
 const MyBookingScreen: React.FC = () => {
   const navigation = useNavigation<any>();
@@ -47,6 +28,7 @@ const MyBookingScreen: React.FC = () => {
           <View style={[commonStyles.rowSpaceBetweenCss, { marginTop: SF(7) }]}>
             <Text style={styles.price}>{`$1893`}</Text>
             <Buttons
+              isExtraBoxShadow={false}
               buttonStyle={styles.bookAgain}
               textColor={Colors.textWhite}
               buttonTextStyle={styles.bookAgainText}
@@ -133,13 +115,13 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.MEDIUM,
     fontSize: SF(8),
     maxWidth: '80%',
-    marginTop: 2
+    marginTop: SH(3)
   },
 
   price: {
     color: Colors.themeColor,
     fontFamily: Fonts.SEMI_BOLD,
-    fontSize: SF(15),
+    fontSize: SF(16),
     maxWidth: '80%',
     marginTop: 3
 
@@ -156,8 +138,8 @@ const styles = StyleSheet.create({
   },
   bookAgain: {
     backgroundColor: Colors.themeColor,
-    height: SF(25),
-    width: '40%',
+    height: SF(22),
+    width: SW(75),
     alignSelf: 'flex-end',
     borderRadius: SF(6)
   },

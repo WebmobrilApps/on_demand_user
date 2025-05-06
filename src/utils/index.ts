@@ -1,3 +1,5 @@
+
+
 export * from './dimensions';
 export { default as Colors } from './colors';
 export { default as Strings } from './Strings';
@@ -8,3 +10,5 @@ export * from './hooks'
 export * from './type'
 export * from './StaticData'
 export * from './commonStyle'
+export * from '../services/NavigationService';
+export {default as imagePaths} from '../assets/images';

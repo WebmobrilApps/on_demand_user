@@ -2,6 +2,22 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/Chivo-Bold.ttf",
+      "sha1": "710f179fc1921de20e720ddb0cf0a94a73f7c746"
+    },
+    {
+      "path": "assets/fonts/Chivo-Medium.ttf",
+      "sha1": "7f91e07c367d0c68c78d2839ac4c5e579a679c2f"
+    },
+    {
+      "path": "assets/fonts/Chivo-Regular.ttf",
+      "sha1": "cc4d57b08659826f438cb251309fd8e048f07de1"
+    },
+    {
+      "path": "assets/fonts/Chivo-SemiBold.ttf",
+      "sha1": "0018ba61b1bfbc6ab149192ca5c4e4f5362c01d0"
+    },
+    {
       "path": "assets/fonts/Inter-Bold.ttf",
       "sha1": "9461e7c083137c2abe6d198f784fb0d341a527a1"
     },

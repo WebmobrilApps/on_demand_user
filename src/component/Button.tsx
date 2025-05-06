@@ -22,6 +22,7 @@ type ButtonsProps = {
   spacedImages?: boolean;
   linearGradientProps?: object;
   textColor?: string;
+  isExtraBoxShadow?: boolean;
 };
 
 const Buttons: React.FC<ButtonsProps> = ({
@@ -35,13 +36,14 @@ const Buttons: React.FC<ButtonsProps> = ({
   spacedImages = false,
   linearGradientProps,
   textColor = "#ffffff",
+  isExtraBoxShadow=true
 }) => {
   const styles = useMemo(
     () =>
       StyleSheet.create({
         buttonStyle: {
           backgroundColor: disable ? "#A9A9A9" : Colors.themeColor,
-          height: SF(48),
+          height: SF(42),
           width: "100%",
           borderRadius: 10,
           justifyContent: "center",
@@ -50,8 +52,8 @@ const Buttons: React.FC<ButtonsProps> = ({
         },
         buttonTextStyle: {
           color: textColor || Colors.textWhite,
-          fontFamily: Fonts.MEDIUM,
-          fontSize: SF(16),
+          fontFamily: Fonts.SEMI_BOLD,
+          fontSize: SF(18),
         },
         buttonViewStyle: {
           flexDirection: "row",
@@ -70,7 +72,7 @@ const Buttons: React.FC<ButtonsProps> = ({
     <Pressable
       onPress={!disable && !isLoading ? onPress : undefined}
       style={({ pressed }) => [
-        styles.buttonStyle,boxShadowlight,
+        styles.buttonStyle, isExtraBoxShadow?boxShadow:boxShadowlight,
         buttonStyle,
         pressed && { opacity: 0.8 }, // Slight fade effect when pressed
       ]}

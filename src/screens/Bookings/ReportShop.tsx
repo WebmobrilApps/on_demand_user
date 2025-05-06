@@ -26,7 +26,7 @@ export default function ReportShop() {
                 onPress={() => navigation.goBack()}
                 Iconname="arrowleft"
                 rightOnPress={() => { }}
-                headerStyle={{ backgroundColor: '#ffffff', }}
+                headerStyle={{ backgroundColor: '#ffffff',paddingHorizontal:SF(30) }}
                 titleStyle={{ color: '#333', fontSize: SF(18) }}
             />
             <KeyboardAwareScrollView
@@ -38,6 +38,7 @@ export default function ReportShop() {
                     <Spacing space={SH(20)} />
                     <Text style={{ fontFamily: Fonts.MEDIUM, fontSize: SF(14), marginBottom: SH(10) }}>Select report reason</Text>
                     <DropdownComponent data={data} />
+                    <Spacing/>
                     <InputField
                         placeholder={'Tell us more'}
                         value={values.des}

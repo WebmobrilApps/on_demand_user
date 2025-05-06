@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
     alignItems: 'center',
     backgroundColor: '#fff',
-    height: Platform.OS === 'ios' ? SF(50) : SF(50),
+    height: Platform.OS === 'ios' ? SF(42) : SF(42),
     shadowColor: Colors.textBlack,
     shadowOffset: {width: 0, height: 5},
   },

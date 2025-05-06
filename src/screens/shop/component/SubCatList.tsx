@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     button: {
-        paddingVertical: SH(4),
+        paddingVertical: SH(5),
         paddingHorizontal: SW(10),
-        borderRadius: 4,
+        borderRadius: SF(7),
     },
     text: {
         textDecorationLine: 'underline',
-        fontFamily: Fonts.MEDIUM,
+        fontFamily: Fonts.SEMI_BOLD,
         fontSize: SF(12),
     },
 });

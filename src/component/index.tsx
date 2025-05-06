@@ -1,5 +1,3 @@
-export {default as ButtonComp} from './Button';
-export {default as Inputs} from './Input';
 export {default as VectoreIcons} from './VectoreIcons';
 export {default as SweetaelertModal} from './SweetaelertModal';
 export {default as ImageLoader} from './ImageLoader';

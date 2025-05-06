@@ -62,7 +62,7 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         navigation.navigate(RouteName.RATING_REVIEW);
       },
     },
-    { name: t('profile.loyaltyReferralDiscounts'), id: 6, onClick: () => { } },
+    { name: t('profile.loyaltyReferralDiscounts'), id: 6, onClick: () => { navigation.navigate(RouteName.LOYALTY_DISCOUNT) } },
     { name: t('profile.multiLanguageCurrency'), id: 7, onClick: () => { navigation.navigate(RouteName.LANG_CURRENCY); } },
     {
       name: t('profile.notificationsAlerts'),
@@ -71,7 +71,7 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         navigation.navigate(RouteName.NOTIFICATION_ALERT);
       },
     },
-    { name: t('profile.customerSupport'), id: 9, onClick: () => { } },
+    { name: t('profile.customerSupport'), id: 9, onClick: () => { navigation.navigate(RouteName.CUSTOMER_SUPPORT); } },
     { name: t('profile.logout'), id: 10, onClick: () => { setLogoutPopup(true) } },
   ];
   const seperatorComponent = () => <View style={styles.separator} />;
@@ -109,7 +109,7 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         data={listData}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingBottom: SH(20),
+          // paddingBottom: SH(20),
           marginHorizontal: SW(25),
         }}
         ItemSeparatorComponent={() => seperatorComponent()}
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   userPhone: {
     fontFamily: Fonts.REGULAR,
     fontSize: SF(12),
-    marginTop: SH(2),
+    marginTop: SH(3.5),
   },
   editProfileIcon: {
     width: SF(40),

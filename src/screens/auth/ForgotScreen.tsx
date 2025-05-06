@@ -71,6 +71,7 @@ const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
         extraScrollHeight={SH(40)}>
         <Spacing space={SH(40)} />
         <AuthImgComp icon={imagePaths.forgot_img} />
+        <Spacing space={SH(25)} />
         <AuthBottomContainer>
           <Formik
             initialValues={{ email: '' }}
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bgwhite,
   },
-  brnContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(200) },
+  brnContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(160),width:'93%',alignSelf:'center' },
   subtitile: {
     color: Colors.textWhite,
     fontFamily: Fonts.REGULAR,
@@ -139,13 +140,13 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: Colors.textWhite,
-    fontFamily: Fonts.BOLD,
+    fontFamily: Fonts.SEMI_BOLD,
     fontSize: SF(20),
     textAlign: 'center',
   },
   bottomInnerContainer: {
     paddingVertical: SH(35),
-    paddingHorizontal: SW(20),
+    paddingHorizontal: SW(25),
     height: '100%',
   },
 });

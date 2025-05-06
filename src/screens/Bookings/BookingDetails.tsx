@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Pressable, Keyboard, ScrollView } from 'react-native';
-import { Colors, SH, SW, Fonts, SF, boxShadow, commonStyles } from '../../utils';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { Colors, SH, SW, Fonts, SF,} from '../../utils';
 import { AppHeader, Buttons, Container, ImageLoader, VectoreIcons } from '../../component';
 import { useNavigation } from '@react-navigation/native';
-import RouteName from '../../navigation/RouteName';
 import { BookingServiceItem, TabTop } from './component';
 import imagePaths from '../../assets/images';
 
@@ -32,7 +31,7 @@ const BookingDetails: React.FC = () => {
               WM Barbershop <Text style={styles.shopCount}>with Juana</Text>
             </Text>
             <Text style={styles.shopAddress}>
-              1893 Cheshire Bridge Rd Ne, 30325 {'\n'}Home Service
+              1893 Cheshire Bridge Rd Ne, 30325
             </Text>
           </View>
           <View style={styles.iconsBlock}>
@@ -62,7 +61,7 @@ const BookingDetails: React.FC = () => {
       <Buttons
         onPress={() => { }}
         title='Book Again'
-        buttonStyle={{ width: '90%', alignSelf: "center", marginBottom: SH(20) }}
+        buttonStyle={styles.bookAgainButton}
       />
     </Container>
   );
@@ -106,9 +105,9 @@ const styles = StyleSheet.create({
   },
   shopAddress: {
     fontSize: SF(10),
-    fontFamily: Fonts.SEMI_BOLD,
+    fontFamily: Fonts.MEDIUM,
     color: Colors.lightGraytext,
-    marginTop: 2,
+    marginTop: SH(3),
   },
   iconsBlock: {
     width: '25%',
@@ -118,7 +117,8 @@ const styles = StyleSheet.create({
   heartIcon: {
     marginLeft: 12,
   },
-  serviceContaine: { paddingHorizontal: SW(25), marginTop: SH(15), flex: 1 }
+  serviceContaine: { paddingHorizontal: SW(25), marginTop: SH(15), flex: 1 },
+  bookAgainButton:{ width: '86%', alignSelf: "center", marginBottom: SH(20) }
 });
 
 export default BookingDetails;

@@ -10,7 +10,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import VectorIcon from '../VectoreIcons';
 import imagePaths from '../../assets/images';
-import Inputs from '../Input';
 import InputField from '../TextInputCustom';
 import { navigate } from '../../services/NavigationService';
 import RouteName from '../../navigation/RouteName';
@@ -31,7 +30,7 @@ const HomeSearchBar: React.FC<HomeSearchBarProps> = ({
       <View style={{ width: showFilterIcon ? '86%' : '100%' }}>
         <InputField
           placeholder={'Search'}
-          inputContainer={{ backgroundColor: bgColor,borderWidth:0 }}
+          inputContainer={{ backgroundColor: Colors.searchBarBG,borderWidth:0 ,height:SF(40)}}
           containerStyle={styles.inputContainer}
           inputStyle={styles.inputStyle}
           placeholderTextColor={Colors.searchBarPlac}
@@ -85,15 +84,15 @@ const styles = StyleSheet.create({
   },
  
   filterButton: {
-    borderRadius: SF(10),
+    borderRadius: SF(6.6),
     justifyContent: 'center',
     alignItems: 'center',
-    height: SF(38),
-    width: SF(38),
+    height: SF(30),
+    width: SF(30),
   },
   filterIcon: {
-    height: SF(22),
-    width: SF(22),
+    height: SF(18),
+    width: SF(18),
     resizeMode: 'contain',
   },
 });

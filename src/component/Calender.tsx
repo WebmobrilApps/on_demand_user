@@ -6,9 +6,11 @@ import {
   TouchableOpacity,
   FlatList,
   Modal,
+  Image,
 } from 'react-native';
-import { Fonts, SF } from '../utils';
+import { Fonts, SF, SW } from '../utils';
 import VectorIcon from './VectoreIcons';
+import imagePaths from '../assets/images';
 
 const WEEK_DAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -141,12 +143,8 @@ const Calendar: React.FC<CalendarProps> = ({
       >
         <Text style={styles.monthText}>
           {MONTH_LABELS[selectedMonth]} {selectedYear}{"   "} 
-          <VectorIcon
-            icon='FontAwesome'
-            name='caret-down'
-            size={SF(22)}
-          />
         </Text>
+        <Image resizeMode='contain' source={imagePaths.drop_down} style={{height:SF(14),width:SF(14)}}/>
       </TouchableOpacity>
 
       <Modal visible={showMonthPicker} transparent animationType="fade">
@@ -201,7 +199,7 @@ const Calendar: React.FC<CalendarProps> = ({
                   styles.dayText,
                   {
                     color: isSelected ? '#fff' : getDayColor(index, isCurrentMonth, isDisabled),
-                    fontWeight: isSelected ? 'bold' : 'normal',
+                    // fontWeight: isSelected ? 'bold' : 'normal',
                   },
                 ]}
               >
@@ -225,9 +223,10 @@ const styles = StyleSheet.create({
   monthSelector: {
     alignSelf: 'flex-end',
     padding: 10,
-
     borderRadius: 8,
     marginBottom: 10,
+    justifyContent:"space-between",
+    flexDirection:'row'
   },
   monthText: {
     fontSize: SF(14),
@@ -238,8 +237,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   dayBox: {
-    width: `${100 / 7}%`,
-    height: 40,
+    width: `${(100 / 7)}%`,
+    height: 30,
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 4,
@@ -247,20 +246,21 @@ const styles = StyleSheet.create({
   },
   selectedDayBox: {
     backgroundColor: '#378CA4',
-    width: `${100 / 7}%`,
-    height: 40,
+    width: `${(100 / 7)}%`,
+    height: 30,
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 4,
     borderRadius: 6,
   },
   dayText: {
-    fontSize: 14,
-    color: '#000',
+    fontSize: SF(12),
+    fontFamily: Fonts.REGULAR,
+    color: '#616161',
   },
   weekDayText: {
-    fontSize: 14,
-    fontWeight: 'bold',
+    fontSize: SF(12),
+    fontFamily: Fonts.REGULAR,
     color: '#333',
   },
   modalOverlay: {

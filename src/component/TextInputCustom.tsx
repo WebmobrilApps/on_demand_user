@@ -15,10 +15,11 @@ import {
     I18nManager
 } from "react-native";
 import { Colors, Fonts, SF, SH, SW } from "../utils";
+import { FormikErrors } from "formik";
 
 interface InputFieldProps extends TextInputProps {
     label?: string;
-    errorMessage?: string;
+    errorMessage?: any;
     leftIcon?: ImageSourcePropType;
     rightIcon?: ImageSourcePropType;
     onRightIconPress?: () => void;
@@ -57,7 +58,7 @@ const InputField: React.FC<InputFieldProps> = ({
     textColor = Colors.white,
     color = Colors.white,
     marginBottom = SH(10),
-    marginTop = SH(10),
+    marginTop = SF(5),
     inputContainer,
     ...props
 }) => {
@@ -73,7 +74,7 @@ const InputField: React.FC<InputFieldProps> = ({
                 },
                 label: {
                     fontSize: SF(14),
-                    fontWeight: "bold",
+                    fontFamily: Fonts.MEDIUM,
                     marginBottom: SH(10),
                     color: color,
                 },
@@ -83,8 +84,9 @@ const InputField: React.FC<InputFieldProps> = ({
                     borderWidth: 1,
                     borderColor: color,
                     borderRadius: SF(10),
+
                     paddingHorizontal: 10,
-                    paddingVertical: SH(3.6),
+                    // paddingVertical: SH(3.6),
                     backgroundColor: isDisabled ? "#f2f2f2" : "transparent",
                     ...inputContainer
                 },
@@ -92,9 +94,10 @@ const InputField: React.FC<InputFieldProps> = ({
                     flex: 1,
                     paddingVertical: Platform.OS === "ios" ? SF(10) : SF(8),
                     color: textColor,
-                    fontSize: SF(14.5),
-                    paddingLeft: SF(10),
-                    textAlign:I18nManager.isRTL ? 'right':'left',
+                    fontSize: SF(14),
+                    paddingHorizontal: SF(10),
+                    height: SF(42),
+                    textAlign: I18nManager.isRTL ? 'right' : 'left',
                     fontFamily: Fonts.REGULAR,
                     ...inputStyle,
                 },
@@ -117,7 +120,7 @@ const InputField: React.FC<InputFieldProps> = ({
                 {leftIcon && <View style={{ paddingHorizontal: SF(2) }}>
                     <Image
                         source={leftIcon}
-                        style={{ width: SF(20), height: SF(20), tintColor: color }}
+                        style={{ width: SF(18), height: SF(18), tintColor: color }}
                         resizeMode="contain"
                     />
                 </View>}
@@ -138,10 +141,10 @@ const InputField: React.FC<InputFieldProps> = ({
                     {...props}
                 />
                 {rightIcon && (
-                    <TouchableOpacity onPress={onRightIconPress}>
+                    <TouchableOpacity onPress={onRightIconPress} style={{ paddingHorizontal: SF(2) }}>
                         <Image
                             source={rightIcon}
-                            style={{ width: SF(20), height: SF(20), tintColor: color }}
+                            style={{ width: SF(18), height: SF(18), tintColor: color }}
                             resizeMode="contain"
                         />
                     </TouchableOpacity>

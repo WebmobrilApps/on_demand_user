@@ -8,7 +8,7 @@ import RouteName from '../../../navigation/RouteName';
 
 const services = [
     { id: 1, name: 'Haircut + Beard ✈️', price: '$55.00', time: '30m' },
-    { id: 2, name: 'Only Haircut', price: '$55.00', time: '30m' },
+    { id: 2, name: 'Haircut + Beard ✂', price: '$55.00', time: '30m' },
     { id: 3, name: 'Razor', price: '$55.00', time: '25m' },
     { id: 4, name: 'Kids Haircut', price: '$30.00', time: '15m' },
     { id: 5, name: 'Enchantments', price: '$15.00', time: '10m' },
@@ -36,6 +36,7 @@ const Services: FC<servicesInterface> = ({ }) => {
                 <Buttons
                     buttonStyle={styles.bookBtn}
                     textColor={Colors.textWhite}
+                    isExtraBoxShadow={false}
                     title={'Book'}
                     buttonTextStyle={styles.bookText}
                     onPress={() => { navigation.navigate(RouteName.BOOK_APPOINT)}}
@@ -79,12 +80,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     serviceTitle: {
-        fontSize: SF(12),
+        fontSize: SF(10),
         fontFamily: Fonts.SEMI_BOLD,
         color: Colors.lightGraytext,
     },
     serviceSub: {
-        fontSize: SF(10),
+        fontSize: SF(8),
         color: Colors.lightGraytext,
         fontFamily: Fonts.MEDIUM,
     },
@@ -93,12 +94,12 @@ const styles = StyleSheet.create({
         marginRight: SW(15),
     },
     price: {
-        fontSize: SF(12),
+        fontSize: SF(10),
         fontFamily: Fonts.SEMI_BOLD,
         color: Colors.lightGraytext,
     },
     duration: {
-        fontSize: SF(10),
+        fontSize: SF(8),
         color: Colors.lightGraytext,
         fontFamily: Fonts.MEDIUM,
         marginTop: 2,
@@ -106,14 +107,14 @@ const styles = StyleSheet.create({
     bookBtn: {
         backgroundColor: Colors.themeColor,
         alignSelf: 'center',
-        width: SF(50),
-        height: SF(30),
-        borderRadius: SF(7),
+        width: SF(45),
+        height: SF(22),
+        borderRadius: SF(5),
         paddingHorizontal: SF(5),
     },
     bookText: {
         color: Colors.white,
-        fontSize: SF(12),
+        fontSize: SF(10),
         fontFamily: Fonts.MEDIUM,
     },
     itemSepearator: {

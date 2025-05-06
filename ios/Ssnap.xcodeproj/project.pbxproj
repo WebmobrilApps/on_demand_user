@@ -8,10 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		413A27C42D9ACEE8008D5DA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 413A27C32D9ACEE8008D5DA3 /* GoogleService-Info.plist */; };
+		41A4A4A82DC887C800BF03FA /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49EBDA8756934F469FA15293 /* Inter-Bold.ttf */; };
+		41A4A4A92DC887C800BF03FA /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85A9F2526E8B478C8CF361F5 /* Inter-ExtraBold.ttf */; };
+		41A4A4AA2DC887C800BF03FA /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A1581D65D0E42A48E8AF5BE /* Inter-Light.ttf */; };
+		41A4A4AB2DC887C800BF03FA /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FF4FD5124F5490AA84EC45F /* Inter-Medium.ttf */; };
+		41A4A4AC2DC887C800BF03FA /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83C3BB157C90487B911265F5 /* Inter-Regular.ttf */; };
+		41A4A4AD2DC887C800BF03FA /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5FED8E243D14AA28207D488 /* Inter-SemiBold.ttf */; };
+		41A4A4AE2DC887C800BF03FA /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F1AF66BE35C470E8E821283 /* PlusJakartaSans-Bold.ttf */; };
+		41A4A4AF2DC887C800BF03FA /* PlusJakartaSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9131AD2762F4F1F8E79C4DB /* PlusJakartaSans-ExtraBold.ttf */; };
+		41A4A4B02DC887C800BF03FA /* PlusJakartaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7124C9AD62444146B0775EAE /* PlusJakartaSans-Light.ttf */; };
+		41A4A4B12DC887C800BF03FA /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 506F8420FA354DB694321577 /* PlusJakartaSans-Medium.ttf */; };
+		41A4A4B22DC887C800BF03FA /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E14C25B1F8A4400A2571E03 /* PlusJakartaSans-Regular.ttf */; };
+		41A4A4B32DC887C800BF03FA /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27D628B1CBFC45DBA730A13A /* PlusJakartaSans-SemiBold.ttf */; };
+		41A4A4B42DC887C800BF03FA /* Inter_28pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B810053484556A232FEA9 /* Inter_28pt-Regular.ttf */; };
+		41A4A4B52DC887C800BF03FA /* Chivo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAB4B3681D8447109C64B5E6 /* Chivo-Bold.ttf */; };
+		41A4A4B62DC887C800BF03FA /* Chivo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F35CE925E56461D8F1C94A5 /* Chivo-Medium.ttf */; };
+		41A4A4B72DC887C800BF03FA /* Chivo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F27B00BFB8D4547A2FA3E3E /* Chivo-Regular.ttf */; };
+		41A4A4B82DC887C800BF03FA /* Chivo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6F1CEEB834240E0B57F6BC1 /* Chivo-SemiBold.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		8C245D8BDD127B7171B3E3B5 /* Pods_Ssnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF1711117E69780C7FDBDE9 /* Pods_Ssnap.framework */; };
 		92BA6A3090B26BDF47335D14 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		412A63A62DC87C6F009A16BA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0A1581D65D0E42A48E8AF5BE /* Inter-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Light.ttf"; path = "../assets/fonts/Inter-Light.ttf"; sourceTree = "<group>"; };
@@ -35,9 +64,13 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Ssnap/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83C3BB157C90487B911265F5 /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
 		85A9F2526E8B478C8CF361F5 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBold.ttf"; path = "../assets/fonts/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		8F27B00BFB8D4547A2FA3E3E /* Chivo-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Chivo-Regular.ttf"; path = "../assets/fonts/Chivo-Regular.ttf"; sourceTree = "<group>"; };
+		8F35CE925E56461D8F1C94A5 /* Chivo-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Chivo-Medium.ttf"; path = "../assets/fonts/Chivo-Medium.ttf"; sourceTree = "<group>"; };
+		B6F1CEEB834240E0B57F6BC1 /* Chivo-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Chivo-SemiBold.ttf"; path = "../assets/fonts/Chivo-SemiBold.ttf"; sourceTree = "<group>"; };
 		CBF1711117E69780C7FDBDE9 /* Pods_Ssnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ssnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FED8E243D14AA28207D488 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		E9131AD2762F4F1F8E79C4DB /* PlusJakartaSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PlusJakartaSans-ExtraBold.ttf"; path = "../assets/fonts/PlusJakartaSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		EAB4B3681D8447109C64B5E6 /* Chivo-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Chivo-Bold.ttf"; path = "../assets/fonts/Chivo-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -92,6 +125,10 @@
 				2E14C25B1F8A4400A2571E03 /* PlusJakartaSans-Regular.ttf */,
 				27D628B1CBFC45DBA730A13A /* PlusJakartaSans-SemiBold.ttf */,
 				3D2B810053484556A232FEA9 /* Inter_28pt-Regular.ttf */,
+				EAB4B3681D8447109C64B5E6 /* Chivo-Bold.ttf */,
+				8F35CE925E56461D8F1C94A5 /* Chivo-Medium.ttf */,
+				8F27B00BFB8D4547A2FA3E3E /* Chivo-Regular.ttf */,
+				B6F1CEEB834240E0B57F6BC1 /* Chivo-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -150,6 +187,7 @@
 				5DFF41CF7D7F2A28B55C1C05 /* [CP] Copy Pods Resources */,
 				DC4CBDFFBF36D25225D6B373 /* [CP-User] [RNFB] Core Configuration */,
 				4EBE50B95EFFE350D3028319 /* Resources */,
+				412A63A62DC87C6F009A16BA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -196,6 +234,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A4A4A82DC887C800BF03FA /* Inter-Bold.ttf in Resources */,
+				41A4A4A92DC887C800BF03FA /* Inter-ExtraBold.ttf in Resources */,
+				41A4A4AA2DC887C800BF03FA /* Inter-Light.ttf in Resources */,
+				41A4A4AB2DC887C800BF03FA /* Inter-Medium.ttf in Resources */,
+				41A4A4AC2DC887C800BF03FA /* Inter-Regular.ttf in Resources */,
+				41A4A4AD2DC887C800BF03FA /* Inter-SemiBold.ttf in Resources */,
+				41A4A4AE2DC887C800BF03FA /* PlusJakartaSans-Bold.ttf in Resources */,
+				41A4A4AF2DC887C800BF03FA /* PlusJakartaSans-ExtraBold.ttf in Resources */,
+				41A4A4B02DC887C800BF03FA /* PlusJakartaSans-Light.ttf in Resources */,
+				41A4A4B12DC887C800BF03FA /* PlusJakartaSans-Medium.ttf in Resources */,
+				41A4A4B22DC887C800BF03FA /* PlusJakartaSans-Regular.ttf in Resources */,
+				41A4A4B32DC887C800BF03FA /* PlusJakartaSans-SemiBold.ttf in Resources */,
+				41A4A4B42DC887C800BF03FA /* Inter_28pt-Regular.ttf in Resources */,
+				41A4A4B52DC887C800BF03FA /* Chivo-Bold.ttf in Resources */,
+				41A4A4B62DC887C800BF03FA /* Chivo-Medium.ttf in Resources */,
+				41A4A4B72DC887C800BF03FA /* Chivo-Regular.ttf in Resources */,
+				41A4A4B82DC887C800BF03FA /* Chivo-SemiBold.ttf in Resources */,
 				92BA6A3090B26BDF47335D14 /* PrivacyInfo.xcprivacy in Resources */,
 				413A27C42D9ACEE8008D5DA3 /* GoogleService-Info.plist in Resources */,
 			);
@@ -441,7 +496,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -521,7 +579,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

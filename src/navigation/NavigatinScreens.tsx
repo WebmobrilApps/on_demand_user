@@ -17,8 +17,11 @@ import {
   BookingDetails,
   BookingPrivacyPolicy,
   ChangePassword,
+  CustomerSupport,
   FilterScreen,
   LanguageAndCurrency,
+  LoyaltyDiscountsScreen,
+  MessageScreen,
   MyCalender,
   NotificationAndAlert,
   NotificationScreen,
@@ -78,6 +81,9 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={RouteName.BOOK_APPOINT} component={BookAppointment} />
         <Stack.Screen name={RouteName.BOOK_DETAILS} component={BookingDetails} />
         <Stack.Screen name={RouteName.FILTER_SCREEN} component={FilterScreen} />
+        <Stack.Screen name={RouteName.CUSTOMER_SUPPORT} component={CustomerSupport} />
+        <Stack.Screen name={RouteName.LOYALTY_DISCOUNT} component={LoyaltyDiscountsScreen} />
+        <Stack.Screen name={RouteName.MESSAGE} component={MessageScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

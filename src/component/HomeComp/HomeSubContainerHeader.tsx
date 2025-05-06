@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   leftText: {
     width: '70%',
     fontFamily: Fonts.SEMI_BOLD,
-    fontSize: SF(15),
+    fontSize: SF(14),
     color: Colors.textAppColor,
   },
   rightTextContainer: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   rightText: {
     fontFamily: Fonts.SEMI_BOLD,
-    fontSize: SF(15),
+    fontSize: SF(14),
     textAlign: 'right',
     textDecorationLine: 'underline',
     color: Colors.themeDarkColor,

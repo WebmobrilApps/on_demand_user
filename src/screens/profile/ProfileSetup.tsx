@@ -19,7 +19,6 @@ import { useNavigation } from '@react-navigation/native';
 import imagePaths from '../../assets/images';
 import { useTranslation } from 'react-i18next';
 import VectorIcon from '../../component/VectoreIcons';
-import Inputs from '../../component/Input';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -134,8 +133,8 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({ }) => {
                 <Spacing space={SH(20)} />
                 <View style={styles.addressContainer}>
                   <View style={styles.addressInfo}>
-                    <Text style={styles.addressName}>John Kevin</Text>
-                    <Text style={styles.addressPhone}>+91 1234567890</Text>
+                    <Text style={styles.addressName}>Home Address</Text>
+                    <Text style={styles.addressDetail}>123 main st, anytown, USA</Text>
                   </View>
                   <TouchableOpacity style={styles.addressMoreIcon}>
                     <VectorIcon
@@ -254,12 +253,13 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   addressName: {
-    fontFamily: Fonts.MEDIUM,
-    fontSize: SF(16),
+    fontFamily: Fonts.SEMI_BOLD,
+    fontSize: SF(12),
   },
-  addressPhone: {
+  addressDetail: {
     fontFamily: Fonts.REGULAR,
     fontSize: SF(12),
+    marginTop:SH(4)
   },
   addressMoreIcon: {
     paddingVertical: 5,
@@ -267,14 +267,14 @@ const styles = StyleSheet.create({
   },
   addAddressButton: {
     backgroundColor: Colors.themeColor,
-    height: 32,
-    width: '40%',
+    height: SF(28),
+    width: SF(124),
     marginTop: 15,
     alignSelf: 'flex-end',
-    borderRadius: 8
+    borderRadius: 5,
   },
   addAddressText: {
-    fontSize: SF(10),
+    fontSize: SF(12),
   },
   submitButton: {
     backgroundColor: Colors.themeColor,

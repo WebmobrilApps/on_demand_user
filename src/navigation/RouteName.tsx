@@ -7,6 +7,7 @@ const RouteName = {
     VIEW_ALL: 'View All',
     MY_BOOKING: 'My Booking',
     MESSAGE: 'Message',
+    INBOX_SCREEN: 'InboxScreen',
     PROFILE:'Profile',
     PASS_UPDATE:'Password Update',
     PRIVACY_POLICY:'Privacy Policy',
@@ -28,5 +29,7 @@ const RouteName = {
     BOOK_DETAILS:'BookingDetails',
     FILTER_SCREEN:'FilterScreen',
     NOTIFICATION:'NotificationScreen',
+    CUSTOMER_SUPPORT:'CustomerSupport',
+    LOYALTY_DISCOUNT:'LoyaltyDiscountsScreen',
 };
 export default RouteName;

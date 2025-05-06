@@ -26,18 +26,18 @@ const SucessBookingModal: React.FC<SucessBookingModalProps> = ({
                 <View style={styles.mainView}>
                     <TouchableOpacity onPress={() => closeModal()} style={styles.crossIcon}>
                         <VectoreIcons
-                            icon='Entypo'
-                            name='cross'
-                            color={Colors.themeColor}
-                            size={SF(35)}
-                        />
+                                                   icon='Ionicons'
+                                                   name='close'
+                                                   color={Colors.themeColor}
+                                                   size={SF(30)}
+                                               />
                     </TouchableOpacity>
                     <Spacing space={SH(20)} />
                     <View style={styles.headingContainer}>
                         <VectoreIcons
                             icon='AntDesign'
                             name='checkcircle'
-                            size={SF(60)}
+                            size={SF(75)}
                             color={Colors.successColor}
                         />
                         <Text style={styles.heading}>Booking Successful !</Text>
@@ -116,9 +116,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     imageWrapper: {
-        width: SF(100),
-        height: SF(113),
-        borderRadius: SF(10) / 2,
+        width: SF(120),
+        height: SF(127),
+        borderRadius: SF(20),
         overflow: 'hidden'
     },
     logo: {
@@ -141,14 +141,14 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.MEDIUM,
         fontSize: SF(10),
         maxWidth: '80%',
-        marginTop: 2
+        marginTop: SH(6)
     },
     withText: {
         color: Colors.lightGraytext,
         fontFamily: Fonts.MEDIUM,
         fontSize: SF(12),
         maxWidth: '80%',
-        marginTop: 2
+        marginTop:SH(6)
     },
 
     price: {
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.SEMI_BOLD,
         fontSize: SF(16),
         maxWidth: '80%',
-        marginTop: 3
+        marginTop: SH(6)
     },
     
 });

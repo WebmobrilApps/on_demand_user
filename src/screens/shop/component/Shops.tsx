@@ -37,7 +37,7 @@ const Shops: React.FC<ShopsProps> = ({ index }) => {
                 </View>
                 <View style={styles.reviewBlock}>
                     <Text style={styles.reviewText}>
-                        4.5{'\n'}140 Review
+                        4.5{'\n'}<Text style={{fontSize:SF(10),color: Colors.textAppColor,}}>140 Reviews</Text>
                     </Text>
                 </View>
             </View>
@@ -51,12 +51,8 @@ const styles = StyleSheet.create({
     scrollContainer: {
         paddingBottom: SH(30),
     },
-    paddHori: {
-        paddingHorizontal: SW(25),
-    },
-    marHori: {
-        marginHorizontal: SW(25),
-    },
+     
+   
     specialOfferConatiner: {
         paddingLeft: 10,
         paddingRight: SW(25),
@@ -95,7 +91,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
     topImagesmallContainer: {
-        height: SF(82),
+        height: SF(70),
         width: '23.5%',
         borderRadius:SF(10),
         justifyContent: 'center',

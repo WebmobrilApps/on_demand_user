@@ -36,9 +36,9 @@ const Details: FC<servicesInterface> = ({ }) => {
         <View style={styles.container}>
             <ImageLoader source={imagePaths.map_img} mainImageStyle={styles.mapImage} resizeMode='contain' />
             <View style={styles.boottomView}>
-                <Text style={styles.subHeader}>About</Text>
+                <Text style={styles.subHeader}>About Us</Text>
                 <Text style={styles.abouttxt}>Viverra lobortis bibendum gravida tortor nulla dolor pharetra. Erat parturient vel eu lectus sit. Suspendisse scelerisque egetnon iaculis consectetur dolor. Uteget malesuada est gravida Mattis justo tincidunt mi felis. Aquis nulla eget neque. Adipiscingeu ultrices sodales luctus. Lorem mauris sem sollicitudin semest non mi. Nuncaugue egestas duis habitasse molestie sedet. Amet ultricies nunc tellus lectus dolorvel.</Text>
-                <Spacing />
+                <Spacing space={SH(20)}/>
                 <Text style={styles.subHeader}>Contact & Business Hours</Text>
                 <Divider color='#3D3D3D40' marginTop={SH(5)} height={0.5} />
                 <View style={styles.contaictUsView}>
@@ -50,6 +50,7 @@ const Details: FC<servicesInterface> = ({ }) => {
                         buttonStyle={styles.callbutton}
                         textColor={Colors.textWhite}
                         buttonTextStyle={styles.callbuttontxt}
+                        isExtraBoxShadow={false}
                         title={'Call'}
                         onPress={() => {
                             Keyboard.dismiss();
@@ -83,8 +84,8 @@ const styles = StyleSheet.create({
         marginTop: SH(12)
     },
     subHeader: {
-        color: Colors.textAppColor,
-        fontFamily: Fonts.SEMI_BOLD,
+        color: '#404040',
+        fontFamily: Fonts.MEDIUM,
         fontSize: SF(12)
     },
     abouttxt: {

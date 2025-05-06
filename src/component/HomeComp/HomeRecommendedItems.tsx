@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
   text: {
     color: Colors.textAppColor,
     fontFamily: Fonts.MEDIUM,
-    fontSize: SF(13),
-    marginTop: 5,
+    fontSize: SF(12),
+    marginTop: 6,
   },
   ratingContainer: {
     flexDirection: 'row',

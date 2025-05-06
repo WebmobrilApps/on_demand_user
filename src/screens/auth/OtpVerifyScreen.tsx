@@ -61,7 +61,14 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
   };
 
   const btnVerifyOtp = async () => {
-
+    if (fromScreen === 'signup') {
+      dispatch(setToken({ token: 'response.ResponseBody.token' }));
+      navigation.navigate(RouteName.HOME);
+    }
+    if (fromScreen === 'forgotpass') {
+      navigation.navigate(RouteName.PASS_UPDATE, { userToken: 'response.ResponseBody.token' });
+    }
+    return
     if (!otp) {
       CustomToast({ message: 'Error', description: 'Please Enter OTP', position: 'top', type: 'danger' });
       return;
@@ -185,7 +192,7 @@ const styles = StyleSheet.create({
     fontSize: SF(20),
     textAlign: 'center',
   },
-  burronContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(180) },
+  burronContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(160),width:'94%',alignSelf:'center' },
   bottomInnerContainer: {
     paddingVertical: SH(35),
     paddingHorizontal: SW(20),
@@ -210,6 +217,7 @@ const styles = StyleSheet.create({
       fontSize: SF(14),
       textAlign: 'right',
       marginTop: 8,
+      color:Colors.textWhite
   },
   activeIndigator:{ marginTop: 8 },
 });

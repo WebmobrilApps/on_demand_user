@@ -23,10 +23,10 @@ const ConfirmBookingModal: React.FC<ConfirmBookingModalProps> = ({
                 <View style={styles.mainView}>
                     <TouchableOpacity onPress={() => closeModal()} style={styles.crossIcon}>
                         <VectoreIcons
-                            icon='Entypo'
-                            name='cross'
+                            icon='Ionicons'
+                            name='close'
                             color={Colors.themeColor}
-                            size={SF(35)}
+                            size={SF(30)}
                         />
                     </TouchableOpacity>
                     <Spacing space={SH(20)} />
@@ -80,17 +80,18 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.SEMI_BOLD,
         fontSize: SF(20),
         textAlign: 'center',
-
     },
     dateorshopbame: {
         color: Colors.textAppColor,
         fontFamily: Fonts.MEDIUM,
         fontSize: SF(14),
+        marginTop:SH(2.5)
     },
     shopaddress: {
         color: Colors.lightGraytext,
         fontFamily: Fonts.MEDIUM,
         fontSize: SF(12),
+        marginTop:SH(2.5)
     },
     crossIcon: {
         position: 'absolute',

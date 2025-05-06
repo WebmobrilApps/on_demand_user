@@ -22,7 +22,7 @@ export const english = {
     },
     otpverify:{
       title: 'Verification',
-      subtitle:  'Please enter the code we sent to your email id',
+      subtitle:  'Please enter the code we sent to \n your email id',
       verify:'Verify',
     },
     updatepass:{
@@ -42,6 +42,7 @@ export const english = {
       createPassword:'Create Password',
       'AddNewAddress':'Add New Address',
       'save':'Save',
+      'update':'Update',
       'newPassword':'New Password',
     },
 
@@ -89,5 +90,14 @@ export const english = {
       language:'Language',
       currencyConverter:'Currency Converter',
       currencySwitcher:'Currency Switcher',
+    },
+    customerSupport:{
+      'supportSection': 'Support Section',
+      'helpCenter': 'Help Center',
+      'contactSupport': 'Contact Support',
+      'assistance': '24/7 Assistance',
+      'ticketSystem': 'Ticket System',
+      'issueTracking': 'Issue Tracking',
+      'liveChatSupportracking': 'Live Chat Support',
     },
   };

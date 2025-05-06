@@ -69,9 +69,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageLoader: {
-    height: SF(58),
-    width: SF(58),
-    borderRadius: SF(58) / 2,
+    height: SF(56),
+    width: SF(56),
+    borderRadius: SF(56) / 2,
     borderWidth: 1,
     borderColor: Colors.themeColor,
   },

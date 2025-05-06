@@ -10,7 +10,7 @@ import {
   MyCalenderItems,
   Spacing,
 } from '../../component';
-import { Colors, SH, SW } from '../../utils';
+import { calenderData, Colors, SH, SW } from '../../utils';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
@@ -20,48 +20,7 @@ const spaceContainer = () => <Spacing space={SH(15)} />;
 const MyCalender: React.FC<MyCalenderProps> = ({ }) => {
   const { t } = useTranslation();
   const navigation = useNavigation<any>();
-  const calenderData = [
-    {
-      name: 'Facial For Glow',
-      datetime: '10, Feb 2025 , 09:00pm',
-      id: 1,
-    },
-    {
-      name: 'Facial For Glow',
-      datetime: '10, Feb 2025 , 09:00pm',
-      id: 2,
-    },
-    {
-      name: 'Facial For Glow',
-      datetime: '10, Feb 2025 , 09:00pm',
-      id: 3,
-    },
-    {
-      name: 'Facial For Glow',
-      datetime: '10, Feb 2025 , 09:00pm',
-      id: 6,
-    },
-    {
-      name: 'Facial For Glow',
-      datetime: '10, Feb 2025 , 09:00pm',
-      id: 7,
-    },
-    {
-      name: 'Facial For Glow',
-      datetime: '10, Feb 2025 , 09:00pm',
-      id: 8,
-    },
-    {
-      name: 'Facial For Glow',
-      datetime: '10, Feb 2025 , 09:00pm',
-      id: 9,
-    },
-    {
-      name: 'Facial For Glow',
-      datetime: '10, Feb 2025 , 09:00pm',
-      id: 10,
-    },
-  ];
+  
   return (
     <Container isAuth={false}>
       <AppHeader

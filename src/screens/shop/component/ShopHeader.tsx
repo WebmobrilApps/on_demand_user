@@ -1,12 +1,13 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image, Platform, Pressable } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image, Platform, Pressable } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { HomeSearchBar, InputField, Inputs, VectoreIcons } from '../../../component';
+import { Colors, Fonts, goBack, SF, SH, SW } from '../../../utils';
+import {  InputField, } from '../../../component';
 import imagePaths from '../../../assets/images';
-import { SearchBar } from 'react-native-screens';
 import VectorIcon from '../../../component/VectoreIcons';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+ 
+ 
 interface HeaderProps {
     onclickAdd?: (text: string) => void;
     onclicCalender?: (text: string) => void;
@@ -28,21 +29,20 @@ const ShopHeader: React.FC<HeaderProps> = ({
             colors={[Colors.themeDarkColor, Colors.themeColor]}>
             <View style={styles.innerContainer}>
                 <TouchableOpacity
-                    onPress={() => { }} // Call the passed onBackPress function
+                    onPress={() => {goBack()}}
                     activeOpacity={0.5}
                     style={styles.backIconContainer}>
                     <VectorIcon
-                        icon="FontAwesome"
+                        icon="Entypo"
                         color={Colors.white}
-                        name="angle-left"
-                        size={SF(35)}
+                        name="chevron-thin-left"
+                        size={SF(24)}
                     />
                 </TouchableOpacity>
-                <View style={{ width: '70%', marginRight: 25 }}>
+                <View style={{ width: '75%', marginRight: SF(11) }}>
                     <InputField
                         placeholder={'Search'}
-                        inputContainer={{ backgroundColor: Colors.bgwhite, borderWidth: 0 }}
-                        // containerStyle={styles.inputContainer}
+                        inputContainer={{ backgroundColor: Colors.bgwhite,borderWidth:0 ,height:SF(40)}}
                         inputStyle={styles.inputStyle}
                         placeholderTextColor={Colors.searchBarPlac}
                         leftIcon={imagePaths.Search}
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 25,
-        paddingBottom: SF(20)
+        marginHorizontal: SF(30),
+        paddingBottom: SF(8)
     },
     inputStyle: {
         color: Colors.searchBarPlac,
@@ -79,32 +79,27 @@ const styles = StyleSheet.create({
         marginLeft: Platform.OS == 'ios' ? 3 : 0,
         fontSize: SF(16),
     },
-    inputInnerContainer: {
-        backgroundColor: Colors.white,
-        width: '100%',
-        paddingHorizontal: SW(14),
-        height: SF(46),
-        padding: 0,
-    },
+    
     backIconContainer: {
-        height: SF(40),
         zIndex: 99,
         alignItems: 'flex-start',
         justifyContent: 'center',
-        marginRight: 30,
+        marginRight: SF(12),
+        padding:5,
+        marginTop:-6
     },
 
     filterButton: {
-        borderRadius: SF(10),
+        borderRadius: SF(6),
         justifyContent: 'center',
         alignItems: 'center',
-        height: SF(40),
-        width: SF(40),
+        height: SF(30),
+        width: SF(30),
         backgroundColor: Colors.white,
     },
     filterIcon: {
-        height: SF(24),
-        width: SF(24),
+        height: SF(20),
+        width: SF(20),
         resizeMode: 'contain',
         tintColor: Colors.themeColor
     },

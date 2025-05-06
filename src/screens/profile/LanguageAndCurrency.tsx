@@ -1,25 +1,27 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import {
   AppHeader,
   Container,
+ 
   LanguageAndCurrencyPopup,
   ProfileList,
   Spacing,
 } from '../../component';
-import {Colors, Fonts, SF, SH, SW} from '../../utils';
-import {useNavigation} from '@react-navigation/native';
-import {useTranslation} from 'react-i18next';
+import { Colors, Fonts, SF, SH, SW } from '../../utils';
+import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { currencyData, languageData } from '../../utils/StaticData';
 
 type LanguageAndCurrencyProps = {};
-const LanguageAndCurrency: React.FC<LanguageAndCurrencyProps> = ({}) => {
+const LanguageAndCurrency: React.FC<LanguageAndCurrencyProps> = ({ }) => {
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigation = useNavigation<any>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [data, setData] = useState<any>(languageData);
   const [title, setTitle] = useState<any>(t('profile.languageSettings'));
+  const [type, setType] = useState<any>('');
 
   let languageJson = {
     name: t('languageSetting.language'),
@@ -39,6 +41,7 @@ const LanguageAndCurrency: React.FC<LanguageAndCurrencyProps> = ({}) => {
 
   const btnPress = (type: string) => {
     if (type === 'language') {
+      setType(type)
       setData(languageData);
       setTitle(t('profile.languageSettings'));
       setModalVisible(true);
@@ -46,6 +49,7 @@ const LanguageAndCurrency: React.FC<LanguageAndCurrencyProps> = ({}) => {
       setTitle(t('languageSetting.currencySwitcher'));
       setData(currencyData);
       setModalVisible(true);
+      setType(type)
     }
   };
 
@@ -53,6 +57,7 @@ const LanguageAndCurrency: React.FC<LanguageAndCurrencyProps> = ({}) => {
     <Container isPadding={true}>
       <LanguageAndCurrencyPopup
         title={title}
+        type={type}
         data={data}
         clodeModal={() => {
           setModalVisible(false);
@@ -67,7 +72,7 @@ const LanguageAndCurrency: React.FC<LanguageAndCurrencyProps> = ({}) => {
           }
         }}
         Iconname="arrowleft"
-        rightOnPress={() => {}}
+        rightOnPress={() => { }}
         headerStyle={styles.header}
       />
       <View style={styles.container}>
@@ -90,7 +95,7 @@ export default LanguageAndCurrency;
 const styles = StyleSheet.create({
   header: {
     backgroundColor: Colors.bgwhite,
-    paddingHorizontal: SW(25),
+    paddingHorizontal: SW(35),
   },
   container: {
     paddingHorizontal: SW(25),

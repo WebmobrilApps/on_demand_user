@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import {
   Dimensions,
   Image,
@@ -40,7 +40,7 @@ import { StorageProvider, useLoginMutation } from '../../services';
 import { useDispatch } from 'react-redux';
 import { setToken } from '../../redux';
 import DeviceInfo from 'react-native-device-info';
-const SCREEN_WIDTH =  Dimensions.get('window').width
+const SCREEN_WIDTH = Dimensions.get('window').width
 const SocialButton = ({
   icon,
   onPress,
@@ -87,6 +87,9 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
   });
 
   const btnSignIn = async (values: { email: string; password: string }, resetForm: any) => {
+    navigation.navigate(RouteName.HOME, {});
+    // navigation.navigate(RouteName.OTP_VERIFY, { fromScreen: 'forgotpass', userToken: 'response.ResponseBody.token', email: 'dharm@gmail.com' });
+    return false
 
     const fcmToken = await StorageProvider.getItem('fcmToken');
     const device_id = await DeviceInfo.getUniqueId();
@@ -170,7 +173,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
                     errorMessage={touched.email && errors.email && errors.email ? errors.email : ''}
                     keyboardType={'email-address'}
                   />
-
+                  <Spacing space={SF(7)} />
                   <InputField
                     placeholder={t('placeholders.password')}
                     value={values.password}
@@ -184,7 +187,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
                     keyboardType={'visible-password'}
                   />
 
-                  <Spacing space={SH(20)} />
+                  <Spacing space={SF(8)} />
 
                   <Text
                     onPress={() => {
@@ -207,7 +210,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
                     isLoading={isLoading}
                   />
 
-                  <Spacing space={SH(30)} />
+
 
                   <View style={styles.lineViewContainer}>
                     <View style={styles.leftRightLine} />
@@ -215,21 +218,22 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
                     <View style={styles.leftRightLine} />
                   </View>
 
-                  <Spacing space={SH(20)} />
-
+                  <Spacing space={SH(15)} />
+                  <Image source={imagePaths.finger_print} style={styles.fingerPrintImage} />
+                  <Spacing space={SH(15)} />
                   <View style={styles.socialIconContainer}>
                     {socialButtons.map((button, index) => (
                       <SocialButton
                         key={index}
                         icon={button.icon}
                         width={SF(40)}
-                        iconSize={SF(26)}
+                        iconSize={index == 2 ? SF(31) : SF(26)}
                         onPress={button.onPress}
                       />
                     ))}
                   </View>
 
-                  <Spacing space={SH(25)} />
+                  <Spacing space={SH(10)} />
 
                   <Text style={styles.dontHaveAccTxt}>
                     {t('login.dontHaveAccount')}
@@ -237,7 +241,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
                       onPress={() => {
                         navigation.navigate(RouteName.SIGNUP);
                       }}
-                      style={{ fontFamily: Fonts.BOLD, fontSize: SF(16) }}>
+                      style={{ fontFamily: Fonts.SEMI_BOLD, fontSize: SF(14) }}>
                       {t('login.signUp')}
                     </Text>
                   </Text>
@@ -283,6 +287,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 6,
+    marginTop: SF(20)
   },
   leftRightLine: {
     height: 1,
@@ -291,7 +296,7 @@ const styles = StyleSheet.create({
   },
   ortext: {
     color: Colors.textWhite,
-    fontFamily: Fonts.SEMI_BOLD,
+    fontFamily: Fonts.BOLD,
     fontSize: SF(14),
     alignSelf: 'flex-end',
     textAlign: 'right',
@@ -311,6 +316,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'space-between',
   },
+  fingerPrintImage:{ height: SF(46), width: SF(46), resizeMode: "contain", alignSelf: "center" },
   dontHaveAccTxt: {
     color: Colors.textWhite,
     fontFamily: Fonts.REGULAR,

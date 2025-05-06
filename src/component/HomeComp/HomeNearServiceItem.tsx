@@ -19,7 +19,7 @@ const HomeCategoryItem: React.FC<HomeCategoryItemProps> = () => {
     <Pressable onPress={() => { navigation.navigate(RouteName.SERVICE_LIST) }} style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={imagePaths.service_logo1}
+          source={imagePaths.electrical}
           resizeMode="cover"
           style={styles.logo}
         />
@@ -32,7 +32,7 @@ const HomeCategoryItem: React.FC<HomeCategoryItemProps> = () => {
       </View>
       <Spacing space={10} />
       <View style={styles.ratingContainer}>
-        <StarRating starStyle={{ marginHorizontal: 0 }} onChange={() => { }} starSize={SF(16)} rating={3.5} />
+        <StarRating starStyle={{ marginHorizontal: 0}} starSize={SF(12)}  onChange={() => { }} color='#FAAC00'  rating={3.5} />
         <Text style={styles.ratingtxt}>{'4.6'}</Text>
       </View>
       <Spacing space={7} />
@@ -49,8 +49,9 @@ const HomeCategoryItem: React.FC<HomeCategoryItemProps> = () => {
           <Text style={styles.addtext}>Starts @ $ 30/hr</Text>
         </View>
         <View style={styles.durationContainer}>
+          <Text style={styles.dotText}> . </Text>
           <Image source={imagePaths.ClockClockwise} style={styles.clockIcon} />
-          <Text style={styles.closetext}>1.2 hrs</Text>
+          <Text style={styles.closetext}>1</Text>
         </View>
       </View>
     </Pressable>
@@ -66,23 +67,24 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     width: '100%',
   },
   logo: {
-    width: SF(34),
-    height: SF(34),
-    borderRadius: SF(34) / 2,
+    width: SF(28),
+    height: SF(28),
+    borderRadius: SF(28) / 2,
   },
   verifiedIcon: {
-    width: SF(16),
-    height: SF(16),
+    width: SF(14),
+    height: SF(14),
+    marginLeft:SF(8)
   },
   text: {
     color: Colors.textAppColor,
     fontFamily: Fonts.MEDIUM,
-    fontSize: SF(13),
-    width: SF(130),
+    fontSize: SF(12),
+    marginLeft:SF(10)
   },
   ratingContainer: {
     width: SF(90),
@@ -125,14 +127,14 @@ const styles = StyleSheet.create({
   },
   dotText: {
     fontFamily: Fonts.EXTRA_BOLD,
-    marginTop: -4,
+    fontSize:SF(18),
+    marginTop: SF(-8),
     marginLeft: 2,
   },
   footer: {
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
   priceContainer: {
     flexDirection: 'row',
@@ -147,6 +149,7 @@ const styles = StyleSheet.create({
   durationContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginLeft:SF(9)
   },
   clockIcon: {
     height: SF(12),

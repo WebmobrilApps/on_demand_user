@@ -50,18 +50,20 @@ const styles = StyleSheet.create<Style>({
     },
     serviceTitle: {
         fontSize: SF(12),
-        fontFamily: Fonts.SEMI_BOLD,
+        fontFamily: Fonts.MEDIUM,
         color: Colors.textAppColor,
     },
     serviceSub: {
         fontSize: SF(10),
         color: Colors.lightGraytext,
         fontFamily: Fonts.MEDIUM,
+        marginTop:SH(2)
     },
     price: {
         fontSize: SF(12),
         fontFamily: Fonts.SEMI_BOLD,
         color: Colors.textAppColor,
+        marginTop:SH(2)
     },
 });
 
