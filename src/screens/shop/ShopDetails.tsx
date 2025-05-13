@@ -3,8 +3,10 @@ import { Pressable, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, V
 import { AppHeader, Container, ImageLoader, Spacing, VectoreIcons } from '../../component';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
-import { useNavigation } from '@react-navigation/native';
-import { Details, Portfolio, Reviews, Services } from './component';
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
+import { ConfirmBookingTypeModal, Details, Portfolio, Reviews, Services } from './component';
+import RouteName from '../../navigation/RouteName';
+import { ConfirmBookingModal } from '../Bookings/component';
 
 interface shopProps { }
 const shopDetailTabs = [
@@ -17,8 +19,40 @@ const shopDetailTabs = [
 const ShopDetails: React.FC<shopProps> = () => {
     const navigation = useNavigation<any>();
     const [activeTab, setActiveTabs] = useState<string>('services');
+    const [confirmBookingTypeModal, setConfirmBookingTypeModal] = useState<boolean>(false);
+    const [forwhomCheck, setForwhomCheck] = useState(false)
+    const [modalVisible, setModalVisible] = useState<boolean>(false)
+    const route = useRoute<any>();
+    let bookingType = route?.params?.bookingType;
+
+     
+    const btnBookService = () => {
+        bookingType == 'immediate' ? setModalVisible(true) : setConfirmBookingTypeModal(true)
+    }
+
     return (
-        <Container isPadding={false}>
+        <Container isAuth>
+            <Spacing space={SH(20)}/>
+            <ConfirmBookingModal
+                forwhomCheck={forwhomCheck}
+                setForwhomCheck={() => { setForwhomCheck(!forwhomCheck) }}
+                modalVisible={modalVisible}
+                closeModal={() => {
+                    setModalVisible(false);
+                }}
+                btnSubmit={() => {
+                    setModalVisible(false);
+                    if (forwhomCheck) {
+                        setTimeout(() => {
+                            navigation.navigate(RouteName.ADD_OTHER_PERSON_DETAIL)
+                        }, 200);
+                    } else {
+                        setTimeout(() => {
+                            navigation.navigate(RouteName.PAYMENT_SCREEN)
+                        }, 200);
+                    }
+                }}
+            />
             <StatusBar
                 barStyle={'dark-content'}
             />
@@ -28,7 +62,6 @@ const ShopDetails: React.FC<shopProps> = () => {
                 borderColor: '#3D3D3D40',
             }}>
                 <TouchableOpacity onPress={() => {
-                
                     navigation.goBack();
                 }}>
                     <VectoreIcons
@@ -96,13 +129,18 @@ const ShopDetails: React.FC<shopProps> = () => {
                     }
                 </View>
                 {activeTab !== 'details' && <Spacing />}
-                {activeTab === 'services' && <Services />}
+                {activeTab === 'services' && <Services onClick={() => btnBookService()} />}
                 {activeTab === 'reviews' && <Reviews />}
                 {activeTab === 'portfolio' && <Portfolio />}
                 {activeTab === 'details' && <Details />}
                 {/* pages=========== */}
 
             </ScrollView>
+            <ConfirmBookingTypeModal
+                modalVisible={confirmBookingTypeModal}
+                submitButton={() => { }}
+                closeModal={() => { setConfirmBookingTypeModal(false) }}
+            />
         </Container>
     );
 };

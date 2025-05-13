@@ -62,6 +62,7 @@ const FilterScreen: FC<FilterScreenProps> = () => {
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(1000);
+  const [advanceFilterOpen, setAdvanceFilterOpen] = useState<boolean>(false);
 
   const onChangeCatCheck = (categoryId: number) => {
     setSelectedCat((prev) =>
@@ -137,65 +138,69 @@ const FilterScreen: FC<FilterScreenProps> = () => {
         <Spacing space={SH(15)} />
         <View style={styles.advancedFilterHeader}>
           <Text style={styles.subtitle}>Advanced Filter</Text>
-          <TouchableOpacity style={styles.dropdownIcon}>
-            <VectoreIcons
-              icon="AntDesign"
-              name="caretdown"
-              size={SF(14)}
-              color={Colors.themeColor}
-            />
+          <TouchableOpacity onPress={() => { setAdvanceFilterOpen(!advanceFilterOpen) }} style={styles.dropdownIcon}>
+            <Image
+              resizeMode='contain'
+              source={!advanceFilterOpen ? imagePaths.down : imagePaths.down} style={[styles.icon, advanceFilterOpen && {
+                transform: [
+                  { rotate: '180deg' },
+                ]
+              }]} />
           </TouchableOpacity>
         </View>
         <Spacing space={SH(10)} />
-        <View style={styles.advancedFilterWrapper}>
-          {/* Rating Section */}
-          <Text style={styles.labal}>Rating</Text>
-          <Spacing />
-          <View style={styles.ratingContainer}>
-            {ratingData.map((rating) => (
-              <RatingItem
-                key={rating}
-                rating={rating}
-                selectedRatings={selectedRatings}
-                onSelectRating={onSelectRating}
-              />
-            ))}
-          </View>
-          <Spacing space={SH(15)} />
-          {/* <Divider style={styles.divider} /> */}
-          <Spacing space={SH(15)} />
-          {/* Distance Section */}
-          <View style={styles.distanceHeaderContainer}>
-            <Text style={styles.labal}>Distance</Text>
-            <View style={styles.distanceValueContainer}>
-              <VectoreIcons
-                icon="Entypo"
-                name="minus"
-                size={SF(16)}
-                color={Colors.themeColor}
-              />
-              <TouchableOpacity style={styles.distanceValueButton}>
-                <Text style={styles.labal}>2 km</Text>
-              </TouchableOpacity>
-              <VectoreIcons
-                icon="Entypo"
-                name="plus"
-                size={SF(16)}
-                color={Colors.themeColor}
-              />
+        {
+          advanceFilterOpen &&
+          <View style={styles.advancedFilterWrapper}>
+            {/* Rating Section */}
+            <Text style={styles.labal}>Rating</Text>
+            <Spacing />
+            <View style={styles.ratingContainer}>
+              {ratingData.map((rating) => (
+                <RatingItem
+                  key={rating}
+                  rating={rating}
+                  selectedRatings={selectedRatings}
+                  onSelectRating={onSelectRating}
+                />
+              ))}
             </View>
-          </View>
+            <Spacing space={SH(15)} />
+            {/* <Divider style={styles.divider} /> */}
+            <Spacing space={SH(15)} />
+            {/* Distance Section */}
+            <View style={styles.distanceHeaderContainer}>
+              <Text style={styles.labal}>Distance</Text>
+              <View style={styles.distanceValueContainer}>
+                <VectoreIcons
+                  icon="Entypo"
+                  name="minus"
+                  size={SF(16)}
+                  color={Colors.themeColor}
+                />
+                <TouchableOpacity style={styles.distanceValueButton}>
+                  <Text style={styles.labal}>2 km</Text>
+                </TouchableOpacity>
+                <VectoreIcons
+                  icon="Entypo"
+                  name="plus"
+                  size={SF(16)}
+                  color={Colors.themeColor}
+                />
+              </View>
+            </View>
 
-          {/* Price Range Section */}
-          <Spacing space={SH(15)} />
-          {/* <Divider style={styles.divider} /> */}
-          <Spacing space={SH(15)} />
-          <PriceRangeSlider
-            minPrice={minPrice}
-            maxPrice={maxPrice}
-            onPriceChange={onPriceChange}
-          />
-        </View>
+            {/* Price Range Section */}
+            <Spacing space={SH(15)} />
+            {/* <Divider style={styles.divider} /> */}
+            <Spacing space={SH(15)} />
+            <PriceRangeSlider
+              minPrice={minPrice}
+              maxPrice={maxPrice}
+              onPriceChange={onPriceChange}
+            />
+          </View>
+        }
         {/* Map Box */}
         <View style={styles.mapContainer}>
           <Image
@@ -422,6 +427,7 @@ const styles = StyleSheet.create({
   dropdownIcon: {
     paddingHorizontal: SW(5),
   },
+  icon: { height: SF(11), width: SF(11), tintColor: Colors.themeColor }
 });
 
 export default FilterScreen;

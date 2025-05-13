@@ -1,33 +1,36 @@
-import React  from 'react';
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import { MessageScreen, ProfileScreen} from '../screens/tab';
+import { ProfileScreen } from '../screens/tab';
 import imagePaths from '../assets/images';
-import {Colors, Fonts, SF, SH, widthPercent} from '../utils';
+import { Colors, Fonts, SF, SH, widthPercent } from '../utils';
 import RouteName from './RouteName';
 import AllUsersList from '../screens/AllUsersList';
 import { HomeScreen, InboxScreen, MyBookingScreen } from '../screens';
-const SCREEN_WIDTH =  Dimensions.get('window').width
+const SCREEN_WIDTH = Dimensions.get('window').width
 const BOTTOM_ROUTE = [
   {
-    name: RouteName.HOME,
+    name:'Home',
     Component: () => <HomeScreen />, // Replace with your actual component
     icon: imagePaths.home_tab, // Replace with your icon
     headerShown: false,
+    routeName:  RouteName.HOME
   },
   {
-    name: RouteName.MY_BOOKING,
+    name: 'My Booking',
     Component: () => <MyBookingScreen />, // Replace with your actual component
     icon: imagePaths.mybooking_tab, // Replace with your icon
     headerShown: false,
+    routeName: RouteName.MY_BOOKING
   },
   {
     name: 'Message',
     Component: () => <InboxScreen />, // Replace with your actual component
     icon: imagePaths.message_tab, // Replace with your icon
     headerShown: false,
+    routeName: RouteName.MESSAGE_SCREEN
   },
   //   {
   //   name: 'AllUsersList',
@@ -36,10 +39,11 @@ const BOTTOM_ROUTE = [
   //   headerShown: true,
   // },
   {
-    name: RouteName.PROFILE,
+    name: 'Profile',
     Component: () => <ProfileScreen />, // Replace with your actual component
     icon: imagePaths.profile_tab, // Replace with your icon
     headerShown: false,
+    routeName: RouteName.PROFILE
   },
 ];
 
@@ -64,7 +68,7 @@ const styles = StyleSheet.create({
 
 // Main Component
 export default function App() {
-  
+
 
   return (
     <Tab.Navigator
@@ -76,7 +80,7 @@ export default function App() {
         tabBarActiveTintColor: Colors.themeColor,
         tabBarInactiveTintColor: 'gray',
         headerTitleAlign: 'center',
-        headerStyle: {backgroundColor: Colors.white},
+        headerStyle: { backgroundColor: Colors.white },
         headerTitleStyle: {
           color: Colors.textAppColor,
           fontFamily: Fonts.PlusJakartaSans_SEMI_BOLD,
@@ -86,8 +90,8 @@ export default function App() {
         headerShadowVisible: false,
         tabBarStyle: {
           backgroundColor: '#ffffff',
-          height:SF(60),
-          paddingTop:SF(8)
+          height: SF(60),
+          paddingTop: SF(8)
         },
       }}>
       {BOTTOM_ROUTE.map((route) => (
@@ -97,8 +101,8 @@ export default function App() {
           component={route.Component}
           options={{
             headerShown: route.headerShown,
-            tabBarIcon: ({focused}: {focused: boolean}) => (
-              <View style={{width:SCREEN_WIDTH/4.2,justifyContent:"center",alignItems:"center"}}>
+            tabBarIcon: ({ focused }: { focused: boolean }) => (
+              <View style={{ width: SCREEN_WIDTH / 4.2, justifyContent: "center", alignItems: "center" }}>
                 <Image
                   style={[
                     styles.imageStyle,
@@ -113,7 +117,7 @@ export default function App() {
                 <Text
                   style={[
                     styles.iconsstyles,
-                    {color: focused ? Colors.themeColor : Colors.textAppColor},
+                    { color: focused ? Colors.themeColor : Colors.textAppColor },
                   ]}>
                   {route.name}
                 </Text>

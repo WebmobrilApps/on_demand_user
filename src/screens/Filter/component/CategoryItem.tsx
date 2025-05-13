@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import React, { FC } from 'react';
 import { Checkbox, Spacing, VectoreIcons } from '../../../component';
-import { Colors, SF, SH, SW } from '../../../utils';
+import { Colors, imagePaths, SF, SH, SW } from '../../../utils';
 import SubCategoryItem from './SubCategoryItem';
 
 // Interface for props
@@ -35,26 +35,25 @@ const CategoryItem: FC<CategoryItemProps> = ({
 }) => {
   return (
     <>
-      <View style={styles.categoryContainer}>
+      <View style={[styles.categoryContainer,]}>
         <Checkbox
           checked={selectedCat.includes(category.categoryId)}
           size={SW(16)}
           color={Colors.themeColor}
           onChange={() => onChangeCatCheck(category.categoryId)}
-          label=""
+          label={category.title}
+          checkBoxTextStyle={styles.title}
         />
-        <Spacing horizontal space={SW(8)} />
-        <Text style={styles.title}>{category.title}</Text>
+        <Spacing horizontal space={SW(8)} /> 
         <TouchableOpacity
           style={styles.dropdownIcon}
           onPress={() => onToggleDropdown(category.categoryId)}
         >
-          <VectoreIcons
-            icon="AntDesign"
-            name={openedCat.includes(category.categoryId) ? 'caretup' : 'caretdown'}
-            size={SF(14)}
-            color={Colors.themeColor}
-          />
+          <Image 
+          resizeMode='contain' 
+          source={openedCat.includes(category.categoryId) ? imagePaths.down:imagePaths.down} style={[styles.icon,openedCat.includes(category.categoryId) && {transform: [
+            { rotate: '180deg' },
+          ]}]}/>
         </TouchableOpacity>
       </View>
       {openedCat.includes(category.categoryId) &&
@@ -86,7 +85,10 @@ const styles = StyleSheet.create({
   },
   dropdownIcon: {
     paddingHorizontal: SW(5),
+    position:'absolute',right:10,
+    zIndex:99999
   },
+  icon:{height:SF(11),width:SF(11),tintColor:Colors.themeColor}
 });
 
 export default CategoryItem;

@@ -8,13 +8,19 @@ import RouteName from '../../../navigation/RouteName';
 
 interface ShopsProps {
     item: any;
-    index: number
+    index: number;
+    bookingType?: string
 }
 
-const Shops: React.FC<ShopsProps> = ({ index }) => {
-  const navigation = useNavigation<any>();
+const Shops: React.FC<ShopsProps> = ({ index, bookingType = null }) => {
+    const navigation = useNavigation<any>();
     return (
-        <Pressable onPress={()=>{navigation.navigate(RouteName.SHOP_DETAILS);}} key={index + 'item-shop'} style={styles.itemContainer}>
+        <Pressable
+            onPress={() => { 
+                navigation.navigate(RouteName.SHOP_DETAILS,{bookingType:bookingType}); 
+            }}
+            key={index + 'item-shop'} style={styles.itemContainer}
+        >
             <View style={styles.topImagesWrapper}>
                 <View style={[styles.topImageContainer, boxShadowlight]}>
                     <ImageLoader source={imagePaths.barber} resizeMode="contain" mainImageStyle={styles.topImage} />
@@ -37,7 +43,7 @@ const Shops: React.FC<ShopsProps> = ({ index }) => {
                 </View>
                 <View style={styles.reviewBlock}>
                     <Text style={styles.reviewText}>
-                        4.5{'\n'}<Text style={{fontSize:SF(10),color: Colors.textAppColor,}}>140 Reviews</Text>
+                        4.5{'\n'}<Text style={{ fontSize: SF(10), color: Colors.textAppColor, }}>140 Reviews</Text>
                     </Text>
                 </View>
             </View>
@@ -51,8 +57,8 @@ const styles = StyleSheet.create({
     scrollContainer: {
         paddingBottom: SH(30),
     },
-     
-   
+
+
     specialOfferConatiner: {
         paddingLeft: 10,
         paddingRight: SW(25),
@@ -93,7 +99,7 @@ const styles = StyleSheet.create({
     topImagesmallContainer: {
         height: SF(70),
         width: '23.5%',
-        borderRadius:SF(10),
+        borderRadius: SF(10),
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: Colors.bgwhite,

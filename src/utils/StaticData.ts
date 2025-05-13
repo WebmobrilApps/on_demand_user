@@ -196,3 +196,70 @@ export const calenderData = [
     id: 10,
   },
 ];
+
+export const messagesData = [
+  {
+    _id: 1,
+    text: 'Hello! How can I help you today?',
+    createdAt: new Date(),
+    user: {
+      _id: 2,
+      name: 'Support',
+      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+    },
+  },
+  {
+    _id: 2,
+    text: 'Hi, I need some assistance with my order.',
+    createdAt: new Date(Date.now() - 60 * 1000),
+    user: {
+      _id: 1,
+      name: 'You',
+    },
+  },
+  {
+    _id: 3,
+    text: 'Sure, I’d be happy to help. Could you provide your order number?',
+    createdAt: new Date(Date.now() - 2 * 60 * 1000),
+    user: {
+      _id: 2,
+      name: 'Support',
+      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+    },
+  },
+];
+
+ export const inboxMenuData = [
+  {
+    id: 'delete',
+    title: 'Delete Chat',
+    icon: imagePaths.delete_icon,
+  },
+  {
+    id: 'report',
+    title: 'Report',
+    icon: imagePaths.report_icon,
+  },
+  {
+    id: 'block',
+    title: 'Block',
+    icon: imagePaths.block_icon,
+  },
+];
+ export const chatMenuData = [
+  {
+    id: 'delete',
+    title: 'Mute Notification',
+    icon: imagePaths.mute_icon,
+  },
+  {
+    id: 'report',
+    title: 'Delete Chat',
+    icon: imagePaths.report_icon,
+  },
+  {
+    id: 'block',
+    title: 'Add Feedback',
+    icon: imagePaths.feedback_icon,
+  },
+];

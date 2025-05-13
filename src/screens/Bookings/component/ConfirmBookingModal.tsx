@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, Spacing, VectoreIcons } from '../../../component';
+import { Buttons, Checkbox, Spacing, VectoreIcons } from '../../../component';
 import BookingServiceItem from './BookingServiceItem';
 
 
 type ConfirmBookingModalProps = {
     modalVisible: boolean;
+    forwhomCheck?: boolean;
+    setForwhomCheck?:  () => void;
     closeModal: () => void;
+    btnSubmit: () => void;
 };
 const ConfirmBookingModal: React.FC<ConfirmBookingModalProps> = ({
     modalVisible = true,
     closeModal,
+    forwhomCheck=false,
+    setForwhomCheck,
+    btnSubmit
 }) => {
     return (
         <Modal
@@ -48,9 +54,12 @@ const ConfirmBookingModal: React.FC<ConfirmBookingModalProps> = ({
                         title='Subtotal'
                         price='$8989'
                     />
+                    <View style={{ marginTop: 10, marginLeft: 2 }}>
+                        <Checkbox size={SF(14)} lebelFontSize={SF(14)} color={Colors.themeColor} label='Booking for Other' checked={forwhomCheck} onChange={()=>{setForwhomCheck && setForwhomCheck()}} />
+                    </View>
                     <Spacing space={SH(70)} />
                     <Buttons
-                        onPress={() => closeModal()}
+                        onPress={() => btnSubmit()}
                         title='Confirm'
                     />
                     <Spacing space={SH(8)} />
@@ -85,13 +94,13 @@ const styles = StyleSheet.create({
         color: Colors.textAppColor,
         fontFamily: Fonts.MEDIUM,
         fontSize: SF(14),
-        marginTop:SH(2.5)
+        marginTop: SH(2.5)
     },
     shopaddress: {
         color: Colors.lightGraytext,
         fontFamily: Fonts.MEDIUM,
         fontSize: SF(12),
-        marginTop:SH(2.5)
+        marginTop: SH(2.5)
     },
     crossIcon: {
         position: 'absolute',

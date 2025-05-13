@@ -1,24 +1,36 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { Container, HomeRecommendedItems, Spacing } from '../../component';
 import { Colors, Fonts, recommendedData, SF, SH, subCatDdata, SW } from '../../utils';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { ShopHeader, Shops, SubCatList } from './component';
 import imagePaths from '../../assets/images';
+import { useFocusEffect, useRoute } from '@react-navigation/native';
 
 interface shopProps { }
- 
+
 
 
 const SeparatorComponent = () => <Spacing space={SH(10)} />;
 const SeparatorComponentSpecialOffer = () => <Spacing horizontal space={SH(15)} />;
 
 const ShopList: React.FC<shopProps> = () => {
-
+    // immidiate
+    const route = useRoute<any>();
+    let bookingType = route?.params?.bookingType;
     const listHeader = () => (
         <Text style={styles.listHeaderText}>Barber shop (250)</Text>
     );
-
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //         StatusBar.setBackgroundColor(Colors.themeDarkColor);
+    //         StatusBar.setBarStyle('light-content');
+    //         return () => {
+    //             StatusBar.setBackgroundColor('#ffffff');
+    //             StatusBar.setBarStyle('dark-content');
+    //         };
+    //     }, []),
+    // );
     return (
         <Container isAuth statusBarStyle="light-content" statusBarColor={Colors.themeDarkColor}>
             <ShopHeader />
@@ -31,19 +43,25 @@ const ShopList: React.FC<shopProps> = () => {
                 <View style={styles.paddHori}>
                     <SubCatList data={subCatDdata} />
                 </View>
-
-                <Text style={[styles.specialOffersText,styles.marHori]}>Special Offers</Text>
-                <View style={[styles.specialOfferConatiner,{}]}>
-                    <FlatList
-                        horizontal
-                        data={recommendedData}
-                        keyExtractor={(item, index) => item.name + 'recomded' + index}
-                        contentContainerStyle={styles.flatListRecommended}
-                        ItemSeparatorComponent={SeparatorComponentSpecialOffer}
-                        showsHorizontalScrollIndicator={false}
-                        renderItem={({ item }) => <HomeRecommendedItems {...item} />}
-                    />
-                </View>
+                {
+                    bookingType === 'immidiate' && <Spacing space={SH(20)} />
+                }
+                {bookingType !== 'immidiate' &&
+                    <>
+                        <Text style={[styles.specialOffersText, styles.marHori]}>Special Offers</Text>
+                        <View style={[styles.specialOfferConatiner, {}]}>
+                            <FlatList
+                                horizontal
+                                data={recommendedData}
+                                keyExtractor={(item, index) => item.name + 'recomded' + index}
+                                contentContainerStyle={styles.flatListRecommended}
+                                ItemSeparatorComponent={SeparatorComponentSpecialOffer}
+                                showsHorizontalScrollIndicator={false}
+                                renderItem={({ item }) => <HomeRecommendedItems {...item} />}
+                            />
+                        </View>
+                    </>
+                }
                 <FlatList
                     data={recommendedData}
                     keyExtractor={(item, index) => item.name + 'baber-shop' + index}
@@ -51,7 +69,7 @@ const ShopList: React.FC<shopProps> = () => {
                     ItemSeparatorComponent={SeparatorComponent}
                     ListHeaderComponent={listHeader}
                     renderItem={({ item, index }) => (
-                        <Shops item={item} index={index} />
+                        <Shops item={item} index={index} bookingType={bookingType} />
                     )}
                 />
             </KeyboardAwareScrollView>

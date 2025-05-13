@@ -29,8 +29,8 @@ const SplashScreen: React.FC = () => {
   //   });
   // };
   const biometricLogin = async () => {
-    navigation.navigate(RouteName.LOGIN);
-    // navigation.navigate(RouteName.HOME);
+    // navigation.navigate(RouteName.LOGIN);
+    navigation.navigate(RouteName.HOME);
     return false;
   try {
     const { available } = await rnBiometrics.isSensorAvailable();
@@ -77,12 +77,12 @@ const SplashScreen: React.FC = () => {
         style={styles.linearGradient}
         colors={[Colors.themeDarkColor, Colors.themeColor]}>
         <Image
-          source={imagePaths.app_icon}
+          source={imagePaths.splash_logo}
           resizeMode="contain"
           style={styles.logo}
         />
-        <Text style={styles.appTitle}>Ssnap</Text>
-        <Text style={styles.subtitle}>All in One Service App</Text>
+        {/* <Text style={styles.appTitle}>Ssnap</Text>
+        <Text style={styles.subtitle}>All in One Service App</Text> */}
       </LinearGradient>
     </Container>
   );
@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    height: SH(180),
-    width: SH(180),
+    height: SF(246),
+    width: SF(196),
   },
   appTitle: {
     fontFamily: Fonts.EXTRA_BOLD,

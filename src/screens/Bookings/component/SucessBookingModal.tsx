@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { boxShadow, Colors, Fonts, SF, SH, SW } from '../../../utils';
 import { Buttons, ImageLoader, Spacing, VectoreIcons } from '../../../component';
 import imagePaths from '../../../assets/images';
@@ -10,12 +10,14 @@ import RouteName from '../../../navigation/RouteName';
 type SucessBookingModalProps = {
     modalVisible: boolean;
     closeModal: () => void;
+    submitButton: () => void;
 };
 const SucessBookingModal: React.FC<SucessBookingModalProps> = ({
     modalVisible = true,
     closeModal,
+    submitButton
 }) => {
-        const navigation = useNavigation<any>();
+    const navigation = useNavigation<any>();
     return (
         <Modal
             animationType="slide"
@@ -26,11 +28,11 @@ const SucessBookingModal: React.FC<SucessBookingModalProps> = ({
                 <View style={styles.mainView}>
                     <TouchableOpacity onPress={() => closeModal()} style={styles.crossIcon}>
                         <VectoreIcons
-                                                   icon='Ionicons'
-                                                   name='close'
-                                                   color={Colors.themeColor}
-                                                   size={SF(30)}
-                                               />
+                            icon='Ionicons'
+                            name='close'
+                            color={Colors.themeColor}
+                            size={SF(30)}
+                        />
                     </TouchableOpacity>
                     <Spacing space={SH(20)} />
                     <View style={styles.headingContainer}>
@@ -60,12 +62,7 @@ const SucessBookingModal: React.FC<SucessBookingModalProps> = ({
                     <Spacing space={SH(70)} />
                     <Buttons
                         onPress={() => {
-                            // navigation.navigate(RouteName.MY_BOOKING)
-                            navigation.navigate(RouteName.HOME, {
-                                screen: RouteName.MY_BOOKING,
-                                params: { id: 123 },
-                              });
-                            closeModal()
+                            submitButton()
                         }}
                         title='View Booking'
                     />
@@ -86,10 +83,10 @@ const styles = StyleSheet.create({
     },
     mainView: {
         backgroundColor: Colors.white,
-        borderTopLeftRadius:SW(10),
-        borderTopRightRadius:SW(10),
+        borderTopLeftRadius: SW(10),
+        borderTopRightRadius: SW(10),
         paddingHorizontal: SW(25),
-        paddingBottom:SW(20)
+        paddingBottom: SW(20)
     },
     heading: {
         color: Colors.successColor,
@@ -105,7 +102,7 @@ const styles = StyleSheet.create({
         right: 10,
         top: 10
     },
-     
+
     serviceContainer: {
         backgroundColor: Colors.lightGray,
         borderRadius: 10,
@@ -129,7 +126,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingLeft: SF(10)
     },
-     
+
     text: {
         color: Colors.textAppColor,
         fontFamily: Fonts.MEDIUM,
@@ -148,7 +145,7 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.MEDIUM,
         fontSize: SF(12),
         maxWidth: '80%',
-        marginTop:SH(6)
+        marginTop: SH(6)
     },
 
     price: {
@@ -158,5 +155,5 @@ const styles = StyleSheet.create({
         maxWidth: '80%',
         marginTop: SH(6)
     },
-    
+
 });

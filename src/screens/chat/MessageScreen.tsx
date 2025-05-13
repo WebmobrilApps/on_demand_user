@@ -1,19 +1,32 @@
-import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
-import React, { useState, useCallback, useEffect, useContext } from 'react';
+import React, { useRef, useState } from 'react';
 import {
-  Actions,
-  Bubble,
-  Composer,
-  GiftedChat,
-  IMessage,
-  InputToolbar,
-  Send,
-} from 'react-native-gifted-chat';
- 
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { VectoreIcons } from '../../component';
- 
-const messages = [
+  FlatList,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { Container, ImageLoader, Spacing, VectoreIcons } from '../../component'; // Assumes you have a Container component
+import { chatMenuData, Colors, Fonts, imagePaths, messagesData, SF, SH, SW } from '../../utils'; // Update paths if needed
+import ChatDropdownMenu from './component/ChatDropdownMenu';
+
+interface User {
+  _id: number;
+  name: string;
+  avatar?: string;
+}
+
+interface Message {
+  _id: number;
+  text: string;
+  createdAt: Date;
+  user: User;
+}
+
+const initialMessages: Message[] = [
   {
     _id: 1,
     text: 'Hello! How can I help you today?',
@@ -24,194 +37,276 @@ const messages = [
       avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
     },
   },
-  {
-    _id: 2,
-    text: 'Hi, I need some assistance with my order.',
-    createdAt: new Date(Date.now() - 60 * 1000),
-    user: {
-      _id: 1,
-      name: 'You',
-    },
-  },
-  {
-    _id: 3,
-    text: 'Sure, I’d be happy to help. Could you provide your order number?',
-    createdAt: new Date(Date.now() - 2 * 60 * 1000),
-    user: {
-      _id: 2,
-      name: 'Support',
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
-    },
-  },
 ];
 
 
-const CustomHeader = ( ) => {
-  const navigation = useNavigation();
 
+const ChatHeader = ({ closeMenu, openMenu, isOpenMenu }: any) => {
   return (
     <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-        <Text style={styles.backText}>{'<'}</Text>
+
+      <TouchableOpacity>
+        <VectoreIcons
+          icon="FontAwesome"
+          name={'angle-left'}
+          size={SF(30)}
+          color={Colors.textHeader}
+        />
       </TouchableOpacity>
-      <Text style={styles.headerTitle}>{'title'}</Text>
+
+      <View style={styles.headerCenter}>
+        <View style={styles.avatarWrapper}>
+          <ImageLoader
+            source={imagePaths.user1}
+            resizeMode="cover"
+            mainImageStyle={styles.avatarImage}
+          />
+        </View>
+        <View style={styles.nameContainer}>
+          <Text style={styles.userName}>WM Berber</Text>
+          <Text style={styles.lastSeen}>Last seen 5 min ago</Text>
+        </View>
+      </View>
+
+      <View style={styles.headerRight}>
+        <TouchableOpacity>
+          <VectoreIcons
+            icon="MaterialIcons"
+            name={'call'}
+            size={SF(24)}
+            color={Colors.themeColor}
+          />
+        </TouchableOpacity>
+        <Spacing horizontal space={10} />
+        <View>
+          <TouchableOpacity style={styles.menuButton} onPress={openMenu}>
+            <VectoreIcons
+              icon="MaterialCommunityIcons"
+              name="dots-vertical"
+              size={SF(24)}
+              color={Colors.themeColor}
+            />
+          </TouchableOpacity>
+          {isOpenMenu && (
+            <ChatDropdownMenu menuOptions={chatMenuData} onClose={closeMenu} />
+          )}
+        </View>
+      </View>
     </View>
   );
 };
 
+const ChatScreen: React.FC = () => {
+  const [messages, setMessages] = useState<Message[]>(messagesData);
+  const [input, setInput] = useState<string>('');
+  const flatListRef = useRef<FlatList>(null);
 
-export default function ChatScreen() {
-  const route = useRoute<any>();
-  let { otherDetails, myDetails } = route?.params;
-  console.log('myDetails-', myDetails, 'otherDetails-', otherDetails);
- 
- 
-   
-  const navigation = useNavigation();
-  
-  useEffect(() => {
- 
-  }, []);
+  const currentUser: User = {
+    _id: 1,
+    name: 'You',
+  };
 
-  const onSend = useCallback((newMessages: IMessage[] = []) => {
-    
-  }, []);
+  const sendMessage = () => {
+    if (!input.trim()) return;
 
-  const renderCustomBubble = (props: any) => (
-    <Bubble
-      {...props}
-      wrapperStyle={{
-        right: styles.rightBubble,
-        left: styles.leftBubble,
-      }}
-      textStyle={{
-        right: styles.rightBubbleText,
-        left: styles.leftBubbleText,
-      }}
-    />
-  );
+    const newMessage: Message = {
+      _id: Date.now(),
+      text: input,
+      createdAt: new Date(),
+      user: currentUser,
+    };
 
-  const renderActions = (props: any) => (
-    <Actions
-      {...props}
-      icon={() => (
-        <VectoreIcons icon="Ionicons" name="camera" size={18} color="#ffffff" />
-      )}
-      iconTextStyle={{ alignSelf: 'center' }}
-      containerStyle={styles.actionsContainer}
-      onPressActionButton={() => {
-        console.log('Open Image Picker');
-      }}
-    />
-  );
-  const [isLoadingEarlier, setIsLoadingEarlier] = useState(false);
+    setMessages(prev => [...prev, newMessage]);
+    setInput('');
+  };
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  const closeMenu = () => {
+    setIsOpenMenu(false);
+  };
+  const renderItem = ({ item }: { item: Message }) => {
+    const isMe = item.user._id === currentUser._id;
+    return (
+      <View style={[styles.messageRow, isMe ? styles.rightAlign : styles.leftAlign]}>
+       
+        <View style={[styles.messageBubble, isMe ? styles.bubbleRight : styles.bubbleLeft]}>
+          <Text style={[styles.messageText]}>{item.text}</Text>
+        </View>
+        <Text style={styles.timeText}>
+          {new Date(item.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+        </Text>
+      </View>
+    );
+  };
+
   return (
-    <GiftedChat
-      messages={messages}
-      renderBubble={renderCustomBubble}
-      onSend={messages => {
-        onSend(messages);
-      }}
-      user={{ _id: myDetails?.userId }}
-      renderActions={renderActions}
-      // onLoadEarlier={() => {
-      //   if (messages.length >= 25) {
-      //     const oldestMessageTimestamp =
-      //       messages[messages.length - 1].createdAt; // Get first message's timestamp
-      //     fetchMessages(
-      //       `${myDetails?.userId}_${otherDetails?.userId}`,
-      //       oldestMessageTimestamp,
-      //     );
-      //   }
-      // }}
-      // isLoadingEarlier={false}
-      // infiniteScroll={true}
-      // loadEarlier={true}
-      messagesContainerStyle={{ paddingBottom: 17 }}
-      renderSend={props => (
-        <Send {...props} containerStyle={styles.sendContainer}>
-          <VectoreIcons icon="Ionicons" name="send" size={30} color="#1f2c34" />
-        </Send>
+    <Container>
+       {isOpenMenu && (
+        <TouchableOpacity style={styles.overlay} activeOpacity={1} onPress={closeMenu} />
       )}
-      renderComposer={props => (
-        <Composer {...props} textInputStyle={styles.composerText} />
-      )}
-      renderInputToolbar={props => (
-        <InputToolbar
-          {...props}
-          primaryStyle={{ alignItems: 'center' }}
-          containerStyle={styles.inputToolbar}
+      <ChatHeader isOpenMenu={isOpenMenu} closeMenu={closeMenu} openMenu={() => setIsOpenMenu(true)} />
+ 
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 25 : 0}
+      >
+        <FlatList
+          ref={flatListRef}
+          data={[...messages].reverse()}
+          renderItem={renderItem}
+          keyExtractor={(item) => item._id.toString()}
+          contentContainerStyle={styles.chatList}
+          inverted
+          showsVerticalScrollIndicator={false}
         />
-      )}
-    />
+
+        <View style={styles.inputContainer}>
+          <TextInput
+            value={input}
+            onChangeText={setInput}
+            placeholder="Type a message..."
+            style={styles.input}
+            placeholderTextColor="#999"
+          />
+          <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
+            <VectoreIcons icon="Ionicons" name="send" size={SF(19)} color={Colors.themeColor} />
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </Container>
   );
-}
+};
+
+export default ChatScreen;
 
 const styles = StyleSheet.create({
-  rightBubble: {
-    backgroundColor: '#D9D9D9',
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
   },
-  leftBubble: {
-    backgroundColor: '#0078FF',
+  chatList: {
+    padding: 15,
+    paddingBottom: 10,
   },
-  rightBubbleText: {
-    color: '#000000',
+  messageRow: {
+    flexDirection: 'column',
+    marginBottom: 10,
+    alignItems: 'flex-end',
   },
-  leftBubbleText: {
-    color: '#fff',
+  leftAlign: {
+    alignSelf: 'flex-start',
+    alignItems: 'flex-start',
   },
-  actionsContainer: {
-    backgroundColor: '#696969',
-    borderRadius: 12.5,
-    height: 25,
-    width: 25,
-    alignItems: 'center',
+  rightAlign: {
+    alignSelf: 'flex-end',
+    alignItems: 'flex-end',
+  },
+  messageBubble: {
+    maxWidth: '75%',
+    borderRadius: 12,
+    padding: 10,
+  },
+  bubbleLeft: {
+    backgroundColor: '#F2F2F2',
+  },
+  bubbleRight: {
+    backgroundColor: '#F2F2F2',
+  },
+  messageText: {
+    fontSize: SF(12),
+    fontFamily: Fonts.REGULAR,
+    color: Colors.textAppColor,
+  },
+  timeText: {
+    fontSize: 10,
+    color: '#999',
+    marginTop: 4,
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    paddingVertical: SF(0),
+    paddingHorizontal: SF(10),
+    backgroundColor: '#0000000D',
+    width: '85%',
+    borderRadius: SF(10),
+    alignSelf: 'center',
+    marginBottom: 8
+  },
+  input: {
+    flex: 1,
+    // backgroundColor: '#f0f0f0',
+    borderRadius: 25,
+    paddingHorizontal: 15,
+    fontSize: 14,
+    marginRight: 10,
+  },
+  sendButton: {
+    borderRadius: 25,
+    padding: 10,
     justifyContent: 'center',
-    marginTop: 10,
-  },
-  inputToolbar: {
-    backgroundColor: '#1f2c34',
-    borderRadius: 30,
-    marginBottom: 5,
-    width: '75%',
-    marginLeft: '7%',
-  },
-  sendContainer: {
-    width: 50,
-    position: 'absolute',
-    right: -50,
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  composerText: {
-    color: '#ffffff',
+  sendButtonText: {
+    color: Colors.themeColor,
+    fontSize: SF(19),
   },
-  avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-  },
+
+
 
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    height: 60,
-    backgroundColor: '#ffffff',
-    paddingHorizontal: 10,
+    paddingHorizontal: SW(20),
+    paddingVertical: SH(10),
+    borderBottomWidth: 1,
+    borderColor: Colors.textAppColor + '20',
   },
-  backButton: {
+  headerCenter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: SW(25),
+    flex: 1,
+  },
+  avatarWrapper: {
+    height: SF(50),
+    width: SF(50),
+    borderRadius: SF(25),
+    overflow: 'hidden',
+    borderWidth: 1,
+  },
+  avatarImage: {
+    height: '100%',
+    width: '100%',
+  },
+  nameContainer: {
+    marginLeft: SW(8),
+    flex: 1,
+  },
+  userName: {
+    fontFamily: Fonts.Chivo_Medium,
+    fontSize: SF(14),
+    color: Colors.textAppColor,
+  },
+  lastSeen: {
+    fontFamily: Fonts.Chivo_Medium,
+    fontSize: SF(10),
+    color: Colors.lightGraytext,
+  },
+  headerRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  menuButton: {
+    zIndex: 99999999,
+  },
+  overlay: {
     position: 'absolute',
-    left: 10,
-    padding: 10,
-  },
-  backText: {
-    color: '#6200ee',
-    fontSize: 25,
-  },
-  headerTitle: {
-    color: '#6200ee',
-    fontSize: 18,
-    fontWeight: 'bold',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: 10,
+    backgroundColor: 'transparent',
   },
 });

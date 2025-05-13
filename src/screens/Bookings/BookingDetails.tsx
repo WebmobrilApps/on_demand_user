@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { Colors, SH, SW, Fonts, SF,} from '../../utils';
+import { Colors, SH, SW, Fonts, SF, } from '../../utils';
 import { AppHeader, Buttons, Container, ImageLoader, VectoreIcons } from '../../component';
 import { useNavigation } from '@react-navigation/native';
 import { BookingServiceItem, TabTop } from './component';
@@ -55,9 +55,9 @@ const BookingDetails: React.FC = () => {
             title='Subtotal'
             price='$8989'
           />
-
         </View>
       </ScrollView>
+      <Text style={styles.addTipButton}>+ Add Tip</Text>
       <Buttons
         onPress={() => { }}
         title='Book Again'
@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   serviceContaine: { paddingHorizontal: SW(25), marginTop: SH(15), flex: 1 },
-  bookAgainButton:{ width: '86%', alignSelf: "center", marginBottom: SH(20) }
+  bookAgainButton: { width: '86%', alignSelf: "center", marginBottom: SH(20) },
+  addTipButton: { textAlign: 'center', fontFamily: Fonts.MEDIUM, fontSize: SF(16), marginBottom: SH(20), color: Colors.themeColor }
 });
 
 export default BookingDetails;

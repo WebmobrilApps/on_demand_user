@@ -13,6 +13,7 @@ import {
 import Bottomtab from './BottomTabs';
 import { NavigationContainer } from '@react-navigation/native';
 import {
+  AddOtherPersonDetail,
   BookAppointment,
   BookingDetails,
   BookingPrivacyPolicy,
@@ -26,6 +27,7 @@ import {
   NotificationAndAlert,
   NotificationScreen,
   PaymentHistory,
+  PaymentScreen,
   ProfileSetup,
   RatingRiview,
   ReportShop,
@@ -47,8 +49,8 @@ export const NavigatinScreens = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator screenOptions={{headerShown:false}}>
-        <Stack.Screen name={RouteName.HOME} component={Bottomtab} />
         <Stack.Screen name={'SplashScreen'}  component={SplashScreen} />
+        <Stack.Screen name={RouteName.HOME} component={Bottomtab} />
         <Stack.Screen name={RouteName.SHOP_LIST} component={ShopList} />
         <Stack.Screen name={RouteName.SHOP_DETAILS} component={ShopDetails} />
         {/* auth-====== */}
@@ -83,7 +85,9 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={RouteName.FILTER_SCREEN} component={FilterScreen} />
         <Stack.Screen name={RouteName.CUSTOMER_SUPPORT} component={CustomerSupport} />
         <Stack.Screen name={RouteName.LOYALTY_DISCOUNT} component={LoyaltyDiscountsScreen} />
-        <Stack.Screen name={RouteName.MESSAGE} component={MessageScreen} />
+        <Stack.Screen name={RouteName.MESSAGE_SCREEN} component={MessageScreen} />
+        <Stack.Screen name={RouteName.PAYMENT_SCREEN} component={PaymentScreen} />
+        <Stack.Screen name={RouteName.ADD_OTHER_PERSON_DETAIL}   component={AddOtherPersonDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

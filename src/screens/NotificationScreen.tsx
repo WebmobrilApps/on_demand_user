@@ -140,7 +140,7 @@ const NotificationScreen: FC<NotificationScreenProps> = () => {
     return (
         <View style={styles.container}>
             <AppHeader
-                headerTitle={'Notification'}
+                headerTitle={'Notifications'}
                 onPress={() => {
                     navigation.goBack();
                 }}

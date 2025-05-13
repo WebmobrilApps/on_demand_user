@@ -31,10 +31,11 @@ const SubCategoryItem: FC<SubCategoryItemProps> = ({
                 size={SW(14)}
                 color={Colors.themeColor}
                 onChange={() => onChangeSubcatCheck(subcat.id, categoryId)}
-                label=""
+                label={subcat.name}
+                checkBoxTextStyle={styles.subcat}
+
             />
             <Spacing horizontal space={SW(8)} />
-            <Text style={styles.subcat}>{subcat.name}</Text>
         </View>
     );
 };

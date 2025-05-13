@@ -15,7 +15,7 @@ const Header = () => {
   const isPortrait = useIsPortrait();
   const getHeaderHeight = () => {
     const statusBarHeight = getStatusBarHeight();
-  
+
     if (Platform.OS === 'android') {
       return isPortrait ? statusBarHeight : statusBarHeight + 20;
     } else {
@@ -24,13 +24,13 @@ const Header = () => {
   };
   const paddingTop = useMemo(() => getHeaderHeight(), [isPortrait, insets.top]);
 
- 
+
   return (
     <LinearGradient
       colors={['#1A434E', '#378DA5']}
       style={styles.gradient}
     >
-      <View style={[styles.container, { paddingTop }]}>
+      <View style={[styles.container, Platform.OS == 'android' && { paddingTop }]}>
         <View style={styles.leftView}>
           <VectoreIcons
             name="location-sharp"
@@ -50,8 +50,12 @@ const Header = () => {
         </View>
 
         <View style={styles.rightView}>
-          <TouchableOpacity style={styles.iconButton}>
-            <Image source={imagePaths.heart_icon} style={styles.icon} />
+          <TouchableOpacity
+            style={styles.iconButton}
+            onPress={() => navigation.navigate(RouteName.BOOK_APPOINT, { bookingType: 'immediate' })}
+          >
+            {/* <Image source={imagePaths.heart_icon} style={styles.icon} /> */}
+            <Image source={imagePaths.calender_icon} style={styles.icon} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconButton}

@@ -1,17 +1,23 @@
 import React, { FC, useState } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, ViewStyle, TextStyle } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import { Colors, Fonts, SF, SH } from '../utils';
 import imagePaths from '../assets/images';
 
-interface DropdownComponentProps{
-  data:any
+interface DropdownComponentProps {
+  data: any;
+  dropdown?: ViewStyle;
+  selectedTextStyle?: TextStyle;
+  placeholderText?: string;
+  selectedvalue?: string | null;
+  placeholderStyle?: TextStyle;
+  isDisable?: boolean;
 }
 
-const DropdownComponent:FC<DropdownComponentProps>=({data}) => {
+const DropdownComponent: FC<DropdownComponentProps> = ({ data, selectedTextStyle, dropdown, placeholderStyle, placeholderText = "Select value", selectedvalue = null,isDisable=false}) => {
   const [value, setValue] = useState(null);
 
-  const renderItem = (item:any)=> {
+  const renderItem = (item: any) => {
     return (
       <View style={styles.item}>
         <Text style={styles.textItem}>{item.label}</Text>
@@ -21,20 +27,21 @@ const DropdownComponent:FC<DropdownComponentProps>=({data}) => {
 
   return (
     <Dropdown
-      style={styles.dropdown}
-      placeholderStyle={styles.placeholderStyle}
-      selectedTextStyle={styles.selectedTextStyle}
+    disable={isDisable}
+      style={[styles.dropdown, dropdown]}
+      placeholderStyle={[styles.placeholderStyle, placeholderStyle]}
+      selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
       inputSearchStyle={styles.inputSearchStyle}
       iconStyle={styles.iconStyle}
       data={data}
       search={false}
-      // renderLeftIcon={<Image source={imagePaths.drop_down} />}
       maxHeight={300}
       labelField="label"
       valueField="value"
-      placeholder="Select reason type"
+      placeholder={placeholderText}
+      containerStyle={{marginTop:8,borderRadius:12,paddingBottom:20}}
       searchPlaceholder="Search..."
-      value={value}
+      value={selectedvalue}
       onChange={item => {
         setValue(item.value);
       }}
@@ -47,12 +54,12 @@ export default DropdownComponent;
 
 const styles = StyleSheet.create({
   dropdown: {
-    height: SH(43),
-    backgroundColor: 'white',
+    // height: SH(43),
+    backgroundColor: '#F2F2F2',
     borderRadius: 12,
     padding: 12,
-    borderWidth:1,
-    borderColor:Colors.textAppColor
+    borderWidth: 1,
+    borderColor: Colors.textAppColor,
   },
   icon: {
     marginRight: 5,
@@ -62,30 +69,31 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+ 
   },
   textItem: {
     flex: 1,
     fontSize: SF(12),
-    fontFamily:Fonts.REGULAR,
-    color:Colors.textAppColor
+    fontFamily: Fonts.REGULAR,
+    color: Colors.textAppColor
   },
   placeholderStyle: {
     fontSize: SF(12),
-    fontFamily:Fonts.REGULAR,
-    color:'#7F7F7F'
+    fontFamily: Fonts.REGULAR,
+    color: '#7F7F7F'
   },
   selectedTextStyle: {
     fontSize: SF(12),
-    fontFamily:Fonts.REGULAR,
-    color:Colors.textAppColor
+    fontFamily: Fonts.REGULAR,
+    color: Colors.textAppColor
   },
   iconStyle: {
-    width: 20,
-    height: 20,
+    width: 12,
+    height: 12,
   },
   inputSearchStyle: {
     height: SH(42),
     fontSize: SF(16),
-    color:Colors.textAppColor
+    color: Colors.textAppColor
   },
 });

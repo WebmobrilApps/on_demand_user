@@ -19,6 +19,7 @@ export {default as Calender} from './Calender';
 export {default as BookingSlots} from './BookingSlots';
 export {default as UserprofileView} from './UserprofileView';
 export {default as Checkbox} from './Checkbox';
+export {default as SubHeading} from './SubHeading';
 
 export * from './HomeComp';
 export * from './ProfileComp'

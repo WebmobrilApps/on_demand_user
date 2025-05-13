@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, DimensionValue, TextStyle } from 'react-native';
 
 import { VectoreIcons } from '.';
+import { Colors, SF } from '../utils';
 
 interface CheckboxProps {
   checked: boolean;
@@ -9,6 +10,8 @@ interface CheckboxProps {
   label?: string;
   size?: number;
   color?: string;
+  lebelFontSize?:number,
+  checkBoxTextStyle?:TextStyle
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
@@ -16,13 +19,16 @@ const Checkbox: React.FC<CheckboxProps> = ({
   onChange,
   label,
   size = 24,
-  color = '#4CAF50',
+  color = Colors.themeColor,
+  lebelFontSize=SF(12),
+  checkBoxTextStyle={}
 }) => {
   return (
-    <TouchableOpacity
-      onPress={() => onChange(!checked)}
+    <TouchableOpacity onPress={() => onChange(!checked)}
+    activeOpacity={0.8}  style={{flexDirection:"row",alignItems:"center"}}>
+    <View
+      
       style={[styles.container, { height: size, width: size, borderColor: color }]}
-      activeOpacity={0.8}
     >
       {checked && <VectoreIcons
         icon='Entypo'
@@ -30,7 +36,8 @@ const Checkbox: React.FC<CheckboxProps> = ({
         color={color}
         name={'check'}
       />}
-      {label && <Text style={styles.label}>{label}</Text>}
+    </View>
+      {label && <Text style={[styles.label,{fontSize:lebelFontSize},checkBoxTextStyle]}>{label}</Text>}
     </TouchableOpacity>
   );
 };
@@ -54,7 +61,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   label: {
-    fontSize: 16,
+    fontSize: SF(16),
+    marginLeft:10
   },
 });
 

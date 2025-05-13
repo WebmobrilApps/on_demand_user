@@ -3,6 +3,7 @@ import {
   Keyboard,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { Colors, Fonts, regex, SF, SH, SW } from '../../utils';
@@ -12,8 +13,9 @@ import {
   Container,
   CustomToast,
   InputField,
- 
+
   Spacing,
+  VectoreIcons,
 } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import imagePaths from '../../assets/images';
@@ -56,6 +58,17 @@ const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
       console.error('Login Failed:', error);
     }
   };
+
+  const backButton = () => {
+    return <TouchableOpacity style={{ padding: 5,position:'absolute',top:SH(20),left:SH(20),zIndex:9999 }} onPress={() => { navigation.goBack() }}>
+      <VectoreIcons
+        icon="FontAwesome"
+        name={'angle-left'}
+        size={SF(30)}
+        color={Colors.textHeader}
+      />
+    </TouchableOpacity>
+  }
   return (
     <Container
       isAuth={true}
@@ -129,7 +142,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bgwhite,
   },
-  brnContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(160),width:'93%',alignSelf:'center' },
+  brnContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(160), width: '93%', alignSelf: 'center' },
   subtitile: {
     color: Colors.textWhite,
     fontFamily: Fonts.REGULAR,

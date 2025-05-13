@@ -12,15 +12,12 @@ const services = [
     { id: 3, name: 'Razor', price: '$55.00', time: '25m' },
     { id: 4, name: 'Kids Haircut', price: '$30.00', time: '15m' },
     { id: 5, name: 'Enchantments', price: '$15.00', time: '10m' },
-    { id: 6, name: 'Beard Trim', price: '$20.00', time: '15m' },
-    { id: 7, name: 'Hair Color', price: '$45.00', time: '40m' }
-
 ];
 interface servicesInterface {
-
+    onClick:()=>void
 }
 const SeparatorComponent = () => <View style={styles.itemSepearator} />;
-const Services: FC<servicesInterface> = ({ }) => {
+const Services: FC<servicesInterface> = ({onClick }) => {
     const navigation = useNavigation<any>();
     const renderItem = ({ item }: any) => (
         <View style={styles.serviceItem}>
@@ -39,7 +36,7 @@ const Services: FC<servicesInterface> = ({ }) => {
                     isExtraBoxShadow={false}
                     title={'Book'}
                     buttonTextStyle={styles.bookText}
-                    onPress={() => { navigation.navigate(RouteName.BOOK_APPOINT)}}
+                    onPress={() => {onClick()}}
                 />
             </View>
         </View>

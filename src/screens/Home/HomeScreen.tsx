@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, FlatList, StatusBar } from 'react-native';
 import { categoryData, Colors, SF, SH, SW, useDisableGestures } from '../../utils';
 import {
+  Container,
   HomeHeader,
   HomeNearServiceItem,
   HomeSearchBar,
@@ -37,7 +38,7 @@ const HomeScreen = () => {
   ];
 
   return (
-    <> 
+    <Container isAuth  statusBarStyle="light-content" statusBarColor={Colors.themeDarkColor}> 
       <HomeHeader />
       <KeyboardAwareScrollView
         bounces={false}
@@ -73,10 +74,7 @@ const HomeScreen = () => {
             leftText="Service Provider Near You"
             marginHori={'7%'}
             onClick={() =>
-              navigation.navigate(RouteName.VIEW_ALL, {
-                title: 'Near By Services',
-                type: 'near_by',
-              })
+              navigation.navigate(RouteName.SERVICE_LIST)
             }
           />
 
@@ -113,7 +111,7 @@ const HomeScreen = () => {
 
         
       </KeyboardAwareScrollView>
-    </>
+    </Container>
   );
 };
 

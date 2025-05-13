@@ -81,5 +81,11 @@ const imagePaths = {
   delete_icon:require('./delete_icon.png'),
   block_icon:require('./block_icon.png'),
   report_icon:require('./report_icon.png'),
+  tick_square:require('./tick_square.png'),
+  untick_square:require('./untick_square.png'),
+  splash_logo:require('./splash_logo.png'),
+  electric_wire:require('./electric_wire.jpg'),
+  mute_icon:require('./mute_icon.png'),
+  feedback_icon:require('./feedback_icon.png'),
 };
 export default imagePaths;

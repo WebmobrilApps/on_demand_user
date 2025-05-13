@@ -3,8 +3,9 @@ import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 
 import { AppHeader, BookingSlots, Buttons, Calender, Container, Divider, ImageLoader, Spacing, UserprofileView, VectoreIcons } from '../../component';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { ConfirmBookingModal, SucessBookingModal } from './component';
+import RouteName from '../../navigation/RouteName';
 
 interface BookAppointmentProps { }
 const timeSlots = [
@@ -18,24 +19,36 @@ const timeSlots = [
 ];
 
 const BookAppointment: React.FC<BookAppointmentProps> = () => {
+    const route = useRoute<any>();
+    let bookingType = route?.params?.bookingType;
     const navigation = useNavigation<any>();
     const [selectedSlot, setSelectedSlot] = useState<any>(1)
     const [modalVisible, setModalVisible] = useState<boolean>(false)
-    const [succesModalVisible, setSuccesModalVisible] = useState<boolean>(false)
+    const [forwhomCheck, setForwhomCheck] = useState(false)
+
     return (
         <Container isPadding={false}>
             <ConfirmBookingModal
+                forwhomCheck={forwhomCheck}
+                setForwhomCheck={() => { setForwhomCheck(!forwhomCheck) }}
                 modalVisible={modalVisible}
                 closeModal={() => {
-                    setModalVisible(false); setTimeout(() => {
-                        setSuccesModalVisible(true)
-                    }, 200);
+                    setModalVisible(false);
+                }}
+                btnSubmit={() => {
+                    setModalVisible(false);
+                    if (forwhomCheck) {
+                        setTimeout(() => {
+                            navigation.navigate(RouteName.ADD_OTHER_PERSON_DETAIL)
+                        }, 200);
+                    } else {
+                        setTimeout(() => {
+                            navigation.navigate(RouteName.PAYMENT_SCREEN)
+                        }, 200);
+                    }
                 }}
             />
-            <SucessBookingModal
-                modalVisible={succesModalVisible}
-                closeModal={() => { setSuccesModalVisible(false) }}
-            />
+
             <AppHeader
                 headerTitle={'Book an Appointment'}
                 onPress={() => {
@@ -45,7 +58,7 @@ const BookAppointment: React.FC<BookAppointmentProps> = () => {
                 rightOnPress={() => { }}
                 headerStyle={styles.header}
             />
-         
+
             <ScrollView
                 bounces={false}
                 contentContainerStyle={styles.scrollContainer}
@@ -58,60 +71,73 @@ const BookAppointment: React.FC<BookAppointmentProps> = () => {
                 <View style={{ paddingHorizontal: "7%" }}>
                     <Divider contStyle={{ marginVertical: SW(10) }} color='#3D3D3D50' height={0.7} />
                     <BookingSlots slots={timeSlots} selectedSlot={selectedSlot} onSelect={(val: any) => { setSelectedSlot(val) }} />
-                    <Divider marginTop={SF(10)} color='#3D3D3D50' height={0.7} />
-                    <Text style={[styles.subHeader, { marginTop: SH(10) }]}>Your Barber</Text>
-                    <Spacing space={SH(15)} />
-                    <View style={{ marginLeft: -SW(15) }}>
-                        <UserprofileView />
-                    </View>
-                    <Divider contStyle={{ marginVertical: SW(10) }} color='#3D3D3D50' height={0.7} />
 
-                    <Spacing />
-                    <View style={styles.serviceItem}>
-                        <TouchableOpacity style={styles.crossIcon}>
-                            <VectoreIcons
-                                icon='AntDesign'
-                                name='closecircle'
-                                color='#BBBBBB'
-                                size={SF(16)}
-                            />
-                        </TouchableOpacity>
-                        <View>
-                            <Text style={styles.serviceTitle}>{'Only Haircut'}</Text>
-                            <Text style={styles.serviceSub}>Popular Service</Text>
-                        </View>
-                        <View style={styles.rightBlock}>
-                            <Text style={styles.price}>$55.00</Text>
-                            <Text style={styles.duration}>25m</Text>
-                        </View>
-                    </View>
-                    {/* add another button========= */}
-                    <TouchableOpacity style={styles.addAnotoherButton}>
-                        <Text style={styles.addAnotoherButtonTxt}>
-                            <VectoreIcons
-                                icon='Entypo'
-                                name='plus'
-                                color={Colors.themeColor}
-                                size={SF(14)}
-                            /> Add another service</Text>
-                    </TouchableOpacity>
 
-                    <Divider contStyle={{ marginTop: SH(30) }} color='#3D3D3D50' height={0.7} />
-                    <View style={styles.bookingContainer}>
-                        <View>
-                            <Text style={styles.price1}>$55.00</Text>
-                            <Text style={styles.duration1}>25m</Text>
-                        </View>
-                        <Buttons
-                            buttonStyle={{ width: '65%' }}
-                            title='Book'
-                            onPress={() => setModalVisible(true)}
-                            buttonTextStyle={{ color: Colors.white }}
-                        />
-                    </View>
+                    {
+                        bookingType != 'immediate' &&
+                        <>
+                            <Divider marginTop={SF(10)} color='#3D3D3D50' height={0.7} />
+                            <Text style={[styles.subHeader, { marginTop: SH(10) }]}>Your Barber</Text>
+                            <Spacing space={SH(15)} />
+                            <View style={{ marginLeft: -SW(15) }}>
+                                <UserprofileView />
+                            </View>
+                            <Divider contStyle={{ marginVertical: SW(10) }} color='#3D3D3D50' height={0.7} />
+
+                            <Spacing />
+                            <View style={styles.serviceItem}>
+                                <TouchableOpacity style={styles.crossIcon}>
+                                    <VectoreIcons
+                                        icon='AntDesign'
+                                        name='closecircle'
+                                        color='#BBBBBB'
+                                        size={SF(16)}
+                                    />
+                                </TouchableOpacity>
+                                <View>
+                                    <Text style={styles.serviceTitle}>{'Only Haircut'}</Text>
+                                    <Text style={styles.serviceSub}>Popular Service</Text>
+                                </View>
+                                <View style={styles.rightBlock}>
+                                    <Text style={styles.price}>$55.00</Text>
+                                    <Text style={styles.duration}>25m</Text>
+                                </View>
+                            </View>
+                            {/* add another button========= */}
+                            <TouchableOpacity style={styles.addAnotoherButton}>
+                                <Text style={styles.addAnotoherButtonTxt}>
+                                    <VectoreIcons
+                                        icon='Entypo'
+                                        name='plus'
+                                        color={Colors.themeColor}
+                                        size={SF(14)}
+                                    /> Add another service</Text>
+                            </TouchableOpacity>
+
+                            <Divider contStyle={{ marginTop: SH(30) }} color='#3D3D3D50' height={0.7} />
+                            <View style={styles.bookingContainer}>
+                                <View>
+                                    <Text style={styles.price1}>$55.00</Text>
+                                    <Text style={styles.duration1}>25m</Text>
+                                </View>
+                                <Buttons
+                                    buttonStyle={{ width: '65%' }}
+                                    title='Book'
+                                    onPress={() => setModalVisible(true)}
+                                    buttonTextStyle={{ color: Colors.white }}
+                                />
+                            </View>
+                        </>
+                    }
 
                 </View>
             </ScrollView>
+            {bookingType == 'immediate' && <Buttons
+                buttonStyle={{ width: '80%', alignSelf: "center", marginBottom: 10 }}
+                title='Continue'
+                onPress={() => navigation.navigate(RouteName.SHOP_LIST, { bookingType: bookingType })}
+                buttonTextStyle={{ color: Colors.white }}
+            />}
         </Container>
     );
 };
@@ -165,7 +191,7 @@ const styles = StyleSheet.create({
         fontSize: SF(8),
         color: Colors.lightGraytext,
         fontFamily: Fonts.MEDIUM,
-        marginTop:3
+        marginTop: 3
     },
     rightBlock: {
         alignItems: 'flex-end',

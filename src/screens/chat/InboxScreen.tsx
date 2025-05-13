@@ -8,83 +8,68 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import { Divider, ImageLoader, VectoreIcons } from '../../component';
-import { boxShadow, inboxData, Colors, Fonts, imagePaths, SF, SH, SW } from '../../utils';
+import { Container, Divider, ImageLoader, VectoreIcons } from '../../component';
+import { boxShadow, inboxData, Colors, Fonts, imagePaths, SF, SH, SW, inboxMenuData } from '../../utils';
+import { useNavigation } from '@react-navigation/native';
+import RouteName from '../../navigation/RouteName';
+import ChatDropdownMenu from './component/ChatDropdownMenu';
 
 
 const { width } = Dimensions.get('window');
 
 const InboxScreen = () => {
   const [selectedMenu, setSelectedMenu] = useState<string | null>(null);
+  const navigation = useNavigation<any>();
 
-  const renderMenu = (id: string) => {
-    if (selectedMenu !== id) return null;
-    return (
-      <View style={[styles.dropdown, boxShadow]}>
-        <TouchableOpacity style={styles.menuItem} onPress={closeMenu}>
-          <Image source={imagePaths.delete_icon} style={styles.menuIcon} />
-          <Text style={styles.menuText}>Delete Chat</Text>
-        </TouchableOpacity>
-        <Divider color={'#DEDEDE'} />
-        <TouchableOpacity style={styles.menuItem} onPress={closeMenu}>
-          <Image source={imagePaths.report_icon} style={styles.menuIcon} />
-          <Text style={styles.menuText}>Report</Text>
-        </TouchableOpacity>
-        <Divider color={'#DEDEDE'} />
-        <TouchableOpacity style={styles.menuItem} onPress={closeMenu}>
-          <Image source={imagePaths.block_icon} style={styles.menuIcon} />
-          <Text style={styles.menuText}>Block</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
+ 
 
   const closeMenu = () => setSelectedMenu(null);
 
   const renderItem = ({ item }: { item: typeof inboxData[0] }) => (
     <View style={styles.itemRow}>
-      <View style={styles.avatarContainer}>
-        <ImageLoader source={{ uri: item.avatar }} mainImageStyle={styles.avatar} />
-      </View>
-      <View style={styles.messageInfo}>
-        <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.lastMessage}>{item.lastMessage}</Text>
-        <View style={styles.timeRow}>
-          <VectoreIcons icon='MaterialCommunityIcons' name="clock-outline" size={SF(12)} color="#787878" />
-          <Text style={styles.time}>{item.time}</Text>
+      <TouchableOpacity style={styles.itemRow1} onPress={() => {
+        navigation.navigate(RouteName.MESSAGE_SCREEN);
+      }}>
+        <View style={styles.avatarContainer}>
+          <ImageLoader source={{ uri: item.avatar }} mainImageStyle={styles.avatar} />
         </View>
-      </View>
-      <View>
+        <View style={{alignItems:"flex-start"}}>
+          <Text style={styles.name}>{item.name}</Text>
+          <Text style={styles.lastMessage}>{item.lastMessage}</Text>
+          <Text style={styles.time}><VectoreIcons icon='MaterialCommunityIcons' name="clock-outline" size={SF(12)} color="#787878" /> {item.time}</Text>
+        </View>
+      </TouchableOpacity>
+      <View style={{marginTop:SH(10)}}>
         <TouchableOpacity onPress={() => setSelectedMenu(item.id)}>
           <VectoreIcons icon='MaterialCommunityIcons' name="dots-vertical" size={SF(26)} color={Colors.themeColor} />
         </TouchableOpacity>
-        {renderMenu(item.id)}
+        {selectedMenu === item.id && <ChatDropdownMenu menuOptions={inboxMenuData} onClose={closeMenu} />}
       </View>
     </View>
   );
-
   return (
-    <View style={styles.container}>
-      <View style={styles.headerRow}>
-        <View />
-        <Text style={styles.header}>Chat</Text>
-        <Image source={imagePaths.search_h} style={styles.searchIcon} />
-      </View>
+    <Container>
+      <View style={styles.container}>
+        <View style={styles.headerRow}>
+ 
+          <Text style={styles.header}>Chat</Text>
+        </View>
 
-      <FlatList
-        data={inboxData}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        extraData={selectedMenu}
-      />
-      {selectedMenu && (
-        <TouchableOpacity
-          style={styles.overlay}
-          activeOpacity={1}
-          onPress={closeMenu}
+        <FlatList
+          data={inboxData}
+          keyExtractor={(item) => item.id}
+          renderItem={renderItem}
+          extraData={selectedMenu}
         />
-      )}
-    </View>
+        {selectedMenu && (
+          <TouchableOpacity
+            style={styles.overlay}
+            activeOpacity={1}
+            onPress={closeMenu}
+          />
+        )}
+      </View>
+    </Container>
   );
 };
 
@@ -93,14 +78,14 @@ export default InboxScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 10,
     backgroundColor: '#fff',
     paddingHorizontal: SF(15),
   },
   headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     paddingHorizontal: SF(16),
   },
   searchIcon: {
@@ -116,9 +101,14 @@ const styles = StyleSheet.create({
   },
   itemRow: {
     flexDirection: 'row',
-    padding: 14,
     borderBottomWidth: 1,
     borderColor: '#eee',
+    position: 'relative',
+    padding: 14,
+    justifyContent:'space-between'
+  },
+  itemRow1: {
+    flexDirection: 'row',
     alignItems: 'center',
     position: 'relative',
   },
@@ -155,7 +145,7 @@ const styles = StyleSheet.create({
   time: {
     fontSize: SF(10),
     color: '#787878',
-    marginLeft: 4,
+    marginTop:2
   },
   dropdown: {
     position: 'absolute',
@@ -181,7 +171,7 @@ const styles = StyleSheet.create({
     fontSize: SF(8),
     marginLeft: SF(8),
     color: '#000',
-    fontFamily: Fonts.Chivo_Regular,
+    fontFamily: Fonts.Chivo_Medium,
   },
   overlay: {
     position: 'absolute',

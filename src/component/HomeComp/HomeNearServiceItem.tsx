@@ -1,4 +1,4 @@
-import { View, Text, StyleSFeet, Image, ImageProps, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Image, ImageProps, Pressable, StyleSheet } from 'react-native';
 import React from 'react';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
@@ -16,7 +16,7 @@ interface HomeCategoryItemProps {
 const HomeCategoryItem: React.FC<HomeCategoryItemProps> = () => {
   const navigation = useNavigation<any>();
   return (
-    <Pressable onPress={() => { navigation.navigate(RouteName.SERVICE_LIST) }} style={styles.container}>
+    <Pressable onPress={() => { navigation.navigate(RouteName.SERVICE_DETAILS) }} style={styles.container}>
       <View style={styles.header}>
         <Image
           source={imagePaths.electrical}
