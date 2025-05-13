@@ -77,7 +77,6 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
   const seperatorComponent = () => <View style={styles.separator} />;
   return (
     <Container>
-      <LogoutPopup closeModal={() => { setLogoutPopup(false) }} modalVisible={logoutPopup} />
       <AppHeader
         headerTitle={t('profile.headerTitle')}
         onPress={() => { }}
@@ -117,6 +116,8 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         keyExtractor={item => item.name}
         removeClippedSubviews={false}
       />
+      <LogoutPopup closeModal={() => { setLogoutPopup(false) }} modalVisible={logoutPopup} />
+
     </Container>
   );
 };

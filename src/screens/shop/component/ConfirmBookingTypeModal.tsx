@@ -129,8 +129,10 @@ const styles = StyleSheet.create({
     },
     crossIcon: {
         position: 'absolute',
-        right: SF(15),
-        top: 15,
+        right: 4,
+        top: 4,
+        padding:5,
+        zIndex:99999,
     },
     dropdownStyle: {
         backgroundColor: '#F2F2F2',

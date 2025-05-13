@@ -73,7 +73,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ }) => {
                     onBlur={() => setFieldTouched('currpassword')}
                     // leftIcon={imagePaths.lock_icon}
                     errorMessage={touched.currpassword && errors.currpassword && errors.currpassword ? errors.currpassword : ''}
-                    keyboardType={'visible-password'}
+                    keyboardType={'default'}
                     color={Colors.textAppColor}
                     textColor={Colors.textAppColor}
                   />
@@ -84,7 +84,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ }) => {
                     onBlur={() => setFieldTouched('npassword')}
                     // leftIcon={imagePaths.lock_icon}
                     errorMessage={touched.npassword && errors.npassword && errors.npassword ? errors.npassword : ''}
-                    keyboardType={'visible-password'}
+                    keyboardType={'default'}
                     color={Colors.textAppColor}
                     textColor={Colors.textAppColor}
                   />
@@ -95,7 +95,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ }) => {
                     onBlur={() => setFieldTouched('confirmpassword')}
                     // leftIcon={imagePaths.lock_icon}
                     errorMessage={touched.confirmpassword && errors.confirmpassword && errors.confirmpassword ? errors.confirmpassword : ''}
-                    keyboardType={'visible-password'}
+                    keyboardType={'default'}
                     color={Colors.textAppColor}
                     textColor={Colors.textAppColor}
                   />

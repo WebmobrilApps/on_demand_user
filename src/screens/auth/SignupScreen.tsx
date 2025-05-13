@@ -103,6 +103,14 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
     values: { email: string; password: string; cpassword: string; fname: string; mobileno: string; },
     resetForm: any,
   ) => {
+    navigation.navigate(RouteName.OTP_VERIFY, {
+      fromScreen: 'signup',
+      userToken: 'response.ResponseBody.token',
+      email: values.email,
+    });
+
+    return false
+
     if (!checked) {
       CustomToast({ message: 'Your OTP', description: 'Please accept term of service', position: 'top', type: 'warning' });
 
@@ -235,7 +243,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                     rightIcon={!cpasswordVisibility ? imagePaths.eye_open : imagePaths.eye_off_icon}
                     onRightIconPress={() => setcpasswordVisibility(!cpasswordVisibility)}
                     secureTextEntry={cpasswordVisibility}
-                    keyboardType={'visible-password'}
+                    keyboardType={'default'}
                   />
 
                   

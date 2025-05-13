@@ -9,6 +9,7 @@ import {
   InputField,
   InputIcons,
   Spacing,
+  VectoreIcons,
 } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import imagePaths from '../../assets/images';
@@ -69,6 +70,16 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
       console.error('Login Failed:', error);
     }
   };
+    const backButton = () => {
+      return <TouchableOpacity style={{ padding: 5, position: 'absolute', top: SF(20), left: SF(20), zIndex: 9999 }} onPress={() => { navigation.goBack() }}>
+        <VectoreIcons
+          icon="FontAwesome"
+          name={'angle-left'}
+          size={SF(30)}
+          color={Colors.textHeader}
+        />
+      </TouchableOpacity>
+    }
 
   return (
     <Container
@@ -78,6 +89,9 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
         navigation.goBack();
       }}
       style={styles.container}>
+        {
+          backButton()
+        }
       <KeyboardAwareScrollView
         contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 0 }}
         showsVerticalScrollIndicator={false}
@@ -86,7 +100,7 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
         <AuthImgComp icon={imagePaths.pass_update_img} />
         <AuthBottomContainer>
           <Formik
-            initialValues={{ password: 'Qwerty@1', cpassword: 'Qwerty@1' }}
+            initialValues={{ password: '', cpassword: '' }}
             validationSchema={validationSchema}
             onSubmit={(values, { resetForm }) => {
               btnUpdatePassword(values, resetForm);
@@ -116,7 +130,7 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
                     rightIcon={!passwordVisibility ? imagePaths.eye_open : imagePaths.eye_off_icon}
                     onRightIconPress={() => setpasswordVisibility(!passwordVisibility)}
                     secureTextEntry={passwordVisibility}
-                    keyboardType={'visible-password'}
+                    keyboardType={'default'}
                   />
                   <Spacing space={8}/>
 
@@ -130,7 +144,7 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
                     rightIcon={!cpasswordVisibility ? imagePaths.eye_open : imagePaths.eye_off_icon}
                     onRightIconPress={() => setcpasswordVisibility(!cpasswordVisibility)}
                     secureTextEntry={cpasswordVisibility}
-                    keyboardType={'visible-password'}
+                    keyboardType={'default'}
                   />
                 </View>
                 <Buttons

@@ -99,8 +99,10 @@ const styles = StyleSheet.create({
 
     crossIcon: {
         position: 'absolute',
-        right: 10,
-        top: 10
+        right: 4,
+        top: 4,
+        padding:5,
+        zIndex:99999,
     },
 
     serviceContainer: {

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Keyboard, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Keyboard, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW, useCountdown, useProfileUpdate } from '../../utils';
-import { AuthBottomContainer, AuthImgComp, Container, CustomToast, Spacing } from '../../component';
+import { AuthBottomContainer, AuthImgComp, Container, CustomToast, Spacing, VectoreIcons } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import imagePaths from '../../assets/images';
 import Buttons from '../../component/Button';
@@ -101,6 +101,19 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
     }
   };
 
+
+
+  const backButton = () => {
+    return <TouchableOpacity style={{ padding: 5, position: 'absolute', top: SF(20), left: SF(20), zIndex: 9999 }} onPress={() => { navigation.goBack() }}>
+      <VectoreIcons
+        icon="FontAwesome"
+        name={'angle-left'}
+        size={SF(30)}
+        color={Colors.textHeader}
+      />
+    </TouchableOpacity>
+  }
+
   return (
     <Container
       isAuth={true}
@@ -109,6 +122,9 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
         navigation.goBack();
       }}
       style={styles.container}>
+      {
+        backButton()
+      }
       <KeyboardAwareScrollView
         bounces={false}
         contentContainerStyle={styles.scropllViewContainer}
@@ -173,7 +189,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bgwhite,
   },
-  scropllViewContainer:{
+  scropllViewContainer: {
     flexGrow: 1,
     paddingHorizontal: 0,
   },
@@ -192,7 +208,7 @@ const styles = StyleSheet.create({
     fontSize: SF(20),
     textAlign: 'center',
   },
-  burronContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(160),width:'94%',alignSelf:'center' },
+  burronContainer: { backgroundColor: Colors.bgwhite, marginTop: SH(160), width: '94%', alignSelf: 'center' },
   bottomInnerContainer: {
     paddingVertical: SH(35),
     paddingHorizontal: SW(20),
@@ -208,16 +224,16 @@ const styles = StyleSheet.create({
     color: Colors.white,
     backgroundColor: 'transparent',
   },
-  resteTextCont:{
+  resteTextCont: {
     paddingRight: 7,
     alignItems: 'flex-end',
   },
-  resteText:{
-      fontFamily: Fonts.REGULAR,
-      fontSize: SF(14),
-      textAlign: 'right',
-      marginTop: 8,
-      color:Colors.textWhite
+  resteText: {
+    fontFamily: Fonts.REGULAR,
+    fontSize: SF(14),
+    textAlign: 'right',
+    marginTop: 8,
+    color: Colors.textWhite
   },
-  activeIndigator:{ marginTop: 8 },
+  activeIndigator: { marginTop: 8 },
 });

@@ -184,7 +184,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
                     rightIcon={!passwordVisibility ? imagePaths.eye_open : imagePaths.eye_off_icon}
                     onRightIconPress={() => setpasswordVisibility(!passwordVisibility)}
                     secureTextEntry={passwordVisibility}
-                    keyboardType={'visible-password'}
+                    keyboardType={'default'}
                   />
 
                   <Spacing space={SF(8)} />

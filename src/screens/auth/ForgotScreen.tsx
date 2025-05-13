@@ -44,6 +44,8 @@ const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
       email: values.email,
     };
 
+    navigation.navigate(RouteName.OTP_VERIFY, { fromScreen: 'forgotpass', userToken: 'response.ResponseBody.token', email: values.email });
+    return false
     try {
       const response = await sendOtp(userData).unwrap();
       console.log('sendOtp res--', response);
@@ -60,7 +62,7 @@ const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
   };
 
   const backButton = () => {
-    return <TouchableOpacity style={{ padding: 5,position:'absolute',top:SH(20),left:SH(20),zIndex:9999 }} onPress={() => { navigation.goBack() }}>
+    return <TouchableOpacity style={{ padding: 5, position: 'absolute', top: SF(20), left: SF(20), zIndex: 9999 }} onPress={() => { navigation.goBack() }}>
       <VectoreIcons
         icon="FontAwesome"
         name={'angle-left'}
@@ -77,6 +79,9 @@ const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
         navigation.goBack();
       }}
       style={styles.container}>
+      {
+        backButton()
+      }
       <KeyboardAwareScrollView
         bounces={false}
         contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 0 }}
