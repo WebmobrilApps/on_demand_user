@@ -20,14 +20,18 @@ import {
   ChangePassword,
   CustomerSupport,
   FilterScreen,
+  HomeScreen,
+  InboxScreen,
   LanguageAndCurrency,
   LoyaltyDiscountsScreen,
   MessageScreen,
+  MyBookingScreen,
   MyCalender,
   NotificationAndAlert,
   NotificationScreen,
   PaymentHistory,
   PaymentScreen,
+  ProfileScreen,
   ProfileSetup,
   RatingRiview,
   ReportShop,
@@ -48,19 +52,25 @@ const Stack = createNativeStackNavigator();
 export const NavigatinScreens = () => {
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator screenOptions={{headerShown:false}}>
-        <Stack.Screen name={'SplashScreen'}  component={SplashScreen} />
-        <Stack.Screen name={RouteName.HOME} component={Bottomtab} />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name={'SplashScreen'} component={SplashScreen} />
+        {/* <Stack.Screen name={RouteName.HOME} component={Bottomtab} /> */}
         <Stack.Screen name={RouteName.SHOP_LIST} component={ShopList} />
         <Stack.Screen name={RouteName.SHOP_DETAILS} component={ShopDetails} />
+
+        <Stack.Screen name={RouteName.HOME} component={HomeScreen} />
+        <Stack.Screen name={RouteName.MY_BOOKING} component={MyBookingScreen} />
+        <Stack.Screen name={RouteName.INBOX_SCREEN} component={InboxScreen} />
+        <Stack.Screen name={RouteName.PROFILE} component={ProfileScreen} />
+
         {/* auth-====== */}
         <Stack.Screen name={RouteName.LOGIN} component={LoginScreen} />
         <Stack.Screen name={RouteName.SIGNUP} component={SignupScreen} />
         {/* learning--------- */}
-        <Stack.Screen name={'AllUsersList'}  component={AllUsersList} />
-        <Stack.Screen name={'ChatScreen'}  component={ChatScreen} />
+        <Stack.Screen name={'AllUsersList'} component={AllUsersList} />
+        <Stack.Screen name={'ChatScreen'} component={ChatScreen} />
         {/* profile--------- */}
-        <Stack.Screen name={RouteName.PROFILE_SETUP} options={{headerShown:false}} component={ProfileSetup} />
+        <Stack.Screen name={RouteName.PROFILE_SETUP} options={{ headerShown: false }} component={ProfileSetup} />
         <Stack.Screen name={RouteName.CHANGE_PASSWORD} component={ChangePassword} />
 
 
@@ -87,7 +97,7 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={RouteName.LOYALTY_DISCOUNT} component={LoyaltyDiscountsScreen} />
         <Stack.Screen name={RouteName.MESSAGE_SCREEN} component={MessageScreen} />
         <Stack.Screen name={RouteName.PAYMENT_SCREEN} component={PaymentScreen} />
-        <Stack.Screen name={RouteName.ADD_OTHER_PERSON_DETAIL}   component={AddOtherPersonDetail} />
+        <Stack.Screen name={RouteName.ADD_OTHER_PERSON_DETAIL} component={AddOtherPersonDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );
