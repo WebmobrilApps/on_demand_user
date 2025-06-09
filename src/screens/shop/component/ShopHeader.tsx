@@ -1,13 +1,15 @@
 import { View, StyleSheet, TouchableOpacity, Image, Platform, Pressable } from 'react-native';
-import React from 'react';
+import React, { useMemo } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import { Colors, Fonts, goBack, SF, SH, SW } from '../../../utils';
-import {  InputField, } from '../../../component';
+import { Colors, Fonts, goBack, SF, SH, SW, useIsPortrait } from '../../../utils';
+import { InputField, } from '../../../component';
 import imagePaths from '../../../assets/images';
 import VectorIcon from '../../../component/VectoreIcons';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
- 
- 
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+
+
 interface HeaderProps {
     onclickAdd?: (text: string) => void;
     onclicCalender?: (text: string) => void;
@@ -21,15 +23,31 @@ const ShopHeader: React.FC<HeaderProps> = ({
     // onclicHeart = () => { },
     // onclicNotification = () => { },
 }) => {
+    const insets = useSafeAreaInsets();
+    const navigation = useNavigation<any>();
+    const isPortrait = useIsPortrait();
+    const getHeaderHeight = () => {
+        const statusBarHeight = getStatusBarHeight();
+        if (Platform.OS === 'android') {
+            return isPortrait ? statusBarHeight - 6 : statusBarHeight + 20;
+        } else {
+            return isPortrait ? insets.top - 6 : insets.top + 20;
+        }
+    };
+    const paddingTop = useMemo(() => {
+        let h = getHeaderHeight()
+        return h
+    }, [isPortrait, insets.top]);
+
     return (
         <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
-            style={[styles.container, { paddingTop: Platform.OS == 'android' ? getStatusBarHeight() : 0 }]}
+            style={[styles.container, { paddingTop: Platform.OS == 'android' ? paddingTop : 0 }]}
             colors={[Colors.themeDarkColor, Colors.themeColor]}>
             <View style={styles.innerContainer}>
                 <TouchableOpacity
-                    onPress={() => {goBack()}}
+                    onPress={() => { goBack() }}
                     activeOpacity={0.5}
                     style={styles.backIconContainer}>
                     <VectorIcon
@@ -42,7 +60,7 @@ const ShopHeader: React.FC<HeaderProps> = ({
                 <View style={{ width: '75%', marginRight: SF(11) }}>
                     <InputField
                         placeholder={'Search'}
-                        inputContainer={{ backgroundColor: Colors.bgwhite,borderWidth:0 ,height:SF(40)}}
+                        inputContainer={{ backgroundColor: Colors.bgwhite, borderWidth: 0, height: SF(40) }}
                         inputStyle={styles.inputStyle}
                         placeholderTextColor={Colors.searchBarPlac}
                         leftIcon={imagePaths.Search}
@@ -79,14 +97,14 @@ const styles = StyleSheet.create({
         marginLeft: Platform.OS == 'ios' ? 3 : 0,
         fontSize: SF(16),
     },
-    
+
     backIconContainer: {
         zIndex: 99,
         alignItems: 'flex-start',
         justifyContent: 'center',
         marginRight: SF(12),
-        padding:5,
-        marginTop:-6
+        padding: 5,
+        marginTop: -6
     },
 
     filterButton: {

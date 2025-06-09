@@ -8,7 +8,7 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import { Container, Divider, ImageLoader, VectoreIcons } from '../../component';
+import { BottomBar, Container, Divider, ImageLoader, VectoreIcons } from '../../component';
 import { boxShadow, inboxData, Colors, Fonts, imagePaths, SF, SH, SW, inboxMenuData } from '../../utils';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../navigation/RouteName';
@@ -21,7 +21,7 @@ const InboxScreen = () => {
   const [selectedMenu, setSelectedMenu] = useState<string | null>(null);
   const navigation = useNavigation<any>();
 
- 
+
 
   const closeMenu = () => setSelectedMenu(null);
 
@@ -33,13 +33,13 @@ const InboxScreen = () => {
         <View style={styles.avatarContainer}>
           <ImageLoader source={{ uri: item.avatar }} mainImageStyle={styles.avatar} />
         </View>
-        <View style={{alignItems:"flex-start"}}>
+        <View style={{ alignItems: "flex-start" }}>
           <Text style={styles.name}>{item.name}</Text>
           <Text style={styles.lastMessage}>{item.lastMessage}</Text>
           <Text style={styles.time}><VectoreIcons icon='MaterialCommunityIcons' name="clock-outline" size={SF(12)} color="#787878" /> {item.time}</Text>
         </View>
       </TouchableOpacity>
-      <View style={{marginTop:SH(10)}}>
+      <View style={{ marginTop: SH(10) }}>
         <TouchableOpacity onPress={() => setSelectedMenu(item.id)}>
           <VectoreIcons icon='MaterialCommunityIcons' name="dots-vertical" size={SF(26)} color={Colors.themeColor} />
         </TouchableOpacity>
@@ -51,12 +51,15 @@ const InboxScreen = () => {
     <Container>
       <View style={styles.container}>
         <View style={styles.headerRow}>
- 
+
           <Text style={styles.header}>Chat</Text>
         </View>
 
         <FlatList
           data={inboxData}
+          contentContainerStyle={{
+            paddingBottom: SH(90),
+          }}
           keyExtractor={(item) => item.id}
           renderItem={renderItem}
           extraData={selectedMenu}
@@ -69,6 +72,9 @@ const InboxScreen = () => {
           />
         )}
       </View>
+      <BottomBar
+        activeTab={RouteName.INBOX_SCREEN}
+      />
     </Container>
   );
 };
@@ -105,7 +111,7 @@ const styles = StyleSheet.create({
     borderColor: '#eee',
     position: 'relative',
     padding: 14,
-    justifyContent:'space-between'
+    justifyContent: 'space-between'
   },
   itemRow1: {
     flexDirection: 'row',
@@ -145,7 +151,7 @@ const styles = StyleSheet.create({
   time: {
     fontSize: SF(10),
     color: '#787878',
-    marginTop:2
+    marginTop: 2
   },
   dropdown: {
     position: 'absolute',

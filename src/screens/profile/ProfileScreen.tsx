@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList, StatusBar, StyleSheet, Text, View } from 'react-native';
-import { AppHeader, Container, ImageLoader, LogoutPopup, ProfileList } from '../../component';
+import { AppHeader, BottomBar, Container, ImageLoader, LogoutPopup, ProfileList } from '../../component';
 import { Colors, Fonts, SF, SH, SW, useDisableGestures } from '../../utils';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import imagePaths from '../../assets/images';
@@ -108,7 +108,7 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         data={listData}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          // paddingBottom: SH(20),
+          paddingBottom: SH(90),
           marginHorizontal: SW(25),
         }}
         ItemSeparatorComponent={() => seperatorComponent()}
@@ -117,7 +117,9 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         removeClippedSubviews={false}
       />
       <LogoutPopup closeModal={() => { setLogoutPopup(false) }} modalVisible={logoutPopup} />
-
+      <BottomBar
+        activeTab={RouteName.INBOX_SCREEN}
+      />
     </Container>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, FlatList, StatusBar } from 'react-native';
 import { categoryData, Colors, SF, SH, SW, useDisableGestures } from '../../utils';
 import {
+  BottomBar,
   Container,
   HomeHeader,
   HomeNearServiceItem,
@@ -29,7 +30,7 @@ const HomeScreen = () => {
     }, []),
   );
 
- 
+
 
   const swiperData = [
     { imgUrl: imagePaths.banner2, id: 1 },
@@ -38,7 +39,7 @@ const HomeScreen = () => {
   ];
 
   return (
-    <Container isAuth  statusBarStyle="light-content" statusBarColor={Colors.themeDarkColor}> 
+    <Container isAuth statusBarStyle="light-content" statusBarColor={Colors.themeDarkColor}>
       <HomeHeader />
       <KeyboardAwareScrollView
         bounces={false}
@@ -109,8 +110,11 @@ const HomeScreen = () => {
 
         </View>
 
-        
+
       </KeyboardAwareScrollView>
+      <BottomBar
+        activeTab={RouteName.HOME}
+      />
     </Container>
   );
 };
@@ -151,6 +155,6 @@ const styles = StyleSheet.create({
     marginHorizontal: SW(25),
     ...commonSpacing,
   },
-  
-  
+
+
 });

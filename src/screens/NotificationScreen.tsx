@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, SectionList } from 'react-native';
 import { Colors, Fonts, SH, SW, SF } from '../utils';
 import imagePaths from '../assets/images';
-import { AppHeader } from '../component';
+import { AppHeader, Container } from '../component';
 import { useNavigation } from '@react-navigation/native';
 
 // Sample data for notifications
@@ -138,7 +138,7 @@ const NotificationItem: FC<{ item: NotificationItem }> = ({ item }) => {
 const NotificationScreen: FC<NotificationScreenProps> = () => {
     const navigation = useNavigation<any>();
     return (
-        <View style={styles.container}>
+        <Container style={styles.container}>
             <AppHeader
                 headerTitle={'Notifications'}
                 onPress={() => {
@@ -146,7 +146,6 @@ const NotificationScreen: FC<NotificationScreenProps> = () => {
                 }}
                 Iconname="arrowleft"
                 rightOnPress={() => { }}
-            // headerStyle={styles.header}
             />
             <SectionList
                 sections={DATA}
@@ -158,7 +157,7 @@ const NotificationScreen: FC<NotificationScreenProps> = () => {
                     <Text style={styles.sectionHeader}>{title}</Text>
                 )}
             />
-        </View>
+        </Container>
     );
 };
 
@@ -168,7 +167,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.white,
         paddingHorizontal: SW(20),
-        paddingTop: SH(20),
     },
     headerTitle: {
         fontSize: SF(24),

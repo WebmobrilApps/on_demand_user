@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Image, FlatList, StyleSheet, Pressable, Keyboard } from 'react-native';
 import { Colors, SH, SW, Fonts, SF, boxShadow, rowSpaceBetweenCss, commonStyles, nearByData } from '../../utils';
 import imagePaths from '../../assets/images';
-import { AppHeader, Buttons, Container, ImageLoader, Spacing } from '../../component';
+import { AppHeader, BottomBar, Buttons, Container, ImageLoader, Spacing } from '../../component';
 import { useNavigation } from '@react-navigation/native';
 import StarRating from 'react-native-star-rating-widget';
 import RouteName from '../../navigation/RouteName';
@@ -63,13 +63,16 @@ const MyBookingScreen: React.FC = () => {
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         showsHorizontalScrollIndicator={false}
       />
+      <BottomBar
+        activeTab={RouteName.MY_BOOKING}
+      />
     </Container>
   );
 };
 
 const styles = StyleSheet.create({
   flatListContainer: {
-    paddingBottom: SH(10),
+    paddingBottom: SH(90),
   },
   separator: {
     height: SH(15),

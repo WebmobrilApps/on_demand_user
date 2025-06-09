@@ -15,14 +15,17 @@ const Header = () => {
   const isPortrait = useIsPortrait();
   const getHeaderHeight = () => {
     const statusBarHeight = getStatusBarHeight();
-
     if (Platform.OS === 'android') {
-      return isPortrait ? statusBarHeight : statusBarHeight + 20;
+      return isPortrait ? statusBarHeight - 6 : statusBarHeight + 20;
     } else {
-      return isPortrait ? insets.top : insets.top + 20;
+      return isPortrait ? insets.top - 6 : insets.top + 20;
     }
   };
-  const paddingTop = useMemo(() => getHeaderHeight(), [isPortrait, insets.top]);
+  const paddingTop = useMemo(() => {
+    let h = getHeaderHeight()
+    return h
+  }, [isPortrait, insets.top]);
+
 
 
   return (
@@ -30,7 +33,7 @@ const Header = () => {
       colors={['#1A434E', '#378DA5']}
       style={styles.gradient}
     >
-      <View style={[styles.container, Platform.OS == 'android' && { paddingTop }]}>
+      <View style={[styles.container, Platform.OS == 'android' && { paddingTop: paddingTop }]}>
         <View style={styles.leftView}>
           <VectoreIcons
             name="location-sharp"
@@ -54,7 +57,6 @@ const Header = () => {
             style={styles.iconButton}
             onPress={() => navigation.navigate(RouteName.BOOK_APPOINT, { bookingType: 'immediate' })}
           >
-            {/* <Image source={imagePaths.heart_icon} style={styles.icon} /> */}
             <Image source={imagePaths.calender_icon} style={styles.icon} />
           </TouchableOpacity>
           <TouchableOpacity
