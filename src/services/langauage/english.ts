@@ -1,3 +1,4 @@
+
 export const english = {
     login: {
       forgotPassword: 'Forget Password?',
@@ -44,6 +45,10 @@ export const english = {
       'save':'Save',
       'update':'Update',
       'newPassword':'New Password',
+      'streetAddress':'Street address',
+      'Apartment':'Apartment',
+      'City':'City',
+      'zipCode':'Zip Code',
     },
 
     validation: {
@@ -64,6 +69,10 @@ export const english = {
       emptyCurrPassword: 'Please enter current password.',
       emptyConfirmPassword: 'Please enter confirm password.',
       notMatchConfirmPassword: `Password didn't matched`,
+      addressEmpty: `Pleasse enter address`,
+      apartmentEmpty: `Pleasse enter apartment`,
+      cityEmpty: `Pleasse enter city`,
+      zipodeEmpty: `Pleasse enter zip code`,
     },
     socialLogin: {
       google: 'Google button pressed',
@@ -84,6 +93,21 @@ export const english = {
       'logout': 'Logout',
       'headerTitle': 'Profile Menu',
       'languageSettings': 'Language Settings',
+      'myAddress': 'My Addresses',
+    },
+    myAddress:{
+      'myAddress': 'My Addresses',
+      "addNewAddress": "Add New Address",
+    },
+    addAddress:{
+      'title': 'Add New Address',
+      'useMyCurrentLocation': 'Use My Current Location',
+      'makeThisDefault': 'Make this my default address',
+    },
+    selectAddress:{
+      'title': 'Select Address',
+      'confirm': 'Confirm',
+          'addNewAdd': 'Add New Address',
     },
     languageSetting:{
       supportSection:'Support Section',

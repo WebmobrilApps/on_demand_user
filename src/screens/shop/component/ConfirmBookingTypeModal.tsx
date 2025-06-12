@@ -35,11 +35,12 @@ const ConfirmBookingTypeModal: React.FC<ConfirmBookingTypeModalProps> = ({
 
     const brnSubmit = () => {
         closeModal();
-        if (checkServiceType == 'current') {
-            navigation.navigate(RouteName.BOOK_APPOINT)
-        } else {
-            navigation.navigate(RouteName.BOOK_APPOINT)
-        }
+        // if (checkServiceType == 'current') {
+        //     navigation.navigate(RouteName.BOOK_APPOINT)
+        // } else {
+        //     navigation.navigate(RouteName.BOOK_APPOINT)
+        // }
+        navigation.navigate(RouteName.SELECT_ADDRESS)
     }
 
     return (

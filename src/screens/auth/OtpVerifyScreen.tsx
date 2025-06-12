@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Keyboard, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW, useCountdown, useProfileUpdate } from '../../utils';
-import { AppText, AuthBottomContainer, AuthImgComp, Container, CustomToast, Spacing, VectoreIcons } from '../../component';
+import { AppText, AuthBottomContainer, AuthImgComp, Container, Spacing, VectoreIcons } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import imagePaths from '../../assets/images';
 import Buttons from '../../component/Button';
@@ -47,13 +47,13 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
       const response = await resendOtp(userData).unwrap();
       console.log('resendOtp res--', response);
       if (response.succeeded) {
-        CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success' });
+        // CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success' });
         setUserToken(response.ResponseBody.token);
         resetCountdown();
         startCountdown(60);
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger' });
+        // CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger' });
       }
     } catch (error) {
       console.error('Login Failed:', error);
@@ -70,7 +70,7 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
     }
     return
     if (!otp) {
-      CustomToast({ message: 'Error', description: 'Please Enter OTP', position: 'top', type: 'danger' });
+      // CustomToast({ message: 'Error', description: 'Please Enter OTP', position: 'top', type: 'danger' });
       return;
     }
 
@@ -83,18 +83,18 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
 
       if (response.succeeded) {
         if (fromScreen === 'signup') {
-          CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
+          // CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
           dispatch(setToken({ token: response.ResponseBody.token }));
           navigation.navigate(RouteName.HOME);
         }
         if (fromScreen === 'forgotpass') {
-          CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
+          // CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
           navigation.navigate(RouteName.PASS_UPDATE, { userToken: response.ResponseBody.token });
         }
         resetCountdown();
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger' });
+        // CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger' });
       }
     } catch (error) {
       console.error('Login Failed:', error);

@@ -26,7 +26,6 @@ import {
   AuthBottomContainer,
   AuthImgComp,
   Container,
-  CustomToast,
   InputField,
   InputIcons,
   Spacing,
@@ -113,7 +112,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
     return false
 
     if (!checked) {
-      CustomToast({ message: 'Your OTP', description: 'Please accept term of service', position: 'top', type: 'warning' });
+      // CustomToast({ message: 'Your OTP', description: 'Please accept term of service', position: 'top', type: 'warning' });
 
       return false
     };
@@ -135,7 +134,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
       const response = await register(userData).unwrap();
       console.log('responseresponse', response);
       if (response.succeeded) {
-        CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success' });
+        // CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success' });
         navigation.navigate(RouteName.OTP_VERIFY, {
           fromScreen: 'signup',
           userToken: response.ResponseBody.token,
@@ -143,7 +142,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
         });
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
+        // CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
       }
     } catch (error) {
       console.error('Login Failed:', error);

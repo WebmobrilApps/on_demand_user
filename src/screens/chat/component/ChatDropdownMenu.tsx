@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
 import { AppText, Divider } from '../../../component';
-import {SF, SH, SW, Fonts ,messagesData} from '../../../utils';
+import { SF, SH, SW, Fonts, messagesData } from '../../../utils';
 
 interface Props {
     onClose: () => void;
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         borderRadius: SF(6),
         paddingVertical: 6,
         width: SW(110),
-        zIndex: 999,
+        zIndex: 999999999,
         elevation: 5,
     },
     menuItem: {
@@ -43,15 +43,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: SF(15),
         paddingVertical: SF(12),
+        zIndex: 999999999,
     },
     menuIcon: {
         height: SF(10),
         width: SF(10),
+        zIndex: 999999999,
     },
     menuText: {
         fontSize: SF(8),
         marginLeft: SF(8),
         color: '#000',
         fontFamily: Fonts.Chivo_Medium,
+        zIndex: 999999999,
     },
 });

@@ -13,6 +13,7 @@ import {
 import Bottomtab from './BottomTabs';
 import { NavigationContainer } from '@react-navigation/native';
 import {
+  AddAddress,
   AddOtherPersonDetail,
   BookAppointment,
   BookingDetails,
@@ -25,6 +26,7 @@ import {
   LanguageAndCurrency,
   LoyaltyDiscountsScreen,
   MessageScreen,
+  MyAddress,
   MyBookingScreen,
   MyCalender,
   NotificationAndAlert,
@@ -35,6 +37,7 @@ import {
   ProfileSetup,
   RatingRiview,
   ReportShop,
+  SelectAddress,
   ServiceDetails,
   ServiceList,
   ShopDetails,
@@ -98,6 +101,9 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={RouteName.MESSAGE_SCREEN} component={MessageScreen} />
         <Stack.Screen name={RouteName.PAYMENT_SCREEN} component={PaymentScreen} />
         <Stack.Screen name={RouteName.ADD_OTHER_PERSON_DETAIL} component={AddOtherPersonDetail} />
+        <Stack.Screen name={RouteName.MY_ADDRESS} component={MyAddress} />
+        <Stack.Screen name={RouteName.ADD_ADDRESS} component={AddAddress} />
+        <Stack.Screen name={RouteName.SELECT_ADDRESS} component={SelectAddress} />
       </Stack.Navigator>
     </NavigationContainer>
   );

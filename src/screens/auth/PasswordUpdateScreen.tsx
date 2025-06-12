@@ -6,7 +6,7 @@ import {
   AuthBottomContainer,
   AuthImgComp,
   Container,
-  CustomToast,
+  // CustomToast,
   InputField,
   InputIcons,
   Spacing,
@@ -61,11 +61,11 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
       const response = await resetPassword(data).unwrap();
       console.log('btnUpdatePassword res--', response);
       if (response.succeeded) {
-        CustomToast({ message: 'Info', description: response.ResponseMessage, position: 'top', type: 'success', });
+        // CustomToast({ message: 'Info', description: response.ResponseMessage, position: 'top', type: 'success', });
         navigation.navigate(RouteName.LOGIN);
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
+        // CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
       }
     } catch (error) {
       console.error('Login Failed:', error);

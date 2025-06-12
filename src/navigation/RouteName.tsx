@@ -33,5 +33,8 @@ const RouteName = {
     LOYALTY_DISCOUNT:'LoyaltyDiscountsScreen',
     PAYMENT_SCREEN:'PaymentScreen',
     ADD_OTHER_PERSON_DETAIL:'AddOtherPersonDetail',
+    MY_ADDRESS:'MyAddress',
+    ADD_ADDRESS:'AddAddress',
+    SELECT_ADDRESS:'SelectAddress',
 };
 export default RouteName;

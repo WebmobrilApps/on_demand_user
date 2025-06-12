@@ -12,7 +12,7 @@ import {
   AuthBottomContainer,
   AuthImgComp,
   Container,
-  CustomToast,
+  // CustomToast,
   InputField,
 
   Spacing,
@@ -51,11 +51,11 @@ const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
       const response = await sendOtp(userData).unwrap();
       console.log('sendOtp res--', response);
       if (response.succeeded) {
-        CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success', });
+        // CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success', });
         navigation.navigate(RouteName.OTP_VERIFY, { fromScreen: 'forgotpass', userToken: response.ResponseBody.token, email: values.email });
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
+        // CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
       }
     } catch (error) {
       console.error('Login Failed:', error);

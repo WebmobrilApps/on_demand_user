@@ -41,6 +41,13 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         navigation.navigate(RouteName.CHANGE_PASSWORD);
       },
     },
+      {
+      name: t('profile.myAddress'),
+      id: 2,
+      onClick: () => {
+        navigation.navigate(RouteName.MY_ADDRESS);
+      },
+    },
     {
       name: t('profile.myCalendar'),
       id: 3,

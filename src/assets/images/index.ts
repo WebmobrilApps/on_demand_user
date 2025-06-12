@@ -73,6 +73,7 @@ const imagePaths = {
   return_up_back:require('./return_up_back.png'),
   drop_down:require('./drop_down.png'),
   edit_icon:require('./edit_icon.png'),
+  fe_edit:require('./fe_edit.png'),
   trash_icon:require('./trash_icon.png'),
   switch_off:require('./switch_off.png'),
   switch_on:require('./switch_on.png'),

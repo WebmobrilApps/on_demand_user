@@ -246,6 +246,18 @@ export const messagesData = [
     icon: imagePaths.block_icon,
   },
 ];
+ export const addressMenuData = [
+  {
+    id: 'delete',
+    title: 'Delete Chat',
+    icon: imagePaths.delete_icon,
+  },
+  {
+    id: 'Edit',
+    title: 'Edit',
+    icon: imagePaths.fe_edit,
+  },
+];
  export const chatMenuData = [
   {
     id: 'delete',

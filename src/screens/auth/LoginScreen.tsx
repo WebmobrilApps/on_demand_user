@@ -25,7 +25,6 @@ import {
   AuthBottomContainer,
   AuthImgComp,
   Container,
-  CustomToast,
   InputField,
   Spacing,
 } from '../../component';
@@ -108,7 +107,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
       console.log('responseresponse', response);
       if (response.succeeded) {
         if (response.ResponseBody.is_verified === false) {
-          CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success' });
+          // CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success' });
           navigation.navigate(RouteName.OTP_VERIFY, {
             fromScreen: 'signup',
             userToken: response.ResponseBody.token,
@@ -126,7 +125,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
         resetForm();
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger' });
+        // CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger' });
       }
     } catch (error) {
       console.error('Login Failed:', error);
@@ -210,7 +209,6 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
                     }}
                     isLoading={isLoading}
                   />
-
 
 
                   <View style={styles.lineViewContainer}>
