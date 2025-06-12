@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
-import { Divider } from '../../../component';
+import { AppText, Divider } from '../../../component';
 import {SF, SH, SW, Fonts ,messagesData} from '../../../utils';
 
 interface Props {
@@ -15,7 +15,7 @@ const ChatDropdownMenu: React.FC<Props> = ({ onClose, menuOptions }) => {
                 <React.Fragment key={item.id}>
                     <TouchableOpacity style={styles.menuItem} onPress={onClose}>
                         <Image source={item.icon} style={styles.menuIcon} />
-                        <Text style={styles.menuText}>{item.title}</Text>
+                        <AppText style={styles.menuText}>{item.title}</AppText>
                     </TouchableOpacity>
                     {index !== menuOptions.length - 1 && <Divider color="#DEDEDE" />}
                 </React.Fragment>

@@ -11,18 +11,18 @@ import {
 } from 'react-native-gifted-chat';
 import { ChatContext } from './ChatProvider';
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { VectoreIcons } from '../component';
+import { AppText, VectoreIcons } from '../component';
 
 
-const CustomHeader = ({ title }) => {
+const CustomHeader = ({ title }:any) => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.headerContainer}>
       <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-        <Text style={styles.backText}>{'<'}</Text>
+        <AppText style={styles.backText}>{'<'}</AppText>
       </TouchableOpacity>
-      <Text style={styles.headerTitle}>{title}</Text>
+      <AppText style={styles.headerTitle}>{title}</AppText>
     </View>
   );
 };

@@ -6,6 +6,7 @@ import Spacing from '../Spacing';
 import StarRating from 'react-native-star-rating-widget';
 import RouteName from '../../navigation/RouteName';
 import { useNavigation } from '@react-navigation/native';
+import AppText from '../AppText';
 
 interface HomeCategoryItemProps {
   name: string;
@@ -23,7 +24,7 @@ const HomeCategoryItem: React.FC<HomeCategoryItemProps> = () => {
           resizeMode="cover"
           style={styles.logo}
         />
-        <Text style={styles.text}>{'Palmcedar Cleaning'}</Text>
+        <AppText style={styles.text}>{'Palmcedar Cleaning'}</AppText>
         <Image
           source={imagePaths.verified_star}
           resizeMode="contain"
@@ -33,25 +34,25 @@ const HomeCategoryItem: React.FC<HomeCategoryItemProps> = () => {
       <Spacing space={10} />
       <View style={styles.ratingContainer}>
         <StarRating starStyle={{ marginHorizontal: 0}} starSize={SF(12)}  onChange={() => { }} color='#FAAC00'  rating={3.5} />
-        <Text style={styles.ratingtxt}>{'4.6'}</Text>
+        <AppText style={styles.ratingtxt}>{'4.6'}</AppText>
       </View>
       <Spacing space={7} />
       <View style={styles.locationContainer}>
         <Image source={imagePaths.service_loc} style={styles.locationIcon} />
-        <Text style={styles.addtext}>Ikeja, Nigeria</Text>
-        <Text style={styles.dotText}> . </Text>
-        <Text style={styles.closetext}>Closed</Text>
+        <AppText style={styles.addtext}>Ikeja, Nigeria</AppText>
+        <AppText style={styles.dotText}> . </AppText>
+        <AppText style={styles.closetext}>Closed</AppText>
       </View>
       <Spacing space={7} />
       <View style={styles.footer}>
         <View style={styles.priceContainer}>
           <Image source={imagePaths.money} style={styles.moneyIcon} />
-          <Text style={styles.addtext}>Starts @ $ 30/hr</Text>
+          <AppText style={styles.addtext}>Starts @ $ 30/hr</AppText>
         </View>
         <View style={styles.durationContainer}>
-          <Text style={styles.dotText}> . </Text>
+          <AppText style={styles.dotText}> . </AppText>
           <Image source={imagePaths.ClockClockwise} style={styles.clockIcon} />
-          <Text style={styles.closetext}>1</Text>
+          <AppText style={styles.closetext}>1</AppText>
         </View>
       </View>
     </Pressable>

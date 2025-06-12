@@ -12,7 +12,8 @@ import {
   ImageLoader,
   Spacing,
   Buttons,
-  InputField
+  InputField,
+  AppText
 } from '../../component';
 import { Colors, Fonts, regex, SF, SH, SW } from '../../utils';
 import { useNavigation } from '@react-navigation/native';
@@ -73,8 +74,8 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({ }) => {
               </TouchableOpacity>
             </View>
             <View style={styles.userInfo}>
-              <Text style={styles.userName}>John Kevin</Text>
-              <Text style={styles.userPhone}>+91 1234567890</Text>
+              <AppText style={styles.userName}>John Kevin</AppText>
+              <AppText style={styles.userPhone}>+91 1234567890</AppText>
             </View>
           </View>
           <Formik
@@ -133,8 +134,8 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({ }) => {
                 <Spacing space={SH(20)} />
                 <View style={styles.addressContainer}>
                   <View style={styles.addressInfo}>
-                    <Text style={styles.addressName}>Home Address</Text>
-                    <Text style={styles.addressDetail}>123 main st, anytown, USA</Text>
+                    <AppText style={styles.addressName}>Home Address</AppText>
+                    <AppText style={styles.addressDetail}>123 main st, anytown, USA</AppText>
                   </View>
                   <TouchableOpacity style={styles.addressMoreIcon}>
                     <VectorIcon

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, Checkbox, Spacing, VectoreIcons } from '../../../component';
+import { AppText, Buttons, Checkbox, Spacing, VectoreIcons } from '../../../component';
 import BookingServiceItem from './BookingServiceItem';
 
 
@@ -36,11 +36,11 @@ const ConfirmBookingModal: React.FC<ConfirmBookingModalProps> = ({
                         />
                     </TouchableOpacity>
                     <Spacing space={SH(20)} />
-                    <Text style={styles.heading}>Confirmation</Text>
+                    <AppText style={styles.heading}>Confirmation</AppText>
                     <Spacing space={SH(20)} />
-                    <Text style={styles.dateorshopbame}>06-March-2025</Text>
-                    <Text style={styles.dateorshopbame}>WM Barbershop</Text>
-                    <Text style={styles.shopaddress}>1893 Cheshire Bridge Rd Ne, 30325</Text>
+                    <AppText style={styles.dateorshopbame}>06-March-2025</AppText>
+                    <AppText style={styles.dateorshopbame}>WM Barbershop</AppText>
+                    <AppText style={styles.shopaddress}>1893 Cheshire Bridge Rd Ne, 30325</AppText>
                     <Spacing space={SH(20)} />
 
                     <BookingServiceItem

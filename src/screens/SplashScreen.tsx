@@ -81,8 +81,6 @@ const SplashScreen: React.FC = () => {
           resizeMode="contain"
           style={styles.logo}
         />
-        {/* <Text style={styles.appTitle}>Ssnap</Text>
-        <Text style={styles.subtitle}>All in One Service App</Text> */}
       </LinearGradient>
     </Container>
   );

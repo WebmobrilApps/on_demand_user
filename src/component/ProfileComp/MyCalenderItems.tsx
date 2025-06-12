@@ -3,6 +3,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {boxShadow, Colors, Fonts, SF, SH, SW} from '../../utils';
 import imagePaths from '../../assets/images';
 import ImageLoader from '../ImageLoader';
+import AppText from '../AppText';
 
 type MyCalenderItemsProps = {
   item: {
@@ -27,8 +28,8 @@ const MyCalenderItems: React.FC<MyCalenderItemsProps> = ({item}) => {
         />
       </View>
       <View style={{marginLeft: SF(10), width: '60%'}}>
-        <Text style={styles.text}>{item.name}</Text>
-        <Text style={styles.text2}>{item?.datetime}</Text>
+        <AppText style={styles.text}>{item.name}</AppText>
+        <AppText style={styles.text2}>{item?.datetime}</AppText>
       </View>
       <TouchableOpacity
         style={{

@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 import React, { FC } from 'react';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, ImageLoader, VectoreIcons } from '../../../component';
+import { AppText, Buttons, ImageLoader, VectoreIcons } from '../../../component';
 import imagePaths from '../../../assets/images';
 
 const teamMember = [
@@ -24,7 +24,7 @@ const AvailTeamMember: FC<servicesInterface> = ({ selectedId }) => {
             <View style={styles.imgContainer}>
                 <ImageLoader source={item.img} resizeMode='cover' mainImageStyle={[styles.img,{opacity:!item.activeStatus?0.4:1}]} />
             </View>
-            <Text numberOfLines={2} style={styles.serviceTitle}>{item.name}</Text>
+            <AppText numberOfLines={2} style={styles.serviceTitle}>{item.name}</AppText>
             {selectedId == item.id && <View style={styles.tickIcon}><VectoreIcons icon='AntDesign' name='checkcircle' color='green' size={SF(18)} /></View>}
         </View>
     );

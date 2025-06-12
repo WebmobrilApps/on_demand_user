@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React, { FC } from 'react';
-import { VectoreIcons } from '../../../component';
+import { AppText, VectoreIcons } from '../../../component';
 import { Colors, SF, SH } from '../../../utils';
 
 // Interface for props
@@ -19,7 +19,7 @@ const RatingItem: FC<RatingItemProps> = ({ rating, selectedRatings, onSelectRati
       ]}
       onPress={() => onSelectRating(rating)}
     >
-      <Text
+      <AppText
         style={[
           styles.ratingText,
           selectedRatings.includes(rating) && styles.selectedRatingText,
@@ -32,7 +32,7 @@ const RatingItem: FC<RatingItemProps> = ({ rating, selectedRatings, onSelectRati
           color={selectedRatings.includes(rating) ? Colors.white : Colors.themeColor}
         />{' '}
         {rating}
-      </Text>
+      </AppText>
     </TouchableOpacity>
   );
 };

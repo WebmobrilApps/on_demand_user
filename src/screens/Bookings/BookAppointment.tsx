@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AppHeader, BookingSlots, Buttons, Calender, Container, Divider, ImageLoader, Spacing, UserprofileView, VectoreIcons } from '../../component';
+import { AppHeader, AppText, BookingSlots, Buttons, Calender, Container, Divider, ImageLoader, Spacing, UserprofileView, VectoreIcons } from '../../component';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -77,7 +77,7 @@ const BookAppointment: React.FC<BookAppointmentProps> = () => {
                         bookingType != 'immediate' &&
                         <>
                             <Divider marginTop={SF(10)} color='#3D3D3D50' height={0.7} />
-                            <Text style={[styles.subHeader, { marginTop: SH(10) }]}>Your Barber</Text>
+                            <AppText style={[styles.subHeader, { marginTop: SH(10) }]}>Your Barber</AppText>
                             <Spacing space={SH(15)} />
                             <View style={{ marginLeft: -SW(15) }}>
                                 <UserprofileView />
@@ -95,30 +95,30 @@ const BookAppointment: React.FC<BookAppointmentProps> = () => {
                                     />
                                 </TouchableOpacity>
                                 <View>
-                                    <Text style={styles.serviceTitle}>{'Only Haircut'}</Text>
-                                    <Text style={styles.serviceSub}>Popular Service</Text>
+                                    <AppText style={styles.serviceTitle}>{'Only Haircut'}</AppText>
+                                    <AppText style={styles.serviceSub}>Popular Service</AppText>
                                 </View>
                                 <View style={styles.rightBlock}>
-                                    <Text style={styles.price}>$55.00</Text>
-                                    <Text style={styles.duration}>25m</Text>
+                                    <AppText style={styles.price}>$55.00</AppText>
+                                    <AppText style={styles.duration}>25m</AppText>
                                 </View>
                             </View>
                             {/* add another button========= */}
                             <TouchableOpacity style={styles.addAnotoherButton}>
-                                <Text style={styles.addAnotoherButtonTxt}>
+                                <AppText style={styles.addAnotoherButtonTxt}>
                                     <VectoreIcons
                                         icon='Entypo'
                                         name='plus'
                                         color={Colors.themeColor}
                                         size={SF(14)}
-                                    /> Add another service</Text>
+                                    /> Add another service</AppText>
                             </TouchableOpacity>
 
                             <Divider contStyle={{ marginTop: SH(30) }} color='#3D3D3D50' height={0.7} />
                             <View style={styles.bookingContainer}>
                                 <View>
-                                    <Text style={styles.price1}>$55.00</Text>
-                                    <Text style={styles.duration1}>25m</Text>
+                                    <AppText style={styles.price1}>$55.00</AppText>
+                                    <AppText style={styles.duration1}>25m</AppText>
                                 </View>
                                 <Buttons
                                     buttonStyle={{ width: '65%' }}

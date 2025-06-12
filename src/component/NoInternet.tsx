@@ -7,6 +7,7 @@ import {
   Image,
 } from "react-native";
 import { Colors, useNetworkStatus } from "../utils";
+import AppText from "./AppText";
 
 const NoInternetModal: React.FC = () => {
   const isConnected = useNetworkStatus();
@@ -19,10 +20,10 @@ const NoInternetModal: React.FC = () => {
             source={require("../assets/images/nointernet.png")}
             style={styles.image}
           />
-          <Text style={styles.message}>
+          <AppText style={styles.message}>
             Looks like you don’t have an internet connection. Please reconnect
             and try again.
-          </Text>
+          </AppText>
         </View>
       </View>
     </Modal>

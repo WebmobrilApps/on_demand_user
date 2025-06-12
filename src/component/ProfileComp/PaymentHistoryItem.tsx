@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Colors, Fonts, SF, SH, SW} from '../../utils';
+import AppText from '../AppText';
 
 type PaymentHistoryItemProps = {
   item: {
@@ -19,11 +20,11 @@ const PaymentHistoryItem: React.FC<PaymentHistoryItemProps> = ({item}) => {
       onPress={item.onClick}
       style={styles.container}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Text style={styles.text}>{item.name}</Text>
-        <Text style={styles.text2}>{item?.datetime}</Text>
+        <AppText style={styles.text}>{item.name}</AppText>
+        <AppText style={styles.text2}>{item?.datetime}</AppText>
       </View>
-      <Text style={styles.textprice}>{item.price}</Text>
-      <Text style={styles.textStatus}>{'Pending'}</Text>
+      <AppText style={styles.textprice}>{item.price}</AppText>
+      <AppText style={styles.textStatus}>{'Pending'}</AppText>
     </TouchableOpacity>
   );
 };

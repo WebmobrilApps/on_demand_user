@@ -22,6 +22,7 @@ import {
   validationMSG,
 } from '../../utils';
 import {
+  AppText,
   AuthBottomContainer,
   AuthImgComp,
   Container,
@@ -268,9 +269,9 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                           />
                       }
                     </Pressable>
-                    <Text style={styles.consfirmTxt}>
+                    <AppText style={styles.consfirmTxt}>
                       By signing up you accept the{' '}
-                      <Text
+                      <AppText
                         onPress={() => {
                           navigation.navigate(RouteName.PRIVACY_POLICY, {
                             title: 'Terms of Service',
@@ -278,9 +279,9 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                         }}
                         style={{ fontSize: SF(12), fontFamily: Fonts.SEMI_BOLD }}>
                         Terms of Service
-                      </Text>{' '}
+                      </AppText>{' '}
                       & {'\n'}
-                      <Text
+                      <AppText
                         onPress={() => {
                           navigation.navigate(RouteName.PRIVACY_POLICY, {
                             title: 'Privacy Policy',
@@ -288,8 +289,8 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                         }}
                         style={{ fontSize: SF(12), fontFamily: Fonts.SEMI_BOLD }}>
                         Privacy Policy
-                      </Text>
-                    </Text>
+                      </AppText>
+                    </AppText>
                   </View>
 
                   <Spacing space={SH(25)} />
@@ -306,16 +307,16 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                   />
                   {/* <Image source={imagePaths.face_lock} style={styles.fingerPrintImage} /> */}
 
-                  <Text style={styles.dontHaveAccTxt}>
+                  <AppText style={styles.dontHaveAccTxt}>
                     {t('signup.alreadyHaveAccount')}{' '}
-                    <Text
+                    <AppText
                       onPress={() => {
                         navigation.navigate(RouteName.LOGIN);
                       }}
                       style={styles.dontHaveAccLogintxt}>
                       {t('signup.logIn')}{' '}
-                    </Text>
-                  </Text>
+                    </AppText>
+                  </AppText>
                 </>
               )}
             </Formik>

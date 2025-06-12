@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {
   AppHeader,
+  AppText,
   Container,
   PaymentHistoryItem,
 } from '../../component';
@@ -43,10 +44,10 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
       />
         <View style={styles.container}>
           <View style={styles.totalSpentContainer}>
-            <Text style={styles.totalSpentText}>
+            <AppText style={styles.totalSpentText}>
               Total Spent :{' '}
-              <Text style={styles.totalSpentAmount}>$5000</Text>
-            </Text>
+              <AppText style={styles.totalSpentAmount}>$5000</AppText>
+            </AppText>
             <VectorIcon
               name="right"
               icon="AntDesign"
@@ -56,7 +57,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
           </View>
 
           <View style={styles.transactionHistoryContainer}>
-            <Text style={styles.transactionHistoryText}>Transaction History</Text>
+            <AppText style={styles.transactionHistoryText}>Transaction History</AppText>
             <View style={styles.iconContainer}>
               <Image source={imagePaths.search_h} style={styles.icon} />
               <Image source={imagePaths.filter_h} style={styles.icon} />

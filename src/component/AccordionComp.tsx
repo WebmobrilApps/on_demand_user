@@ -1,5 +1,6 @@
 import React, { useState, useRef, ReactNode } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet, LayoutChangeEvent } from 'react-native';
+import AppText from './AppText';
 
 interface AccordionProps {
   title: string;
@@ -38,7 +39,7 @@ const AccordionComp: React.FC<AccordionProps> = ({ title, children }) => {
   return (
     <View style={styles.accordionContainer}>
       <TouchableOpacity onPress={toggleAccordion} style={styles.header}>
-        <Text style={styles.headerText}>{title}</Text>
+        <AppText style={styles.headerText}>{title}</AppText>
       </TouchableOpacity>
 
       <Animated.View style={[styles.content, { height: animatedHeight }]}>

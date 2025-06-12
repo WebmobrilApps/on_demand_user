@@ -1,6 +1,7 @@
 import { Text, Pressable, FlatList, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
+import { AppText } from '../../../component';
 
 interface HeaderProps {
     data: any;
@@ -24,14 +25,14 @@ const SubCatList: React.FC<HeaderProps> = ({ data }) => {
                         { backgroundColor: selectedSubCat.includes(item.text) ? Colors.themeColor : Colors.white }
                     ]}
                 >
-                    <Text
+                    <AppText
                         style={[
                             styles.text,
                             { color: selectedSubCat.includes(item.text) ? Colors.white : Colors.themeColor }
                         ]}
                     >
                         {item.text}
-                    </Text>
+                    </AppText>
                 </Pressable>
             )}
         />

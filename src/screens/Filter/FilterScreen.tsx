@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import React, { FC, useState } from 'react';
-import { Buttons, Checkbox, Container, Divider, Spacing, VectoreIcons } from '../../component';
+import { AppText, Buttons, Checkbox, Container, Divider, Spacing, VectoreIcons } from '../../component';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
 import { StyleSheet } from 'react-native';
@@ -106,7 +106,7 @@ const FilterScreen: FC<FilterScreenProps> = () => {
     <Container style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.sccrol}>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerTitle}>Filter for you</Text>
+          <AppText style={styles.headerTitle}>Filter for you</AppText>
           <TouchableOpacity onPress={() => { navigation.goBack() }}>
             <VectoreIcons
               icon="AntDesign"
@@ -118,7 +118,7 @@ const FilterScreen: FC<FilterScreenProps> = () => {
         </View>
 
         {/* Categories Section */}
-        <Text style={styles.subtitle}>Categories</Text>
+        <AppText style={styles.subtitle}>Categories</AppText>
         <View style={styles.categoryWrapper}>
           {categoryData.map((cat) => (
             <CategoryItem
@@ -137,7 +137,7 @@ const FilterScreen: FC<FilterScreenProps> = () => {
         {/* Advanced Filter Section */}
         <Spacing space={SH(15)} />
         <View style={styles.advancedFilterHeader}>
-          <Text style={styles.subtitle}>Advanced Filter</Text>
+          <AppText style={styles.subtitle}>Advanced Filter</AppText>
           <TouchableOpacity onPress={() => { setAdvanceFilterOpen(!advanceFilterOpen) }} style={styles.dropdownIcon}>
             <Image
               resizeMode='contain'
@@ -153,7 +153,7 @@ const FilterScreen: FC<FilterScreenProps> = () => {
           advanceFilterOpen &&
           <View style={styles.advancedFilterWrapper}>
             {/* Rating Section */}
-            <Text style={styles.labal}>Rating</Text>
+            <AppText style={styles.labal}>Rating</AppText>
             <Spacing />
             <View style={styles.ratingContainer}>
               {ratingData.map((rating) => (
@@ -170,7 +170,7 @@ const FilterScreen: FC<FilterScreenProps> = () => {
             <Spacing space={SH(15)} />
             {/* Distance Section */}
             <View style={styles.distanceHeaderContainer}>
-              <Text style={styles.labal}>Distance</Text>
+              <AppText style={styles.labal}>Distance</AppText>
               <View style={styles.distanceValueContainer}>
                 <VectoreIcons
                   icon="Entypo"
@@ -179,7 +179,7 @@ const FilterScreen: FC<FilterScreenProps> = () => {
                   color={Colors.themeColor}
                 />
                 <TouchableOpacity style={styles.distanceValueButton}>
-                  <Text style={styles.labal}>2 km</Text>
+                  <AppText style={styles.labal}>2 km</AppText>
                 </TouchableOpacity>
                 <VectoreIcons
                   icon="Entypo"
@@ -217,7 +217,7 @@ const FilterScreen: FC<FilterScreenProps> = () => {
             onChange={() => null}
             label=""
           />
-          <Text style={styles.saveFilterText}>Save filter for future</Text>
+          <AppText style={styles.saveFilterText}>Save filter for future</AppText>
         </View>
         <Buttons
           title="Apply Filter"

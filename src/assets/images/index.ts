@@ -26,6 +26,7 @@ const imagePaths = {
   filter_icon:require('./filter_icon.png'),
   banner1:require('./banner1.png'),
   banner2:require('./plumb_img.png'),
+  down_icon:require('./down_icon.png'),
   Search:require('./Search.png'),
 
   carpentry:require('./carpentry.png'),

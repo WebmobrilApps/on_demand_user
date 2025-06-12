@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Keyboard, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, regex, SF, SH, SW } from '../../utils';
 import {
+  AppText,
   AuthBottomContainer,
   AuthImgComp,
   Container,
@@ -116,10 +117,10 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
             }) => (
               <View style={styles.bottomInnerContainer}>
                 <View>
-                  <Text style={styles.heading}>{t('updatepass.title')}</Text>
-                  <Text style={styles.subtitile}>
+                  <AppText style={styles.heading}>{t('updatepass.title')}</AppText>
+                  <AppText style={styles.subtitile}>
                     {t('updatepass.subtitle')}
-                  </Text>
+                  </AppText>
                   <InputField
                     placeholder={t('placeholders.password')}
                     value={values.password}

@@ -11,7 +11,7 @@ import {
 import imagePaths from '../../../assets/images';
 import StarRating from 'react-native-star-rating-widget';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { VectoreIcons } from '../../../component';
+import { AppText, VectoreIcons } from '../../../component';
 
 interface RatingBreakdown {
     star: number;
@@ -86,9 +86,9 @@ const Reviews: React.FC = () => {
                 />
                 <View style={styles.nameRow}>
                     <View style={styles.usrNameDateContainer}>
-                        <Text style={styles.userName}>{item.name}</Text>
-                        <Text style={styles.dotText}> . </Text>
-                        <Text style={styles.dateText}>{item.date}</Text>
+                        <AppText style={styles.userName}>{item.name}</AppText>
+                        <AppText style={styles.dotText}> . </AppText>
+                        <AppText style={styles.dateText}>{item.date}</AppText>
                     </View>
                     <StarRating
                         starStyle={styles.starStyleForUser}
@@ -99,24 +99,24 @@ const Reviews: React.FC = () => {
                     />
                 </View>
                 {item.verified && (
-                    <Text style={styles.verifiedUser}>
+                    <AppText style={styles.verifiedUser}>
                         Verified User ✅
-                    </Text>
+                    </AppText>
                 )}
             </View>
 
 
-            <Text style={styles.comment}>{item.comment}</Text>
+            <AppText style={styles.comment}>{item.comment}</AppText>
 
             <View style={styles.actionRow}>
-                <Text style={styles.actionText}>
+                <AppText style={styles.actionText}>
                     <VectoreIcons name='thumbs-up' icon='Feather' size={SF(9)} />  {item.likes}
-                </Text>
-                <Text style={[styles.actionText, { marginLeft: 16 }]}>
+                </AppText>
+                <AppText style={[styles.actionText, { marginLeft: 16 }]}>
                     <VectoreIcons name='thumbs-down' icon='Feather' size={SF(9)} />  {item.replies}
-                </Text>
+                </AppText>
                 <TouchableOpacity style={{ marginLeft: 'auto' }}>
-                    <Text style={styles.reportText}>Report <Text style={{ fontSize: SF(12) }}>⚑</Text></Text>
+                    <AppText style={styles.reportText}>Report <AppText style={{ fontSize: SF(12) }}>⚑</AppText></AppText>
                 </TouchableOpacity>
             </View>
 
@@ -126,9 +126,9 @@ const Reviews: React.FC = () => {
                         <Image style={{height:SF(10),width:SF(12)}} source={imagePaths.return_up_back} />
                     </View>
                     <View style={{marginLeft:10}}>
-                        <Text style={styles.replyTitle}>WM Barbershop</Text>
-                        <Text style={styles.replyDate}>on March 20th</Text>
-                        <Text style={styles.replyText}>Thank you so much! 🤝</Text>
+                        <AppText style={styles.replyTitle}>WM Barbershop</AppText>
+                        <AppText style={styles.replyDate}>on March 20th</AppText>
+                        <AppText style={styles.replyText}>Thank you so much! 🤝</AppText>
                     </View>
                 </View>
             )}
@@ -139,7 +139,7 @@ const Reviews: React.FC = () => {
         <View style={styles.container}>
             <View style={{ flexDirection: 'row', justifyContent: "space-between", alignItems: "center" }}>
                 <View style={styles.ratingSummary}>
-                    <Text style={styles.ratingNumber}>4.8</Text>
+                    <AppText style={styles.ratingNumber}>4.8</AppText>
                     <StarRating
                         starStyle={styles.starStyle}
                         color={Colors.ratingColor1}
@@ -147,7 +147,7 @@ const Reviews: React.FC = () => {
                         starSize={SF(12)}
                         rating={3.5}
                     />
-                    <Text style={styles.averageText}>Coarse Rating</Text>
+                    <AppText style={styles.averageText}>Coarse Rating</AppText>
                 </View>
                 <View style={styles.breakdownContainer}>
                     {ratingsBreakdown.map((item, index) => (
@@ -159,11 +159,11 @@ const Reviews: React.FC = () => {
                                 color={Colors.ratingColor1}
                                 rating={item.star}
                             />
-                            <Text style={{ marginHorizontal: SW(10), fontSize: SF(9), color: "#1D2026", fontFamily: Fonts.MEDIUM }}>{item.star}</Text>
+                            <AppText style={{ marginHorizontal: SW(10), fontSize: SF(9), color: "#1D2026", fontFamily: Fonts.MEDIUM }}>{item.star}</AppText>
                             <View style={styles.barBackground}>
                                 <View style={[styles.barFill, { width: item.percent }]} />
                             </View>
-                            <Text style={{ marginLeft: SW(10), fontSize: SF(9), color: "#1D2026", fontFamily: Fonts.MEDIUM }}>{item.percent}</Text>
+                            <AppText style={{ marginLeft: SW(10), fontSize: SF(9), color: "#1D2026", fontFamily: Fonts.MEDIUM }}>{item.percent}</AppText>
                         </View>
                     ))}
                 </View>

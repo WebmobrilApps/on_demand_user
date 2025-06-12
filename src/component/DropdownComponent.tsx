@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image, ViewStyle, TextStyle } from 'react-nativ
 import { Dropdown } from 'react-native-element-dropdown';
 import { Colors, Fonts, SF, SH } from '../utils';
 import imagePaths from '../assets/images';
+import AppText from './AppText';
 
 interface DropdownComponentProps {
   data: any;
@@ -20,7 +21,7 @@ const DropdownComponent: FC<DropdownComponentProps> = ({ data, selectedTextStyle
   const renderItem = (item: any) => {
     return (
       <View style={styles.item}>
-        <Text style={styles.textItem}>{item.label}</Text>
+        <AppText style={styles.textItem}>{item.label}</AppText>
       </View>
     );
   };

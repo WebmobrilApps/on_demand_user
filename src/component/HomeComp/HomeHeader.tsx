@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Fonts, SF, SH, SW, useIsPortrait } from '../../utils';
 import imagePaths from '../../assets/images';
 import RouteName from '../../navigation/RouteName';
-import { VectoreIcons } from '..';
+import { AppText, VectoreIcons } from '..';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { useNavigation } from '@react-navigation/native';
 
@@ -42,11 +42,11 @@ const Header = () => {
             color={Colors.white}
           />
           <View style={styles.locationContainer}>
-            <Text style={styles.currentLocationText}>Current Location</Text>
+            <AppText style={styles.currentLocationText}>Current Location</AppText>
             <View style={styles.locationRow}>
-              <Text numberOfLines={1} style={styles.cityText}>
+              <AppText numberOfLines={1} style={styles.cityText}>
                 New York City
-              </Text>
+              </AppText>
               <Image source={imagePaths.down} style={styles.downIcon} />
             </View>
           </View>

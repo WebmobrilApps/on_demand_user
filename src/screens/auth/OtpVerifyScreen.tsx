@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Keyboard, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW, useCountdown, useProfileUpdate } from '../../utils';
-import { AuthBottomContainer, AuthImgComp, Container, CustomToast, Spacing, VectoreIcons } from '../../component';
+import { AppText, AuthBottomContainer, AuthImgComp, Container, CustomToast, Spacing, VectoreIcons } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import imagePaths from '../../assets/images';
 import Buttons from '../../component/Button';
@@ -135,10 +135,11 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
         <AuthBottomContainer>
           <View style={styles.bottomInnerContainer}>
             <View>
-              <Text style={styles.heading}> {t('otpverify.title')}</Text>
-              <Text style={styles.subtitile}>{t('otpverify.subtitle')}</Text>
+              <AppText style={styles.heading}> {t('otpverify.title')}</AppText>
+              <AppText style={styles.subtitile}>{t('otpverify.subtitle')}</AppText>
 
               <OTPTextView
+
                 ref={input}
                 textInputStyle={styles.textInputContainer}
                 handleTextChange={val => {
@@ -155,13 +156,13 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
                 {otpLoader ? (
                   <ActivityIndicator color={'#ffffff'} style={styles.activeIndigator} />
                 ) : (
-                  <Text
+                  <AppText
                     onPress={() => {
                       status !== 'running' && btnResendOtp();
                     }}
                     style={styles.resteText}>
                     {status === 'running' ? formatTime(time) : 'Resend OTP'}
-                  </Text>
+                  </AppText>
                 )}
               </View>
             </View>
@@ -220,7 +221,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: SW(10),
     borderBottomWidth: 1.2,
-    fontSize: SF(14),
+    fontSize: 14,
     color: Colors.white,
     backgroundColor: 'transparent',
   },

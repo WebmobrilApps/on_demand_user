@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList, StatusBar, StyleSheet, Text, View } from 'react-native';
-import { AppHeader, BottomBar, Container, ImageLoader, LogoutPopup, ProfileList } from '../../component';
+import { AppHeader, AppText, BottomBar, Container, ImageLoader, LogoutPopup, ProfileList } from '../../component';
 import { Colors, Fonts, SF, SH, SW, useDisableGestures } from '../../utils';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import imagePaths from '../../assets/images';
@@ -94,8 +94,8 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
             />
           </View>
           <View style={styles.userDetailsContainer}>
-            <Text style={styles.userName}>John Kevin</Text>
-            <Text style={styles.userPhone}>+91 1234567890</Text>
+            <AppText style={styles.userName}>John Kevin</AppText>
+            <AppText style={styles.userPhone}>+91 1234567890</AppText>
           </View>
           <ImageLoader
             source={imagePaths.edit_profile}

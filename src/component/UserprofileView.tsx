@@ -4,6 +4,7 @@ import ImageLoader from './ImageLoader'; // adjust import path as needed
 import VectoreIcons from './VectoreIcons'; // adjust import path as needed
 import { Colors, Fonts, SF, SH, SW } from '../utils';
 import imagePaths from '../assets/images';
+import AppText from './AppText';
 
 const UserprofileView = ({ title = 'Juana', imageSource = imagePaths.user, showTick = true }) => {
   return (
@@ -15,9 +16,9 @@ const UserprofileView = ({ title = 'Juana', imageSource = imagePaths.user, showT
           mainImageStyle={styles.img}
         />
       </View>
-      <Text numberOfLines={2} style={styles.serviceTitle}>
+      <AppText numberOfLines={2} style={styles.serviceTitle}>
         {title}
-      </Text>
+      </AppText>
       {showTick && (
         <View style={styles.tickIcon}>
           <VectoreIcons icon="AntDesign" name="checkcircle" color="green" size={SF(18)} />

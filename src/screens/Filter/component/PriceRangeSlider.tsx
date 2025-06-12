@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React, { FC, useCallback } from 'react';
-import { Spacing } from '../../../component';
+import { AppText, Spacing } from '../../../component';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
 import RangeSlider from 'rn-range-slider';
 
@@ -21,7 +21,7 @@ const PriceRangeSlider: FC<PriceRangeSliderProps> = ({ minPrice, maxPrice, onPri
   const renderLabel = useCallback(
     (value: number) => (
       <View style={styles.labelContainer}>
-        <Text style={styles.labelText}>${value}</Text>
+        <AppText style={styles.labelText}>${value}</AppText>
       </View>
     ),
     []
@@ -39,10 +39,10 @@ const PriceRangeSlider: FC<PriceRangeSliderProps> = ({ minPrice, maxPrice, onPri
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>Price Range</Text>
-        <Text style={styles.priceRangeText}>
+        <AppText style={styles.headerText}>Price Range</AppText>
+        <AppText style={styles.priceRangeText}>
           ${minPrice}-${maxPrice}
-        </Text>
+        </AppText>
       </View>
       <Spacing space={SH(10)} />
       <RangeSlider

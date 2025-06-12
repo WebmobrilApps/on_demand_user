@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, DimensionValue, TextStyle } from 'react-native';
 
-import { VectoreIcons } from '.';
+import { AppText, VectoreIcons } from '.';
 import { Colors, SF } from '../utils';
 
 interface CheckboxProps {
@@ -37,7 +37,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         name={'check'}
       />}
     </View>
-      {label && <Text style={[styles.label,{fontSize:lebelFontSize},checkBoxTextStyle]}>{label}</Text>}
+      {label && <AppText style={[styles.label,{fontSize:lebelFontSize},checkBoxTextStyle]}>{label}</AppText>}
     </TouchableOpacity>
   );
 };

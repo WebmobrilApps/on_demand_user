@@ -23,6 +23,7 @@ import {
 } from '../../utils';
 import {
   AppHeader,
+  AppText,
   AuthBottomContainer,
   AuthImgComp,
   Container,
@@ -30,7 +31,6 @@ import {
   Spacing,
 } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import Inputs from '../../component/Input';
 import imagePaths from '../../assets/images';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -80,10 +80,10 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ }) => {
                 html: `${data}`
               }}
             /> :
-            <Text style={{ fontFamily: Fonts.REGULAR, lineHeight: SH(20), color: Colors.textAppColor }}>Something went wrong</Text>
+            <AppText style={{ fontFamily: Fonts.REGULAR, lineHeight: SH(20), color: Colors.textAppColor }}>Something went wrong</AppText>
         }
         {
-          error  && <Text style={{ fontFamily: Fonts.REGULAR, lineHeight: SH(20), color: Colors.textAppColor }}>Something went wrong</Text>
+          error  && <AppText style={{ fontFamily: Fonts.REGULAR, lineHeight: SH(20), color: Colors.textAppColor }}>Something went wrong</AppText>
         }
        
       </ScrollView>

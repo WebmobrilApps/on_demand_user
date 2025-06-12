@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { boxShadow, Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, ImageLoader, Spacing, VectoreIcons } from '../../../component';
+import { AppText, Buttons, ImageLoader, Spacing, VectoreIcons } from '../../../component';
 import imagePaths from '../../../assets/images';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../../navigation/RouteName';
@@ -42,7 +42,7 @@ const SucessBookingModal: React.FC<SucessBookingModalProps> = ({
                             size={SF(75)}
                             color={Colors.successColor}
                         />
-                        <Text style={styles.heading}>Booking Successful !</Text>
+                        <AppText style={styles.heading}>Booking Successful !</AppText>
                     </View>
                     <Spacing space={SH(20)} />
                     <Pressable style={styles.serviceContainer}>
@@ -51,10 +51,10 @@ const SucessBookingModal: React.FC<SucessBookingModalProps> = ({
                                 <ImageLoader source={imagePaths.user} resizeMode="cover" mainImageStyle={styles.logo} />
                             </View>
                             <View style={styles.infoContainer}>
-                                <Text style={styles.text}>Haircut + Beard </Text>
-                                <Text style={styles.price}>{`$1893`}</Text>
-                                <Text style={styles.dateTime}>{`8:00 am - 8:30 am`}</Text>
-                                <Text style={styles.withText}>{`With Juana`}</Text>
+                                <AppText style={styles.text}>Haircut + Beard </AppText>
+                                <AppText style={styles.price}>{`$1893`}</AppText>
+                                <AppText style={styles.dateTime}>{`8:00 am - 8:30 am`}</AppText>
+                                <AppText style={styles.withText}>{`With Juana`}</AppText>
                             </View>
                         </View>
                     </Pressable>

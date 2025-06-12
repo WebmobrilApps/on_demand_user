@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
 import { Colors, Fonts, SF, SH } from '../../../utils';
+import { AppText } from '../../../component';
 
 interface BookingServiceItemProps {
     title?: string;
@@ -18,15 +19,15 @@ const BookingServiceItem: React.FC<BookingServiceItemProps> = ({
     return (
         <View style={styles.serviceItem}>
             <View>
-                <Text style={styles.serviceTitle}>{title}</Text>
-                {subtitles && <Text style={styles.serviceSub}>
+                <AppText style={styles.serviceTitle}>{title}</AppText>
+                {subtitles && <AppText style={styles.serviceSub}>
                     {subtitles}
-                </Text>}
-                {time && <Text style={styles.serviceSub}>
+                </AppText>}
+                {time && <AppText style={styles.serviceSub}>
                     {time}
-                </Text>}
+                </AppText>}
             </View>
-            <Text style={styles.price}>{price}</Text>
+            <AppText style={styles.price}>{price}</AppText>
         </View>
     );
 };

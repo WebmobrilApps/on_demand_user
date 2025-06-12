@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, Spacing, VectoreIcons } from '../../../component';
+import { AppText, Buttons, Spacing, VectoreIcons } from '../../../component';
 
 
 type TabTopProps = {
@@ -12,10 +12,10 @@ const TabTop: React.FC<TabTopProps> = ({ activeTab,changeTab }) => {
     return (
         <View style={styles.modalView}>
             <TouchableOpacity activeOpacity={0.8} onPress={()=>{changeTab(1)}}  style={activeTab == 1 ? styles.tabac : styles.tab}>
-                <Text style={activeTab == 1 ? styles.textac : styles.text}>My Booking</Text>
+                <AppText style={activeTab == 1 ? styles.textac : styles.text}>My Booking</AppText>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.8} onPress={()=>{changeTab(2)}} style={activeTab == 2 ? styles.tabac : styles.tab}>
-                <Text style={activeTab == 2 ? styles.textac : styles.text}>Other Boooking</Text>
+                <AppText style={activeTab == 2 ? styles.textac : styles.text}>Other Boooking</AppText>
             </TouchableOpacity>
         </View>
     );

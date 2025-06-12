@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, FlatList, StyleSheet, Pressable } from 'react-native';
 import { Colors, SH, SW, Fonts, SF, boxShadow } from '../../utils';
 import imagePaths from '../../assets/images';
-import { AppHeader, Container, ImageLoader, Spacing } from '../../component';
+import { AppHeader, AppText, Container, ImageLoader, Spacing } from '../../component';
 import { useNavigation } from '@react-navigation/native';
 import StarRating from 'react-native-star-rating-widget';
 import RouteName from '../../navigation/RouteName';
@@ -39,31 +39,31 @@ const ServiceList: React.FC = () => {
                 </View>
                 <View style={styles.infoContainer}>
                     <View style={styles.titleContainer}>
-                        <Text numberOfLines={1} style={styles.text}>{item.name}</Text>
+                        <AppText numberOfLines={1} style={styles.text}>{item.name}</AppText>
                         <Image source={imagePaths.verified_star} resizeMode="contain" style={styles.verifiedIcon} />
                     </View>
                     <View style={styles.ratingContainer}>
                         <StarRating starSize={SF(16)} rating={item.rating} onChange={() => { }} starStyle={{ marginHorizontal: 0 }} />
-                        <Text style={styles.ratingText}>{item.rating}</Text>
+                        <AppText style={styles.ratingText}>{item.rating}</AppText>
                     </View>
                 </View>
             </View>
             <Spacing space={10} />
             <View style={styles.locationContainer}>
                 <Image source={imagePaths.service_loc} style={styles.icon} />
-                <Text style={styles.locationText}>{item.location}</Text>
-                <Text style={styles.dotText}>•</Text>
-                <Text style={styles.closedText}>Closed</Text>
+                <AppText style={styles.locationText}>{item.location}</AppText>
+                <AppText style={styles.dotText}>•</AppText>
+                <AppText style={styles.closedText}>Closed</AppText>
             </View>
             <Spacing space={5} />
             <View style={styles.footer}>
                 <View style={styles.priceContainer}>
                     <Image source={imagePaths.money} style={styles.icon} />
-                    <Text style={styles.priceText}>Starts @ ${item.price}/hr</Text>
+                    <AppText style={styles.priceText}>Starts @ ${item.price}/hr</AppText>
                     <View style={styles.durationContainer}>
-                        <Text style={styles.dotText}>•</Text>
+                        <AppText style={styles.dotText}>•</AppText>
                         <Image source={imagePaths.ClockClockwise} style={styles.icon} />
-                        <Text style={styles.closedText}>1.2 hrs</Text>
+                        <AppText style={styles.closedText}>1.2 hrs</AppText>
                     </View>
                 </View>
             </View>

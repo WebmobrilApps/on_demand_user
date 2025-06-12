@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AppHeader, Container, ProfileList, Spacing } from '../../component';
+import { AppHeader, AppText, Container, ProfileList, Spacing } from '../../component';
 import { Colors, Fonts, imagePaths, SF, SH, SW } from '../../utils';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +18,7 @@ const CustomerSupport: React.FC<CustomerSupportProps> = ({ }) => {
   ) => {
     return (
       <View style={styles.toggleContainer}>
-        <Text style={styles.toggleLabel}>{label}</Text>
+        <AppText style={styles.toggleLabel}>{label}</AppText>
         <TouchableOpacity onPress={() => onToggle(!value, type)}>
           <Image source={value ? imagePaths.switch_on : imagePaths.switch_off} style={{ width: SF(50), height: SF(28), resizeMode: 'contain' }} />
         </TouchableOpacity>
@@ -56,15 +56,15 @@ const CustomerSupport: React.FC<CustomerSupportProps> = ({ }) => {
       />
       <View style={styles.container}>
         
-        <Text style={styles.sectionTitle}>{t('customerSupport.supportSection')}</Text>
+        <AppText style={styles.sectionTitle}>{t('customerSupport.supportSection')}</AppText>
         <ProfileList item={helpCenter} />
         <Spacing space={SH(18)} />
         <ProfileList item={contactSupport} />
         <Spacing space={SH(20)} />
-        <Text style={styles.sectionTitle}>{t('customerSupport.liveChatSupportracking')}</Text>
+        <AppText style={styles.sectionTitle}>{t('customerSupport.liveChatSupportracking')}</AppText>
         <ProfileList item={assistance} />
         <Spacing space={SH(20)} />
-        <Text style={styles.sectionTitle}>{t('customerSupport.ticketSystem')}</Text>
+        <AppText style={styles.sectionTitle}>{t('customerSupport.ticketSystem')}</AppText>
         <ProfileList item={issueTracking} />
       </View>
     </Container>

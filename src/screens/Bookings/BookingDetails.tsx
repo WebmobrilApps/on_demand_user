@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Colors, SH, SW, Fonts, SF, } from '../../utils';
-import { AppHeader, Buttons, Container, ImageLoader, VectoreIcons } from '../../component';
+import { AppHeader, AppText, Buttons, Container, ImageLoader, VectoreIcons } from '../../component';
 import { useNavigation } from '@react-navigation/native';
 import { BookingServiceItem, TabTop } from './component';
 import imagePaths from '../../assets/images';
@@ -27,12 +27,12 @@ const BookingDetails: React.FC = () => {
 
         <View style={styles.shopInfoContainer}>
           <View style={styles.shopTextBlock}>
-            <Text style={styles.shopTitle}>
-              WM Barbershop <Text style={styles.shopCount}>with Juana</Text>
-            </Text>
-            <Text style={styles.shopAddress}>
+            <AppText style={styles.shopTitle}>
+              WM Barbershop <AppText style={styles.shopCount}>with Juana</AppText>
+            </AppText>
+            <AppText style={styles.shopAddress}>
               1893 Cheshire Bridge Rd Ne, 30325
-            </Text>
+            </AppText>
           </View>
           <View style={styles.iconsBlock}>
             <VectoreIcons
@@ -57,7 +57,7 @@ const BookingDetails: React.FC = () => {
           />
         </View>
       </ScrollView>
-      <Text style={styles.addTipButton}>+ Add Tip</Text>
+      <AppText style={styles.addTipButton}>+ Add Tip</AppText>
       <Buttons
         onPress={() => { }}
         title='Book Again'

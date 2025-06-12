@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import { Colors, Fonts, SF, SW } from '../../utils';
+import AppText from '../AppText';
 
 interface HomeSubContainerHeaderProps {
   onClick?: (text: string) => void;
@@ -23,9 +24,9 @@ const HomeSubContainerHeader: React.FC<HomeSubContainerHeaderProps> = ({
 }) => {
   return (
     <View style={[styles.container,{marginHorizontal:marginHori}]}>
-      <Text style={styles.leftText}>{leftText}</Text>
+      <AppText style={styles.leftText}>{leftText}</AppText>
       <TouchableOpacity style={styles.rightTextContainer} onPress={() => onClick(rightText)}>
-        <Text style={styles.rightText}>{rightText}</Text>
+        <AppText style={styles.rightText}>{rightText}</AppText>
       </TouchableOpacity>
     </View>
   );

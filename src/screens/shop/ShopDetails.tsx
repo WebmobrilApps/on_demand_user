@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pressable, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AppHeader, Container, ImageLoader, Spacing, VectoreIcons } from '../../component';
+import { AppHeader, AppText, Container, ImageLoader, Spacing, VectoreIcons } from '../../component';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
@@ -72,9 +72,9 @@ const ShopDetails: React.FC<shopProps> = () => {
                     />
                 </TouchableOpacity>
                 {activeTab === 'details' ? <View style={[styles.shopTextBlock, { marginLeft: 20 }]}>
-                    <Text style={styles.shopTitle}>
-                        WM Barbershop <Text style={styles.shopCount}>(250)</Text>
-                    </Text>
+                    <AppText style={styles.shopTitle}>
+                        WM Barbershop <AppText style={styles.shopCount}>(250)</AppText>
+                    </AppText>
                 </View> : ''}
             </View>
 
@@ -94,12 +94,12 @@ const ShopDetails: React.FC<shopProps> = () => {
 
                     <View style={styles.shopInfoContainer}>
                         <View style={styles.shopTextBlock}>
-                            <Text style={styles.shopTitle}>
-                                WM Barbershop <Text style={styles.shopCount}>(250)</Text>
-                            </Text>
-                            <Text style={styles.shopAddress}>
+                            <AppText style={styles.shopTitle}>
+                                WM Barbershop <AppText style={styles.shopCount}>(250)</AppText>
+                            </AppText>
+                            <AppText style={styles.shopAddress}>
                                 1893 Cheshire Bridge Rd Ne, 30325 {'\n'}Home Service
-                            </Text>
+                            </AppText>
                         </View>
                         <View style={styles.iconsBlock}>
                             <VectoreIcons
@@ -123,7 +123,7 @@ const ShopDetails: React.FC<shopProps> = () => {
                     {
                         shopDetailTabs.map((item, index) => {
                             return <Pressable onPress={() => { setActiveTabs(item.name.toLowerCase()); }} key={index.toString() + 'tabs'}>
-                                <Text style={activeTab === item.name.toLowerCase() ? styles.activeTab : styles.inactiveTab}>{item.name}</Text>
+                                <AppText style={activeTab === item.name.toLowerCase() ? styles.activeTab : styles.inactiveTab}>{item.name}</AppText>
                             </Pressable>;
                         })
                     }

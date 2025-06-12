@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, Checkbox, DropdownComponent, Spacing, VectoreIcons } from '../../../component';
+import { AppText, Buttons, Checkbox, DropdownComponent, Spacing, VectoreIcons } from '../../../component';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../../navigation/RouteName';
 
@@ -59,7 +59,7 @@ const ConfirmBookingTypeModal: React.FC<ConfirmBookingTypeModalProps> = ({
                         />
                     </TouchableOpacity>
 
-                    <Text style={styles.heading}>Confirmation</Text>
+                    <AppText style={styles.heading}>Confirmation</AppText>
 
                     <Checkbox
                         checked={checkServiceType === 'current'}

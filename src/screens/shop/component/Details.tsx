@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Keyboard, Image, TouchableOpacity } from 'react-native';
 import React, { FC } from 'react';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, Divider, ImageLoader, Spacing, VectoreIcons } from '../../../component';
+import { AppText, Buttons, Divider, ImageLoader, Spacing, VectoreIcons } from '../../../component';
 import imagePaths from '../../../assets/images';
 import AvailTeamMember from './AvailTeamMember';
 import RouteName from '../../../navigation/RouteName';
@@ -20,7 +20,7 @@ interface ListRowItemProps {
 const ListRowItem: React.FC<ListRowItemProps> = ({ title, onPress }) => {
     return (
         <TouchableOpacity style={styles.itemContainer} activeOpacity={0.7} onPress={onPress}>
-            <Text style={styles.itemText}>{title}</Text>
+            <AppText style={styles.itemText}>{title}</AppText>
             <VectoreIcons
                 icon="AntDesign"
                 name="right"
@@ -36,15 +36,15 @@ const Details: FC<servicesInterface> = ({ }) => {
         <View style={styles.container}>
             <ImageLoader source={imagePaths.map_img} mainImageStyle={styles.mapImage} resizeMode='contain' />
             <View style={styles.boottomView}>
-                <Text style={styles.subHeader}>About Us</Text>
-                <Text style={styles.abouttxt}>Viverra lobortis bibendum gravida tortor nulla dolor pharetra. Erat parturient vel eu lectus sit. Suspendisse scelerisque egetnon iaculis consectetur dolor. Uteget malesuada est gravida Mattis justo tincidunt mi felis. Aquis nulla eget neque. Adipiscingeu ultrices sodales luctus. Lorem mauris sem sollicitudin semest non mi. Nuncaugue egestas duis habitasse molestie sedet. Amet ultricies nunc tellus lectus dolorvel.</Text>
+                <AppText style={styles.subHeader}>About Us</AppText>
+                <AppText style={styles.abouttxt}>Viverra lobortis bibendum gravida tortor nulla dolor pharetra. Erat parturient vel eu lectus sit. Suspendisse scelerisque egetnon iaculis consectetur dolor. Uteget malesuada est gravida Mattis justo tincidunt mi felis. Aquis nulla eget neque. Adipiscingeu ultrices sodales luctus. Lorem mauris sem sollicitudin semest non mi. Nuncaugue egestas duis habitasse molestie sedet. Amet ultricies nunc tellus lectus dolorvel.</AppText>
                 <Spacing space={SH(20)}/>
-                <Text style={styles.subHeader}>Contact & Business Hours</Text>
+                <AppText style={styles.subHeader}>Contact & Business Hours</AppText>
                 <Divider color='#3D3D3D40' marginTop={SH(5)} height={0.5} />
                 <View style={styles.contaictUsView}>
                     <View style={styles.phoneimg_phonenumberView}>
                         <Image source={imagePaths.phone_img} style={styles.phoneimg} />
-                        <Text style={[styles.subHeader]}> (3945687456)</Text>
+                        <AppText style={[styles.subHeader]}> (3945687456)</AppText>
                     </View>
                     <Buttons
                         buttonStyle={styles.callbutton}
@@ -58,7 +58,7 @@ const Details: FC<servicesInterface> = ({ }) => {
                     />
                 </View>
                 <Spacing space={SH(25)} />
-                <Text style={[styles.subHeader]}>Available Team Member</Text>
+                <AppText style={[styles.subHeader]}>Available Team Member</AppText>
                 <AvailTeamMember selectedId={1} />
                 <Spacing space={SH(10)} />
                 <ListRowItem title="Service Fee & Policy" onPress={() => navigation.navigate(RouteName.BOOKING_PRI_POLI, { title: "Service Fee & Policy" })} />

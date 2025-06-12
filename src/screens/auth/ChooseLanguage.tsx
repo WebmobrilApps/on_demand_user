@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native'
 import React, { FC } from 'react'
+import { AppText } from '../../component'
 
 interface choosLanguageProps{
 
@@ -7,7 +8,7 @@ interface choosLanguageProps{
 const ChooseLanguage:FC<choosLanguageProps>=()=> {
   return (
     <View>
-      <Text>ChooseLanguage</Text>
+      <AppText>ChooseLanguage</AppText>
     </View>
   )
 }

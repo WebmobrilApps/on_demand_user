@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { Colors, Fonts, regex, SF, SH, SW } from '../../utils';
 import {
+  AppText,
   AuthBottomContainer,
   AuthImgComp,
   Container,
@@ -107,10 +108,10 @@ const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
             }) => (
               <View style={styles.bottomInnerContainer}>
                 <View>
-                  <Text style={styles.heading}>{t('forgotpass.forgotPassword')}</Text>
-                  <Text style={styles.subtitile}>
+                  <AppText style={styles.heading}>{t('forgotpass.forgotPassword')}</AppText>
+                  <AppText style={styles.subtitile}>
                     {t('forgotpass.subtitle')}
-                  </Text>
+                  </AppText>
                   <InputField
                     placeholder={t('placeholders.email')}
                     value={values.email}

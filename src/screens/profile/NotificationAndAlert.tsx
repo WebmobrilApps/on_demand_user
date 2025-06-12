@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AppHeader, Container, ProfileList, Spacing } from '../../component';
+import { AppHeader, AppText, Container, ProfileList, Spacing } from '../../component';
 import { Colors, Fonts, imagePaths, SF, SH, SW } from '../../utils';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +18,7 @@ const NotificationAndAlert: React.FC<NotificationAndAlertProps> = ({ }) => {
   ) => {
     return (
       <View style={styles.toggleContainer}>
-        <Text style={styles.toggleLabel}>{label}</Text>
+        <AppText style={styles.toggleLabel}>{label}</AppText>
         <TouchableOpacity onPress={() => onToggle(!value, type)}>
           <Image source={value ? imagePaths.switch_on : imagePaths.switch_off} style={{ width: SF(50), height: SF(28), resizeMode: 'contain' }} />
         </TouchableOpacity>
@@ -54,7 +54,7 @@ const NotificationAndAlert: React.FC<NotificationAndAlertProps> = ({ }) => {
         headerStyle={styles.header}
       />
       <View style={styles.container}>
-        <Text style={styles.sectionTitle}>Support Section</Text>
+        <AppText style={styles.sectionTitle}>Support Section</AppText>
         <View style={styles.toggleWrapper}>
           {renderToggleSetting('booking', 'Booking Confirmations', supportToggle.booking, (val, type) =>
             btnSwitchToglle(val, type),
@@ -64,10 +64,10 @@ const NotificationAndAlert: React.FC<NotificationAndAlertProps> = ({ }) => {
           )}
           {renderToggleSetting('promotion', 'Promotions', supportToggle.promotion, (val, type) => btnSwitchToglle(val, type))}
         </View>
-        <Text style={styles.sectionTitle}>SMS Alerts</Text>
+        <AppText style={styles.sectionTitle}>SMS Alerts</AppText>
         <ProfileList item={bookingStatus} />
         <Spacing space={SH(20)} />
-        <Text style={styles.sectionTitle}>Email Notifications</Text>
+        <AppText style={styles.sectionTitle}>Email Notifications</AppText>
         <ProfileList item={invoicingjson} />
         <Spacing space={SH(18)} />
         <ProfileList item={periodicjson} />

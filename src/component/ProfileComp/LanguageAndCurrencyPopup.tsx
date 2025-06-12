@@ -6,6 +6,7 @@ import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import i18next from 'i18next';
 import RNRestart from 'react-native-restart';
 import Divider from '../Divider';
+import AppText from '../AppText';
 type LanguageAndCurrencyPopupProps = {
   modalVisible: boolean;
   clodeModal: () => void;
@@ -65,10 +66,10 @@ const LanguageAndCurrencyPopup: React.FC<LanguageAndCurrencyPopupProps> = ({
                           source={item.image}
                           style={{ width: SW(35), height: SH(25) }}
                         />
-                        <Text style={styles.textCountryDeac}>{item.name}</Text>
+                        <AppText style={styles.textCountryDeac}>{item.name}</AppText>
                       </>
                       :
-                      <Text style={styles.textCountryDeac}>{`${item.code} - ${item.name}`}</Text>
+                      <AppText style={styles.textCountryDeac}>{`${item.code} - ${item.name}`}</AppText>
                     }
                   </TouchableOpacity>
                 </>

@@ -2,13 +2,13 @@ import React from 'react';
 import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import {
   createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs';
-import { ProfileScreen } from '../screens/tab';
+} from '@react-navigation/bottom-tabs'; 
 import imagePaths from '../assets/images';
 import { Colors, Fonts, SF, SH, widthPercent } from '../utils';
 import RouteName from './RouteName';
 import AllUsersList from '../screens/AllUsersList';
-import { HomeScreen, InboxScreen, MyBookingScreen } from '../screens';
+import { HomeScreen, InboxScreen, MyBookingScreen, ProfileScreen } from '../screens';
+import { AppText } from '../component';
 const SCREEN_WIDTH = Dimensions.get('window').width
 const BOTTOM_ROUTE = [
   {
@@ -114,13 +114,13 @@ export default function App() {
                   ]}
                   source={route.icon}
                 />
-                <Text
+                <AppText
                   style={[
                     styles.iconsstyles,
                     { color: focused ? Colors.themeColor : Colors.textAppColor },
                   ]}>
                   {route.name}
-                </Text>
+                </AppText>
               </View>
             ),
           }}

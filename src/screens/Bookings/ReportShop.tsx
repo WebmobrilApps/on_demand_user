@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Keyboard } from 'react-native'
 import React, { useState } from 'react'
-import { AppHeader, Buttons, Container, DropdownComponent, InputField, Spacing } from '../../component'
+import { AppHeader, AppText, Buttons, Container, DropdownComponent, InputField, Spacing } from '../../component'
 import { Colors, Fonts, SF, SH } from '../../utils'
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -36,7 +36,7 @@ export default function ReportShop() {
 
                 <View>
                     <Spacing space={SH(20)} />
-                    <Text style={{ fontFamily: Fonts.MEDIUM, fontSize: SF(14), marginBottom: SH(10) }}>Select report reason</Text>
+                    <AppText style={{ fontFamily: Fonts.MEDIUM, fontSize: SF(14), marginBottom: SH(10) }}>Select report reason</AppText>
                     <DropdownComponent data={data} />
                     <Spacing/>
                     <InputField

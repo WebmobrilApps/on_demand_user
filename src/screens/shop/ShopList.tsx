@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, StatusBar, StyleSheet, Text, View } from 'react-native';
-import { Container, HomeRecommendedItems, Spacing } from '../../component';
+import { AppText, Container, HomeRecommendedItems, Spacing } from '../../component';
 import { Colors, Fonts, recommendedData, SF, SH, subCatDdata, SW } from '../../utils';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { ShopHeader, Shops, SubCatList } from './component';
@@ -19,7 +19,7 @@ const ShopList: React.FC<shopProps> = () => {
     const route = useRoute<any>();
     let bookingType = route?.params?.bookingType;
     const listHeader = () => (
-        <Text style={styles.listHeaderText}>Barber shop (250)</Text>
+        <AppText style={styles.listHeaderText}>Barber shop (250)</AppText>
     );
     // useFocusEffect(
     //     React.useCallback(() => {
@@ -48,7 +48,7 @@ const ShopList: React.FC<shopProps> = () => {
                 }
                 {bookingType !== 'immidiate' &&
                     <>
-                        <Text style={[styles.specialOffersText, styles.marHori]}>Special Offers</Text>
+                        <AppText style={[styles.specialOffersText, styles.marHori]}>Special Offers</AppText>
                         <View style={[styles.specialOfferConatiner, {}]}>
                             <FlatList
                                 horizontal

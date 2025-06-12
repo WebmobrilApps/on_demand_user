@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {
   AppHeader,
+  AppText,
   Container,
  
   LanguageAndCurrencyPopup,
@@ -76,14 +77,14 @@ const LanguageAndCurrency: React.FC<LanguageAndCurrencyProps> = ({ }) => {
         headerStyle={styles.header}
       />
       <View style={styles.container}>
-        <Text style={styles.sectionTitle}>
+        <AppText style={styles.sectionTitle}>
           {t('languageSetting.supportSection')}
-        </Text>
+        </AppText>
         <ProfileList item={languageJson} />
         <Spacing space={SH(20)} />
-        <Text style={styles.sectionTitle}>
+        <AppText style={styles.sectionTitle}>
           {t('languageSetting.currencyConverter')}
-        </Text>
+        </AppText>
         <ProfileList item={currencyJson} />
       </View>
     </Container>

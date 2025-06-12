@@ -4,6 +4,7 @@ import { Colors, Fonts, imagePaths, SF, SH } from '../utils'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import RouteName from '../navigation/RouteName';
 import { useNavigation } from '@react-navigation/native';
+import AppText from './AppText';
 
 const BOTTOM_ROUTE = [
     {
@@ -61,7 +62,7 @@ const BottomBar = ({ activeTab }: BottomBarProps) => {
                             : Colors.textAppColor,
                     },]} />
 
-                    <Text
+                    <AppText
                         style={[{
                             fontFamily: Fonts.PlusJakartaSans_SEMI_BOLD,
                             fontWeight: '500',
@@ -69,7 +70,7 @@ const BottomBar = ({ activeTab }: BottomBarProps) => {
                         }, { color: activeTab === route.routeName ? Colors.themeColor : Colors.textAppColor },]}
                     >
                         {route.name}
-                    </Text>
+                    </AppText>
                 </TouchableOpacity>
             ))}
         </View>

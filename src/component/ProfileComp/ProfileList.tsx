@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Colors, Fonts, SF, SH, SW} from '../../utils';
 import imagePaths from '../../assets/images';
+import AppText from '../AppText';
 
 type ProfileListProps = {
   item: {
@@ -14,7 +15,7 @@ type ProfileListProps = {
 const ProfileList: React.FC<ProfileListProps> = ({item}) => {
   return (
     <TouchableOpacity onPress={item.onClick} style={styles.container}>
-      <Text style={styles.text}>{item.name}</Text>
+      <AppText style={styles.text}>{item.name}</AppText>
       <Image
         source={imagePaths.right_icon}
         style={styles.icon}

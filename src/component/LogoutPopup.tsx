@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../redux';
 import { navigate } from '../services/NavigationService';
 import RouteName from '../navigation/RouteName';
+import AppText from './AppText';
 
 type LogoutPopupProps = {
   modalVisible: boolean;
@@ -33,10 +34,10 @@ const LogoutPopup: React.FC<LogoutPopupProps> = ({
           <AuthBottomContainer>
             <View style={{ marginTop: SH(30), justifyContent: "space-between", height: '90%' }}>
               <View>
-                <Text style={styles.heading}>Logout</Text>
-                <Text style={styles.subtitile}>
+                <AppText style={styles.heading}>Logout</AppText>
+                <AppText style={styles.subtitile}>
                   Are you sure you want to logout?
-                </Text>
+                </AppText>
               </View>
               <View>
                 <Buttons

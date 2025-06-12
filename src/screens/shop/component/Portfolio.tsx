@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 import React, { FC } from 'react';
 import { boxShadowlight, Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, ImageLoader, VectoreIcons } from '../../../component';
+import { AppText, Buttons, ImageLoader, VectoreIcons } from '../../../component';
 import imagePaths from '../../../assets/images';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -29,9 +29,9 @@ const Portfolio: FC<servicesInterface> = ({ }) => {
                     '#3D3D3DB2',
                 ]}
             >
-                <Text style={styles.heartCount}>
+                <AppText style={styles.heartCount}>
                    <VectoreIcons name='hearto' icon='AntDesign' size={SF(11)} color={Colors.bgwhite} />  5
-                </Text>
+                </AppText>
             </LinearGradient>
         </View>
     );

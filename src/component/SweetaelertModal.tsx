@@ -9,6 +9,7 @@ import {
 import { SF, Colors, SW, SH } from "../utils";
 import VectorIcon from "./VectoreIcons";
 import Buttons from "./Button";
+import AppText from "./AppText";
 
 interface SweetaelertModalProps {
     visible: boolean;
@@ -46,7 +47,7 @@ const SweetaelertModal: React.FC<SweetaelertModalProps> = ({
 
                         {/* Message Section */}
                         <View style={styles.registertextset}>
-                            <Text style={styles.settext}>{message}</Text>
+                            <AppText style={styles.settext}>{message}</AppText>
                         </View>
 
                     

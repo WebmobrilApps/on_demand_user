@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, SectionList } from 'react-native';
 import { Colors, Fonts, SH, SW, SF } from '../utils';
 import imagePaths from '../assets/images';
-import { AppHeader, Container } from '../component';
+import { AppHeader, AppText, Container } from '../component';
 import { useNavigation } from '@react-navigation/native';
 
 // Sample data for notifications
@@ -127,8 +127,8 @@ const NotificationItem: FC<{ item: NotificationItem }> = ({ item }) => {
         <View style={styles.notificationItem}>
             <Image source={item.icon} style={styles.icon} />
             <View style={styles.textContainer}>
-                <Text style={styles.message}>{item.message}</Text>
-                <Text style={styles.time}>{item.time}</Text>
+                <AppText style={styles.message}>{item.message}</AppText>
+                <AppText style={styles.time}>{item.time}</AppText>
             </View>
         </View>
     );
@@ -154,7 +154,7 @@ const NotificationScreen: FC<NotificationScreenProps> = () => {
                     <NotificationItem item={item} />
                 )}
                 renderSectionHeader={({ section: { title } }) => (
-                    <Text style={styles.sectionHeader}>{title}</Text>
+                    <AppText style={styles.sectionHeader}>{title}</AppText>
                 )}
             />
         </Container>

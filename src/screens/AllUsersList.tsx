@@ -1,7 +1,7 @@
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import React, { useCallback, useContext, useEffect } from 'react';
 import { ChatContext } from './ChatProvider';
-import { Container } from '../component';
+import { AppText, Container } from '../component';
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import { get, getDatabase, ref } from '@react-native-firebase/database';
 import { useSelector } from 'react-redux';
@@ -61,7 +61,7 @@ export default function AllUsersList() {
                     paddingVertical: 8,
                     borderBottomWidth: 1,
                   }}>
-                  <Text>{item.email}</Text>
+                  <AppText>{item.email}</AppText>
                 </TouchableOpacity>
               );
             }}

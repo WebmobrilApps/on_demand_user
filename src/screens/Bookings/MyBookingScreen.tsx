@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, Image, FlatList, StyleSheet, Pressable, Keyboard } from 'react-native';
-import { Colors, SH, SW, Fonts, SF, boxShadow, rowSpaceBetweenCss, commonStyles, nearByData } from '../../utils';
-import imagePaths from '../../assets/images';
-import { AppHeader, BottomBar, Buttons, Container, ImageLoader, Spacing } from '../../component';
+import { View, FlatList, StyleSheet, Pressable, Keyboard } from 'react-native';
+import { Colors, SH, SW, Fonts, SF, boxShadow, commonStyles, nearByData, useDisableGestures } from '../../utils';
+import { AppHeader, AppText, BottomBar, Buttons, Container, ImageLoader } from '../../component';
 import { useNavigation } from '@react-navigation/native';
-import StarRating from 'react-native-star-rating-widget';
 import RouteName from '../../navigation/RouteName';
 import { TabTop } from './component';
 
@@ -13,7 +11,7 @@ import { TabTop } from './component';
 const MyBookingScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const [activeTab, setActiveTabs] = useState<number>(1);
-
+  useDisableGestures();
   const renderItem = ({ item }: { item: any }) => (
     <Pressable onPress={() => navigation.navigate(RouteName.BOOK_DETAILS)} style={styles.serviceContainer}>
       <View style={styles.header}>
@@ -21,12 +19,12 @@ const MyBookingScreen: React.FC = () => {
           <ImageLoader source={{ uri: item.image }} resizeMode="cover" mainImageStyle={styles.logo} />
         </View>
         <View style={styles.infoContainer}>
-          <Text style={styles.text}>Haircut + Beard <Text style={{ color: Colors.lightGraytext }}>With Juana</Text></Text>
-          <Text style={styles.dateTime}>{`06-March-2025 ${'\n'}8:00 am - 8:30 am`}</Text>
-          <Text style={styles.dateTime}>{`WM Barbershop`}</Text>
-          <Text style={styles.dateTime}>{`1893 Cheshire Bridge Rd Ne, 30325`}</Text>
+          <AppText style={styles.text}>Haircut + Beard <AppText style={{ color: Colors.lightGraytext }}>With Juana</AppText></AppText>
+          <AppText style={styles.dateTime}>{`06-March-2025 ${'\n'}8:00 am - 8:30 am`}</AppText>
+          <AppText style={styles.dateTime}>{`WM Barbershop`}</AppText>
+          <AppText style={styles.dateTime}>{`1893 Cheshire Bridge Rd Ne, 30325`}</AppText>
           <View style={[commonStyles.rowSpaceBetweenCss, { marginTop: SF(7) }]}>
-            <Text style={styles.price}>{`$1893`}</Text>
+            <AppText style={styles.price}>{`$1893`}</AppText>
             <Buttons
               isExtraBoxShadow={false}
               buttonStyle={styles.bookAgain}

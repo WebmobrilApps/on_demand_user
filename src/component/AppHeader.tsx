@@ -10,7 +10,7 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import {SF, SH, SW, Fonts, Colors} from '../utils';
-import {  VectoreIcons} from '.';
+import {  AppText, VectoreIcons} from '.';
 
 type AppHeaderProps = {
   headerStyle?: ViewStyle;
@@ -50,7 +50,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({
         )}
       </TouchableOpacity>
       <View style={styles.centerContainer}>
-        {headerTitle && <Text numberOfLines={1} style={styles.headerTitle}>{headerTitle}</Text>}
+        {headerTitle && <AppText numberOfLines={1} style={styles.headerTitle}>{headerTitle}</AppText>}
       </View>
       <View style={styles.rightContainer}>
         {rightIcon && (

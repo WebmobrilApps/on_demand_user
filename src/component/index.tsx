@@ -12,7 +12,6 @@ export {default as AppHeader} from './AppHeader';
 export {default as LogoutPopup} from './LogoutPopup';
 export {default as NoInternet} from './NoInternet';
 export {default as Buttons} from './Button';
-export {default as CustomToast} from './CustomToast';
 export {default as InputField} from './TextInputCustom';
 export {default as DropdownComponent} from './DropdownComponent';
 export {default as Calender} from './Calender';
@@ -21,8 +20,9 @@ export {default as UserprofileView} from './UserprofileView';
 export {default as Checkbox} from './Checkbox';
 export {default as SubHeading} from './SubHeading';
 export {default as BottomBar} from './BottomBar';
+export {default as AppText} from './AppText';
 
 export * from './HomeComp';
 export * from './ProfileComp'
-
+export * from './CustomToast'
 

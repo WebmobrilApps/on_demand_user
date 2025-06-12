@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, FlatList, StyleSheet, Pressable, TouchableOpacity } from 'react-native';
 import { Colors, SH, SW, Fonts, SF, boxShadow } from '../../utils';
 import imagePaths from '../../assets/images';
-import { AppHeader, Buttons, Container, Divider,  ImageLoader, Spacing, SubHeading, VectoreIcons } from '../../component';
+import { AppHeader, AppText, Buttons, Container, Divider,  ImageLoader, Spacing, SubHeading, VectoreIcons } from '../../component';
 import { useNavigation } from '@react-navigation/native';
 import StarRating from 'react-native-star-rating-widget';
 import RouteName from '../../navigation/RouteName';
@@ -31,47 +31,47 @@ const ServiceDetails: React.FC = () => {
                     </View>
                     <View style={styles.serviceInfoContainer}>
                         <View style={styles.serviceDetails}>
-                            <Text style={styles.serviceTitle}>Richar Kandowen</Text>
-                            <Text style={styles.serviceAddress}>Chestnut Street, Rome, NY</Text>
-                            <Text style={styles.serviceAddress}>Years In Service: 10 years</Text>
+                            <AppText style={styles.serviceTitle}>Richar Kandowen</AppText>
+                            <AppText style={styles.serviceAddress}>Chestnut Street, Rome, NY</AppText>
+                            <AppText style={styles.serviceAddress}>Years In Service: 10 years</AppText>
                         </View>
                         <View style={styles.serviceRatingContainer}>
                             <View style={styles.ratingWrapper}>
                                 <Image source={imagePaths.star_f} style={styles.starIcon} />
-                                <Text style={styles.ratingText}><Text style={styles.ratingValue}> 4.4</Text> (532)</Text>
+                                <AppText style={styles.ratingText}><AppText style={styles.ratingValue}> 4.4</AppText> (532)</AppText>
                             </View>
-                            <Text style={styles.priceText}><Text style={styles.priceValue}>$80 </Text>Per hr.</Text>
+                            <AppText style={styles.priceText}><AppText style={styles.priceValue}>$80 </AppText>Per hr.</AppText>
                         </View>
                     </View>
                 </View>
 
                 <View style={[styles.marginHori, { marginTop: SF(20) }]}>
-                    <Text style={styles.sectionTitle}>About Provider</Text>
-                    <Text style={styles.aboutText}>Office ipsum you must be muted. Where territories team eye technologically then price bandwagon. Cost shelf-ware cross illustration scope fured latest no-brainer skulls pee.</Text>
+                    <AppText style={styles.sectionTitle}>About Provider</AppText>
+                    <AppText style={styles.aboutText}>Office ipsum you must be muted. Where territories team eye technologically then price bandwagon. Cost shelf-ware cross illustration scope fured latest no-brainer skulls pee.</AppText>
 
                     <Divider contStyle={styles.divider} color='#3D3D3D1A' />
 
 
-                    <Text style={styles.sectionTitle}>Operating Hours</Text>
+                    <AppText style={styles.sectionTitle}>Operating Hours</AppText>
                     {[
                         { day: 'Monday - Friday', time: '9:00 AM - 5:00 PM' },
                         { day: 'Saturday', time: '11:00 AM - 4:00 PM' }
                     ].map((item, index) => (
                         <View key={index} style={styles.operatingHoursRow}>
-                            <Text style={styles.operatingHoursText}>{item.day}</Text>
-                            <Text style={[styles.operatingHoursText,{fontSize:SF(12)}]}>{item.time}</Text>
+                            <AppText style={styles.operatingHoursText}>{item.day}</AppText>
+                            <AppText style={[styles.operatingHoursText,{fontSize:SF(12)}]}>{item.time}</AppText>
                         </View>
                     ))}
 
                     <Spacing space={20} />
-                    <Text style={styles.sectionTitle}>Services Offered</Text>
+                    <AppText style={styles.sectionTitle}>Services Offered</AppText>
                     {[1, 2].map((_, index) => (
                         <View key={index} style={styles.serviceOfferedContainer}>
                             <View style={styles.serviceOfferedRow}>
-                                <Text style={styles.serviceOfferedText}>Service Name</Text>
-                                <Text style={[styles.serviceOfferedText,{fontSize:SF(12)}]}>Availability: X days</Text>
+                                <AppText style={styles.serviceOfferedText}>Service Name</AppText>
+                                <AppText style={[styles.serviceOfferedText,{fontSize:SF(12)}]}>Availability: X days</AppText>
                             </View>
-                            <Text style={styles.servicePriceText}>Price: $XX, Duration: X hours</Text>
+                            <AppText style={styles.servicePriceText}>Price: $XX, Duration: X hours</AppText>
                         </View>
                     ))}
 
@@ -108,7 +108,7 @@ const ServiceDetails: React.FC = () => {
                             </View>
                         </View>
                     </View>
-                    <Text style={styles.sectionTitle}>User Reviews</Text>
+                    <AppText style={styles.sectionTitle}>User Reviews</AppText>
 
                     <FlatList
                         data={[1, 2]}
@@ -124,11 +124,11 @@ const ServiceDetails: React.FC = () => {
                                         <View>
                                             <ImageLoader resizeMode='cover' source={imagePaths.cleaning} mainImageStyle={styles.reviewUserImage} />
                                         </View>
-                                        <Text style={styles.reviewUserNamee}>User 1</Text>
+                                        <AppText style={styles.reviewUserNamee}>User 1</AppText>
                                     </View>
                                     <StarRating starSize={SF(14)} rating={4} onChange={() => { }} starStyle={{ marginHorizontal: 0 }} />
                                 </View>
-                                <Text style={styles.reviewText}>Great Conrests! Office ipsum you must be muted. They awareness done regroup driver's without my.</Text>
+                                <AppText style={styles.reviewText}>Great Conrests! Office ipsum you must be muted. They awareness done regroup driver's without my.</AppText>
                             </View>
                         }}
                     />

@@ -10,6 +10,7 @@ import {
   View,
 } from "react-native";
 import { Fonts, SF, SH, SW, Colors, boxShadow, boxShadowlight } from "../utils";
+import AppText from "./AppText";
 
 type ButtonsProps = {
   title?: string;
@@ -83,7 +84,7 @@ const Buttons: React.FC<ButtonsProps> = ({
       ) : (
         <View style={styles.buttonViewStyle}>
           {icon && <View style={styles.LeftImageViewStyle}>{icon}</View>}
-          <Text style={[styles.buttonTextStyle, buttonTextStyle]}>{title}</Text>
+          <AppText style={[styles.buttonTextStyle, buttonTextStyle]}>{title}</AppText>
         </View>
       )}
     </Pressable>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { Colors, Fonts, SF, SH, SW, imagePaths } from '../../utils';
-import { AppHeader, Buttons, Checkbox, Container, Spacing, UserprofileView, VectoreIcons } from '../../component';
+import { AppHeader, AppText, Buttons, Checkbox, Container, Spacing, UserprofileView, VectoreIcons } from '../../component';
 import { useNavigation } from '@react-navigation/native';
 import { SucessBookingModal } from './component';
 import RouteName from '../../navigation/RouteName';
@@ -41,14 +41,14 @@ const PaymentScreen = () => {
                 {/* Shop Info */}
                 <View style={styles.shopInfo}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Text style={styles.shopName}>WM Barbershop</Text> <Text style={styles.shopName}>WM Barbershop</Text>
+                        <AppText style={styles.shopName}>WM Barbershop</AppText> <AppText style={styles.shopName}>WM Barbershop</AppText>
                     </View>
-                    <Text style={styles.address}>1893 Cheshire Bridge Rd Ne, 30325</Text>
+                    <AppText style={styles.address}>1893 Cheshire Bridge Rd Ne, 30325</AppText>
                 </View>
 
                 {/* Barber Info */}
                 <View style={styles.barberSection}>
-                    <Text style={[styles.subHeader, { marginTop: SH(20), marginBottom: SH(20) }]}>Your Barber</Text>
+                    <AppText style={[styles.subHeader, { marginTop: SH(20), marginBottom: SH(20) }]}>Your Barber</AppText>
                     <View style={{ marginLeft: -SW(15) }}>
                         <UserprofileView />
                     </View>
@@ -65,24 +65,24 @@ const PaymentScreen = () => {
                         />
                     </TouchableOpacity>
                     <View>
-                        <Text style={styles.serviceTitle}>{'Only Haircut'}</Text>
-                        <Text style={styles.serviceSub}>Popular Service</Text>
+                        <AppText style={styles.serviceTitle}>{'Only Haircut'}</AppText>
+                        <AppText style={styles.serviceSub}>Popular Service</AppText>
                     </View>
                     <View style={styles.rightBlock}>
-                        <Text style={styles.price}>$55.00</Text>
-                        <Text style={styles.duration}>25m</Text>
+                        <AppText style={styles.price}>$55.00</AppText>
+                        <AppText style={styles.duration}>25m</AppText>
                     </View>
                 </View>
 
                 {/* Payment Options */}
-                <Text style={styles.sectionTitle}>Payment Options</Text>
+                <AppText style={styles.sectionTitle}>Payment Options</AppText>
                 {['Online', 'Pay Onsite'].map((method) => (
                     <TouchableOpacity
                         key={method}
                         style={[styles.paymentOption]}
                         onPress={() => setSelectedPayment(method)}
                     >
-                        <Text>{method}</Text>
+                        <AppText>{method}</AppText>
                         <Image
                             style={{ height: SF(23), width: SF(23) }}
                             source={selectedPayment == method ? imagePaths.tick_square : imagePaths.untick_square}
@@ -91,18 +91,18 @@ const PaymentScreen = () => {
                 ))}
 
                 {/* Summary */}
-                <Text style={styles.sectionTitle}>Payment Summary</Text>
+                <AppText style={styles.sectionTitle}>Payment Summary</AppText>
                 <View style={styles.summaryRow}>
-                    <Text style={styles.valuetxt}>Item Total</Text>
-                    <Text style={styles.valuetxt}>$75</Text>
+                    <AppText style={styles.valuetxt}>Item Total</AppText>
+                    <AppText style={styles.valuetxt}>$75</AppText>
                 </View>
                 <View style={styles.summaryRow}>
-                    <Text style={styles.valuetxt}>Item Discount</Text>
-                    <Text style={styles.valuetxtdeducted}>- $20</Text>
+                    <AppText style={styles.valuetxt}>Item Discount</AppText>
+                    <AppText style={styles.valuetxtdeducted}>- $20</AppText>
                 </View>
                 <View style={styles.summaryRow}>
-                    <Text style={styles.valuetxt}>Service Fee</Text>
-                    <Text style={styles.valuetxt}>$55</Text>
+                    <AppText style={styles.valuetxt}>Service Fee</AppText>
+                    <AppText style={styles.valuetxt}>$55</AppText>
                 </View>
 
                 {/* Credit Points */}
@@ -111,20 +111,20 @@ const PaymentScreen = () => {
                     <Checkbox size={SF(14)} lebelFontSize={SF(14)} color={Colors.themeColor} label='Avail discount using platform credit points' checked={true} onChange={() => { }} />
                 </View>
                 <View style={[styles.summaryRow, { marginTop: SH(15) }]}>
-                    <Text style={styles.valuetxt}>Discount</Text>
-                    <Text style={styles.valuetxt}>20</Text>
+                    <AppText style={styles.valuetxt}>Discount</AppText>
+                    <AppText style={styles.valuetxt}>20</AppText>
                 </View>
                 <View style={styles.summaryRow}>
-                    <Text style={styles.valuetxt}>Grand Total</Text>
-                    <Text style={[styles.valuetxt, { fontFamily: Fonts.BOLD }]}>$55</Text>
+                    <AppText style={styles.valuetxt}>Grand Total</AppText>
+                    <AppText style={[styles.valuetxt, { fontFamily: Fonts.BOLD }]}>$55</AppText>
                 </View>
 
 
                 {/* Footer */}
                 <View style={styles.bookingContainer}>
                     <View>
-                        <Text style={styles.price1}>$55.00</Text>
-                        <Text style={styles.duration1}>25m</Text>
+                        <AppText style={styles.price1}>$55.00</AppText>
+                        <AppText style={styles.duration1}>25m</AppText>
                     </View>
                     <Buttons
                         buttonStyle={{ width: '65%' }}

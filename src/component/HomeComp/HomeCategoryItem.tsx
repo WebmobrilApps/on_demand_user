@@ -12,6 +12,7 @@ import { Source } from 'react-native-fast-image';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../navigation/RouteName';
 import Spacing from '../Spacing';
+import AppText from '../AppText';
 
 interface HomeCategoryItemProps {
   name: string,
@@ -40,7 +41,7 @@ const HomeCategoryItem: React.FC<HomeCategoryItemProps> = memo(({ name, image })
           mainImageStyle={styles.imageLoader}
         />
       </View>
-      <Text style={styles.text} numberOfLines={2}>{name}</Text>
+      <AppText style={styles.text} numberOfLines={2}>{name}</AppText>
     </Pressable>
   );
 });

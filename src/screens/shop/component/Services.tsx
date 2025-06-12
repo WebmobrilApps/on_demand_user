@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import React, { FC } from 'react';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons } from '../../../component';
+import { AppText, Buttons } from '../../../component';
 import AvailTeamMember from './AvailTeamMember';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../../navigation/RouteName';
@@ -22,13 +22,13 @@ const Services: FC<servicesInterface> = ({onClick }) => {
     const renderItem = ({ item }: any) => (
         <View style={styles.serviceItem}>
             <View>
-                <Text style={styles.serviceTitle}>{item.name}</Text>
-                <Text style={styles.serviceSub}>Popular Service</Text>
+                <AppText style={styles.serviceTitle}>{item.name}</AppText>
+                <AppText style={styles.serviceSub}>Popular Service</AppText>
             </View>
             <View style={styles.flexDir}>
                 <View style={styles.rightBlock}>
-                    <Text style={styles.price}>{item.price}</Text>
-                    <Text style={styles.duration}>{item.time}</Text>
+                    <AppText style={styles.price}>{item.price}</AppText>
+                    <AppText style={styles.duration}>{item.time}</AppText>
                 </View>
                 <Buttons
                     buttonStyle={styles.bookBtn}

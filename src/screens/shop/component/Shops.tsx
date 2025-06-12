@@ -1,7 +1,7 @@
 import { Text, StyleSheet, View, Pressable } from 'react-native';
 import React from 'react';
 import { boxShadowlight, Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { ImageLoader } from '../../../component';
+import { AppText, ImageLoader } from '../../../component';
 import imagePaths from '../../../assets/images';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../../navigation/RouteName';
@@ -36,15 +36,15 @@ const Shops: React.FC<ShopsProps> = ({ index, bookingType = null }) => {
 
             <View style={styles.textInfoRow}>
                 <View style={styles.textBlock}>
-                    <Text style={styles.shopName}>WM BarberShop</Text>
-                    <Text style={styles.shopAddress}>
+                    <AppText style={styles.shopName}>WM BarberShop</AppText>
+                    <AppText style={styles.shopAddress}>
                         1893 Cheshire Bridge Rd Ne, 30325{'\n'}Home Service
-                    </Text>
+                    </AppText>
                 </View>
                 <View style={styles.reviewBlock}>
-                    <Text style={styles.reviewText}>
-                        4.5{'\n'}<Text style={{ fontSize: SF(10), color: Colors.textAppColor, }}>140 Reviews</Text>
-                    </Text>
+                    <AppText style={styles.reviewText}>
+                        4.5{'\n'}<AppText style={{ fontSize: SF(10), color: Colors.textAppColor, }}>140 Reviews</AppText>
+                    </AppText>
                 </View>
             </View>
         </Pressable>

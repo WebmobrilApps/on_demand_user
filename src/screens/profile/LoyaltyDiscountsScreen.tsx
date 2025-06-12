@@ -11,6 +11,7 @@ import {
 import { Colors, Fonts, imagePaths, SF, SH, SW } from '../../utils';
 import {
   AppHeader,
+  AppText,
   Buttons,
   Container,
   Divider,
@@ -31,12 +32,12 @@ const CoinSummary = () => (
     <View style={styles.coinContainer}>
       <View style={styles.coinRow}>
         <Image source={imagePaths.coin} style={styles.coinIcon} />
-        <Text style={styles.coinText}>120</Text>
+        <AppText style={styles.coinText}>120</AppText>
       </View>
-      <Text style={styles.coinLabel}>Available Coins</Text>
+      <AppText style={styles.coinLabel}>Available Coins</AppText>
     </View>
     <TouchableOpacity style={styles.useButton}>
-      <Text style={styles.useButtonText}>Use Ssnap Coins</Text>
+      <AppText style={styles.useButtonText}>Use Ssnap Coins</AppText>
     </TouchableOpacity>
   </>
 );
@@ -44,28 +45,28 @@ const CoinSummary = () => (
 const TransactionItem = ({ title, points }: { title: string; points: string }) => (
   <View style={styles.transactionItem}>
     <View>
-      <Text style={styles.transactionTitle}>{title}</Text>
-      <Text style={styles.transactionSubtitle}>Lorem ipsum sitametconsectetur.</Text>
+      <AppText style={styles.transactionTitle}>{title}</AppText>
+      <AppText style={styles.transactionSubtitle}>Lorem ipsum sitametconsectetur.</AppText>
     </View>
-    <Text style={styles.transactionPoints}>{points}</Text>
+    <AppText style={styles.transactionPoints}>{points}</AppText>
   </View>
 );
 
 const ReferSection = () => (
   <View style={styles.referContainer}>
-    <Text style={styles.referTitle}>Refer to earn Ssnap points</Text>
+    <AppText style={styles.referTitle}>Refer to earn Ssnap points</AppText>
     <View style={styles.referCard}>
       <Image source={imagePaths.coupan} style={styles.referImage} />
       <View style={styles.codeRow}>
-        <Text style={styles.codeText}>ASDFGHJ</Text>
+        <AppText style={styles.codeText}>ASDFGHJ</AppText>
         <TouchableOpacity style={styles.copyButton}>
           <Image source={imagePaths.copy_icon} style={styles.copyIcon} />
         </TouchableOpacity>
       </View>
-      <Text style={styles.referDesc}>
+      <AppText style={styles.referDesc}>
         Figma ipsum component variant main layer. Effect undo text distribute boolean edit create.
         Reesizing device invite list pixel arrange move clip clip. Asset polygon layer select bold.
-      </Text>
+      </AppText>
     </View>
     <Spacing space={SH(20)} />
     <Buttons title="Invite Now" />

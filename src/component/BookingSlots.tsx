@@ -11,6 +11,7 @@ import {
 import { Colors, Fonts, SF, SW } from '../utils';
  
 import Spacing from './Spacing';
+import AppText from './AppText';
 
 type BookingSlotsProps = {
   slots: any[];
@@ -30,7 +31,7 @@ const BookingSlots: React.FC<BookingSlotsProps> = ({ slots,selectedSlot=0,onSele
 
       renderItem={({ item, index }) => {
         return <TouchableOpacity onPress={()=>{onSelect(item.id)}} style={selectedSlot==item.id?styles.slotsselected:styles.slots}>
-          <Text  style={selectedSlot==item.id?styles.selectedtxt:styles.txt}>{item.time}</Text>
+          <AppText  style={selectedSlot==item.id?styles.selectedtxt:styles.txt}>{item.time}</AppText>
         </TouchableOpacity>
       }}
     />
