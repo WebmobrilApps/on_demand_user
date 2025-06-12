@@ -48,7 +48,8 @@ const ShopDetails: React.FC<shopProps> = () => {
                         }, 200);
                     } else {
                         setTimeout(() => {
-                            navigation.navigate(RouteName.PAYMENT_SCREEN)
+                            // navigation.navigate(RouteName.PAYMENT_SCREEN)
+                            navigation.navigate(RouteName.SELECT_ADDRESS,{prevType:'forSelf'})
                         }, 200);
                     }
                 }}

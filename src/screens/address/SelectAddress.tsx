@@ -13,8 +13,8 @@ import {
   Container,
   VectoreIcons,
 } from '../../component'; // Adjust based on your actual paths
-import { addressMenuData, Colors, Fonts, inboxMenuData, navigate, SF, SH, SW } from '../../utils';
-import { useNavigation } from '@react-navigation/native';
+import { addressMenuData, Colors, Fonts, goBack, inboxMenuData, navigate, SF, SH, SW } from '../../utils';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import ChatDropdownMenu from '../chat/component/ChatDropdownMenu';
 import RouteName from '../../navigation/RouteName';
 import { useTranslation } from 'react-i18next';
@@ -50,6 +50,9 @@ const SelectAddress = () => {
   const navigation = useNavigation<any>();
   const [addresses, setAddresses] = useState(addressData);
   const [selectedMenu, setSelectedMenu] = useState<string | null>(null);
+  const route = useRoute<any>();
+  const { prevType } = route.params;
+
   const renderItem = ({ item }: { item: typeof addressData[0] }) => (
     <View style={styles.card}>
       <View style={styles.cardTop}>
@@ -88,7 +91,7 @@ const SelectAddress = () => {
         buttonTextStyle={styles.addAddressText}
         title={t('selectAddress.addNewAdd')}
         onPress={() => {
-          navigate(RouteName.ADD_ADDRESS,{prevScreen:'booking'})
+          navigate(RouteName.ADD_ADDRESS, { prevScreen: 'booking' })
         }}
       />
       <FlatList
@@ -101,7 +104,10 @@ const SelectAddress = () => {
       <View style={styles.buttonContainer}>
         <Buttons
           title={t("selectAddress.confirm")}
-          onPress={() => navigation.navigate(RouteName.BOOK_APPOINT)}
+          onPress={() => {
+            // navigation.navigate(RouteName.BOOK_APPOINT)
+            prevType == 'forSelf' ? navigation.navigate(RouteName.PAYMENT_SCREEN) : goBack()
+          }}
           buttonStyle={styles.addButton}
           textColor={Colors.textWhite}
         />

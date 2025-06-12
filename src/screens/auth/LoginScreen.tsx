@@ -147,8 +147,10 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
           <View style={{ paddingVertical: SH(35), paddingHorizontal: SW(20) }}>
             <Formik
               initialValues={{
-                email: 'dharm@mailinator.com',
-                password: 'Qwerty@123',
+                // email: 'dharm@mailinator.com',
+                // password: 'Qwerty@123',
+                email: '',
+                password: '',
               }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm }) => {
