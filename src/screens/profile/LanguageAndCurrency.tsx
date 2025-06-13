@@ -82,10 +82,10 @@ const LanguageAndCurrency: React.FC<LanguageAndCurrencyProps> = ({ }) => {
         </AppText>
         <ProfileList item={languageJson} />
         <Spacing space={SH(20)} />
-        <AppText style={styles.sectionTitle}>
+        {/* <AppText style={styles.sectionTitle}>
           {t('languageSetting.currencyConverter')}
         </AppText>
-        <ProfileList item={currencyJson} />
+        <ProfileList item={currencyJson} /> */}
       </View>
     </Container>
   );

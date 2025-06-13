@@ -48,13 +48,13 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         navigation.navigate(RouteName.MY_ADDRESS);
       },
     },
-    {
-      name: t('profile.myCalendar'),
-      id: 3,
-      onClick: () => {
-        navigation.navigate(RouteName.MY_CALENDER);
-      },
-    },
+    // {
+    //   name: t('profile.myCalendar'),
+    //   id: 3,
+    //   onClick: () => {
+    //     navigation.navigate(RouteName.MY_CALENDER);
+    //   },
+    // },
     {
       name: t('profile.paymentHistory1'),
       id: 12,

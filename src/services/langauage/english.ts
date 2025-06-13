@@ -87,7 +87,7 @@ export const english = {
       'paymentHistory1':'Payment History',
       'ratingsReviews': 'Ratings & Reviews',
       'loyaltyReferralDiscounts': 'Loyalty, Referral & Discounts',
-      'multiLanguageCurrency': 'Multi-Language & Multi-Currency',
+      'multiLanguageCurrency': 'Multi-Language',
       'notificationsAlerts': 'Notifications & Alerts',
       'customerSupport': 'Customer Support',
       'logout': 'Logout',
