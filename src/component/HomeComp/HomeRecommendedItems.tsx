@@ -1,39 +1,41 @@
+import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
-  Image,
 } from 'react-native';
-import React from 'react';
-import ImageLoader from '../ImageLoader';
 import { boxShadowlight, Colors, Fonts, SF, SH, SW } from '../../utils';
-import imagePaths from '../../assets/images';
-import { Source } from 'react-native-fast-image';
 import AppText from '../AppText';
+import ImageLoader from '../ImageLoader';
+import { Source } from 'react-native-fast-image';
 
 interface HomeRecommendedItemsProps {
   name: string;
   image: Source;
   id: string | number;
 }
- 
-const HomeRecommendedItems: React.FC<HomeRecommendedItemsProps> = ({
-  image,
-}) => {
+
+const HomeRecommendedItems: React.FC<HomeRecommendedItemsProps> = ({ image, name }) => {
   return (
     <View>
-      <View style={[styles.imageContainer,boxShadowlight]}>
-        <ImageLoader source={image} resizeMode="cover" mainImageStyle={styles.imageLoader} />
+      <View style={[styles.imageContainer, boxShadowlight]}>
+        <ImageLoader
+          source={image}
+          resizeMode="cover"
+          mainImageStyle={styles.imageLoader}
+        />
       </View>
-      <AppText style={styles.text}>{'Service Name'}</AppText>
-      <View style={styles.ratingContainer}>
-        {/* <Image source={imagePaths.star_filled} resizeMode="contain" style={styles.verifiedIcon} /> */}
-        {/* <AppText style={styles.ratingtext}>{'4.5'}</AppText> */}
-      </View>
+      <AppText style={styles.text}>{name}</AppText>
+
+      {/* Uncomment if rating is needed */}
+      {/* <View style={styles.ratingContainer}>
+        <Image source={imagePaths.star_filled} resizeMode="contain" style={styles.verifiedIcon} />
+        <AppText style={styles.ratingtext}>{'4.5'}</AppText>
+      </View> */}
     </View>
   );
 };
-export default HomeRecommendedItems;
+
+export default React.memo(HomeRecommendedItems);
 
 const styles = StyleSheet.create({
   imageContainer: {

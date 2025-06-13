@@ -1,11 +1,10 @@
 import React from 'react';
-import { FlatList, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { AppText, Container, HomeRecommendedItems, Spacing } from '../../component';
 import { Colors, Fonts, recommendedData, SF, SH, subCatDdata, SW } from '../../utils';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { ShopHeader, Shops, SubCatList } from './component';
-import imagePaths from '../../assets/images';
-import { useFocusEffect, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 
 interface shopProps { }
 

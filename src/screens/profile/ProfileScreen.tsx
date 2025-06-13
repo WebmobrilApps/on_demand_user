@@ -41,7 +41,7 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         navigation.navigate(RouteName.CHANGE_PASSWORD);
       },
     },
-      {
+    {
       name: t('profile.myAddress'),
       id: 2,
       onClick: () => {
@@ -125,7 +125,7 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
       />
       <LogoutPopup closeModal={() => { setLogoutPopup(false) }} modalVisible={logoutPopup} />
       <BottomBar
-        activeTab={RouteName.INBOX_SCREEN}
+        activeTab={RouteName.PROFILE}
       />
     </Container>
   );
